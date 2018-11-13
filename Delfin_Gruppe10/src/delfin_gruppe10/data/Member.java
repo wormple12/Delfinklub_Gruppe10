@@ -18,6 +18,7 @@ public class Member {
     private final String phone;
     private final String mail;
     private boolean active;
+    // REMAINING CONTINGENT SHOULD BE HERE SOMEWHERE - MAKE IT AS A CLASS?
 
     public Member(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
         if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null
