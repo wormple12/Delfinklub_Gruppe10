@@ -306,8 +306,18 @@ public class GUI extends javax.swing.JFrame {
         });
 
         STop5.setText("Top 5");
+        STop5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                STop5ActionPerformed(evt);
+            }
+        });
 
         Return2.setText("Tilbage");
+        Return2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Return2ActionPerformed(evt);
+            }
+        });
 
         RegisterCP.setText("Registrer K");
         RegisterCP.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +334,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         ACResult.setText("Tilføj KResultat");
+        ACResult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ACResultActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pTrainerLayout = new javax.swing.GroupLayout(pTrainer.getContentPane());
         pTrainer.getContentPane().setLayout(pTrainerLayout);
@@ -1357,12 +1372,14 @@ this.dispose();
 
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
         this.RegisterCM.setVisible(true);
-        this.RegisterCM.setSize(400, 300);
+        this.RegisterCM.setSize(200, 100);
         this.pTrainer.dispose();
     }//GEN-LAST:event_RegisterCPActionPerformed
 
     private void ATResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATResultActionPerformed
-        // TODO add your handling code here:
+        this.AddTTime.setVisible(true);
+        this.AddTTime.setSize(400, 300);
+        this.pTrainer.dispose();
     }//GEN-LAST:event_ATResultActionPerformed
 
     private void VMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembersActionPerformed
@@ -1531,8 +1548,28 @@ this.pKasserer.dispose();
     }//GEN-LAST:event_VMembers3ActionPerformed
 
     private void CTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTeamActionPerformed
-        // TODO add your handling code here:
+        this.CompTeamL.setVisible(true);
+        this.CompTeamL.setSize(400, 300);
+        this.pTrainer.dispose();
     }//GEN-LAST:event_CTeamActionPerformed
+
+    private void STop5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STop5ActionPerformed
+        this.Top5L.setVisible(true);
+        this.Top5L.setSize(450, 400);
+        this.pTrainer.dispose();
+    }//GEN-LAST:event_STop5ActionPerformed
+
+    private void ACResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACResultActionPerformed
+        this.AddCTime.setVisible(true);
+        this.AddCTime.setSize(400, 300);
+        this.pTrainer.dispose();
+    }//GEN-LAST:event_ACResultActionPerformed
+
+    private void Return2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return2ActionPerformed
+        this.setVisible(true);
+        this.setSize(400, 300);
+        this.pTrainer.dispose();
+    }//GEN-LAST:event_Return2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1563,6 +1600,7 @@ this.pKasserer.dispose();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new GUI().setVisible(true);
             }
