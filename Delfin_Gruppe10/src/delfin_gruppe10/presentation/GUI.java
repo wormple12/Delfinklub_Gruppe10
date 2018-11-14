@@ -1440,6 +1440,12 @@ public class GUI extends javax.swing.JFrame {
         this.Choose.setVisible(true);
         this.Choose.setSize(200, 150);
         this.pFormand.dispose();
+        
+//        ArrayList<Member> members = k.getAllMembers();
+//        ChooseMemberComboBox.removeAllItems();
+//        for (Member member : members) {
+//            ChooseMemberComboBox.addItem(member.getName());
+//        }
     }//GEN-LAST:event_EditActionPerformed
 
     private void APaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APaymentActionPerformed
@@ -1544,7 +1550,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         this.jLabel1.setText("Registreret");
-        k.addMemberDetails(Tname.getText(), Tage.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText());
+//        k.addMemberDetails(Tname.getText(), Tage.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText());
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void Return6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return6ActionPerformed
@@ -1554,10 +1560,19 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Return6ActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        //k.getMember((String) this.ChooseMemberComboBox.getSelectedItem());
         this.EMemberF.setVisible(true);
         this.EMemberF.setSize(500, 400);
         this.Choose.dispose();
+        
+//        Member member = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
+//        Tname2.setText(member.getName()); Tage2.setText(member.getBirthdate().toString());
+//        Taddress2.setText(member.getAddress()); Tac2.setText(member.getPostnr()); Tcity2.setText(member.getCity());
+//        Tphone2.setText(member.getPhone()); Tmail2.setText(member.getMail());
+//        if (member.isActive()){
+//            CActive2.setSelected(true);
+//        } else {
+//            CPassive2.setSelected(true);
+//        }
     }//GEN-LAST:event_ConfirmActionPerformed
 
     private void Return3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return3ActionPerformed
