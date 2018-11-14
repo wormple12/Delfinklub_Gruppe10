@@ -59,7 +59,7 @@ public class GUI extends javax.swing.JFrame {
         Text = new javax.swing.JTextField();
         Return3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        MemberTable = new javax.swing.JTable();
         AMemberF = new javax.swing.JFrame();
         Text1 = new javax.swing.JTextField();
         Return4 = new javax.swing.JButton();
@@ -87,12 +87,11 @@ public class GUI extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         Choose = new javax.swing.JFrame();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ChooseMemberComboBox = new javax.swing.JComboBox<>();
         Return6 = new javax.swing.JButton();
         Confirm = new javax.swing.JButton();
         AddPayment = new javax.swing.JFrame();
-        TeamLPay = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        LeftToPayField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         PayText = new javax.swing.JTextField();
         PayB = new javax.swing.JButton();
@@ -395,7 +394,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        MemberTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -411,9 +410,9 @@ public class GUI extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(7).setHeaderValue("Medlemskab");
+        jScrollPane1.setViewportView(MemberTable);
+        if (MemberTable.getColumnModel().getColumnCount() > 0) {
+            MemberTable.getColumnModel().getColumn(7).setHeaderValue("Medlemskab");
         }
 
         javax.swing.GroupLayout MemberLLayout = new javax.swing.GroupLayout(MemberL.getContentPane());
@@ -625,7 +624,12 @@ public class GUI extends javax.swing.JFrame {
 
         Choose.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name1", "Name2" }));
+        ChooseMemberComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name1", "Name2" }));
+        ChooseMemberComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChooseMemberComboBoxActionPerformed(evt);
+            }
+        });
 
         Return6.setText("Tilbage");
         Return6.addActionListener(new java.awt.event.ActionListener() {
@@ -649,7 +653,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(Return6)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(ChooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ChooseMemberComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         ChooseLayout.setVerticalGroup(
@@ -657,19 +661,17 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ChooseLayout.createSequentialGroup()
                 .addGroup(ChooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Return6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ChooseMemberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(Confirm))
         );
 
         AddPayment.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TeamLPay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Junior", "Senior" }));
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 204));
-        jTextField1.setText("Skylder");
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        LeftToPayField.setEditable(false);
+        LeftToPayField.setBackground(new java.awt.Color(255, 255, 204));
+        LeftToPayField.setText("Skylder");
+        LeftToPayField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
 
         jLabel3.setText("At Betale");
 
@@ -715,28 +717,24 @@ public class GUI extends javax.swing.JFrame {
         AddPaymentLayout.setHorizontalGroup(
             AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddPaymentLayout.createSequentialGroup()
+                .addComponent(Return7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(AddPaymentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(NameLPay, 0, 71, Short.MAX_VALUE)
-                    .addComponent(TeamLPay, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(NameLPay, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LeftToPayField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(PayAllB))
                     .addGroup(AddPaymentLayout.createSequentialGroup()
                         .addComponent(PayB, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PayText, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6))
-                    .addGroup(AddPaymentLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel6)))
                 .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(AddPaymentLayout.createSequentialGroup()
-                .addComponent(Return7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         AddPaymentLayout.setVerticalGroup(
             AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -746,14 +744,13 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TeamLPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LeftToPayField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NameLPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PayB)
                     .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(PayText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(NameLPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PayAllB)
@@ -1449,6 +1446,15 @@ public class GUI extends javax.swing.JFrame {
         this.AddPayment.setVisible(true);
         this.AddPayment.setSize(250, 200);
         this.pKasserer.dispose();
+        
+//        ArrayList<Member> members = k.getMembersInArrears();
+//        NameLPay.removeAllItems();
+//        for (Member member : members) {
+//            NameLPay.addItem(member.getName());
+//        }
+//        
+//        Member member = k.getMember((String) NameLPay.getSelectedItem());
+//        LeftToPayField.setText(Double.toString(member.getArrears()));
     }//GEN-LAST:event_APaymentActionPerformed
 
     private void ArrearsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArrearsActionPerformed
@@ -1491,21 +1497,27 @@ public class GUI extends javax.swing.JFrame {
         this.MemberL.setVisible(true);
         this.MemberL.setSize(400, 300);
         this.pFormand.dispose();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        for (int i = 0; i < 1/*k.getAllMembers().size()*/; i++) {
-            model.addRow(new Object[]{});
-            int j = 0;
-            String l = "adad";
-            String blob = "si";
-
-            LocalDate derp = LocalDate.now();
-            this.jTable1.setValueAt(l, i, j++);
-            this.jTable1.setValueAt(l, i, j++);
-            this.jTable1.setValueAt(derp, i, j++);
-
-        }
-
-
+        
+//        ArrayList<Member> members = k.getAllMembers();
+//        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
+//        model.setRowCount(0);
+//        for (int i = 0; i < members.size(); i++) {
+//            Member member = members.get(i);
+//            model.addRow(new Object[]{});
+//            int j = 0;
+//            this.MemberTable.setValueAt(member.getName(), i, j++);
+//            this.MemberTable.setValueAt(member.getBirthdate(), i, j++);
+//            this.MemberTable.setValueAt(member.getAddress(), i, j++);
+//            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
+//            this.MemberTable.setValueAt(member.getCity(), i, j++);
+//            this.MemberTable.setValueAt(member.getPhone(), i, j++);
+//            this.MemberTable.setValueAt(member.getMail(), i, j++);
+//            if (member.isActive()){
+//                this.MemberTable.setValueAt("Aktiv", i, j++);
+//            } else {
+//                this.MemberTable.setValueAt("Passiv", i, j++);
+//            }
+//        }
     }//GEN-LAST:event_VMembersActionPerformed
 
     private void Text2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text2ActionPerformed
@@ -1542,7 +1554,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Return6ActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        //k.getMember((String) this.Choice.getSelectedItem());
+        //k.getMember((String) this.ChooseMemberComboBox.getSelectedItem());
         this.EMemberF.setVisible(true);
         this.EMemberF.setSize(500, 400);
         this.Choose.dispose();
@@ -1706,6 +1718,10 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Register1ActionPerformed
 
+    private void ChooseMemberComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChooseMemberComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChooseMemberComboBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1768,6 +1784,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Choice4;
     private javax.swing.JComboBox<String> Choice5;
     private javax.swing.JFrame Choose;
+    private javax.swing.JComboBox<String> ChooseMemberComboBox;
     private javax.swing.JFrame CompTeamL;
     private javax.swing.JButton Confirm;
     private javax.swing.JButton Confirm1;
@@ -1775,7 +1792,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton Confirm3;
     private javax.swing.JFrame EMemberF;
     private javax.swing.JButton Edit;
+    private javax.swing.JTextField LeftToPayField;
     private javax.swing.JFrame MemberL;
+    private javax.swing.JTable MemberTable;
     private javax.swing.JTextArea Members4;
     private javax.swing.JComboBox<String> NameLPay;
     private javax.swing.JButton PayAllB;
@@ -1813,7 +1832,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Tcity2;
     private javax.swing.JTextField Tcomp;
     private javax.swing.JTextField Tdate;
-    private javax.swing.JComboBox<String> TeamLPay;
     private javax.swing.JTextField Text;
     private javax.swing.JTextField Text1;
     private javax.swing.JTextField Text15;
@@ -1858,7 +1876,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton inFormand;
     private javax.swing.JButton inKasserer;
     private javax.swing.JButton inTrainer;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -1870,11 +1887,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JFrame pFormand;
     private javax.swing.JFrame pKasserer;
     private javax.swing.JFrame pTrainer;
