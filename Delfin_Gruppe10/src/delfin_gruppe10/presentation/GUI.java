@@ -1,5 +1,6 @@
 package delfin_gruppe10.presentation;
 
+import delfin_gruppe10.data.*;
 import delfin_gruppe10.domainlogic.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -104,7 +105,7 @@ public class GUI extends javax.swing.JFrame {
         Text15 = new javax.swing.JTextField();
         Return8 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        ArrearTable = new javax.swing.JTable();
         RegisterCM = new javax.swing.JFrame();
         jComboBox3 = new javax.swing.JComboBox<>();
         Return9 = new javax.swing.JButton();
@@ -270,7 +271,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(pKassererLayout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addGroup(pKassererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(APayment, javax.swing.GroupLayout.PREFERRED_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(APayment, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                             .addComponent(VMembers2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Arrears, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(139, Short.MAX_VALUE))
@@ -718,7 +719,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Return7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, Short.MAX_VALUE))
+                    .addComponent(Return7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddPaymentLayout.createSequentialGroup()
@@ -772,7 +773,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        ArrearTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -788,7 +789,7 @@ public class GUI extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(ArrearTable);
 
         javax.swing.GroupLayout ArrearLLayout = new javax.swing.GroupLayout(ArrearL.getContentPane());
         ArrearL.getContentPane().setLayout(ArrearLLayout);
@@ -1450,6 +1451,24 @@ public class GUI extends javax.swing.JFrame {
         this.ArrearL.setVisible(true);
         this.ArrearL.setSize(400, 300);
         this.pKasserer.dispose();
+        
+//        ArrayList<Member> members = k.getMembersInArrears();
+//        DefaultTableModel model = (DefaultTableModel) ArrearTable.getModel();
+//        model.setRowCount(0);
+//        for (int i = 0; i < members.size(); i++) {
+//            Member member = members.get(i);
+//            model.addRow(new Object[]{});
+//            int j = 0;
+//            this.ArrearTable.setValueAt(member.getName(), i, j++);
+//            this.ArrearTable.setValueAt(member.getBirthdate(), i, j++);
+//            this.ArrearTable.setValueAt(member.getAddress(), i, j++);
+//            this.ArrearTable.setValueAt(member.getPostnr(), i, j++);
+//            this.ArrearTable.setValueAt(member.getCity(), i, j++);
+//            this.ArrearTable.setValueAt(member.getPhone(), i, j++);
+//            this.ArrearTable.setValueAt(member.getMail(), i, j++);
+//            this.ArrearTable.setValueAt(member.getYearlyContingent(), i, j++);
+//            this.ArrearTable.setValueAt(member.getArrears(), i, j++);
+//        }
     }//GEN-LAST:event_ArrearsActionPerformed
 
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
@@ -1724,6 +1743,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JFrame AddPayment;
     private javax.swing.JFrame AddTTime;
     private javax.swing.JFrame ArrearL;
+    private javax.swing.JTable ArrearTable;
     private javax.swing.JButton Arrears;
     private javax.swing.JRadioButton CActive;
     private javax.swing.JRadioButton CActive2;
@@ -1842,7 +1862,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;

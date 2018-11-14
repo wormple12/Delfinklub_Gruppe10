@@ -18,7 +18,7 @@ public class Member {
     private final String phone;
     private final String mail;
     private boolean active;
-    private double arrear;
+    private double arrears;
 
     public Member(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
         if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null
@@ -41,7 +41,7 @@ public class Member {
         this.phone = phone;
         this.mail = mail;
         this.active = active;
-        this.arrear = getYearlyContingent();
+        this.arrears = getYearlyContingent();
     }
 
     public int getAge() {
@@ -62,12 +62,16 @@ public class Member {
             return 500.;
         }
     }
+
+    public double getArrears() {
+        return arrears;
+    }
     
     public void payArrears(double amount){
-        if (amount < 0 || amount > arrear){
+        if (amount < 0 || amount > arrears){
             throw new IllegalArgumentException();
         }
-        arrear -= amount;
+        arrears -= amount;
     }
 
     public void setActive(boolean b){
