@@ -1,5 +1,6 @@
 package delfin_gruppe10.presentation;
 
+import delfin_gruppe10.data.*;
 import delfin_gruppe10.domainlogic.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -90,14 +91,14 @@ public class GUI extends javax.swing.JFrame {
         Return6 = new javax.swing.JButton();
         Confirm = new javax.swing.JButton();
         AddPayment = new javax.swing.JFrame();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        TeamLPay = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        PayText = new javax.swing.JTextField();
+        PayB = new javax.swing.JButton();
+        PayAllB = new javax.swing.JButton();
         Return7 = new javax.swing.JButton();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        NameLPay = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         ArrearL = new javax.swing.JFrame();
         Choice1 = new javax.swing.JComboBox<>();
@@ -270,7 +271,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(pKassererLayout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addGroup(pKassererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(APayment, javax.swing.GroupLayout.PREFERRED_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(APayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(VMembers2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Arrears, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(139, Short.MAX_VALUE))
@@ -522,8 +523,8 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AMemberFLayout.createSequentialGroup()
                                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Text2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Text1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Text2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Tage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -547,24 +548,24 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(AMemberFLayout.createSequentialGroup()
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AMemberFLayout.createSequentialGroup()
-                                .addComponent(Text4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Text4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Tac, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(AMemberFLayout.createSequentialGroup()
-                                .addComponent(Text3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Text3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Taddress, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AMemberFLayout.createSequentialGroup()
-                                    .addComponent(Text5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Tcity))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AMemberFLayout.createSequentialGroup()
-                                    .addComponent(Text7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Tmail))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AMemberFLayout.createSequentialGroup()
-                                    .addComponent(Text6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Tphone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(39, 39, 39)
@@ -648,7 +649,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(Return6)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(ChooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, 67, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         ChooseLayout.setVerticalGroup(
@@ -663,7 +664,7 @@ public class GUI extends javax.swing.JFrame {
 
         AddPayment.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name1", "Name2" }));
+        TeamLPay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Junior", "Senior" }));
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 204));
@@ -672,24 +673,24 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel3.setText("At Betale");
 
-        jTextField2.setText("Beløb");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        PayText.setText("Beløb");
+        PayText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                PayTextActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Betal");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        PayB.setText("Betal");
+        PayB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                PayBActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Betal alt");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        PayAllB.setText("Betal alt");
+        PayAllB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                PayAllBActionPerformed(evt);
             }
         });
 
@@ -700,10 +701,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name1", "Name2" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        NameLPay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name1", "Name2" }));
+        NameLPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                NameLPayActionPerformed(evt);
             }
         });
 
@@ -716,25 +717,26 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(AddPaymentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Return7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, Short.MAX_VALUE))
+                    .addComponent(NameLPay, 0, 71, Short.MAX_VALUE)
+                    .addComponent(TeamLPay, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PayAllB))
                     .addGroup(AddPaymentLayout.createSequentialGroup()
-                        .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PayB, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PayText, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6))
                     .addGroup(AddPaymentLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(AddPaymentLayout.createSequentialGroup()
+                .addComponent(Return7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         AddPaymentLayout.setVerticalGroup(
             AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -745,16 +747,16 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TeamLPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(PayB)
                     .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PayText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NameLPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(PayAllB)
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
@@ -1213,9 +1215,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jTextArea3.setEditable(false);
         jTextArea3.setBackground(new java.awt.Color(255, 255, 204));
         jTextArea3.setColumns(15);
         jTextArea3.setRows(4);
+        jTextArea3.setAutoscrolls(false);
+        jTextArea3.setPreferredSize(new java.awt.Dimension(152, 76));
         jScrollPane5.setViewportView(jTextArea3);
 
         javax.swing.GroupLayout EMemberFLayout = new javax.swing.GroupLayout(EMemberF.getContentPane());
@@ -1224,13 +1229,13 @@ public class GUI extends javax.swing.JFrame {
             EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EMemberFLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(EMemberFLayout.createSequentialGroup()
                         .addGroup(EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EMemberFLayout.createSequentialGroup()
                                 .addGroup(EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Text26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Text25, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Text26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text25, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Tage2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1253,29 +1258,29 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(EMemberFLayout.createSequentialGroup()
                         .addGroup(EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EMemberFLayout.createSequentialGroup()
-                                .addComponent(Text28, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Text28, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Tac2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(EMemberFLayout.createSequentialGroup()
-                                .addComponent(Text27, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Text27, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Taddress2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EMemberFLayout.createSequentialGroup()
-                                    .addComponent(Text29, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text29, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Tcity2))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EMemberFLayout.createSequentialGroup()
-                                    .addComponent(Text31, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text31, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Tmail2))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EMemberFLayout.createSequentialGroup()
-                                    .addComponent(Text30, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text30, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Tphone2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21))
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane5)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         EMemberFLayout.setVerticalGroup(
             EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1519,6 +1524,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Return6ActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
+        //k.getMember((String) this.Choice.getSelectedItem());
         this.EMemberF.setVisible(true);
         this.EMemberF.setSize(500, 400);
         this.Choose.dispose();
@@ -1542,9 +1548,10 @@ public class GUI extends javax.swing.JFrame {
         this.pKasserer.dispose();
     }//GEN-LAST:event_VMembers2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void PayAllBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayAllBActionPerformed
+        //Member l = k.getMember((String) this.NameLPay.getSelectedItem());
+        //k.registerPayment(l, l.getArrears());
+    }//GEN-LAST:event_PayAllBActionPerformed
 
     private void Return7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return7ActionPerformed
         this.pKasserer.setVisible(true);
@@ -1650,20 +1657,23 @@ public class GUI extends javax.swing.JFrame {
         this.pTrainer.dispose();
     }//GEN-LAST:event_Return2ActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    private void NameLPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameLPayActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+    }//GEN-LAST:event_NameLPayActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void PayBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayBActionPerformed
+       // Member l = k.getMember((String) this.NameLPay.getSelectedItem());
+       //k.registerPayment(l, Double.parseDouble(PayText.getText()));
+    }//GEN-LAST:event_PayBActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void PayTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_PayTextActionPerformed
 
     private void Return14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return14ActionPerformed
-        // TODO add your handling code here:
+       this.Choose.setVisible(true);
+       this.Choose.setSize(200, 170);
+       this.EMemberF.dispose();
     }//GEN-LAST:event_Return14ActionPerformed
 
     private void Text26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text26ActionPerformed
@@ -1748,6 +1758,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton Edit;
     private javax.swing.JFrame MemberL;
     private javax.swing.JTextArea Members4;
+    private javax.swing.JComboBox<String> NameLPay;
+    private javax.swing.JButton PayAllB;
+    private javax.swing.JButton PayB;
+    private javax.swing.JTextField PayText;
     private javax.swing.JButton Register;
     private javax.swing.JButton Register1;
     private javax.swing.JFrame RegisterCM;
@@ -1780,6 +1794,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Tcity2;
     private javax.swing.JTextField Tcomp;
     private javax.swing.JTextField Tdate;
+    private javax.swing.JComboBox<String> TeamLPay;
     private javax.swing.JTextField Text;
     private javax.swing.JTextField Text1;
     private javax.swing.JTextField Text15;
@@ -1824,12 +1839,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton inFormand;
     private javax.swing.JButton inKasserer;
     private javax.swing.JButton inTrainer;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -1846,7 +1857,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JFrame pFormand;
     private javax.swing.JFrame pKasserer;
     private javax.swing.JFrame pTrainer;
