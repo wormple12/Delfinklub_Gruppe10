@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
-    MasterSystem k = new MasterSystem();
+    MasterSystem k = new MasterSystem(true);
 
     /**
      * Creates new form GUI
