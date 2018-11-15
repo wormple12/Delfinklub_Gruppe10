@@ -92,12 +92,60 @@ public class MemberTest {
     }
     
     @Test (expected=IllegalArgumentException.class)
+    public void testIllegalName() {
+        Member m = new Member(
+                "YourNewNeighbor",
+                "06-06-2001",
+                "Elm Street 6", "6666", "Realm of Nightmares",
+                "66666666", "S6C6A6R6yyy@yes.net", true);
+    }
+    @Test (expected=IllegalArgumentException.class)
     public void testIllegalBirthdate() {
         Member m = new Member(
                 "Your New Neighbor",
-                "06-06-200",
+                "06-06-01",
                 "Elm Street 6", "6666", "Realm of Nightmares",
                 "66666666", "S6C6A6R6yyy@yes.net", true);
+    }
+    @Test (expected=IllegalArgumentException.class)
+    public void testIllegalAddress() {
+        Member m = new Member(
+                "Your New Neighbor",
+                "06-06-2001",
+                "6 Elm Street", "6666", "Realm of Nightmares",
+                "66666666", "S6C6A6R6yyy@yes.net", true);
+    }
+    @Test (expected=IllegalArgumentException.class)
+    public void testIllegalPostNr() {
+        Member m = new Member(
+                "Your New Neighbor",
+                "06-06-2001",
+                "Elm Street 6", null, "Realm of Nightmares",
+                "66666666", "S6C6A6R6yyy@yes.net", true);
+    }
+    @Test (expected=IllegalArgumentException.class)
+    public void testIllegalCity() {
+        Member m = new Member(
+                "Your New Neighbor",
+                "06-06-2001",
+                "Elm Street 6", "6666", "N0WH?R6",
+                "66666666", "S6C6A6R6yyy@yes.net", true);
+    }
+    @Test (expected=IllegalArgumentException.class)
+    public void testIllegalPhone() {
+        Member m = new Member(
+                "Your New Neighbor",
+                "06-06-2001",
+                "Elm Street 6", "6666", "Realm of Nightmares",
+                "123456789", "S6C6A6R6yyy@yes.net", true);
+    }
+    @Test (expected=IllegalArgumentException.class)
+    public void testIllegalMail() {
+        Member m = new Member(
+                "Your New Neighbor",
+                "06-06-2001",
+                "Elm Street 6", "6666", "Realm of Nightmares",
+                "66666666", "S6C6A6R 6yyyyes.net", true);
     }
 
 }
