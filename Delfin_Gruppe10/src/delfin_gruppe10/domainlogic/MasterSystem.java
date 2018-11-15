@@ -13,23 +13,23 @@ import java.util.ArrayList;
  * @author HP
  */
 public class MasterSystem implements MasterInterface {
-    
+
     private static final String MEMBER_PATH = "members.txt";
     private static final String COMPETETIVE_PATH = "competetives.txt";
-    
-    // DO NOT CHANGE
+
+    // == DO NOT CHANGE ==
     private static final String TEST_MEMBER_PATH = "testMembers.txt";
     private static final String TEST_COMPETETIVE_PATH = "testCompetetives.txt";
-    //
-    
+    // ===================
+
     private final FileHandler dataAccessor;
-    
-    public MasterSystem(){
+
+    public MasterSystem() {
         this(false);
     }
 
     public MasterSystem(boolean test) {
-        if (test){
+        if (test) {
             dataAccessor = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
         } else {
             dataAccessor = new FileHandler(MEMBER_PATH, COMPETETIVE_PATH);
@@ -44,8 +44,8 @@ public class MasterSystem implements MasterInterface {
     @Override
     public Member getMember(String name) {
         ArrayList<Member> members = dataAccessor.readMembersFromFile();
-        for (Member member : members){
-            if (member.getName().equalsIgnoreCase(name)){
+        for (Member member : members) {
+            if (member.getName().equalsIgnoreCase(name)) {
                 return member;
             }
         }
@@ -55,19 +55,19 @@ public class MasterSystem implements MasterInterface {
     @Override
     public void addMember(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
         ArrayList<Member> members = dataAccessor.readMembersFromFile();
-        for (Member member : members){
-            if (member.getName().equals(name)){
+        for (Member member : members) {
+            if (member.getName().equals(name)) {
                 throw new IllegalArgumentException("Name already exists in database.");
-            } else if (member.getMail().equals(mail)){
+            } else if (member.getMail().equals(mail)) {
                 throw new IllegalArgumentException("Email already exists in database.");
             }
         }
         Member member = new Member(name, birthdate, address, postnr, city, phone, mail, active);
         dataAccessor.writeMemberToFile(member);
     }
-    
+
     @Override
-    public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active){
+    public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
         Member updatedMember = new Member(name, birthdate, address, postnr, city, phone, mail, active);
         dataAccessor.editMemberInFile(originalName, updatedMember);
     }
@@ -77,13 +77,26 @@ public class MasterSystem implements MasterInterface {
         Member member = getMember(name);
         dataAccessor.deleteMemberInFile(member);
     }
-    
-    // ===========================0
-    
-    
-    
-    
 
+    @Override
+    public void registerPayment(String name, double amount) {
+        Member member = getMember(name);
+        member.payArrears(amount);
+        dataAccessor.editMemberInFile(name, member);
+    }
+
+    @Override
+    public ArrayList<Member> getMembersInArrears() {
+        return dataAccessor.readMembersInArrearsFromFile();
+    }
+
+    // ===========================
+    
+    
+    
+    
+    
+    
     @Override
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -109,15 +122,4 @@ public class MasterSystem implements MasterInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void registerPayment(Member member, double amount) {
-        member.payArrears(amount);
-        dataAccessor.editMemberInFile(member.getName(), member);
-    }
-
-    @Override
-    public ArrayList<Member> getMembersInArrears() {
-        return dataAccessor.readMembersInArrearsFromFile();
-    }
-    
 }

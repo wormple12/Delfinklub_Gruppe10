@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  */
 public class MasterSystemTest {
     
-    private static ArrayList<Member> members;
+    private static ArrayList<Member> members = new ArrayList();
     
     public MasterSystemTest() {
     }
@@ -97,8 +97,8 @@ public class MasterSystemTest {
         MasterSystem instance = new MasterSystem(true);
         
         instance.addMember(name, birthdate, address, postnr, city, phone, mail, active);
+        members.add(new Member(name, birthdate, address, postnr, city, phone, mail, active));
         
-        members = instance.getAllMembers();
         String actualName = instance.getMember(name).getName();
         assertEquals(name, actualName);
     }
@@ -122,8 +122,8 @@ public class MasterSystemTest {
         boolean active = true;
         
         instance.editMember(originalName, name, birthdate, address, postnr, city, phone, mail, active);
+        members.set(0, new Member(name, birthdate, address, postnr, city, phone, mail, active));
         
-        members = instance.getAllMembers();
         String actualName = instance.getMember(name).getName();
         assertEquals(name, actualName);
     }
@@ -137,9 +137,10 @@ public class MasterSystemTest {
         MasterSystem instance = new MasterSystem(true);
         String name = "Your New Neighbor";
         instance.deleteMember(name);
+        members.remove(2);
         
-        members = instance.getAllMembers();
-        for (Member member : members){
+        ArrayList<Member> actualMembers = instance.getAllMembers();
+        for (Member member : actualMembers){
             if (member.getName().equals(name)){
                 fail();
             } else if ("Elm Street 6".equals(member.getAddress())){
@@ -147,6 +148,44 @@ public class MasterSystemTest {
             }
         }
     }
+    
+    /**
+     * Test of registerPayment method, of class MasterSystem.
+     */
+    @Test
+    public void testRegisterPayment() {
+        System.out.println("registerPayment");
+        MasterSystem instance = new MasterSystem(true);
+        String name = "Simon Asholt Norup";
+        double amount = 600.;
+        
+        instance.registerPayment(name, amount);
+        
+        double exp = 400.;
+        Member member = instance.getMember(name);
+        assertEquals(exp, member.getArrears(), 0.);
+    }
+
+    /**
+     * Test of getMembersInArrears method, of class MasterSystem.
+     */
+    @Test
+    public void testGetMembersInArrears() {
+        System.out.println("getMembersInArrears");
+        MasterSystem instance = new MasterSystem(true);
+        String name = "Simon Asholt Norup";
+        instance.registerPayment(name, 400.);
+        members.remove(0);
+        ArrayList<Member> expResult = members;
+        ArrayList<Member> result = instance.getMembersInArrears();
+        assertEquals(expResult, result);
+    }
+    
+    // ==========================0
+    
+    
+    
+    
 
     /**
      * Test of getCompetetiveSwimmers method, of class MasterSystem.
@@ -220,34 +259,6 @@ public class MasterSystemTest {
         MasterSystem instance = new MasterSystem(true);
         ArrayList<CompetetiveSwimmer> expResult = null;
         ArrayList<CompetetiveSwimmer> result = instance.getTop5(d);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of registerPayment method, of class MasterSystem.
-     */
-    @Test
-    public void testRegisterPayment() {
-        System.out.println("registerPayment");
-        Member member = null;
-        double amount = 0.0;
-        MasterSystem instance = new MasterSystem(true);
-        instance.registerPayment(member, amount);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getMembersInArrears method, of class MasterSystem.
-     */
-    @Test
-    public void testGetMembersInArrears() {
-        System.out.println("getMembersInArrears");
-        MasterSystem instance = new MasterSystem(true);
-        ArrayList<Member> expResult = null;
-        ArrayList<Member> result = instance.getMembersInArrears();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

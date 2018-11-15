@@ -33,7 +33,7 @@ public interface MasterInterface {
     
     public ArrayList<CompetetiveSwimmer> getTop5(Discipline d);
     
-    public void registerPayment(Member member, double amount);
+    public void registerPayment(String name, double amount);
     
     public ArrayList<Member> getMembersInArrears();
             

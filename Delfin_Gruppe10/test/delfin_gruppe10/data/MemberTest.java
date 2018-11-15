@@ -62,7 +62,7 @@ public class MemberTest {
     }
     
     @Test
-    public void testContingent02() {
+    public void testSeniorMembers() {
         Member m = new Member(
                 "Jack McDonalds",
                 "01-01-1955",
@@ -70,10 +70,18 @@ public class MemberTest {
                 "11112222", "derp@isDerp.derp", true);
         assertEquals(63, m.getAge());
         assertEquals(1600.*0.75, m.getYearlyContingent(), 0.00001);
+        
+        Member m2 = new Member(
+                "Donald McJackson",
+                "01-01-1985",
+                "Very Derp Street 333", "1111", "Long Way From Here",
+                "11112223", "son@isDerp.derp", true);
+        assertEquals(33, m2.getAge());
+        assertEquals(1600., m2.getYearlyContingent(), 0.00001);
     }
     
     @Test
-    public void testContingent03() {
+    public void testJuniorMember() {
         Member m = new Member(
                 "Your New Neighbor",
                 "06-06-2001",
