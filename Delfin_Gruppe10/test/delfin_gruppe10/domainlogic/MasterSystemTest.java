@@ -22,11 +22,28 @@ import static org.junit.Assert.*;
  */
 public class MasterSystemTest {
     
+    private static ArrayList<Member> members;
+    
     public MasterSystemTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        members.add(new Member(
+                "Simon Norup",
+                "20-12-1995",
+                "Lyngevej 39", "3660", "Stenløse",
+                "60893899", "wormple12@hotmail.com", false));
+        members.add(new Member(
+                "Jack McDonalds",
+                "01-01-1955",
+                "Very Derp Street 333", "1111", "Long Way From Here",
+                "11112222", "derp@isDerp.derp", true));
+        members.add(new Member(
+                "Your New Neighbor",
+                "06-06-2001",
+                "Elm Street 6", "6666", "Realm of Nightmares",
+                "66666666", "S6C6A6R6yyy@yes.net", true));
     }
     
     @AfterClass
@@ -48,7 +65,7 @@ public class MasterSystemTest {
     public void testGetAllMembers() {
         System.out.println("getAllMembers");
         MasterSystem instance = new MasterSystem(true);
-        ArrayList<Member> expResult = null;
+        ArrayList<Member> expResult = members;
         ArrayList<Member> result = instance.getAllMembers();
         assertEquals(expResult, result);
     }
@@ -59,13 +76,11 @@ public class MasterSystemTest {
     @Test
     public void testGetMember() {
         System.out.println("getMember");
-        String name = "";
+        String name = "Jack McDonalds";
         MasterSystem instance = new MasterSystem(true);
-        Member expResult = null;
+        Member expResult = members.get(1);
         Member result = instance.getMember(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -74,18 +89,19 @@ public class MasterSystemTest {
     @Test
     public void testAddMember() {
         System.out.println("addMember");
-        String name = "";
-        String birthdate = "";
-        String address = "";
-        String postnr = "";
-        String city = "";
-        String phone = "";
-        String mail = "";
+        String name = "Ariel The Mermaid";
+        String birthdate = "04-11-1822";
+        String address = "The Sea 1";
+        String postnr = "1234";
+        String city = "Very Sea";
+        String phone = "12345678";
+        String mail = "ariel@seamail.sea";
         boolean active = false;
         MasterSystem instance = new MasterSystem(true);
         instance.addMember(name, birthdate, address, postnr, city, phone, mail, active);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        members = instance.getAllMembers();
+        String actualName = instance.getMember(name).getName();
+        assertEquals(name, actualName);
     }
 
     /**
@@ -94,8 +110,8 @@ public class MasterSystemTest {
     @Test
     public void testEditMember() {
         System.out.println("editMember");
-        String originalName = "";
-        String name = "";
+        String originalName = "Simon Norup";
+        String name = "Simon Asholt Norup";
         String birthdate = "";
         String address = "";
         String postnr = "";
