@@ -17,10 +17,23 @@ public class MasterSystem implements MasterInterface {
     private static final String MEMBER_PATH = "members.txt";
     private static final String COMPETETIVE_PATH = "competetives.txt";
     
+    // DO NOT CHANGE
+    private static final String TEST_MEMBER_PATH = "testMembers.txt";
+    private static final String TEST_COMPETETIVE_PATH = "testCompetetives.txt";
+    //
+    
     private final FileHandler dataAccessor;
     
     public MasterSystem(){
-        dataAccessor = new FileHandler(MEMBER_PATH, COMPETETIVE_PATH);
+        this(false);
+    }
+
+    public MasterSystem(boolean test) {
+        if (test){
+            dataAccessor = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
+        } else {
+            dataAccessor = new FileHandler(MEMBER_PATH, COMPETETIVE_PATH);
+        }
     }
 
     @Override
