@@ -175,6 +175,7 @@ public class GUI extends javax.swing.JFrame {
         pFormand.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pFormand.setName("viewMem"); // NOI18N
 
+        VMembers.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         VMembers.setText("Vis Medlemmer");
         VMembers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,13 +183,17 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        AMemeber.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         AMemeber.setText("Tilføj Medlem");
+        AMemeber.setMaximumSize(new java.awt.Dimension(125, 25));
+        AMemeber.setMinimumSize(new java.awt.Dimension(125, 25));
         AMemeber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMemeberActionPerformed(evt);
             }
         });
 
+        Edit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Edit.setText("Rediger Medlem");
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +201,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        Return.setText("Return");
+        Return.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Return.setText("Tilbage");
         Return.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReturnActionPerformed(evt);
@@ -208,31 +214,34 @@ public class GUI extends javax.swing.JFrame {
         pFormandLayout.setHorizontalGroup(
             pFormandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pFormandLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addComponent(Return, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pFormandLayout.createSequentialGroup()
+                .addGap(198, 198, 198)
                 .addGroup(pFormandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(VMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AMemeber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Edit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(141, Short.MAX_VALUE))
-            .addGroup(pFormandLayout.createSequentialGroup()
-                .addComponent(Return)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(Edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AMemeber, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         pFormandLayout.setVerticalGroup(
             pFormandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pFormandLayout.createSequentialGroup()
-                .addComponent(Return)
-                .addGap(46, 46, 46)
-                .addComponent(VMembers)
-                .addGap(36, 36, 36)
-                .addComponent(AMemeber)
-                .addGap(29, 29, 29)
-                .addComponent(Edit)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addComponent(Return, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(VMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AMemeber, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pKasserer.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pKasserer.setBackground(new java.awt.Color(245, 26, 52));
+        pKasserer.setForeground(java.awt.Color.darkGray);
 
+        VMembers2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         VMembers2.setText("Vis Medlemer");
         VMembers2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,6 +249,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        APayment.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         APayment.setText("Tilføj Betaling");
         APayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +257,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        Arrears.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Arrears.setText("Vis Restance");
         Arrears.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +265,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        Return1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Return1.setText("Tilbage");
         Return1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,31 +278,33 @@ public class GUI extends javax.swing.JFrame {
         pKassererLayout.setHorizontalGroup(
             pKassererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pKassererLayout.createSequentialGroup()
-                .addGroup(pKassererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Return1)
-                    .addGroup(pKassererLayout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addGroup(pKassererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(APayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(VMembers2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Arrears, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(189, 189, 189)
+                .addGroup(pKassererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(APayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(VMembers2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Arrears, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(215, Short.MAX_VALUE))
+            .addGroup(pKassererLayout.createSequentialGroup()
+                .addComponent(Return1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pKassererLayout.setVerticalGroup(
             pKassererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pKassererLayout.createSequentialGroup()
-                .addComponent(Return1)
-                .addGap(67, 67, 67)
-                .addComponent(VMembers2)
+                .addComponent(Return1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(VMembers2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(APayment)
+                .addComponent(APayment, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Arrears)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addComponent(Arrears, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pTrainer.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        VMembers3.setBackground(new java.awt.Color(250, 250, 250));
+        VMembers3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         VMembers3.setText("Vis Medlemmer");
         VMembers3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,13 +312,17 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        CTeam.setText("Vis KHold");
+        CTeam.setBackground(new java.awt.Color(250, 250, 250));
+        CTeam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        CTeam.setText("Vis K-Hold");
         CTeam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CTeamActionPerformed(evt);
             }
         });
 
+        STop5.setBackground(new java.awt.Color(250, 250, 250));
+        STop5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         STop5.setText("Top 5");
         STop5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,6 +337,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        RegisterCP.setBackground(new java.awt.Color(250, 250, 250));
+        RegisterCP.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         RegisterCP.setText("Registrer K");
         RegisterCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,14 +346,18 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        ATResult.setText("Tilføj TResultat");
+        ATResult.setBackground(new java.awt.Color(250, 250, 250));
+        ATResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ATResult.setText("Tilføj T-Resultat");
         ATResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ATResultActionPerformed(evt);
             }
         });
 
-        ACResult.setText("Tilføj KResultat");
+        ACResult.setBackground(new java.awt.Color(250, 250, 250));
+        ACResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ACResult.setText("Tilføj K-Resultat");
         ACResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ACResultActionPerformed(evt);
@@ -345,40 +369,40 @@ public class GUI extends javax.swing.JFrame {
         pTrainerLayout.setHorizontalGroup(
             pTrainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTrainerLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(85, 85, 85)
                 .addGroup(pTrainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(VMembers3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(STop5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CTeam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                    .addComponent(CTeam, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
                 .addGroup(pTrainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ACResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ATResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RegisterCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(RegisterCP, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(pTrainerLayout.createSequentialGroup()
-                .addComponent(Return2)
+                .addComponent(Return2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pTrainerLayout.setVerticalGroup(
             pTrainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTrainerLayout.createSequentialGroup()
-                .addComponent(Return2)
-                .addGap(67, 67, 67)
+                .addComponent(Return2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(pTrainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pTrainerLayout.createSequentialGroup()
-                        .addComponent(VMembers3)
+                        .addComponent(VMembers3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CTeam)
+                        .addComponent(CTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(STop5))
+                        .addComponent(STop5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pTrainerLayout.createSequentialGroup()
-                        .addComponent(RegisterCP)
+                        .addComponent(RegisterCP, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(ATResult)
+                        .addComponent(ATResult, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(ACResult)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                        .addComponent(ACResult, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         MemberL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1384,7 +1408,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(inKasserer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inTrainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1401,7 +1425,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1410,7 +1434,7 @@ public class GUI extends javax.swing.JFrame {
     private void inTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inTrainerActionPerformed
 
         this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(400, 300);
+        this.pTrainer.setSize(pTrainer.getPreferredSize());
         this.dispose();
 
     }//GEN-LAST:event_inTrainerActionPerformed
@@ -1418,7 +1442,7 @@ public class GUI extends javax.swing.JFrame {
     private void AMemeberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMemeberActionPerformed
 
         this.AMemberF.setVisible(true);
-        this.AMemberF.setSize(500, 400);
+        this.AMemberF.setSize(AMemberF.getPreferredSize());
         this.pFormand.dispose();
 
     }//GEN-LAST:event_AMemeberActionPerformed
@@ -1426,20 +1450,20 @@ public class GUI extends javax.swing.JFrame {
     private void inKassererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inKassererActionPerformed
 
         this.pKasserer.setVisible(true);
-        this.pKasserer.setSize(400, 300);
+        this.pKasserer.setSize(pKasserer.getPreferredSize());
         this.dispose();
     }//GEN-LAST:event_inKassererActionPerformed
 
     private void inFormandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inFormandActionPerformed
 
         this.pFormand.setVisible(true);
-        this.pFormand.setSize(400, 300);
+        this.pFormand.setSize(pFormand.getPreferredSize());
         this.dispose();
     }//GEN-LAST:event_inFormandActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         this.Choose.setVisible(true);
-        this.Choose.setSize(200, 150);
+        this.Choose.setSize(Choose.getPreferredSize());
         this.pFormand.dispose();
         
 //        ArrayList<Member> members = k.getAllMembers();
@@ -1451,7 +1475,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void APaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APaymentActionPerformed
         this.AddPayment.setVisible(true);
-        this.AddPayment.setSize(250, 200);
+        this.AddPayment.setSize(AddPayment.getPreferredSize());
         this.pKasserer.dispose();
         
 //        ArrayList<Member> members = k.getMembersInArrears();
@@ -1466,7 +1490,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void ArrearsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArrearsActionPerformed
         this.ArrearL.setVisible(true);
-        this.ArrearL.setSize(400, 300);
+        this.ArrearL.setSize(ArrearL.getPreferredSize());
         this.pKasserer.dispose();
         
 //        ArrayList<Member> members = k.getMembersInArrears();
@@ -1493,19 +1517,19 @@ public class GUI extends javax.swing.JFrame {
 
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
         this.RegisterCM.setVisible(true);
-        this.RegisterCM.setSize(200, 100);
+        this.RegisterCM.setSize(RegisterCM.getPreferredSize());
         this.pTrainer.dispose();
     }//GEN-LAST:event_RegisterCPActionPerformed
 
     private void ATResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATResultActionPerformed
         this.AddTTime.setVisible(true);
-        this.AddTTime.setSize(400, 300);
+        this.AddTTime.setSize(AddTTime.getPreferredSize());
         this.pTrainer.dispose();
     }//GEN-LAST:event_ATResultActionPerformed
 
     private void VMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembersActionPerformed
         this.MemberL.setVisible(true);
-        this.MemberL.setSize(400, 300);
+        this.MemberL.setSize(MemberL.getPreferredSize());
         this.pFormand.dispose();
         
 //        ArrayList<Member> members = k.getAllMembers();
@@ -1544,14 +1568,14 @@ public class GUI extends javax.swing.JFrame {
     private void Return4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return4ActionPerformed
 
         this.pFormand.setVisible(true);
-        this.pFormand.setSize(400, 300);
+        this.pFormand.setSize(pFormand.getPreferredSize());
         this.AMemberF.dispose();
     }//GEN-LAST:event_Return4ActionPerformed
 
     private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
 
         this.setVisible(true);
-        this.setSize(400, 300);
+        this.setSize(this.getPreferredSize());
         this.pFormand.dispose();
     }//GEN-LAST:event_ReturnActionPerformed
 
@@ -1562,13 +1586,13 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return6ActionPerformed
         this.pFormand.setVisible(true);
-        this.pFormand.setSize(400, 300);
+        this.pFormand.setSize(pFormand.getPreferredSize());
         this.Choose.dispose();
     }//GEN-LAST:event_Return6ActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
         this.EMemberF.setVisible(true);
-        this.EMemberF.setSize(500, 400);
+        this.EMemberF.setSize(EMemberF.getPreferredSize());
         this.Choose.dispose();
         
 //        Member member = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
@@ -1587,19 +1611,19 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return3ActionPerformed
         this.setVisible(true);
-        this.setSize(400, 300);
+        this.setSize(this.getPreferredSize());
         this.MemberL.dispose();
     }//GEN-LAST:event_Return3ActionPerformed
 
     private void Return1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return1ActionPerformed
         this.setVisible(true);
-        this.setSize(400, 300);
+        this.setSize(this.getPreferredSize());
         this.pKasserer.dispose();
     }//GEN-LAST:event_Return1ActionPerformed
 
     private void VMembers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembers2ActionPerformed
         this.MemberL.setVisible(true);
-        this.MemberL.setSize(400, 300);
+        this.MemberL.setSize(MemberL.getPreferredSize());
         this.pKasserer.dispose();
     }//GEN-LAST:event_VMembers2ActionPerformed
 
@@ -1610,19 +1634,19 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return7ActionPerformed
         this.pKasserer.setVisible(true);
-        this.pKasserer.setSize(400, 300);
+        this.pKasserer.setSize(pKasserer.getPreferredSize());
         this.AddPayment.dispose();
     }//GEN-LAST:event_Return7ActionPerformed
 
     private void Return8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return8ActionPerformed
         this.pKasserer.setVisible(true);
-        this.pKasserer.setSize(400, 300);
+        this.pKasserer.setSize(pKasserer.getPreferredSize());
         this.ArrearL.dispose();
     }//GEN-LAST:event_Return8ActionPerformed
 
     private void Return9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return9ActionPerformed
         this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(400, 300);
+        this.pTrainer.setSize(pTrainer.getPreferredSize());
         this.RegisterCM.dispose();
     }//GEN-LAST:event_Return9ActionPerformed
 
@@ -1632,7 +1656,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return10ActionPerformed
         this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(400, 300);
+        this.pTrainer.setSize(pTrainer.getPreferredSize());
         this.CompTeamL.dispose();
     }//GEN-LAST:event_Return10ActionPerformed
 
@@ -1642,7 +1666,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return11ActionPerformed
         this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(400, 300);
+        this.pTrainer.setSize(pTrainer.getPreferredSize());
         this.AddCTime.dispose();
     }//GEN-LAST:event_Return11ActionPerformed
 
@@ -1660,7 +1684,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return12ActionPerformed
         this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(400, 300);
+        this.pTrainer.setSize(pTrainer.getPreferredSize());
         this.AddTTime.dispose();
     }//GEN-LAST:event_Return12ActionPerformed
 
@@ -1678,37 +1702,37 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return13ActionPerformed
         this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(400, 300);
+        this.pTrainer.setSize(pTrainer.getPreferredSize());
         this.Top5L.dispose();
     }//GEN-LAST:event_Return13ActionPerformed
 
     private void VMembers3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembers3ActionPerformed
         this.MemberL.setVisible(true);
-        this.MemberL.setSize(400, 300);
+        this.MemberL.setSize(MemberL.getPreferredSize());
         this.pTrainer.dispose();
     }//GEN-LAST:event_VMembers3ActionPerformed
 
     private void CTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTeamActionPerformed
         this.CompTeamL.setVisible(true);
-        this.CompTeamL.setSize(400, 300);
+        this.CompTeamL.setSize(CompTeamL.getPreferredSize());
         this.pTrainer.dispose();
     }//GEN-LAST:event_CTeamActionPerformed
 
     private void STop5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STop5ActionPerformed
         this.Top5L.setVisible(true);
-        this.Top5L.setSize(450, 400);
+        this.Top5L.setSize(Top5L.getPreferredSize());
         this.pTrainer.dispose();
     }//GEN-LAST:event_STop5ActionPerformed
 
     private void ACResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACResultActionPerformed
         this.AddCTime.setVisible(true);
-        this.AddCTime.setSize(400, 300);
+        this.AddCTime.setSize(AddCTime.getPreferredSize());
         this.pTrainer.dispose();
     }//GEN-LAST:event_ACResultActionPerformed
 
     private void Return2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return2ActionPerformed
         this.setVisible(true);
-        this.setSize(400, 300);
+        this.setSize(this.getPreferredSize());
         this.pTrainer.dispose();
     }//GEN-LAST:event_Return2ActionPerformed
 
@@ -1727,7 +1751,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return14ActionPerformed
        this.Choose.setVisible(true);
-       this.Choose.setSize(200, 170);
+       this.Choose.setSize(Choose.getPreferredSize());
        this.EMemberF.dispose();
     }//GEN-LAST:event_Return14ActionPerformed
 
