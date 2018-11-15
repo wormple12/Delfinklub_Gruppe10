@@ -46,6 +46,16 @@ public class FileHandler implements FileHandlerInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    // ==========================================
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // ARE THESE NECESSARY?
     @Override
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer) {
