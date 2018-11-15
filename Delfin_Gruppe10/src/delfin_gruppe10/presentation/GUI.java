@@ -3,6 +3,7 @@ package delfin_gruppe10.presentation;
 import delfin_gruppe10.data.*;
 import delfin_gruppe10.domainlogic.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -1469,6 +1470,7 @@ public class GUI extends javax.swing.JFrame {
         this.pKasserer.dispose();
         
 //        ArrayList<Member> members = k.getMembersInArrears();
+//        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 //        DefaultTableModel model = (DefaultTableModel) ArrearTable.getModel();
 //        model.setRowCount(0);
 //        for (int i = 0; i < members.size(); i++) {
@@ -1476,7 +1478,9 @@ public class GUI extends javax.swing.JFrame {
 //            model.addRow(new Object[]{});
 //            int j = 0;
 //            this.ArrearTable.setValueAt(member.getName(), i, j++);
-//            this.ArrearTable.setValueAt(member.getBirthdate(), i, j++);
+//            String birthdate = member.getBirthdate().toString();
+//            birthdate = String.format(birthdate, formatter);
+//            this.ArrearTable.setValueAt(birthdate, i, j++);
 //            this.ArrearTable.setValueAt(member.getAddress(), i, j++);
 //            this.ArrearTable.setValueAt(member.getPostnr(), i, j++);
 //            this.ArrearTable.setValueAt(member.getCity(), i, j++);
@@ -1505,6 +1509,7 @@ public class GUI extends javax.swing.JFrame {
         this.pFormand.dispose();
         
 //        ArrayList<Member> members = k.getAllMembers();
+//        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 //        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
 //        model.setRowCount(0);
 //        for (int i = 0; i < members.size(); i++) {
@@ -1512,7 +1517,9 @@ public class GUI extends javax.swing.JFrame {
 //            model.addRow(new Object[]{});
 //            int j = 0;
 //            this.MemberTable.setValueAt(member.getName(), i, j++);
-//            this.MemberTable.setValueAt(member.getBirthdate(), i, j++);
+//            String birthdate = member.getBirthdate().toString();
+//            birthdate = String.format(birthdate, formatter);
+//            this.MemberTable.setValueAt(birthdate, i, j++);
 //            this.MemberTable.setValueAt(member.getAddress(), i, j++);
 //            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
 //            this.MemberTable.setValueAt(member.getCity(), i, j++);
@@ -1565,7 +1572,10 @@ public class GUI extends javax.swing.JFrame {
         this.Choose.dispose();
         
 //        Member member = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
-//        Tname2.setText(member.getName()); Tage2.setText(member.getBirthdate().toString());
+//        Tname2.setText(member.getName());
+//        String birthdate = member.getBirthdate().toString();
+//        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+//        Tage2.setText(String.format(birthdate, formatter));
 //        Taddress2.setText(member.getAddress()); Tac2.setText(member.getPostnr()); Tcity2.setText(member.getCity());
 //        Tphone2.setText(member.getPhone()); Tmail2.setText(member.getMail());
 //        if (member.isActive()){

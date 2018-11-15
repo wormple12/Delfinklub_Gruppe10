@@ -5,9 +5,7 @@
  */
 package delfin_gruppe10.domainlogic;
 
-import delfin_gruppe10.data.CompetetiveSwimmer;
-import delfin_gruppe10.data.Discipline;
-import delfin_gruppe10.data.Member;
+import delfin_gruppe10.data.*;
 import java.util.ArrayList;
 
 /**
@@ -15,25 +13,55 @@ import java.util.ArrayList;
  * @author HP
  */
 public class MasterSystem implements MasterInterface {
+    
+    private static final String MEMBER_PATH = "members.txt";
+    private static final String COMPETETIVE_PATH = "competetives.txt";
+    
+    private final FileHandler dataAccessor;
+    
+    public MasterSystem(){
+        dataAccessor = new FileHandler(MEMBER_PATH, COMPETETIVE_PATH);
+    }
 
     @Override
     public ArrayList<Member> getAllMembers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataAccessor.readMembersFromFile();
     }
 
     @Override
     public Member getMember(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Member> members = dataAccessor.readMembersFromFile();
+        for (Member member : members){
+            if (member.getName().equalsIgnoreCase(name)){
+                return member;
+            }
+        }
+        throw new IllegalArgumentException("No members exists with that name.");
     }
 
     @Override
-    public void addMemberDetails(String name, String birthdate, String address, String postnr, String city, String phone, String mail) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addMember(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
+        ArrayList<Member> members = dataAccessor.readMembersFromFile();
+        for (Member member : members){
+            if (member.getName().equals(name)){
+                throw new IllegalArgumentException("Name already exists in database.");
+            } else if (member.getMail().equals(mail)){
+                throw new IllegalArgumentException("Email already exists in database.");
+            }
+        }
+        Member member = new Member(name, birthdate, address, postnr, city, phone, mail, active);
+        dataAccessor.writeMemberToFile(member);
+    }
+    
+    @Override
+    public void editMember(Member who, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active){
+        Member updatedMember = new Member(name, birthdate, address, postnr, city, phone, mail, active);
+        dataAccessor.editMemberInFile(who, updatedMember);
     }
 
     @Override
     public void deleteMember(Member member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dataAccessor.deleteMemberInFile(member);
     }
 
     @Override

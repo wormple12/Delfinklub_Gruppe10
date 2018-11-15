@@ -32,7 +32,7 @@ public class FileHandler implements FileHandlerInterface {
     }
 
     @Override
-    public void editMemberInFile(Member member) { // IS THIS NECESSARY OR CAN IT BE DONE IN writeMemberToFile METHOD?
+    public void editMemberInFile(Member who, Member updated) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

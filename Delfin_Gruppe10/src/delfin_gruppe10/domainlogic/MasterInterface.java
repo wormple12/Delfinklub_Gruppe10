@@ -20,7 +20,9 @@ public interface MasterInterface {
     
     public Member getMember(String name);
     
-    public void addMemberDetails(String name, String birthdate, String address, String postnr, String city, String phone, String mail);
+    public void addMember(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active);
+    
+    public void editMember(Member who, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active);
     
     public void deleteMember(Member member);
     

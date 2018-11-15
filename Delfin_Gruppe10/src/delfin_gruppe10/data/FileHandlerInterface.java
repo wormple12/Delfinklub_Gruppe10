@@ -17,7 +17,7 @@ public interface FileHandlerInterface {
     
     public ArrayList<Member> readMembersFromFile();
     
-    public void editMemberInFile(Member member);
+    public void editMemberInFile(Member who, Member updated);
     
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer);
     
