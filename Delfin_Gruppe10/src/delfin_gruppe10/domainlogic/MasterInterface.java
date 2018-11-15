@@ -5,9 +5,6 @@
  */
 package delfin_gruppe10.domainlogic;
 
-import delfin_gruppe10.data.Member;
-import delfin_gruppe10.data.Discipline;
-import delfin_gruppe10.data.CompetetiveSwimmer;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +21,7 @@ public interface MasterInterface {
     
     public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active);
     
-    public void deleteMember(Member member);
+    public void deleteMember(String name);
     
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers();
     

@@ -73,7 +73,8 @@ public class MasterSystem implements MasterInterface {
     }
 
     @Override
-    public void deleteMember(Member member) {
+    public void deleteMember(String name) {
+        Member member = getMember(name);
         dataAccessor.deleteMemberInFile(member);
     }
 

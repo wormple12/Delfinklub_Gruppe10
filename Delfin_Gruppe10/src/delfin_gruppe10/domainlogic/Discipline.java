@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package delfin_gruppe10.data;
+package delfin_gruppe10.domainlogic;
 
 /**
  *

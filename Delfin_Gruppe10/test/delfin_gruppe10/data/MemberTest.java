@@ -5,7 +5,7 @@
  */
 package delfin_gruppe10.data;
 
-import delfin_gruppe10.data.Member;
+import delfin_gruppe10.domainlogic.Member;
 import java.time.LocalDate;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -51,7 +51,7 @@ public class MemberTest {
     }
     
     @Test
-    public void testContingent01() {
+    public void testPassiveMember() {
         Member m = new Member(
                 "Simon Norup",
                 "20-12-1995",
@@ -81,6 +81,15 @@ public class MemberTest {
                 "66666666", "S6C6A6R6yyy@yes.net", true);
         assertEquals(17, m.getAge());
         assertEquals(1000., m.getYearlyContingent(), 0.);
+    }
+    
+    @Test (expected=IllegalArgumentException.class)
+    public void testIllegalBirthdate() {
+        Member m = new Member(
+                "Your New Neighbor",
+                "06-06-200",
+                "Elm Street 6", "6666", "Realm of Nightmares",
+                "66666666", "S6C6A6R6yyy@yes.net", true);
     }
 
 }

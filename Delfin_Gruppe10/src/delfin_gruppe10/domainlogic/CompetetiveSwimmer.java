@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package delfin_gruppe10.data;
+package delfin_gruppe10.domainlogic;
 
+import delfin_gruppe10.domainlogic.Discipline;
+import delfin_gruppe10.domainlogic.TrainingResult;
+import delfin_gruppe10.domainlogic.Member;
 import java.util.ArrayList;
 
 /**

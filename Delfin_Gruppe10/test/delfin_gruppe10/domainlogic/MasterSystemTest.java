@@ -5,9 +5,6 @@
  */
 package delfin_gruppe10.domainlogic;
 
-import delfin_gruppe10.data.CompetetiveSwimmer;
-import delfin_gruppe10.data.Discipline;
-import delfin_gruppe10.data.Member;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -33,7 +30,7 @@ public class MasterSystemTest {
                 "Simon Norup",
                 "20-12-1995",
                 "Lyngevej 39", "3660", "Stenløse",
-                "60893899", "wormple12@hotmail.com", false));
+                "48183899", "wormple12@hotmail.com", false));
         members.add(new Member(
                 "Jack McDonalds",
                 "01-01-1955",
@@ -98,7 +95,9 @@ public class MasterSystemTest {
         String mail = "ariel@seamail.sea";
         boolean active = false;
         MasterSystem instance = new MasterSystem(true);
+        
         instance.addMember(name, birthdate, address, postnr, city, phone, mail, active);
+        
         members = instance.getAllMembers();
         String actualName = instance.getMember(name).getName();
         assertEquals(name, actualName);
@@ -110,19 +109,23 @@ public class MasterSystemTest {
     @Test
     public void testEditMember() {
         System.out.println("editMember");
-        String originalName = "Simon Norup";
-        String name = "Simon Asholt Norup";
-        String birthdate = "";
-        String address = "";
-        String postnr = "";
-        String city = "";
-        String phone = "";
-        String mail = "";
-        boolean active = false;
         MasterSystem instance = new MasterSystem(true);
+        String originalName = "Simon Norup";
+        Member originalMember = instance.getMember(originalName);
+        String name = "Simon Asholt Norup";
+        String birthdate = "20-12-1995";
+        String address = originalMember.getAddress();
+        String postnr = originalMember.getPostnr();
+        String city = originalMember.getCity();
+        String phone = "60893899";
+        String mail = originalMember.getMail();
+        boolean active = true;
+        
         instance.editMember(originalName, name, birthdate, address, postnr, city, phone, mail, active);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        members = instance.getAllMembers();
+        String actualName = instance.getMember(name).getName();
+        assertEquals(name, actualName);
     }
 
     /**
@@ -131,11 +134,18 @@ public class MasterSystemTest {
     @Test
     public void testDeleteMember() {
         System.out.println("deleteMember");
-        Member member = null;
         MasterSystem instance = new MasterSystem(true);
-        instance.deleteMember(member);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String name = "Your New Neighbor";
+        instance.deleteMember(name);
+        
+        members = instance.getAllMembers();
+        for (Member member : members){
+            if (member.getName().equals(name)){
+                fail();
+            } else if ("Elm Street 6".equals(member.getAddress())){
+                fail();
+            }
+        }
     }
 
     /**

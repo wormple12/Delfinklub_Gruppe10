@@ -5,6 +5,8 @@
  */
 package delfin_gruppe10.data;
 
+import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
+import delfin_gruppe10.domainlogic.Member;
 import java.util.ArrayList;
 
 /**

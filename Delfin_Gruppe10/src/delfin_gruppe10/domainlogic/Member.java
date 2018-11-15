@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package delfin_gruppe10.data;
+package delfin_gruppe10.domainlogic;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -28,12 +28,7 @@ public class Member {
             throw new IllegalArgumentException();
         }
 
-        int day = Integer.parseInt(birthdate.substring(0, 2)); // these lines convert birthdate from String to LocalDate
-        int month = Integer.parseInt(birthdate.substring(3, 5));
-        int year = Integer.parseInt(birthdate.substring(6));
-        LocalDate date = LocalDate.of(year, month, day);
-        this.birthdate = date;
-
+        this.birthdate = convertToDate(birthdate);
         this.name = name; // we could choose to capitalize first letter in all words, but isn't important
         this.address = address; // same as above
         this.postnr = postnr;
@@ -43,8 +38,15 @@ public class Member {
         this.active = active;
         this.arrears = getYearlyContingent();
     }
+    
+    private LocalDate convertToDate(String date){
+        int day = Integer.parseInt(date.substring(0, 2));
+        int month = Integer.parseInt(date.substring(3, 5));
+        int year = Integer.parseInt(date.substring(6));
+        return LocalDate.of(year, month, day);
+    }
 
-    public int getAge() {
+    public int getAge() { // be private?
         return Period.between(birthdate, LocalDate.now()).getYears();
     }
 
