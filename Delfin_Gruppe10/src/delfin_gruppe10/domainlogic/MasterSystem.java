@@ -77,6 +77,12 @@ public class MasterSystem implements MasterInterface {
         Member member = getMember(name);
         dataAccessor.deleteMemberInFile(member);
     }
+    
+    // ===========================0
+    
+    
+    
+    
 
     @Override
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers() {

@@ -21,11 +21,24 @@ public class Member {
     private double arrears;
 
     public Member(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
-        if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null
-                || !name.matches(".* .*") || !birthdate.matches("\\d{2}-\\d{2}-\\d{4}") || !address.matches(".* \\d*") // birthdate should have other possible formats
-                || !postnr.matches("\\d{4}") || !phone.matches("\\d{8}") || !mail.matches("\\S*@\\S*\\.\\S*")) {
-
-            throw new IllegalArgumentException();
+        String cause = "Fejl: "; boolean error = false;
+        if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null){
+            cause += "Et felt er tomt.\n"; error = true;
+        } else if (!name.matches(".* .*")){
+            cause += "Skriv venligst det fulde navn.\n"; error = true;
+        } else if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")){ // birthdate should have other possible formats
+            cause += "Fødselsdato skal formateres DD-MM-ÅÅÅÅ.\n"; error = true; 
+        } else if (!address.matches(".* \\d*")){  // should also have other possible formats for people living in apartments for instance
+            cause += "Skriv venligst vej og nummer.\n"; error = true;
+        } else if (!postnr.matches("\\d{4}")){
+            cause += "Skriv venligst et dansk postnummer.\n"; error = true;
+        } else if (!phone.matches("\\d{8}")){
+            cause += "Skriv venligst et telefonnummer på 8 cifre.\n"; error = true;
+        } else if (!mail.matches("\\S*@\\S*\\.\\S*")){
+            cause += "Skriv venligst en gyldig email."; error = true;
+        }
+        if (error){
+            throw new IllegalArgumentException(cause);
         }
 
         this.birthdate = convertToDate(birthdate);
