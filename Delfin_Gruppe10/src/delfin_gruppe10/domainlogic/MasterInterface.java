@@ -22,7 +22,7 @@ public interface MasterInterface {
     
     public void addMember(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active);
     
-    public void editMember(Member who, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active);
+    public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active);
     
     public void deleteMember(Member member);
     

@@ -32,7 +32,17 @@ public class FileHandler implements FileHandlerInterface {
     }
 
     @Override
-    public void editMemberInFile(Member who, Member updated) {
+    public void editMemberInFile(String originalName, Member updated) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public void deleteMemberInFile(Member member) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Member> readMembersInArrearsFromFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

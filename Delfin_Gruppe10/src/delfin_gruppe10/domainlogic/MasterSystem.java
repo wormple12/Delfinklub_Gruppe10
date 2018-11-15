@@ -54,9 +54,9 @@ public class MasterSystem implements MasterInterface {
     }
     
     @Override
-    public void editMember(Member who, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active){
+    public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active){
         Member updatedMember = new Member(name, birthdate, address, postnr, city, phone, mail, active);
-        dataAccessor.editMemberInFile(who, updatedMember);
+        dataAccessor.editMemberInFile(originalName, updatedMember);
     }
 
     @Override
@@ -91,12 +91,13 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public void registerPayment(Member member, double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        member.payArrears(amount);
+        dataAccessor.editMemberInFile(member.getName(), member);
     }
 
     @Override
     public ArrayList<Member> getMembersInArrears() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataAccessor.readMembersInArrearsFromFile();
     }
     
 }
