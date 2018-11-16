@@ -102,7 +102,15 @@ public class FileHandlerV2 implements FileHandlerInterface {
 
     @Override
     public ArrayList<Member> readMembersInArrearsFromFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Member> allMembers = readMembersFromFile();
+        ArrayList<Member> membersNotPaid = new ArrayList();
+        
+        for(int i = 0; i<allMembers.size(); i++){
+            if(allMembers.get(i).getArrears() < allMembers.get(i).getYearlyContingent()){
+                membersNotPaid.add(allMembers.get(i));
+            }
+        }
+        return membersNotPaid;
     }
 
     @Override
