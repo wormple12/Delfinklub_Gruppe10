@@ -126,9 +126,10 @@ public class Member implements Serializable {
         return mail;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Member{" + "name=" + name + ", address=" + address + ", postnr=" + postnr + ", city=" + city + ", phone=" + phone + ", mail=" + mail + ", active=" + active + ", arrears=" + arrears + '}';
-//    }
+    @Override
+    public String toString() {
+        return "Member{" + "name=" + name + ", birthdate=" + birthdate + ", address=" + address + ", postnr=" + postnr + ", city=" + city + ", phone=" + phone + ", mail=" + mail + ", active=" + active + ", arrears=" + arrears + '}';
+    }
+
     
 }

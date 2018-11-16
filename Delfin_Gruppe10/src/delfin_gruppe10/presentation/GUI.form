@@ -505,9 +505,9 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="Tage" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="Taddress" min="-2" pref="150" max="-2" attributes="0"/>
                                       <Component id="Tname" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="Tmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="Tbirthdate" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -518,15 +518,15 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="Tac" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="Taddress" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                       <Component id="Tcity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="Tac" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="Tphone" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="Text7" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="Tphone" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="Tmail" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -562,7 +562,6 @@
                       <Component id="CPassive" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="CActive" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -581,12 +580,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="Text2" max="32767" attributes="0"/>
-                              <Component id="Tmail" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="Tbirthdate" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="Text3" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="Tage" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="Taddress" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -596,20 +595,20 @@
                                   <Component id="Text5" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Taddress" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="Tac" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="Tac" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="Tcity" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="Text6" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="Tcity" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="Tphone" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="Text7" max="32767" attributes="0"/>
-                              <Component id="Tphone" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="Tmail" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -647,15 +646,15 @@
         <Component class="javax.swing.JTextField" name="Text2">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="Alder:"/>
+            <Property name="text" type="java.lang.String" value="F&#xf8;dselsdato"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tage">
+        <Component class="javax.swing.JTextField" name="Taddress">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TageActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TaddressActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Text3">
@@ -664,7 +663,7 @@
             <Property name="text" type="java.lang.String" value="Adresse:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Taddress">
+        <Component class="javax.swing.JTextField" name="Tac">
         </Component>
         <Component class="javax.swing.JTextField" name="Text4">
           <Properties>
@@ -672,7 +671,7 @@
             <Property name="text" type="java.lang.String" value="Postnr:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tac">
+        <Component class="javax.swing.JTextField" name="Tcity">
         </Component>
         <Component class="javax.swing.JTextField" name="Text5">
           <Properties>
@@ -680,7 +679,7 @@
             <Property name="text" type="java.lang.String" value="By:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tcity">
+        <Component class="javax.swing.JTextField" name="Tphone">
         </Component>
         <Component class="javax.swing.JTextField" name="Text6">
           <Properties>
@@ -688,7 +687,7 @@
             <Property name="text" type="java.lang.String" value="Telefon:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tphone">
+        <Component class="javax.swing.JTextField" name="Tmail">
         </Component>
         <Component class="javax.swing.JTextField" name="Text7">
           <Properties>
@@ -696,7 +695,7 @@
             <Property name="text" type="java.lang.String" value="Mail:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tmail">
+        <Component class="javax.swing.JTextField" name="Tbirthdate">
         </Component>
         <Component class="javax.swing.JRadioButton" name="CPassive">
           <Properties>
