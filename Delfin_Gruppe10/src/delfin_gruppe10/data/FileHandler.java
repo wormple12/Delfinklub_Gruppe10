@@ -5,19 +5,13 @@
  */
 package delfin_gruppe10.data;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
 import delfin_gruppe10.domainlogic.Member;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +24,6 @@ import java.io.Serializable;
 public class FileHandler implements FileHandlerInterface, Serializable {
     private final String memberPath;
     private final String competetivePath;
-    private final String memberFile = "members.txt";
     
     public FileHandler(String memberPath, String competetivePath){
         this.memberPath = memberPath; 
