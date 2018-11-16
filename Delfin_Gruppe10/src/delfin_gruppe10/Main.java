@@ -29,11 +29,11 @@ public class Main {
         
         Member member2 = null;
         
-        fH.writeMemberToFile(member);
         fH.writeMemberToFile(member3);
+        //fH.writeMemberToFile(member3);
         //member2 = 
         //ArrayList<Member> members = fH.readMembersFromFile();
-        System.out.println(fH.readMembersFromFile().get(1).getName());
+        //System.out.println(fH.readMembersFromFile().get(1).getName());
         System.out.println(fH.readMembersFromFile().get(0).getName());
         //System.out.println(member2.getName());
         //System.out.println(fH.readMembersFromFile().get(0).getName());
