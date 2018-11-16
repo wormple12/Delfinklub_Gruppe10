@@ -5,16 +5,29 @@
  */
 package delfin_gruppe10.data;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author PC 2 2016 SDC-privat
  */
 public class FileHandler implements FileHandlerInterface {
-
     private final String memberPath;
     private final String competetivePath;
+    private final String memberFile = "members.txt";
     
     public FileHandler(String memberPath, String competetivePath){
         this.memberPath = memberPath; 
@@ -23,12 +36,28 @@ public class FileHandler implements FileHandlerInterface {
 
     @Override
     public void writeMemberToFile(Member member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Member> readMembersFromFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Member> readMembersFromFile() {        
+        try{
+            FileInputStream fileIn = new FileInputStream(memberPath); 
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);       
+            
+            Member member = null;
+            ArrayList<Member> memberList = null;
+
+            try {
+                while (true) {
+                    member = (Member) objIn.readObject();
+                    memberList.add(member);
+                }
+            } catch (EOFException e) {}
+            return memberList;
+        } catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        } 
     }
 
     @Override
@@ -43,7 +72,26 @@ public class FileHandler implements FileHandlerInterface {
 
     @Override
     public ArrayList<Member> readMembersInArrearsFromFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            FileInputStream fileIn = new FileInputStream(memberPath); 
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);       
+            
+            Member member = null;
+            ArrayList<Member> memberList = null;
+
+            try {
+                while (true) {
+                    member = (Member) objIn.readObject();
+                    if(member.getArrears() < member.getYearlyContingent()){
+                        memberList.add(member);
+                    }
+                }
+            } catch (EOFException e) {}
+            return memberList;
+        } catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        } 
     }
 
     // ==========================================
