@@ -16,6 +16,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
+import delfin_gruppe10.domainlogic.Member;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

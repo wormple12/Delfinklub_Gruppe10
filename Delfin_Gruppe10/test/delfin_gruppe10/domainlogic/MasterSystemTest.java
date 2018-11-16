@@ -5,9 +5,6 @@
  */
 package delfin_gruppe10.domainlogic;
 
-import delfin_gruppe10.data.CompetetiveSwimmer;
-import delfin_gruppe10.data.Discipline;
-import delfin_gruppe10.data.Member;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,11 +19,28 @@ import static org.junit.Assert.*;
  */
 public class MasterSystemTest {
     
+    private static ArrayList<Member> members = new ArrayList();
+    
     public MasterSystemTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        members.add(new Member(
+                "Simon Norup",
+                "20-12-1995",
+                "Lyngevej 39", "3660", "Stenløse",
+                "48183899", "wormple12@hotmail.com", false));
+        members.add(new Member(
+                "Jack McDonalds",
+                "01-01-1955",
+                "Very Derp Street 333", "1111", "Long Way From Here",
+                "11112222", "derp@isDerp.derp", true));
+        members.add(new Member(
+                "Your New Neighbor",
+                "06-06-2001",
+                "Elm Street 6", "6666", "Realm of Nightmares",
+                "66666666", "S6C6A6R6yyy@yes.net", true));
     }
     
     @AfterClass
@@ -48,7 +62,7 @@ public class MasterSystemTest {
     public void testGetAllMembers() {
         System.out.println("getAllMembers");
         MasterSystem instance = new MasterSystem(true);
-        ArrayList<Member> expResult = null;
+        ArrayList<Member> expResult = members;
         ArrayList<Member> result = instance.getAllMembers();
         assertEquals(expResult, result);
     }
@@ -59,13 +73,11 @@ public class MasterSystemTest {
     @Test
     public void testGetMember() {
         System.out.println("getMember");
-        String name = "";
+        String name = "Jack McDonalds";
         MasterSystem instance = new MasterSystem(true);
-        Member expResult = null;
+        Member expResult = members.get(1);
         Member result = instance.getMember(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -74,18 +86,21 @@ public class MasterSystemTest {
     @Test
     public void testAddMember() {
         System.out.println("addMember");
-        String name = "";
-        String birthdate = "";
-        String address = "";
-        String postnr = "";
-        String city = "";
-        String phone = "";
-        String mail = "";
+        String name = "Ariel The Mermaid";
+        String birthdate = "04-11-1822";
+        String address = "The Sea 1";
+        String postnr = "1234";
+        String city = "Very Sea";
+        String phone = "12345678";
+        String mail = "ariel@seamail.sea";
         boolean active = false;
         MasterSystem instance = new MasterSystem(true);
+        
         instance.addMember(name, birthdate, address, postnr, city, phone, mail, active);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        members.add(new Member(name, birthdate, address, postnr, city, phone, mail, active));
+        
+        String actualName = instance.getMember(name).getName();
+        assertEquals(name, actualName);
     }
 
     /**
@@ -94,19 +109,23 @@ public class MasterSystemTest {
     @Test
     public void testEditMember() {
         System.out.println("editMember");
-        String originalName = "";
-        String name = "";
-        String birthdate = "";
-        String address = "";
-        String postnr = "";
-        String city = "";
-        String phone = "";
-        String mail = "";
-        boolean active = false;
         MasterSystem instance = new MasterSystem(true);
+        String originalName = "Simon Norup";
+        Member originalMember = instance.getMember(originalName);
+        String name = "Simon Asholt Norup";
+        String birthdate = "20-12-1995";
+        String address = originalMember.getAddress();
+        String postnr = originalMember.getPostnr();
+        String city = originalMember.getCity();
+        String phone = "60893899";
+        String mail = originalMember.getMail();
+        boolean active = true;
+        
         instance.editMember(originalName, name, birthdate, address, postnr, city, phone, mail, active);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        members.set(0, new Member(name, birthdate, address, postnr, city, phone, mail, active));
+        
+        String actualName = instance.getMember(name).getName();
+        assertEquals(name, actualName);
     }
 
     /**
@@ -115,12 +134,58 @@ public class MasterSystemTest {
     @Test
     public void testDeleteMember() {
         System.out.println("deleteMember");
-        Member member = null;
         MasterSystem instance = new MasterSystem(true);
-        instance.deleteMember(member);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String name = "Your New Neighbor";
+        instance.deleteMember(name);
+        members.remove(2);
+        
+        ArrayList<Member> actualMembers = instance.getAllMembers();
+        for (Member member : actualMembers){
+            if (member.getName().equals(name)){
+                fail();
+            } else if ("Elm Street 6".equals(member.getAddress())){
+                fail();
+            }
+        }
     }
+    
+    /**
+     * Test of registerPayment method, of class MasterSystem.
+     */
+    @Test
+    public void testRegisterPayment() {
+        System.out.println("registerPayment");
+        MasterSystem instance = new MasterSystem(true);
+        String name = "Simon Asholt Norup";
+        double amount = 600.;
+        
+        instance.registerPayment(name, amount);
+        
+        double exp = 400.;
+        Member member = instance.getMember(name);
+        assertEquals(exp, member.getArrears(), 0.);
+    }
+
+    /**
+     * Test of getMembersInArrears method, of class MasterSystem.
+     */
+    @Test
+    public void testGetMembersInArrears() {
+        System.out.println("getMembersInArrears");
+        MasterSystem instance = new MasterSystem(true);
+        String name = "Simon Asholt Norup";
+        instance.registerPayment(name, 400.);
+        members.remove(0);
+        ArrayList<Member> expResult = members;
+        ArrayList<Member> result = instance.getMembersInArrears();
+        assertEquals(expResult, result);
+    }
+    
+    // ==========================0
+    
+    
+    
+    
 
     /**
      * Test of getCompetetiveSwimmers method, of class MasterSystem.
@@ -194,34 +259,6 @@ public class MasterSystemTest {
         MasterSystem instance = new MasterSystem(true);
         ArrayList<CompetetiveSwimmer> expResult = null;
         ArrayList<CompetetiveSwimmer> result = instance.getTop5(d);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of registerPayment method, of class MasterSystem.
-     */
-    @Test
-    public void testRegisterPayment() {
-        System.out.println("registerPayment");
-        Member member = null;
-        double amount = 0.0;
-        MasterSystem instance = new MasterSystem(true);
-        instance.registerPayment(member, amount);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getMembersInArrears method, of class MasterSystem.
-     */
-    @Test
-    public void testGetMembersInArrears() {
-        System.out.println("getMembersInArrears");
-        MasterSystem instance = new MasterSystem(true);
-        ArrayList<Member> expResult = null;
-        ArrayList<Member> result = instance.getMembersInArrears();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

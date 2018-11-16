@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package delfin_gruppe10.data;
+package delfin_gruppe10.domainlogic;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -21,19 +21,27 @@ public class Member {
     private double arrears;
 
     public Member(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
-        if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null
-                || !name.matches(".* .*") || !birthdate.matches("\\d{2}-\\d{2}-\\d{4}") || !address.matches(".* \\d*") // birthdate should have other possible formats
-                || !postnr.matches("\\d{4}") || !phone.matches("\\d{8}") || !mail.matches("\\S*@\\S*\\.\\S*")) {
-
-            throw new IllegalArgumentException();
+        String cause = "Fejl: "; boolean error = false;
+        if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null){
+            cause += "Et felt er tomt.\n"; error = true;
+        } else if (!name.matches(".* .*")){
+            cause += "Skriv venligst det fulde navn.\n"; error = true;
+        } else if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")){ // birthdate should have other possible formats
+            cause += "Fødselsdato skal formateres DD-MM-ÅÅÅÅ.\n"; error = true; 
+        } else if (!address.matches(".* \\d*")){  // should also have other possible formats for people living in apartments for instance
+            cause += "Skriv venligst vej og nummer.\n"; error = true;
+        } else if (!postnr.matches("\\d{4}")){
+            cause += "Skriv venligst et dansk postnummer.\n"; error = true;
+        } else if (!phone.matches("\\d{8}")){
+            cause += "Skriv venligst et telefonnummer på 8 cifre.\n"; error = true;
+        } else if (!mail.matches("\\S*@\\S*\\.\\S*")){
+            cause += "Skriv venligst en gyldig email."; error = true;
+        }
+        if (error){
+            throw new IllegalArgumentException(cause);
         }
 
-        int day = Integer.parseInt(birthdate.substring(0, 2)); // these lines convert birthdate from String to LocalDate
-        int month = Integer.parseInt(birthdate.substring(3, 5));
-        int year = Integer.parseInt(birthdate.substring(6));
-        LocalDate date = LocalDate.of(year, month, day);
-        this.birthdate = date;
-
+        this.birthdate = convertToDate(birthdate);
         this.name = name; // we could choose to capitalize first letter in all words, but isn't important
         this.address = address; // same as above
         this.postnr = postnr;
@@ -43,8 +51,15 @@ public class Member {
         this.active = active;
         this.arrears = getYearlyContingent();
     }
+    
+    private LocalDate convertToDate(String date){
+        int day = Integer.parseInt(date.substring(0, 2));
+        int month = Integer.parseInt(date.substring(3, 5));
+        int year = Integer.parseInt(date.substring(6));
+        return LocalDate.of(year, month, day);
+    }
 
-    public int getAge() {
+    public int getAge() { // be private?
         return Period.between(birthdate, LocalDate.now()).getYears();
     }
 
