@@ -69,7 +69,7 @@ public class MasterSystem implements MasterInterface {
     @Override
     public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
         Member originalMember = getMember(originalName);
-        Member updatedMember = new Member(name, birthdate, address, postnr, city, phone, mail, active);
+        Member updatedMember = new Member(name, birthdate, address, postnr, city, phone, mail, active, originalMember.getArrears());
         dataAccessor.editMemberInFile(originalMember, updatedMember);
     }
 

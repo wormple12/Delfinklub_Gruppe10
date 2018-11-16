@@ -69,19 +69,22 @@ public class FileHandlerV2 implements FileHandlerInterface {
         List<String> strings = readFile();
         try {
             for (String string : strings) {
-                String[] vars = new String[8];
+                String[] vars = new String[9];
                 int endIndex = 0;
                 int startIndex;
                 for (int i = 0; i < vars.length; i++) {
                     startIndex = string.indexOf("=", endIndex);
                     endIndex = string.indexOf(",", startIndex);
+                    if (endIndex == -1){
+                        endIndex = string.indexOf("}", startIndex);
+                    }
                     vars[i] = string.substring(startIndex + 1, endIndex);
                 }
                 LocalDate date = LocalDate.parse(vars[1]);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
                 vars[1] = formatter.format(date);
 
-                members.add(new Member(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], Boolean.parseBoolean(vars[7])));
+                members.add(new Member(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], Boolean.parseBoolean(vars[7]), Double.parseDouble(vars[8])));
             }
             return members;
         } catch (StringIndexOutOfBoundsException e) {
