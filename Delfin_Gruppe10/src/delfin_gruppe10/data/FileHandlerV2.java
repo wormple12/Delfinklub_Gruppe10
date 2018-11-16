@@ -91,13 +91,27 @@ public class FileHandlerV2 implements FileHandlerInterface {
     }
 
     @Override
-    public void editMemberInFile(String originalName, Member updated) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editMemberInFile(Member original, Member updated) {
+        try {
+            List<String> strings = readFile();
+            strings.remove(original.toString());
+            strings.add(updated.toString());
+            Files.write(FILE, strings);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     @Override
     public void deleteMemberInFile(Member member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List<String> strings = readFile();
+            strings.remove(member.toString());
+            Files.write(FILE, strings);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }   
     }
 
     @Override

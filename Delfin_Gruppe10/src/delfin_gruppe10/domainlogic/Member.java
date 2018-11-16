@@ -20,6 +20,11 @@ public class Member implements Serializable {
     private final String mail;
     private boolean active;
     private double arrears;
+    
+    public Member(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active, double arrears) {
+        this(name, birthdate, address, postnr, city, phone, mail, active);
+        this.arrears = arrears;
+    }
 
     public Member(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
         String cause = "Fejl: "; boolean error = false;
