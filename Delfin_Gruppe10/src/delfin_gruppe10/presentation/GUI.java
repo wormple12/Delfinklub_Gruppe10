@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class GUI extends javax.swing.JFrame {
 
     MasterSystem k = new MasterSystem(true);
+    private Member editedMember = null;
 
     /**
      * Creates new form GUI
@@ -1651,16 +1652,16 @@ public class GUI extends javax.swing.JFrame {
         this.EMemberF.setSize(EMemberF.getPreferredSize());
         this.Choose.dispose();
         
-        Member member = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
-        Tname2.setText(member.getName());
-        String birthdate = member.getBirthdate().toString();
+        editedMember = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
+        Tname2.setText(editedMember.getName());
+        String birthdate = editedMember.getBirthdate().toString();
         LocalDate date = LocalDate.parse(birthdate);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
         birthdate = formatter.format(date);
         Tbirthdate2.setText(birthdate);
-        Taddress2.setText(member.getAddress()); Tac2.setText(member.getPostnr()); Tcity2.setText(member.getCity());
-        Tphone2.setText(member.getPhone()); Tmail2.setText(member.getMail());
-        if (member.isActive()){
+        Taddress2.setText(editedMember.getAddress()); Tac2.setText(editedMember.getPostnr()); Tcity2.setText(editedMember.getCity());
+        Tphone2.setText(editedMember.getPhone()); Tmail2.setText(editedMember.getMail());
+        if (editedMember.isActive()){
             CActive2.setSelected(true);
         } else {
             CPassive2.setSelected(true);
@@ -1683,6 +1684,32 @@ public class GUI extends javax.swing.JFrame {
         this.MemberL.setVisible(true);
         this.MemberL.setSize(MemberL.getPreferredSize());
         this.pKasserer.dispose();
+        
+        ArrayList<Member> members = k.getAllMembers();
+        DateTimeFormatter formatter;
+        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < members.size(); i++) {
+            Member member = members.get(i);
+            model.addRow(new Object[]{});
+            int j = 0;
+            this.MemberTable.setValueAt(member.getName(), i, j++);
+            String birthdate = member.getBirthdate().toString();
+            LocalDate date = LocalDate.parse(birthdate);
+            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+            birthdate = formatter.format(date);
+            this.MemberTable.setValueAt(birthdate, i, j++);
+            this.MemberTable.setValueAt(member.getAddress(), i, j++);
+            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
+            this.MemberTable.setValueAt(member.getCity(), i, j++);
+            this.MemberTable.setValueAt(member.getPhone(), i, j++);
+            this.MemberTable.setValueAt(member.getMail(), i, j++);
+            if (member.isActive()){
+                this.MemberTable.setValueAt("Aktiv", i, j++);
+            } else {
+                this.MemberTable.setValueAt("Passiv", i, j++);
+            }
+        }
     }//GEN-LAST:event_VMembers2ActionPerformed
 
     private void PayAllBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayAllBActionPerformed
@@ -1768,6 +1795,32 @@ public class GUI extends javax.swing.JFrame {
         this.MemberL.setVisible(true);
         this.MemberL.setSize(MemberL.getPreferredSize());
         this.pTrainer.dispose();
+        
+        ArrayList<Member> members = k.getAllMembers();
+        DateTimeFormatter formatter;
+        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < members.size(); i++) {
+            Member member = members.get(i);
+            model.addRow(new Object[]{});
+            int j = 0;
+            this.MemberTable.setValueAt(member.getName(), i, j++);
+            String birthdate = member.getBirthdate().toString();
+            LocalDate date = LocalDate.parse(birthdate);
+            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+            birthdate = formatter.format(date);
+            this.MemberTable.setValueAt(birthdate, i, j++);
+            this.MemberTable.setValueAt(member.getAddress(), i, j++);
+            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
+            this.MemberTable.setValueAt(member.getCity(), i, j++);
+            this.MemberTable.setValueAt(member.getPhone(), i, j++);
+            this.MemberTable.setValueAt(member.getMail(), i, j++);
+            if (member.isActive()){
+                this.MemberTable.setValueAt("Aktiv", i, j++);
+            } else {
+                this.MemberTable.setValueAt("Passiv", i, j++);
+            }
+        }
     }//GEN-LAST:event_VMembers3ActionPerformed
 
     private void CTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTeamActionPerformed
@@ -1822,7 +1875,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Tbirthdate2ActionPerformed
 
     private void Register1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Register1ActionPerformed
-        // TODO add your handling code here:
+        boolean active = false;
+        if (CActive2.isSelected()){
+            active = true;
+        }
+        k.editMember(editedMember.getName(), Tname2.getText(), Tbirthdate2.getText(), Taddress2.getText(), Tac2.getText(), Tcity2.getText(), Tphone2.getText(), Tmail2.getText(), active);
     }//GEN-LAST:event_Register1ActionPerformed
 
     private void ChooseMemberComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChooseMemberComboBoxActionPerformed
@@ -1847,14 +1904,18 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Text2ActionPerformed
 
     private void Return4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return4ActionPerformed
-
         this.pFormand.setVisible(true);
         this.pFormand.setSize(pFormand.getPreferredSize());
         this.AMemberF.dispose();
     }//GEN-LAST:event_Return4ActionPerformed
 
     private void RemoveBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBActionPerformed
-        // TODO add your handling code here:
+        this.Choose.setVisible(true);
+        this.Choose.setSize(Choose.getPreferredSize());
+        this.EMemberF.dispose();
+        
+        k.deleteMember(editedMember.getName());
+        editedMember = null;
     }//GEN-LAST:event_RemoveBActionPerformed
 
     /**

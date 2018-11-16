@@ -82,8 +82,9 @@ public class MasterSystem implements MasterInterface {
     @Override
     public void registerPayment(String name, double amount) {
         Member member = getMember(name);
-        member.payArrears(amount);
-        dataAccessor.editMemberInFile(name, member);
+        Member updated = member;
+        updated.payArrears(amount);
+        dataAccessor.editMemberInFile(member, updated);
     }
 
     @Override

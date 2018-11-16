@@ -68,7 +68,7 @@ public class FileHandler implements FileHandlerInterface, Serializable {
     }
 
     @Override
-    public void editMemberInFile(String originalName, Member updated) {
+    public void editMemberInFile(Member original, Member updated) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
