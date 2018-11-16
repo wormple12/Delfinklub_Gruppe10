@@ -1715,6 +1715,8 @@ public class GUI extends javax.swing.JFrame {
     private void PayAllBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayAllBActionPerformed
         Member l = k.getMember((String) this.NameLPay.getSelectedItem());
         k.registerPayment(l.getName(), l.getArrears());
+        l = k.getMember((String) this.NameLPay.getSelectedItem());
+        LeftToPayField.setText(String.valueOf(l.getArrears()));
     }//GEN-LAST:event_PayAllBActionPerformed
 
     private void Return7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return7ActionPerformed
@@ -1848,12 +1850,20 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Return2ActionPerformed
 
     private void NameLPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameLPayActionPerformed
-        // TODO add your handling code here:
+        Object obj = evt.getSource();
+        if(obj== NameLPay){
+            if(NameLPay.getSelectedItem() !=null){
+        Member member = k.getMember((String) NameLPay.getSelectedItem());
+        LeftToPayField.setText(Double.toString(member.getArrears()));
+            }
+        }
     }//GEN-LAST:event_NameLPayActionPerformed
 
     private void PayBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayBActionPerformed
         Member l = k.getMember((String) this.NameLPay.getSelectedItem());
         k.registerPayment(l.getName(), Double.parseDouble(PayText.getText()));
+        l = k.getMember((String) this.NameLPay.getSelectedItem());
+        LeftToPayField.setText(String.valueOf(l.getArrears()));
     }//GEN-LAST:event_PayBActionPerformed
 
     private void PayTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayTextActionPerformed
@@ -1864,6 +1874,11 @@ public class GUI extends javax.swing.JFrame {
        this.Choose.setVisible(true);
        this.Choose.setSize(Choose.getPreferredSize());
        this.EMemberF.dispose();
+         ArrayList<Member> members = k.getAllMembers();
+        ChooseMemberComboBox.removeAllItems();
+        for (Member member : members) {
+            ChooseMemberComboBox.addItem(member.getName());
+        }
     }//GEN-LAST:event_Return14ActionPerformed
 
     private void Text26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text26ActionPerformed
@@ -1916,6 +1931,11 @@ public class GUI extends javax.swing.JFrame {
         
         k.deleteMember(editedMember.getName());
         editedMember = null;
+          ArrayList<Member> members = k.getAllMembers();
+        ChooseMemberComboBox.removeAllItems();
+        for (Member member : members) {
+            ChooseMemberComboBox.addItem(member.getName());
+        }
     }//GEN-LAST:event_RemoveBActionPerformed
 
     /**
