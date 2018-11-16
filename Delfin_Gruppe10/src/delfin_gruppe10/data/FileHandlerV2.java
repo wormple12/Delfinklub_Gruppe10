@@ -120,7 +120,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
         ArrayList<Member> membersNotPaid = new ArrayList();
         
         for(int i = 0; i<allMembers.size(); i++){
-            if(allMembers.get(i).getArrears() < allMembers.get(i).getYearlyContingent()){
+            if(allMembers.get(i).getArrears() > 0){
                 membersNotPaid.add(allMembers.get(i));
             }
         }

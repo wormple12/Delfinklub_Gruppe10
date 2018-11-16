@@ -34,18 +34,18 @@ public class Main {
         Member member2 = null;
         
         //System.out.println(mS.getMembersInArrears());
-        mS.registerPayment("Jack McDonalds", 1200);
+        //mS.registerPayment("Jack McDonalds", 1200);
         
         //fH.writeMemberToFile(member);
         //fH.writeMemberToFile(member3);
         
-        System.out.println(fH.readMembersFromFile().get(0).getYearlyContingent());
-        System.out.println(fH.readMembersFromFile().get(0).getArrears());
+        //System.out.println(fH.readMembersFromFile().get(0).getYearlyContingent());
+        //System.out.println(fH.readMembersFromFile().get(0).getArrears());
         
         //System.out.println(fH.readMembersFromFile().get(2).getName());
         //System.out.println(fH.readMembersFromFile().get(2).getYearlyContingent());
         //System.out.println(fH.readMembersFromFile().get(2).getArrears());
-        //System.out.println(fH.readMembersInArrearsFromFile());
+        System.out.println(fH.readMembersInArrearsFromFile());
         
         //member2 = fH.readMembersFromFile().get(1);
         //System.out.println(member2.getName());

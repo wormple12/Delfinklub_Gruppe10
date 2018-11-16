@@ -1,1 +1,2 @@
 Member{name=Jack McDonalds, birthdate=1955-01-01, address=Very Derp Street 333, postnr=1111, city=Long Way From Here, phone=11112222, mail=derp@isDerp.derp, active=true, arrears=1200.0}
+Member{name=Jack McDonalds, birthdate=1954-01-01, address=Very Derp Street 333, postnr=1111, city=Long Way From Here, phone=11112222, mail=derp@isDerp.derp, active=true, arrears=0.0}
