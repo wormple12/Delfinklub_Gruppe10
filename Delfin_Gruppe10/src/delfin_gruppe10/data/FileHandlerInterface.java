@@ -19,7 +19,7 @@ public interface FileHandlerInterface {
 
     public ArrayList<Member> readMembersFromFile();
 
-    public void editMemberInFile(String originalName, Member updated);
+    public void editMemberInFile(Member original, Member updated);
 
     public void deleteMemberInFile(Member member);
 
