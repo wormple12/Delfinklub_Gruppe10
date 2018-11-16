@@ -5,10 +5,11 @@
  */
 package delfin_gruppe10.domainlogic;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Member {
+public class Member implements Serializable {
 
     private final String name;
     private final LocalDate birthdate;
@@ -125,4 +126,9 @@ public class Member {
         return mail;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Member{" + "name=" + name + ", address=" + address + ", postnr=" + postnr + ", city=" + city + ", phone=" + phone + ", mail=" + mail + ", active=" + active + ", arrears=" + arrears + '}';
+//    }
+    
 }

@@ -21,12 +21,13 @@ import delfin_gruppe10.domainlogic.Member;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.Serializable;
 
 /**
  *
  * @author PC 2 2016 SDC-privat
  */
-public class FileHandler implements FileHandlerInterface {
+public class FileHandler implements FileHandlerInterface, Serializable {
     private final String memberPath;
     private final String competetivePath;
     private final String memberFile = "members.txt";
@@ -38,6 +39,17 @@ public class FileHandler implements FileHandlerInterface {
 
     @Override
     public void writeMemberToFile(Member member) {
+        try{
+            FileOutputStream fileOut = new FileOutputStream(memberPath);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            ArrayList<Member> members = readMembersFromFile();
+            members.add(member);
+            objectOut.writeObject((ArrayList<Member>)members);
+            
+            objectOut.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -47,18 +59,18 @@ public class FileHandler implements FileHandlerInterface {
             ObjectInputStream objIn = new ObjectInputStream(fileIn);       
             
             Member member = null;
-            ArrayList<Member> memberList = null;
+            ArrayList<Member> memberList = new ArrayList();
 
-            try {
-                while (true) {
-                    member = (Member) objIn.readObject();
-                    memberList.add(member);
-                }
-            } catch (EOFException e) {}
+//            try {
+//                while (true) {
+//                    member = (Member) objIn.readObject();
+//                    memberList.add(member);
+//                }
+//            } catch (EOFException e) {}
+            memberList = (ArrayList<Member>) objIn.readObject(); 
             return memberList;
         } catch(Exception ex){
-            ex.printStackTrace();
-            return null;
+            return new ArrayList<Member>();
         } 
     }
 
