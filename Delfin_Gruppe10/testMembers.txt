@@ -1,3 +1,3 @@
-Member{name=Anders Andersen, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=false, arrears=400.0}
-Member{name=John John, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=false, arrears=500.0}
-Member{name=John John, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=false, arrears=200.0}
+Member{name=John John, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=true, arrears=200.0}
+Member{name=Anders Andersen, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=true, arrears=900.0}
+Member{name=Ib Bibsen, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=true, arrears=500.0}
