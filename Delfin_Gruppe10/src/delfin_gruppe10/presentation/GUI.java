@@ -66,17 +66,17 @@ public class GUI extends javax.swing.JFrame {
         Return4 = new javax.swing.JButton();
         Tname = new javax.swing.JTextField();
         Text2 = new javax.swing.JTextField();
-        Tage = new javax.swing.JTextField();
-        Text3 = new javax.swing.JTextField();
         Taddress = new javax.swing.JTextField();
-        Text4 = new javax.swing.JTextField();
+        Text3 = new javax.swing.JTextField();
         Tac = new javax.swing.JTextField();
-        Text5 = new javax.swing.JTextField();
+        Text4 = new javax.swing.JTextField();
         Tcity = new javax.swing.JTextField();
-        Text6 = new javax.swing.JTextField();
+        Text5 = new javax.swing.JTextField();
         Tphone = new javax.swing.JTextField();
-        Text7 = new javax.swing.JTextField();
+        Text6 = new javax.swing.JTextField();
         Tmail = new javax.swing.JTextField();
+        Text7 = new javax.swing.JTextField();
+        Tbirthdate = new javax.swing.JTextField();
         CPassive = new javax.swing.JRadioButton();
         CActive = new javax.swing.JRadioButton();
         CExercise = new javax.swing.JRadioButton();
@@ -484,16 +484,16 @@ public class GUI extends javax.swing.JFrame {
         });
 
         Text2.setEditable(false);
-        Text2.setText("Alder:");
+        Text2.setText("Fødselsdato");
         Text2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Text2ActionPerformed(evt);
             }
         });
 
-        Tage.addActionListener(new java.awt.event.ActionListener() {
+        Taddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TageActionPerformed(evt);
+                TaddressActionPerformed(evt);
             }
         });
 
@@ -554,9 +554,9 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(Text1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Tage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Taddress, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Tbirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(AMemberFLayout.createSequentialGroup()
                                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Text4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -564,13 +564,13 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(Text6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Tcity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Tac, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Taddress, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Tcity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Tphone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(AMemberFLayout.createSequentialGroup()
                                 .addComponent(Text7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Tphone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(111, 111, 111)
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AMemberFLayout.createSequentialGroup()
@@ -594,7 +594,6 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CPassive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CActive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AMemberFLayout.createSequentialGroup()
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -610,11 +609,11 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Text2)
-                            .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Tbirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Text3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Tage, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Taddress, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(AMemberFLayout.createSequentialGroup()
@@ -622,17 +621,17 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Text5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(AMemberFLayout.createSequentialGroup()
-                                .addComponent(Taddress, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Tac, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Tac, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Tcity, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Text6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Tcity, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Tphone, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Text7)
-                            .addComponent(Tphone, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AMemberFLayout.createSequentialGroup()
@@ -1533,11 +1532,11 @@ public class GUI extends javax.swing.JFrame {
         this.Choose.setSize(Choose.getPreferredSize());
         this.pFormand.dispose();
         
-//        ArrayList<Member> members = k.getAllMembers();
-//        ChooseMemberComboBox.removeAllItems();
-//        for (Member member : members) {
-//            ChooseMemberComboBox.addItem(member.getName());
-//        }
+        ArrayList<Member> members = k.getAllMembers();
+        ChooseMemberComboBox.removeAllItems();
+        for (Member member : members) {
+            ChooseMemberComboBox.addItem(member.getName());
+        }
     }//GEN-LAST:event_EditActionPerformed
 
     private void APaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APaymentActionPerformed
@@ -1545,14 +1544,14 @@ public class GUI extends javax.swing.JFrame {
         this.AddPayment.setSize(AddPayment.getPreferredSize());
         this.pKasserer.dispose();
         
-//        ArrayList<Member> members = k.getMembersInArrears();
-//        NameLPay.removeAllItems();
-//        for (Member member : members) {
-//            NameLPay.addItem(member.getName());
-//        }
-//        
-//        Member member = k.getMember((String) NameLPay.getSelectedItem());
-//        LeftToPayField.setText(Double.toString(member.getArrears()));
+        ArrayList<Member> members = k.getMembersInArrears();
+        NameLPay.removeAllItems();
+        for (Member member : members) {
+            NameLPay.addItem(member.getName());
+        }
+        
+        Member member = k.getMember((String) NameLPay.getSelectedItem());
+        LeftToPayField.setText(Double.toString(member.getArrears()));
     }//GEN-LAST:event_APaymentActionPerformed
 
     private void ArrearsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArrearsActionPerformed
@@ -1560,26 +1559,28 @@ public class GUI extends javax.swing.JFrame {
         this.ArrearL.setSize(ArrearL.getPreferredSize());
         this.pKasserer.dispose();
         
-//        ArrayList<Member> members = k.getMembersInArrears();
-//        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-//        DefaultTableModel model = (DefaultTableModel) ArrearTable.getModel();
-//        model.setRowCount(0);
-//        for (int i = 0; i < members.size(); i++) {
-//            Member member = members.get(i);
-//            model.addRow(new Object[]{});
-//            int j = 0;
-//            this.ArrearTable.setValueAt(member.getName(), i, j++);
-//            String birthdate = member.getBirthdate().toString();
-//            birthdate = String.format(birthdate, formatter);
-//            this.ArrearTable.setValueAt(birthdate, i, j++);
-//            this.ArrearTable.setValueAt(member.getAddress(), i, j++);
-//            this.ArrearTable.setValueAt(member.getPostnr(), i, j++);
-//            this.ArrearTable.setValueAt(member.getCity(), i, j++);
-//            this.ArrearTable.setValueAt(member.getPhone(), i, j++);
-//            this.ArrearTable.setValueAt(member.getMail(), i, j++);
-//            this.ArrearTable.setValueAt(member.getYearlyContingent(), i, j++);
-//            this.ArrearTable.setValueAt(member.getArrears(), i, j++);
-//        }
+        ArrayList<Member> members = k.getMembersInArrears();
+        DateTimeFormatter formatter;
+        DefaultTableModel model = (DefaultTableModel) ArrearTable.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < members.size(); i++) {
+            Member member = members.get(i);
+            model.addRow(new Object[]{});
+            int j = 0;
+            this.ArrearTable.setValueAt(member.getName(), i, j++);
+            String birthdate = member.getBirthdate().toString();
+            LocalDate date = LocalDate.parse(birthdate);
+            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+            birthdate = formatter.format(date);
+            this.ArrearTable.setValueAt(birthdate, i, j++);
+            this.ArrearTable.setValueAt(member.getAddress(), i, j++);
+            this.ArrearTable.setValueAt(member.getPostnr(), i, j++);
+            this.ArrearTable.setValueAt(member.getCity(), i, j++);
+            this.ArrearTable.setValueAt(member.getPhone(), i, j++);
+            this.ArrearTable.setValueAt(member.getMail(), i, j++);
+            this.ArrearTable.setValueAt(member.getYearlyContingent(), i, j++);
+            this.ArrearTable.setValueAt(member.getArrears(), i, j++);
+        }
     }//GEN-LAST:event_ArrearsActionPerformed
 
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
@@ -1599,29 +1600,31 @@ public class GUI extends javax.swing.JFrame {
         this.MemberL.setSize(MemberL.getPreferredSize());
         this.pFormand.dispose();
         
-//        ArrayList<Member> members = k.getAllMembers();
-//        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-//        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
-//        model.setRowCount(0);
-//        for (int i = 0; i < members.size(); i++) {
-//            Member member = members.get(i);
-//            model.addRow(new Object[]{});
-//            int j = 0;
-//            this.MemberTable.setValueAt(member.getName(), i, j++);
-//            String birthdate = member.getBirthdate().toString();
-//            birthdate = String.format(birthdate, formatter);
-//            this.MemberTable.setValueAt(birthdate, i, j++);
-//            this.MemberTable.setValueAt(member.getAddress(), i, j++);
-//            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
-//            this.MemberTable.setValueAt(member.getCity(), i, j++);
-//            this.MemberTable.setValueAt(member.getPhone(), i, j++);
-//            this.MemberTable.setValueAt(member.getMail(), i, j++);
-//            if (member.isActive()){
-//                this.MemberTable.setValueAt("Aktiv", i, j++);
-//            } else {
-//                this.MemberTable.setValueAt("Passiv", i, j++);
-//            }
-//        }
+        ArrayList<Member> members = k.getAllMembers();
+        DateTimeFormatter formatter;
+        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < members.size(); i++) {
+            Member member = members.get(i);
+            model.addRow(new Object[]{});
+            int j = 0;
+            this.MemberTable.setValueAt(member.getName(), i, j++);
+            String birthdate = member.getBirthdate().toString();
+            LocalDate date = LocalDate.parse(birthdate);
+            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+            birthdate = formatter.format(date);
+            this.MemberTable.setValueAt(birthdate, i, j++);
+            this.MemberTable.setValueAt(member.getAddress(), i, j++);
+            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
+            this.MemberTable.setValueAt(member.getCity(), i, j++);
+            this.MemberTable.setValueAt(member.getPhone(), i, j++);
+            this.MemberTable.setValueAt(member.getMail(), i, j++);
+            if (member.isActive()){
+                this.MemberTable.setValueAt("Aktiv", i, j++);
+            } else {
+                this.MemberTable.setValueAt("Passiv", i, j++);
+            }
+        }
     }//GEN-LAST:event_VMembersActionPerformed
 
     private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
@@ -1642,18 +1645,20 @@ public class GUI extends javax.swing.JFrame {
         this.EMemberF.setSize(EMemberF.getPreferredSize());
         this.Choose.dispose();
         
-//        Member member = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
-//        Tname2.setText(member.getName());
-//        String birthdate = member.getBirthdate().toString();
-//        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-//        Tage2.setText(String.format(birthdate, formatter));
-//        Taddress2.setText(member.getAddress()); Tac2.setText(member.getPostnr()); Tcity2.setText(member.getCity());
-//        Tphone2.setText(member.getPhone()); Tmail2.setText(member.getMail());
-//        if (member.isActive()){
-//            CActive2.setSelected(true);
-//        } else {
-//            CPassive2.setSelected(true);
-//        }
+        Member member = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
+        Tname2.setText(member.getName());
+        String birthdate = member.getBirthdate().toString();
+        LocalDate date = LocalDate.parse(birthdate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        birthdate = formatter.format(date);
+        Tage2.setText(birthdate);
+        Taddress2.setText(member.getAddress()); Tac2.setText(member.getPostnr()); Tcity2.setText(member.getCity());
+        Tphone2.setText(member.getPhone()); Tmail2.setText(member.getMail());
+        if (member.isActive()){
+            CActive2.setSelected(true);
+        } else {
+            CPassive2.setSelected(true);
+        }
     }//GEN-LAST:event_ConfirmActionPerformed
 
     private void Return3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return3ActionPerformed
@@ -1675,8 +1680,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_VMembers2ActionPerformed
 
     private void PayAllBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayAllBActionPerformed
-        //Member l = k.getMember((String) this.NameLPay.getSelectedItem());
-        //k.registerPayment(l, l.getArrears());
+        Member l = k.getMember((String) this.NameLPay.getSelectedItem());
+        k.registerPayment(l.getName(), l.getArrears());
     }//GEN-LAST:event_PayAllBActionPerformed
 
     private void Return7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return7ActionPerformed
@@ -1788,8 +1793,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_NameLPayActionPerformed
 
     private void PayBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayBActionPerformed
-       // Member l = k.getMember((String) this.NameLPay.getSelectedItem());
-       //k.registerPayment(l, Double.parseDouble(PayText.getText()));
+        Member l = k.getMember((String) this.NameLPay.getSelectedItem());
+        k.registerPayment(l.getName(), Double.parseDouble(PayText.getText()));
     }//GEN-LAST:event_PayBActionPerformed
 
     private void PayTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayTextActionPerformed
@@ -1820,12 +1825,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         this.jLabel1.setText("Registreret");
-        //        k.addMemberDetails(Tname.getText(), Tage.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText());
+        boolean active = false;
+        if (CActive.isSelected()){
+            active = true;
+        }
+        k.addMember(Tname.getText(), Tbirthdate.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText(), active);
     }//GEN-LAST:event_RegisterActionPerformed
 
-    private void TageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TageActionPerformed
+    private void TaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TageActionPerformed
+    }//GEN-LAST:event_TaddressActionPerformed
 
     private void Text2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text2ActionPerformed
         // TODO add your handling code here:
@@ -1941,8 +1950,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Tac2;
     private javax.swing.JTextField Taddress;
     private javax.swing.JTextField Taddress2;
-    private javax.swing.JTextField Tage;
     private javax.swing.JTextField Tage2;
+    private javax.swing.JTextField Tbirthdate;
     private javax.swing.JTextField Tcity;
     private javax.swing.JTextField Tcity2;
     private javax.swing.JTextField Tcomp;
