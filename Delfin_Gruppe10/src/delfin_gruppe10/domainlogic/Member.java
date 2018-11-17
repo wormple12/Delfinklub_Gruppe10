@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Member implements Serializable {
+public class Member implements Serializable, Cloneable {
 
     private final String name;
     private final LocalDate birthdate;
@@ -94,6 +94,13 @@ public class Member implements Serializable {
         }
         arrears -= amount;
     }
+    
+    public void setArrears(double amount){
+        if (amount < 0){
+            throw new IllegalArgumentException();
+        }
+        arrears = amount;
+    }
 
     public void setActive(boolean b){
         active = b;
@@ -134,6 +141,11 @@ public class Member implements Serializable {
     @Override
     public String toString() {
         return "Member{" + "name=" + name + ", birthdate=" + birthdate + ", address=" + address + ", postnr=" + postnr + ", city=" + city + ", phone=" + phone + ", mail=" + mail + ", active=" + active + ", arrears=" + arrears + '}';
+    }
+    
+    @Override
+    public Member clone() throws CloneNotSupportedException {
+        return (Member) super.clone();
     }
 
     

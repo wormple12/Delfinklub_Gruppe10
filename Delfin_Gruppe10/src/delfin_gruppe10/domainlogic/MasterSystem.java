@@ -69,7 +69,15 @@ public class MasterSystem implements MasterInterface {
     @Override
     public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
         Member originalMember = getMember(originalName);
+        double arrears = originalMember.getArrears();
         Member updatedMember = new Member(name, birthdate, address, postnr, city, phone, mail, active);
+        double originalC = originalMember.getYearlyContingent();
+        double updatedC = updatedMember.getYearlyContingent();
+        if (originalC < updatedC){
+            double diff = updatedC - originalC;
+            arrears += diff;
+        }
+        updatedMember.setArrears(arrears);
         dataAccessor.editMemberInFile(originalMember, updatedMember);
     }
 
@@ -81,10 +89,14 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public void registerPayment(String name, double amount) {
-        Member member = getMember(name);
-        Member updated = member;
-        updated.payArrears(amount);
-        dataAccessor.editMemberInFile(member, updated);
+        try {
+            Member original = getMember(name);
+            Member updated = original.clone();
+            updated.payArrears(amount);
+            dataAccessor.editMemberInFile(original, updated);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -93,12 +105,6 @@ public class MasterSystem implements MasterInterface {
     }
 
     // ===========================
-    
-    
-    
-    
-    
-    
     @Override
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
