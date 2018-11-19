@@ -32,14 +32,16 @@ public class FileHandler implements FileHandlerInterface, Serializable {
 
     @Override
     public void writeMemberToFile(Member member) {
+        FileOutputStream fileOut = null;
         try{
-            FileOutputStream fileOut = new FileOutputStream(memberPath);
+            fileOut = new FileOutputStream(memberPath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             ArrayList<Member> members = readMembersFromFile();
             members.add(member);
             objectOut.writeObject((ArrayList<Member>)members);
             
             objectOut.close();
+            fileOut.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -61,6 +63,10 @@ public class FileHandler implements FileHandlerInterface, Serializable {
 //                }
 //            } catch (EOFException e) {}
             memberList = (ArrayList<Member>) objIn.readObject(); 
+            
+            objIn.close();
+            fileIn.close();
+            
             return memberList;
         } catch(Exception ex){
             return new ArrayList<Member>();

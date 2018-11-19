@@ -25,15 +25,12 @@ import java.util.List;
  */
 public class FileHandlerV2 implements FileHandlerInterface {
 
-    private final String memberPath;
-    private final String competetivePath;
-
     private static Path FILE;
+    private static Path competitiveFILE;
 
     public FileHandlerV2(String memberPath, String competetivePath) {
-        this.memberPath = memberPath;
-        this.competetivePath = competetivePath;
         FILE = Paths.get(memberPath);
+        competitiveFILE = Paths.get(competetivePath);
     }
 
     private List<String> readFile() {
@@ -59,7 +56,6 @@ public class FileHandlerV2 implements FileHandlerInterface {
             Files.write(FILE, strings);
         } catch (IOException ex) {
             ex.printStackTrace();
-
         }
     }
 
@@ -119,24 +115,59 @@ public class FileHandlerV2 implements FileHandlerInterface {
 
     @Override
     public ArrayList<Member> readMembersInArrearsFromFile() {
-        ArrayList<Member> members = readMembersFromFile();
-        ArrayList<Member> result = new ArrayList<>();
-        for (Member member : members){
-            if (member.getArrears() > 0.){
-                result.add(member);
+        ArrayList<Member> allMembers = readMembersFromFile();
+        ArrayList<Member> membersNotPaid = new ArrayList();
+        
+        for(int i = 0; i<allMembers.size(); i++){
+            if(allMembers.get(i).getArrears() > 0){
+                membersNotPaid.add(allMembers.get(i));
             }
         }
-        return result;
+        return membersNotPaid;
     }
+    
+    // ===================================================
 
     @Override
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List<String> strings = readFile();
+            strings.add(swimmer.toString());
+            Files.write(competitiveFILE, strings);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     @Override
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<CompetetiveSwimmer> competitiveMembers = new ArrayList<>();
+        List<String> strings = readFile();
+        try {
+            for (String string : strings) {
+                String[] vars = new String[9];
+                int endIndex = 0;
+                int startIndex;
+                for (int i = 0; i < vars.length; i++) {
+                    startIndex = string.indexOf("=", endIndex);
+                    endIndex = string.indexOf(",", startIndex);
+                    if (endIndex == -1){
+                        endIndex = string.indexOf("}", startIndex);
+                    }
+                    vars[i] = string.substring(startIndex + 1, endIndex);
+                }
+                LocalDate date = LocalDate.parse(vars[1]);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+                vars[1] = formatter.format(date);
+
+                competitiveMembers.add(new CompetetiveSwimmer(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], Boolean.parseBoolean(vars[7])));
+            }
+            return competitiveMembers;
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Animals.txt is not formatted properly.");
+            return null;
+        }
     }
 
     @Override
