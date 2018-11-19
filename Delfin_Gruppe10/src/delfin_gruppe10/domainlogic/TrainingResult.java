@@ -7,6 +7,7 @@ package delfin_gruppe10.domainlogic;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -15,8 +16,8 @@ import java.time.LocalTime;
 public class TrainingResult {
 
     private final Discipline discipline;
-    private final LocalTime time;
-    private final LocalDate date;
+    private final String time;
+    private final String date;
 
     public TrainingResult(Discipline discipline, String time, String date) { // time should be formatted like this: String str = String.format("%d:%02d", minutes, seconds);
         if (date == null || time == null || discipline == null
@@ -25,24 +26,15 @@ public class TrainingResult {
             throw new IllegalArgumentException();
         }
         this.discipline = discipline;
-
-        this.time = LocalTime.parse(time);
-
-        this.date = convertToDate(date);
+        this.time = time;
+        this.date = date;
     }
-    
-    private LocalDate convertToDate(String date){
-        int day = Integer.parseInt(date.substring(0, 2));
-        int month = Integer.parseInt(date.substring(3, 5));
-        int year = Integer.parseInt(date.substring(6));
-        return LocalDate.of(year, month, day);
-    }
-    
-    public LocalTime getTime() {
+
+    public String getTime() {
         return time;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -52,6 +44,10 @@ public class TrainingResult {
 
     @Override
     public String toString() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+//        String formattedDate = formatter.format(date);
+//        formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        String formattedTime = formatter.format(time);
         return "(time=" + time + ", date=" + date + ')';
     }
 

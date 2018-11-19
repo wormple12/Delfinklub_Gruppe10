@@ -24,6 +24,10 @@ public class CompetetiveSwimmer extends Member {
 
     public CompetetiveSwimmer(String name, String birthdate, String address, String postnr, String city, String phone, String mail) {
         super(name, birthdate, address, postnr, city, phone, mail, true);
+        bestButterflyResult = new TrainingResult(Discipline.BUTTERFLY, "00:00:00", "01-01-2000");
+        bestCrawlResult = new TrainingResult(Discipline.CRAWL, "00:00:00", "01-01-2000");
+        bestBackstrokeResult = new TrainingResult(Discipline.BACKSTROKE, "00:00:00", "01-01-2000");
+        bestBreaststrokeResult = new TrainingResult(Discipline.BREASTSTROKE, "00:00:00", "01-01-2000");
     }
 
     public TrainingResult getBestTrainingResult(Discipline d) {
@@ -71,7 +75,15 @@ public class CompetetiveSwimmer extends Member {
 
     @Override
     public String toString() {
-        return "CompetetiveSwimmer{" + "name=" + getName() + ", bestButterflyResult=" + bestButterflyResult + ", bestCrawlResult=" + bestCrawlResult + ", bestBackstrokeResult=" + bestBackstrokeResult + ", bestBreaststrokeResult=" + bestBreaststrokeResult + ", competetiveResults=" + competetiveResults + '}';
+        StringBuilder str = new StringBuilder();
+        str.append("CompetetiveSwimmer{" + "name=" + getName() + ", bestButterflyResult:" + bestButterflyResult + ", bestCrawlResult:" + bestCrawlResult + ", bestBackstrokeResult:" + bestBackstrokeResult + ", bestBreaststrokeResult:" + bestBreaststrokeResult);
+        str.append(str.append(", competetiveResults:"));
+        for (CompetetiveResult result : competetiveResults){
+            str.append(result+"AND");
+        }
+        str.delete(str.lastIndexOf("AND"), str.length());
+        str.append("}");
+        return str.toString();
     }
 
 }
