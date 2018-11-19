@@ -162,6 +162,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
                 vars[1] = formatter.format(date);
 
                 competitiveMembers.add(new CompetetiveSwimmer(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6]));
+
             }
             return competitiveMembers;
         } catch (StringIndexOutOfBoundsException e) {
