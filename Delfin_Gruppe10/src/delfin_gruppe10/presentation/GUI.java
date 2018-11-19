@@ -20,6 +20,7 @@ public class GUI extends javax.swing.JFrame {
 
     MasterSystem k = new MasterSystem(true);
     private Member editedMember = null;
+    TabelEnum tab;
 
     /**
      * Creates new form GUI
@@ -119,7 +120,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         AddCTime = new javax.swing.JFrame();
-        Choice3 = new javax.swing.JComboBox<>();
+        CTchoose = new javax.swing.JComboBox<>();
         Return11 = new javax.swing.JButton();
         TDisciplin = new javax.swing.JTextField();
         Text18 = new javax.swing.JTextField();
@@ -131,7 +132,7 @@ public class GUI extends javax.swing.JFrame {
         Tplacement = new javax.swing.JTextField();
         Confirm2 = new javax.swing.JButton();
         AddTTime = new javax.swing.JFrame();
-        Choice4 = new javax.swing.JComboBox<>();
+        TTchoose = new javax.swing.JComboBox<>();
         Return12 = new javax.swing.JButton();
         TDisciplin1 = new javax.swing.JTextField();
         Text22 = new javax.swing.JTextField();
@@ -988,11 +989,11 @@ public class GUI extends javax.swing.JFrame {
 
         AddCTime.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Choice3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Choice3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Item 2", "Item 3", "Item 4" }));
-        Choice3.addActionListener(new java.awt.event.ActionListener() {
+        CTchoose.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTchoose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Item 2", "Item 3", "Item 4" }));
+        CTchoose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Choice3ActionPerformed(evt);
+                CTchooseActionPerformed(evt);
             }
         });
 
@@ -1057,7 +1058,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(AddCTimeLayout.createSequentialGroup()
                         .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Choice3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CTchoose, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Text19)
                                 .addComponent(Text20, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Text18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1076,7 +1077,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddCTimeLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(Choice3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CTchoose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Return11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1101,7 +1102,12 @@ public class GUI extends javax.swing.JFrame {
 
         AddTTime.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Choice4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Item 2", "Item 3", "Item 4" }));
+        TTchoose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Item 2", "Item 3", "Item 4" }));
+        TTchoose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TTchooseActionPerformed(evt);
+            }
+        });
 
         Return12.setText("Tilbage");
         Return12.addActionListener(new java.awt.event.ActionListener() {
@@ -1149,7 +1155,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(Confirm3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(AddTTimeLayout.createSequentialGroup()
                         .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Choice4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TTchoose, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Text23)
                             .addComponent(Text24, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Text22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1166,7 +1172,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddTTimeLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(Choice4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TTchoose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddTTimeLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Return12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1574,28 +1580,7 @@ public class GUI extends javax.swing.JFrame {
         this.ArrearL.setSize(ArrearL.getPreferredSize());
         this.pKasserer.dispose();
         
-        ArrayList<Member> members = k.getMembersInArrears();
-        DateTimeFormatter formatter;
-        DefaultTableModel model = (DefaultTableModel) ArrearTable.getModel();
-        model.setRowCount(0);
-        for (int i = 0; i < members.size(); i++) {
-            Member member = members.get(i);
-            model.addRow(new Object[]{});
-            int j = 0;
-            this.ArrearTable.setValueAt(member.getName(), i, j++);
-            String birthdate = member.getBirthdate().toString();
-            LocalDate date = LocalDate.parse(birthdate);
-            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-            birthdate = formatter.format(date);
-            this.ArrearTable.setValueAt(birthdate, i, j++);
-            this.ArrearTable.setValueAt(member.getAddress(), i, j++);
-            this.ArrearTable.setValueAt(member.getPostnr(), i, j++);
-            this.ArrearTable.setValueAt(member.getCity(), i, j++);
-            this.ArrearTable.setValueAt(member.getPhone(), i, j++);
-            this.ArrearTable.setValueAt(member.getMail(), i, j++);
-            this.ArrearTable.setValueAt(member.getYearlyContingent(), i, j++);
-            this.ArrearTable.setValueAt(member.getArrears(), i, j++);
-        }
+        tableset(ArrearTable, tab.ARR);
     }//GEN-LAST:event_ArrearsActionPerformed
 
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
@@ -1615,31 +1600,7 @@ public class GUI extends javax.swing.JFrame {
         this.MemberL.setSize(MemberL.getPreferredSize());
         this.pFormand.dispose();
         
-        ArrayList<Member> members = k.getAllMembers();
-        DateTimeFormatter formatter;
-        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
-        model.setRowCount(0);
-        for (int i = 0; i < members.size(); i++) {
-            Member member = members.get(i);
-            model.addRow(new Object[]{});
-            int j = 0;
-            this.MemberTable.setValueAt(member.getName(), i, j++);
-            String birthdate = member.getBirthdate().toString();
-            LocalDate date = LocalDate.parse(birthdate);
-            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-            birthdate = formatter.format(date);
-            this.MemberTable.setValueAt(birthdate, i, j++);
-            this.MemberTable.setValueAt(member.getAddress(), i, j++);
-            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
-            this.MemberTable.setValueAt(member.getCity(), i, j++);
-            this.MemberTable.setValueAt(member.getPhone(), i, j++);
-            this.MemberTable.setValueAt(member.getMail(), i, j++);
-            if (member.isActive()){
-                this.MemberTable.setValueAt("Aktiv", i, j++);
-            } else {
-                this.MemberTable.setValueAt("Passiv", i, j++);
-            }
-        }
+        tableset(MemberTable, tab.NORM);
     }//GEN-LAST:event_VMembersActionPerformed
 
     private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
@@ -1693,31 +1654,7 @@ public class GUI extends javax.swing.JFrame {
         this.MemberL.setSize(MemberL.getPreferredSize());
         this.pKasserer.dispose();
         
-        ArrayList<Member> members = k.getAllMembers();
-        DateTimeFormatter formatter;
-        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
-        model.setRowCount(0);
-        for (int i = 0; i < members.size(); i++) {
-            Member member = members.get(i);
-            model.addRow(new Object[]{});
-            int j = 0;
-            this.MemberTable.setValueAt(member.getName(), i, j++);
-            String birthdate = member.getBirthdate().toString();
-            LocalDate date = LocalDate.parse(birthdate);
-            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-            birthdate = formatter.format(date);
-            this.MemberTable.setValueAt(birthdate, i, j++);
-            this.MemberTable.setValueAt(member.getAddress(), i, j++);
-            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
-            this.MemberTable.setValueAt(member.getCity(), i, j++);
-            this.MemberTable.setValueAt(member.getPhone(), i, j++);
-            this.MemberTable.setValueAt(member.getMail(), i, j++);
-            if (member.isActive()){
-                this.MemberTable.setValueAt("Aktiv", i, j++);
-            } else {
-                this.MemberTable.setValueAt("Passiv", i, j++);
-            }
-        }
+       tableset(MemberTable, tab.NORM);
     }//GEN-LAST:event_VMembers2ActionPerformed
 
     private void PayAllBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayAllBActionPerformed
@@ -1806,31 +1743,8 @@ public class GUI extends javax.swing.JFrame {
         this.MemberL.setSize(MemberL.getPreferredSize());
         this.pTrainer.dispose();
         
-        ArrayList<Member> members = k.getAllMembers();
-        DateTimeFormatter formatter;
-        DefaultTableModel model = (DefaultTableModel) MemberTable.getModel();
-        model.setRowCount(0);
-        for (int i = 0; i < members.size(); i++) {
-            Member member = members.get(i);
-            model.addRow(new Object[]{});
-            int j = 0;
-            this.MemberTable.setValueAt(member.getName(), i, j++);
-            String birthdate = member.getBirthdate().toString();
-            LocalDate date = LocalDate.parse(birthdate);
-            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-            birthdate = formatter.format(date);
-            this.MemberTable.setValueAt(birthdate, i, j++);
-            this.MemberTable.setValueAt(member.getAddress(), i, j++);
-            this.MemberTable.setValueAt(member.getPostnr(), i, j++);
-            this.MemberTable.setValueAt(member.getCity(), i, j++);
-            this.MemberTable.setValueAt(member.getPhone(), i, j++);
-            this.MemberTable.setValueAt(member.getMail(), i, j++);
-            if (member.isActive()){
-                this.MemberTable.setValueAt("Aktiv", i, j++);
-            } else {
-                this.MemberTable.setValueAt("Passiv", i, j++);
-            }
-        }
+        tableset(MemberTable, tab.NORM);
+       
     }//GEN-LAST:event_VMembers3ActionPerformed
 
     private void CTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTeamActionPerformed
@@ -1946,9 +1860,31 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RemoveBActionPerformed
 
-    private void Choice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choice3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Choice3ActionPerformed
+    private void CTchooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTchooseActionPerformed
+        Object obj = evt.getSource();
+        if(obj== CTchoose){
+            if(CTchoose.getSelectedItem() !=null){
+        Member member = k.getMember((String) CTchoose.getSelectedItem());
+        TDisciplin.setText("PlaceHolder");
+        Ttime.setText("PlaceHolder");
+        Tcomp.setText("PlaceHolder");
+        Tplacement.setText("PlaceHolder");
+            }
+        }
+    }//GEN-LAST:event_CTchooseActionPerformed
+
+    private void TTchooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TTchooseActionPerformed
+         Object obj = evt.getSource();
+        if(obj== TTchoose){
+            if(TTchoose.getSelectedItem() !=null){
+        Member member = k.getMember((String) TTchoose.getSelectedItem());
+        TDisciplin1.setText("PlaceHolder");
+        Ttime1.setText("PlaceHolder");
+        Tdate.setText("PlaceHolder");
+        
+            }
+        }
+    }//GEN-LAST:event_TTchooseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1985,6 +1921,43 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
+    /*
+    Sets up the tables used to show the members.
+    It needs a jTable for modeling, and Enum for identifying what parts needs to be loaded 
+    */
+    public void tableset(javax.swing.JTable jTable, TabelEnum t){
+         ArrayList<Member> members = k.getAllMembers();
+        DateTimeFormatter formatter;
+        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+        model.setRowCount(0);    
+        
+       for (int i = 0; i < members.size(); i++) {
+            Member member = members.get(i);
+            model.addRow(new Object[]{});
+            int j = 0;
+            jTable.setValueAt(member.getName(), i, j++);
+            String birthdate = member.getBirthdate().toString();
+            LocalDate date = LocalDate.parse(birthdate);
+            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+            birthdate = formatter.format(date);
+            jTable.setValueAt(birthdate, i, j++);
+            jTable.setValueAt(member.getAddress(), i, j++);
+            jTable.setValueAt(member.getPostnr(), i, j++);
+            jTable.setValueAt(member.getCity(), i, j++);
+            jTable.setValueAt(member.getPhone(), i, j++);
+            jTable.setValueAt(member.getMail(), i, j++);
+            if(t == tab.ARR){
+            jTable.setValueAt(member.getArrears(), i, j++);
+            jTable.setValueAt(member.getYearlyContingent(), i, j++);
+            }
+            if(t == tab.NORM){
+            if (member.isActive()){
+                jTable.setValueAt("Aktiv", i, j++);
+            } else {
+                jTable.setValueAt("Passiv", i, j++);
+            }}
+       }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACResult;
@@ -2004,12 +1977,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton CExercise;
     private javax.swing.JRadioButton CPassive;
     private javax.swing.JRadioButton CPassive2;
+    private javax.swing.JComboBox<String> CTchoose;
     private javax.swing.JButton CTeam;
     private javax.swing.JComboBox<String> Choice;
     private javax.swing.JComboBox<String> Choice1;
     private javax.swing.JComboBox<String> Choice2;
-    private javax.swing.JComboBox<String> Choice3;
-    private javax.swing.JComboBox<String> Choice4;
     private javax.swing.JComboBox<String> Choice5;
     private javax.swing.JFrame Choose;
     private javax.swing.JComboBox<String> ChooseMemberComboBox;
@@ -2050,6 +2022,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton STop5;
     private javax.swing.JTextField TDisciplin;
     private javax.swing.JTextField TDisciplin1;
+    private javax.swing.JComboBox<String> TTchoose;
     private javax.swing.JTextField Tac;
     private javax.swing.JTextField Tac2;
     private javax.swing.JTextField Taddress;
