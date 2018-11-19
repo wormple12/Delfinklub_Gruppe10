@@ -1430,6 +1430,7 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 240, 240));
 
+        inTrainer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         inTrainer.setText("Træner");
         inTrainer.setMaximumSize(new java.awt.Dimension(100, 50));
         inTrainer.setMinimumSize(new java.awt.Dimension(100, 50));
@@ -1440,6 +1441,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        inKasserer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         inKasserer.setText("Kasserer");
         inKasserer.setMaximumSize(new java.awt.Dimension(100, 50));
         inKasserer.setMinimumSize(new java.awt.Dimension(100, 50));
@@ -1450,6 +1452,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        inFormand.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         inFormand.setText("Formand");
         inFormand.setMaximumSize(new java.awt.Dimension(100, 50));
         inFormand.setMinimumSize(new java.awt.Dimension(100, 50));
