@@ -28,10 +28,14 @@ public class TrainingResult {
 
         this.time = LocalTime.parse(time);
 
-        int day = Integer.parseInt(date.substring(0, 2)); // these lines convert birthdate from String to LocalDate
+        this.date = convertToDate(date);
+    }
+    
+    private LocalDate convertToDate(String date){
+        int day = Integer.parseInt(date.substring(0, 2));
         int month = Integer.parseInt(date.substring(3, 5));
         int year = Integer.parseInt(date.substring(6));
-        this.date = LocalDate.of(year, month, day);
+        return LocalDate.of(year, month, day);
     }
     
     public LocalTime getTime() {
@@ -44,6 +48,11 @@ public class TrainingResult {
 
     public Discipline getDiscipline() {
         return discipline;
+    }
+
+    @Override
+    public String toString() {
+        return "(time=" + time + ", date=" + date + ')';
     }
 
 }

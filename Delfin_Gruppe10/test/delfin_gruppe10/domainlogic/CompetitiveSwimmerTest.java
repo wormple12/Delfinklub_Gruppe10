@@ -17,6 +17,13 @@ import static org.junit.Assert.*;
  * @author Ludvig
  */
 public class CompetitiveSwimmerTest {
+       
+    CompetetiveSwimmer compSwi = new CompetetiveSwimmer("Jack McDonalds",
+                "01-01-1955",
+                "Very Derp Street 333", "1111", "Long Way From Here",
+                "11112222", "derp@isDerp.derp");
+    
+    comSwi.setBestTrainingResult(TrainingResult result);
     
     public CompetitiveSwimmerTest() {
     }
@@ -40,6 +47,8 @@ public class CompetitiveSwimmerTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void getBestTrainingResult(Discipline d){
+        assertEquals();
+    } 
 }

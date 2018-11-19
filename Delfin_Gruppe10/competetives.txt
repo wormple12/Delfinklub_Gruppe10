@@ -1,0 +1,6 @@
+CompetetiveSwimmer{name=Jack McDonalds, bestButterflyResult=null, bestCrawlResult=null, bestBackstrokeResult=null, bestBreaststrokeResult=null, competetiveResults=null}
+CompetetiveSwimmer{name=a a, bestButterflyResult=TrainingResult{discipline=BUTTERFLY, time=01:22:22, date=2011-01-01}, bestCrawlResult=null, bestBackstrokeResult=null, bestBreaststrokeResult=null, competetiveResults=null}
+CompetetiveSwimmer{name=Jack McDonalds, bestButterflyResult=null, bestCrawlResult=null, bestBackstrokeResult=null, bestBreaststrokeResult=null, competetiveResults=null}
+CompetetiveSwimmer{name=a a, bestButterflyResult=(time=01:22:22, date=2011-01-01), bestCrawlResult=null, bestBackstrokeResult=null, bestBreaststrokeResult=null, competetiveResults=null}
+CompetetiveSwimmer{name=Jack McDonalds, bestButterflyResult=null, bestCrawlResult=null, bestBackstrokeResult=null, bestBreaststrokeResult=null, competetiveResults=null}
+CompetetiveSwimmer{name=a a, bestButterflyResult=(time=01:22:22, date=2011-01-01), bestCrawlResult=null, bestBackstrokeResult=null, bestBreaststrokeResult=null, competetiveResults=null}

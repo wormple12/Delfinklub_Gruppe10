@@ -25,27 +25,22 @@ import java.util.List;
  */
 public class FileHandlerV2 implements FileHandlerInterface {
 
-    private final String memberPath;
-    private final String competetivePath;
-
     private static Path FILE;
     private static Path competitiveFILE;
 
     public FileHandlerV2(String memberPath, String competetivePath) {
-        this.memberPath = memberPath;
-        this.competetivePath = competetivePath;
         FILE = Paths.get(memberPath);
         competitiveFILE = Paths.get(competetivePath);
     }
 
-    private List<String> readFile() {
+    private List<String> readFile(Path FILE) {
         // read file and place lines in list
         try {
             return Files.readAllLines(FILE);
         } catch (IOException ex) {
             try {
                 Files.createFile(FILE);
-                return readFile();
+                return readFile(FILE);
             } catch (IOException e) {
                 ex.printStackTrace();
             }
@@ -56,7 +51,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
     @Override
     public void writeMemberToFile(Member member) {
         try {
-            List<String> strings = readFile();
+            List<String> strings = readFile(FILE);
             strings.add(member.toString());
             Files.write(FILE, strings);
         } catch (IOException ex) {
@@ -67,7 +62,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
     @Override
     public ArrayList<Member> readMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
-        List<String> strings = readFile();
+        List<String> strings = readFile(FILE);
         try {
             for (String string : strings) {
                 String[] vars = new String[9];
@@ -97,7 +92,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
     @Override
     public void editMemberInFile(Member original, Member updated) {
         try {
-            List<String> strings = readFile();
+            List<String> strings = readFile(FILE);
             strings.remove(original.toString());
             strings.add(updated.toString());
             Files.write(FILE, strings);
@@ -110,7 +105,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
     @Override
     public void deleteMemberInFile(Member member) {
         try {
-            List<String> strings = readFile();
+            List<String> strings = readFile(FILE);
             strings.remove(member.toString());
             Files.write(FILE, strings);
         } catch (IOException ex) {
@@ -130,11 +125,13 @@ public class FileHandlerV2 implements FileHandlerInterface {
         }
         return membersNotPaid;
     }
+    
+    // ===================================================
 
     @Override
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer) {
         try {
-            List<String> strings = readFile();
+            List<String> strings = readFile(competitiveFILE);
             strings.add(swimmer.toString());
             Files.write(competitiveFILE, strings);
         } catch (IOException ex) {
@@ -146,7 +143,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
     @Override
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile() {
         ArrayList<CompetetiveSwimmer> competitiveMembers = new ArrayList<>();
-        List<String> strings = readFile();
+        List<String> strings = readFile(competitiveFILE);
         try {
             for (String string : strings) {
                 String[] vars = new String[9];

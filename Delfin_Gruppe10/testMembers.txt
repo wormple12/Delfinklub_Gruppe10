@@ -1,3 +1,0 @@
-Member{name=John John, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=true, arrears=100.0}
-Member{name=Ib Bibsen, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=true, arrears=500.0}
-Member{name=Banders Andersen, birthdate=2001-01-01, address=Andersensstræde 1, postnr=1111, city=Andeby, phone=12345678, mail=a@a.d, active=true, arrears=800.0}
