@@ -990,6 +990,11 @@ public class GUI extends javax.swing.JFrame {
 
         Choice3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Choice3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Item 2", "Item 3", "Item 4" }));
+        Choice3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Choice3ActionPerformed(evt);
+            }
+        });
 
         Return11.setText("Tilbage");
         Return11.addActionListener(new java.awt.event.ActionListener() {
@@ -1940,6 +1945,10 @@ public class GUI extends javax.swing.JFrame {
             ChooseMemberComboBox.addItem(member.getName());
         }
     }//GEN-LAST:event_RemoveBActionPerformed
+
+    private void Choice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choice3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Choice3ActionPerformed
 
     /**
      * @param args the command line arguments

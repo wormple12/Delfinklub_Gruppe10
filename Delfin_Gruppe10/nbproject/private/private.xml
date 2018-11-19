@@ -12,11 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/data/FileHandler.java</file>
-            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/data/FileHandlerV2.java</file>
-            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/domainlogic/CompetetiveSwimmer.java</file>
-            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/Main.java</file>
-            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/domainlogic/Member.java</file>
+            <file>file:/C:/Users/Lukas%20Bjørnvad/Documents/NetBeansProjects/Git/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/domainlogic/MasterSystem.java</file>
+            <file>file:/C:/Users/Lukas%20Bjørnvad/Documents/NetBeansProjects/Git/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/data/FileHandlerV2.java</file>
+            <file>file:/C:/Users/Lukas%20Bjørnvad/Documents/NetBeansProjects/Git/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/data/FileHandler.java</file>
+            <file>file:/C:/Users/Lukas%20Bjørnvad/Documents/NetBeansProjects/Git/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/Main.java</file>
+            <file>file:/C:/Users/Lukas%20Bjørnvad/Documents/NetBeansProjects/Git/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/presentation/GUI.java</file>
+            <file>file:/C:/Users/Lukas%20Bjørnvad/Documents/NetBeansProjects/Git/Delfinklub_Gruppe10/Delfin_Gruppe10/test/delfin_gruppe10/data/MemberTest.java</file>
         </group>
     </open-files>
 </project-private>

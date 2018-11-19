@@ -25,15 +25,10 @@ import java.util.List;
  */
 public class FileHandlerV2 implements FileHandlerInterface {
 
-    private final String memberPath;
-    private final String competetivePath;
-
     private static Path FILE;
     private static Path competitiveFILE;
 
     public FileHandlerV2(String memberPath, String competetivePath) {
-        this.memberPath = memberPath;
-        this.competetivePath = competetivePath;
         FILE = Paths.get(memberPath);
         competitiveFILE = Paths.get(competetivePath);
     }
@@ -130,6 +125,8 @@ public class FileHandlerV2 implements FileHandlerInterface {
         }
         return membersNotPaid;
     }
+    
+    // ===================================================
 
     @Override
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer) {
@@ -164,7 +161,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
                 vars[1] = formatter.format(date);
 
-                competitiveMembers.add(new CompetetiveSwimmer(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], Boolean.parseBoolean(vars[7])));
+               // competitiveMembers.add(new CompetetiveSwimmer(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], Boolean.parseBoolean(vars[7])));
             }
             return competitiveMembers;
         } catch (StringIndexOutOfBoundsException e) {
