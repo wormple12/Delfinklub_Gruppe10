@@ -50,12 +50,16 @@ public class CompetetiveSwimmer extends Member {
         switch (d) {
             case BUTTERFLY:
                 bestButterflyResult = result;
+                break;
             case CRAWL:
                 bestCrawlResult = result;
+                break;
             case BACKSTROKE:
                 bestBackstrokeResult = result;
+                break;
             case BREASTSTROKE:
                 bestBreaststrokeResult = result;
+                break;
             default:
                 throw new AssertionError();
         }
@@ -63,6 +67,11 @@ public class CompetetiveSwimmer extends Member {
     
     public void addCompetetiveResult(CompetetiveResult result){
         competetiveResults.add(result);
+    }
+
+    @Override
+    public String toString() {
+        return "CompetetiveSwimmer{" + "name=" + getName() + ", bestButterflyResult=" + bestButterflyResult + ", bestCrawlResult=" + bestCrawlResult + ", bestBackstrokeResult=" + bestBackstrokeResult + ", bestBreaststrokeResult=" + bestBreaststrokeResult + ", competetiveResults=" + competetiveResults + '}';
     }
 
 }
