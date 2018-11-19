@@ -8,11 +8,12 @@ package delfin_gruppe10.domainlogic;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Member implements Serializable, Cloneable {
 
     private final String name;
-    private final LocalDate birthdate;
+    private final String birthdate;
     private final String address;
     private final String postnr;
     private final String city;
@@ -47,7 +48,7 @@ public class Member implements Serializable, Cloneable {
             throw new IllegalArgumentException(cause);
         }
 
-        this.birthdate = convertToDate(birthdate);
+        this.birthdate = birthdate;
         this.name = name; // we could choose to capitalize first letter in all words, but isn't important
         this.address = address; // same as above
         this.postnr = postnr;
@@ -57,16 +58,11 @@ public class Member implements Serializable, Cloneable {
         this.active = active;
         this.arrears = getYearlyContingent();
     }
-    
-    private LocalDate convertToDate(String date){
-        int day = Integer.parseInt(date.substring(0, 2));
-        int month = Integer.parseInt(date.substring(3, 5));
-        int year = Integer.parseInt(date.substring(6));
-        return LocalDate.of(year, month, day);
-    }
 
-    public int getAge() { // be private?
-        return Period.between(birthdate, LocalDate.now()).getYears();
+    public int getAge() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = LocalDate.parse(birthdate, formatter);
+        return Period.between(date, LocalDate.now()).getYears();
     }
 
     public double getYearlyContingent() {
@@ -114,7 +110,7 @@ public class Member implements Serializable, Cloneable {
         return name;
     }
 
-    public LocalDate getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 

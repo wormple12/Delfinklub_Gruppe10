@@ -31,4 +31,13 @@ public class CompetetiveResult extends TrainingResult {
         return ranking;
     }
     
+    @Override
+    public String toString() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+//        String formattedDate = formatter.format(date);
+//        formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        String formattedTime = formatter.format(time);
+        return "(discipline=" + getDiscipline() + ", time=" + getTime() + ", date=" + getDate() + ", competition=" + competition + ", ranking=" + ranking + ')';
+    }
+    
 }

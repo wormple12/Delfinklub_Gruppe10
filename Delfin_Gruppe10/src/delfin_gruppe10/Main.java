@@ -27,23 +27,30 @@ public class Main {
         FileHandlerV2 fH = new FileHandlerV2("member.txt", "competitive.txt");
         MasterSystem mS = new MasterSystem();
         
-        CompetetiveSwimmer member = new CompetetiveSwimmer("Jack McDonalds",
+        CompetetiveSwimmer comp1 = new CompetetiveSwimmer("Jack McDonalds",
                 "01-01-1955",
                 "Very Derp Street 333", "1111", "Long Way From Here",
                 "11112222", "derp@isDerp.derp");
+        Member member = new Member("Jack McDonalds",
+                "01-01-1955",
+                "Very Derp Street 333", "1111", "Long Way From Here",
+                "11112222", "derp@isDerp.derp", true);
 
-        CompetetiveSwimmer member4 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
+        Member member4 = new Member("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com", true);
+        CompetetiveSwimmer comp4 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
         
         TrainingResult result = new TrainingResult(Discipline.BUTTERFLY, "01:22:22", "01-01-2011");
-        member4.setBestTrainingResult(result);
+        comp4.setBestTrainingResult(result);
         //System.out.println(mS.getMembersInArrears());
         //mS.registerPayment("Jack McDonalds", 1200);
         
-        fH.writeCompetetiveToFile(member);
-        fH.writeCompetetiveToFile(member4);
+        fH.writeMemberToFile(member);
+        fH.writeMemberToFile(member4);
+        fH.writeCompetetiveToFile(comp1);
+        fH.writeCompetetiveToFile(comp4);
         
-        //System.out.println(fH.readMembersFromFile().get(0).getYearlyContingent());
-        //System.out.println(fH.readMembersFromFile().get(0).getArrears());
+        System.out.println(fH.readMembersFromFile());
+        System.out.println(fH.readCompetetivesFromFile());
         
         //System.out.println(fH.readMembersFromFile().get(2).getName());
         //System.out.println(fH.readMembersFromFile().get(2).getYearlyContingent());

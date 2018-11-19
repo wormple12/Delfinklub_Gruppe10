@@ -5,8 +5,7 @@
  */
 package delfin_gruppe10.data;
 
-import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
-import delfin_gruppe10.domainlogic.Member;
+import delfin_gruppe10.domainlogic.*;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -76,15 +75,15 @@ public class FileHandlerV2 implements FileHandlerInterface {
                     }
                     vars[i] = string.substring(startIndex + 1, endIndex);
                 }
-                LocalDate date = LocalDate.parse(vars[1]);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-                vars[1] = formatter.format(date);
+//                LocalDate date = LocalDate.parse(vars[1]);
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+//                vars[1] = formatter.format(date);
 
                 members.add(new Member(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], Boolean.parseBoolean(vars[7]), Double.parseDouble(vars[8])));
             }
             return members;
         } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("Animals.txt is not formatted properly.");
+            System.out.println("members.txt is not formatted properly.");
             return null;
         }
     }
@@ -145,28 +144,57 @@ public class FileHandlerV2 implements FileHandlerInterface {
         ArrayList<CompetetiveSwimmer> competitiveMembers = new ArrayList<>();
         List<String> strings = readFile(competitiveFILE);
         try {
-            for (String string : strings) {
-                String[] vars = new String[9];
-                int endIndex = 0;
-                int startIndex;
-                for (int i = 0; i < vars.length; i++) {
+            for (String string : strings) { int count = 0;
+                int startIndex = string.indexOf("=");
+                int endIndex = string.indexOf(",", startIndex);
+                String name = string.substring(startIndex+1, endIndex);
+                
+                ArrayList<Member> members = readMembersFromFile();
+                Member m = null;
+                for (Member member : members){
+                    if (member.getName().equals(name)){
+                        m = member;
+                        break;
+                    }
+                }
+
+                competitiveMembers.add(new CompetetiveSwimmer(m.getName(), m.getBirthdate(), m.getAddress(), m.getPostnr(), m.getCity(), m.getPhone(), m.getMail()));
+                
+                for (int i = 0; i < 4; i++) {
                     startIndex = string.indexOf("=", endIndex);
                     endIndex = string.indexOf(",", startIndex);
-                    if (endIndex == -1){
-                        endIndex = string.indexOf("}", startIndex);
-                    }
-                    vars[i] = string.substring(startIndex + 1, endIndex);
+                    String time = string.substring(startIndex + 1, endIndex);
+                    startIndex = string.indexOf("=", endIndex);
+                    endIndex = string.indexOf(")", startIndex);
+                    String date = string.substring(startIndex + 1, endIndex);
+                    
+                    TrainingResult result = new TrainingResult(Discipline.values()[i], time, date);
+                    competitiveMembers.get(count).setBestTrainingResult(result);
                 }
-                LocalDate date = LocalDate.parse(vars[1]);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-                vars[1] = formatter.format(date);
-
-                competitiveMembers.add(new CompetetiveSwimmer(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6]));
-
+                
+                while (true) {
+                    try {
+//                        startIndex = string.indexOf("=", endIndex);
+//                        endIndex = string.indexOf(",", startIndex);
+//                        String time = string.substring(startIndex + 1, endIndex);
+//                        startIndex = string.indexOf("=", endIndex);
+//                        endIndex = string.indexOf(")", startIndex);
+//                        String date = string.substring(startIndex + 1, endIndex);
+//
+//                        CompetetiveResult result = new CompetetiveResult(Discipline.CRAWL, time, date, time, endIndex)
+//                        competitiveMembers.get(count).setBestTrainingResult(result);
+                    } catch (IndexOutOfBoundsException e) {
+                        break;
+                    }
+                }
+                
+                count++;
             }
+            
             return competitiveMembers;
+            
         } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("Animals.txt is not formatted properly.");
+            System.out.println("Competetives.txt is not formatted properly.");
             return null;
         }
     }
