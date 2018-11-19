@@ -142,7 +142,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
 
         }
     }
-
+    //læs resultater from competitive
     @Override
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile() {
         ArrayList<CompetetiveSwimmer> competitiveMembers = new ArrayList<>();
@@ -164,7 +164,7 @@ public class FileHandlerV2 implements FileHandlerInterface {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
                 vars[1] = formatter.format(date);
 
-                competitiveMembers.add(new CompetetiveSwimmer(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], Boolean.parseBoolean(vars[7])));
+                competitiveMembers.add(new CompetetiveSwimmer(vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6]));
             }
             return competitiveMembers;
         } catch (StringIndexOutOfBoundsException e) {

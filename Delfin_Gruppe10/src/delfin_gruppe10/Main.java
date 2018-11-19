@@ -47,7 +47,7 @@ public class Main {
         //System.out.println(fH.readMembersFromFile().get(2).getArrears());
         //System.out.println(fH.readMembersInArrearsFromFile());
         
-        //member2 = fH.readMembersFromFile().get(1);
+        System.out.println(member2 = fH.readMembersFromFile().get(1));
         //System.out.println(member2.getName());
     }
 }
