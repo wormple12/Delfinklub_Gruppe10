@@ -5,8 +5,6 @@
  */
 package delfin_gruppe10.domainlogic;
 
-import static delfin_gruppe10.domainlogic.Discipline.BUTTERFLY;
-import static delfin_gruppe10.domainlogic.Discipline.CRAWL;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,13 +27,13 @@ public class CompetitiveSwimmerTest {
                 "Very Derp Street 333", "1111", "Long Way From Here",
                 "11112222", "derp@isDerp.derp");
     
-    TrainingResult traiResBut1 = new TrainingResult(BUTTERFLY, "01:01:01", "04-05-1997");
-    TrainingResult traiResBut2 = new TrainingResult(BUTTERFLY, "02:02:02", "04-05-1997");
-    TrainingResult traiResCra = new TrainingResult(CRAWL, "02:02:02", "04-05-1997");
+    TrainingResult traiResBut1 = new TrainingResult(Discipline.BUTTERFLY, "01:01:01", "04-05-1997");
+    TrainingResult traiResBut2 = new TrainingResult(Discipline.BUTTERFLY, "02:02:02", "04-05-1997");
+    TrainingResult traiResCra = new TrainingResult(Discipline.CRAWL, "02:02:02", "04-05-1997");
     
-    CompetetiveResult compRes1 = new CompetetiveResult(BUTTERFLY, "03:03:03", "07-08-09", "Lyngby", 1);
-    CompetetiveResult compRes2 = new CompetetiveResult(CRAWL, "03:03:03", "07-08-09", "Lyngby", 2);
-    CompetetiveResult compRes3 = new CompetetiveResult(BUTTERFLY, "01:02:03", "07-08-11", "Holte", 3);
+    CompetetiveResult compRes1 = new CompetetiveResult(Discipline.BUTTERFLY, "03:03:03", "07-08-2009", "Lyngby", 1);
+    CompetetiveResult compRes2 = new CompetetiveResult(Discipline.CRAWL, "03:03:03", "07-08-2009", "Lyngby", 2);
+    CompetetiveResult compRes3 = new CompetetiveResult(Discipline.BUTTERFLY, "01:02:03", "07-08-2011", "Holte", 3);
     
     ArrayList<CompetetiveResult> cRList = new ArrayList();
     
@@ -49,6 +47,7 @@ public class CompetitiveSwimmerTest {
     
     @Before
     public void setUp() {
+        //setBestTrainingResult er manuelt
         compSwi.setBestTrainingResult(traiResBut2);
         compSwi.setBestTrainingResult(traiResCra);
         compSwi.addCompetetiveResult(compRes1);
@@ -69,11 +68,11 @@ public class CompetitiveSwimmerTest {
     //
     @Test
     public void getBestTrainingResultTest(){      
-        assertEquals(compSwi.getBestTrainingResult(BUTTERFLY), traiResBut2);
+        assertEquals(compSwi.getBestTrainingResult(Discipline.BUTTERFLY), traiResBut2);
     } 
     
-//    @Test
-//    public void getCompetetiveResultsTest(){
-//        assertEquals(compSwi.getCompetetiveResults(), cRList);
-//    }
+    @Test
+    public void getCompetetiveResultsTest(){
+        assertEquals(compSwi.getCompetetiveResults(), cRList);
+    }
 }

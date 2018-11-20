@@ -5,132 +5,218 @@
  */
 package delfin_gruppe10.data;
 
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
-import delfin_gruppe10.domainlogic.Member;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import delfin_gruppe10.domainlogic.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author PC 2 2016 SDC-privat
  */
-public class FileHandler implements FileHandlerInterface, Serializable {
-    private final String memberPath;
-    private final String competetivePath;
-    
-    public FileHandler(String memberPath, String competetivePath){
-        this.memberPath = memberPath; 
-        this.competetivePath = competetivePath;
+public class FileHandler implements FileHandlerInterface {
+
+    private static Path FILE;
+    private static Path competetiveFILE;
+
+    public FileHandler(String memberPath, String competetivePath) {
+        FILE = Paths.get(memberPath);
+        competetiveFILE = Paths.get(competetivePath);
+    }
+
+    private List<String> readFile(Path FILE) {
+        // read file and place lines in list
+        try {
+            return Files.readAllLines(FILE);
+        } catch (IOException ex) {
+            try {
+                Files.createFile(FILE);
+                return readFile(FILE);
+            } catch (IOException e) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
     }
 
     @Override
     public void writeMemberToFile(Member member) {
-        FileOutputStream fileOut = null;
-        try{
-            fileOut = new FileOutputStream(memberPath);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            ArrayList<Member> members = readMembersFromFile();
-            members.add(member);
-            objectOut.writeObject((ArrayList<Member>)members);
-            
-            objectOut.close();
-            fileOut.close();
-        } catch (Exception ex) {
+        try {
+            List<String> strings = readFile(FILE);
+            strings.add(member.toString());
+            Files.write(FILE, strings);
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
     @Override
-    public ArrayList<Member> readMembersFromFile() {        
-        try{
-            FileInputStream fileIn = new FileInputStream(memberPath); 
-            ObjectInputStream objIn = new ObjectInputStream(fileIn);       
-            
-            Member member = null;
-            ArrayList<Member> memberList = new ArrayList();
+    public ArrayList<Member> readMembersFromFile() {
+        ArrayList<Member> members = new ArrayList<>();
+        List<String> strings = readFile(FILE);
+        try {
+            for (String string : strings) {
+                String[] vars = new String[9];
+                int endIndex = 0;
+                int startIndex;
+                for (int i = 0; i < vars.length; i++) {
+                    startIndex = string.indexOf("=", endIndex);
+                    endIndex = string.indexOf(",", startIndex);
+                    if (endIndex == -1){
+                        endIndex = string.indexOf("}", startIndex);
+                    }
+                    vars[i] = string.substring(startIndex + 1, endIndex);
+                }
+                String name = vars[0]; String birthdate = vars[1];
+                String address = vars[2]; String postNr = vars[3]; String city = vars[4];
+                String phone = vars[5]; String mail = vars[6];
+                String active = vars[7]; String arrears = vars[8];
 
-//            try {
-//                while (true) {
-//                    member = (Member) objIn.readObject();
-//                    memberList.add(member);
-//                }
-//            } catch (EOFException e) {}
-            memberList = (ArrayList<Member>) objIn.readObject(); 
-            
-            objIn.close();
-            fileIn.close();
-            
-            return memberList;
-        } catch(Exception ex){
-            return new ArrayList<Member>();
-        } 
+                members.add(new Member(name, birthdate, address, postNr, city, phone, mail, Boolean.parseBoolean(active), Double.parseDouble(arrears)));
+            }
+            return members;
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("members.txt is not formatted properly.");
+            return null;
+        }
     }
 
     @Override
     public void editMemberInFile(Member original, Member updated) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List<String> strings = readFile(FILE);
+            strings.remove(original.toString());
+            strings.add(updated.toString());
+            Files.write(FILE, strings);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
-    
+
     @Override
     public void deleteMemberInFile(Member member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List<String> strings = readFile(FILE);
+            strings.remove(member.toString());
+            Files.write(FILE, strings);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }   
     }
 
     @Override
     public ArrayList<Member> readMembersInArrearsFromFile() {
-        try{
-            FileInputStream fileIn = new FileInputStream(memberPath); 
-            ObjectInputStream objIn = new ObjectInputStream(fileIn);       
-            
-            Member member = null;
-            ArrayList<Member> memberList = null;
-
-            try {
-                while (true) {
-                    member = (Member) objIn.readObject();
-                    if(member.getArrears() < member.getYearlyContingent()){
-                        memberList.add(member);
-                    }
-                }
-            } catch (EOFException e) {}
-            return memberList;
-        } catch(Exception ex){
-            ex.printStackTrace();
-            return null;
-        } 
+        ArrayList<Member> allMembers = readMembersFromFile();
+        ArrayList<Member> membersNotPaid = new ArrayList();
+        
+        for(int i = 0; i<allMembers.size(); i++){
+            if(allMembers.get(i).getArrears() > 0){
+                membersNotPaid.add(allMembers.get(i));
+            }
+        }
+            return membersNotPaid;
     }
+    
+    // ===================================================
 
-    // ==========================================
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // ARE THESE NECESSARY?
     @Override
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List<String> strings = readFile(competetiveFILE);
+            strings.add(swimmer.toString());
+            Files.write(competetiveFILE, strings);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     @Override
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<CompetetiveSwimmer> competitiveMembers = new ArrayList<>();
+        List<String> strings = readFile(competetiveFILE);
+        try {
+            int count = 0;
+            for (String string : strings) {
+                int startIndex = string.indexOf("=");
+                int endIndex = string.indexOf(",", startIndex);
+                String name = string.substring(startIndex+1, endIndex);
+                
+                ArrayList<Member> members = readMembersFromFile();
+                Member m = null;
+                for (Member member : members){
+                    if (member.getName().equals(name)){
+                        m = member;
+                        break;
+                    }
+                }
+
+                competitiveMembers.add(new CompetetiveSwimmer(m.getName(), m.getBirthdate(), m.getAddress(), m.getPostnr(), m.getCity(), m.getPhone(), m.getMail()));
+                
+                for (int i = 0; i < 4; i++) {
+                    startIndex = string.indexOf("=", endIndex);
+                    endIndex = string.indexOf(",", startIndex);
+                    String time = string.substring(startIndex + 1, endIndex);
+                    startIndex = string.indexOf("=", endIndex);
+                    endIndex = string.indexOf(")", startIndex);
+                    String date = string.substring(startIndex + 1, endIndex);
+                    
+                    TrainingResult result = new TrainingResult(Discipline.values()[i], time, date);
+                    competitiveMembers.get(count).setBestTrainingResult(result);
+                }
+                
+                while (true) {
+                    try {
+                        String[] vars = new String[5];
+                        for (int i = 0; i < vars.length; i++) {
+                            startIndex = string.indexOf("=", endIndex);
+                            endIndex = string.indexOf(",", startIndex);
+                            if (i == 4) {
+                                endIndex = string.indexOf(")", startIndex);
+                            }
+                            if (startIndex == -1) {
+                                throw new StringIndexOutOfBoundsException();
+                            }
+                            vars[i] = string.substring(startIndex + 1, endIndex);
+                        }
+                        Discipline discipline = Discipline.valueOf(vars[0]);
+                        String time = vars[1];
+                        String date = vars[2];
+                        String competition = vars[3];
+                        int ranking = Integer.parseInt(vars[4]);
+
+                        CompetetiveResult result = new CompetetiveResult(discipline, time, date, competition, ranking);
+                        competitiveMembers.get(count).addCompetetiveResult(result);
+                    } catch (StringIndexOutOfBoundsException e) {
+                        break;
+                    }
+                }
+                
+                count++;
+            }
+            
+            return competitiveMembers;
+            
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Competetives.txt is not formatted properly.");
+            return null;
+        }
     }
 
     @Override
-    public void editCompetetiveInFile(CompetetiveSwimmer swimmer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editCompetetiveInFile(CompetetiveSwimmer original, CompetetiveSwimmer updated) {
+        try {
+            List<String> strings = readFile(competetiveFILE);
+            strings.remove(original.toString());
+            strings.add(updated.toString());
+            Files.write(FILE, strings);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
     }
-    
+
 }

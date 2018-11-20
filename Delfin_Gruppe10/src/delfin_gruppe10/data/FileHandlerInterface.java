@@ -29,6 +29,6 @@ public interface FileHandlerInterface {
 
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile();
 
-    public void editCompetetiveInFile(CompetetiveSwimmer swimmer);
+    public void editCompetetiveInFile(CompetetiveSwimmer original, CompetetiveSwimmer updated);
 
 }

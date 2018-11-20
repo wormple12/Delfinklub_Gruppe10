@@ -22,7 +22,7 @@ public class MasterSystem implements MasterInterface {
     private static final String TEST_COMPETETIVE_PATH = "testCompetetives.txt";
     // ===================
 
-    private final FileHandlerV2 dataAccessor;
+    private final FileHandler dataAccessor;
 
     public MasterSystem() {
         this(false);
@@ -30,9 +30,9 @@ public class MasterSystem implements MasterInterface {
 
     public MasterSystem(boolean test) {
         if (test) {
-            dataAccessor = new FileHandlerV2(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
+            dataAccessor = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
         } else {
-            dataAccessor = new FileHandlerV2(MEMBER_PATH, COMPETETIVE_PATH);
+            dataAccessor = new FileHandler(MEMBER_PATH, COMPETETIVE_PATH);
         }
     }
 

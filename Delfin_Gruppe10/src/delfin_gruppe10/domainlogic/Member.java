@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Objects;
 
 public class Member implements Serializable, Cloneable {
 
@@ -31,14 +33,16 @@ public class Member implements Serializable, Cloneable {
         String cause = "Fejl: "; boolean error = false;
         if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null){
             cause += "Et felt er tomt.\n"; error = true;
-        } else if (!name.matches(".* .*")){
+        } else if (!name.matches("\\D* \\D*")){
             cause += "Skriv venligst det fulde navn.\n"; error = true;
         } else if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")){ // birthdate should have other possible formats
             cause += "Fødselsdato skal formateres DD-MM-ÅÅÅÅ.\n"; error = true; 
-        } else if (!address.matches(".* \\d*")){  // should also have other possible formats for people living in apartments for instance
+        } else if (!address.matches("\\D* \\d*")){  // should also have other possible formats for people living in apartments for instance
             cause += "Skriv venligst vej og nummer.\n"; error = true;
         } else if (!postnr.matches("\\d{4}")){
             cause += "Skriv venligst et dansk postnummer.\n"; error = true;
+        } else if (!city.matches("\\D*")){
+            cause += "Skriv venligst en gyldig by.\n"; error = true;
         } else if (!phone.matches("\\d{8}")){
             cause += "Skriv venligst et telefonnummer på 8 cifre.\n"; error = true;
         } else if (!mail.matches("\\S*@\\S*\\.\\S*")){
@@ -56,7 +60,12 @@ public class Member implements Serializable, Cloneable {
         this.phone = phone;
         this.mail = mail;
         this.active = active;
-        this.arrears = getYearlyContingent();
+        
+        try {
+            this.arrears = getYearlyContingent();
+        } catch (DateTimeParseException e){
+            throw new IllegalArgumentException("Fejl: Den angivne dato eksisterer ikke.");
+        }
     }
 
     public int getAge() {
@@ -144,5 +153,46 @@ public class Member implements Serializable, Cloneable {
         return (Member) super.clone();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Member other = (Member) obj;
+        if (this.active != other.active) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.arrears) != Double.doubleToLongBits(other.arrears)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.birthdate, other.birthdate)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        if (!Objects.equals(this.postnr, other.postnr)) {
+            return false;
+        }
+        if (!Objects.equals(this.city, other.city)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.mail, other.mail)) {
+            return false;
+        }
+        return true;
+    }
     
 }
