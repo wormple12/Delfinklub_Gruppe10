@@ -215,10 +215,10 @@ public class MasterSystemTest {
     @Test
     public void test09AddToCompetetiveTeam() {
         System.out.println("addToCompetetiveTeam");
-        Member member = null;
-        boolean add = false;
+        CompetetiveSwimmer member = null;
+        
         MasterSystem instance = new MasterSystem(true);
-        instance.addToCompetetiveTeam(member, add);
+        instance.addToCompetetiveTeam(member);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -229,7 +229,7 @@ public class MasterSystemTest {
     @Test
     public void test10AddTrainingResult() {
         System.out.println("addTrainingResult");
-        Member member = null;
+        CompetetiveSwimmer member = null;
         Discipline discipline = null;
         String time = "";
         String date = "";
@@ -245,7 +245,7 @@ public class MasterSystemTest {
     @Test
     public void test11AddCompetetiveResult() {
         System.out.println("addCompetetiveResult");
-        Member member = null;
+        CompetetiveSwimmer member = null;
         Discipline discipline = null;
         String time = "";
         String date = "";
