@@ -119,12 +119,17 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public void addTrainingResult(CompetetiveSwimmer member, Discipline discipline, String time, String date) {
+    try{
     TrainingResult og = member.getBestTrainingResult(discipline);
     TrainingResult nw = new TrainingResult(discipline, time, date);
-    
+    CompetetiveSwimmer copy = member.clone();
     if(isFaster(og.getTime(), nw.getTime())){
-        member.setBestTrainingResult(nw);
+        copy.setBestTrainingResult(nw);
+        dataAccessor.editCompetetiveInFile(member, copy);
     }
+    } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -134,6 +139,7 @@ public class MasterSystem implements MasterInterface {
         CompetetiveResult r = new CompetetiveResult(discipline,time,date,competition,ranking); 
         updated.addCompetetiveResult(r);
         dataAccessor.editCompetetiveInFile(member, updated);
+        addTrainingResult(member, discipline, time, date);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

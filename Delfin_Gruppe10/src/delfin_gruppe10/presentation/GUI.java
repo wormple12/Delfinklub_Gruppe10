@@ -1623,6 +1623,7 @@ public class GUI extends javax.swing.JFrame {
         ACompL.removeAllItems();
         ArrayList<Member> members = k.getAllMembers();
         for(Member member : members ){
+            if(k.getCompetetiveSwimmers().contains(member)) break;
         ACompL.addItem(member.getName());
         }
     }//GEN-LAST:event_RegisterCPActionPerformed
