@@ -21,10 +21,10 @@ public class CompetetiveSwimmer extends Member {
 
     public CompetetiveSwimmer(String name, String birthdate, String address, String postnr, String city, String phone, String mail) {
         super(name, birthdate, address, postnr, city, phone, mail, true);
-        bestButterflyResult = new TrainingResult(Discipline.BUTTERFLY, "00:00:00", "01-01-2000");
-        bestCrawlResult = new TrainingResult(Discipline.CRAWL, "00:00:00", "01-01-2000");
-        bestBackstrokeResult = new TrainingResult(Discipline.BACKSTROKE, "00:00:00", "01-01-2000");
-        bestBreaststrokeResult = new TrainingResult(Discipline.BREASTSTROKE, "00:00:00", "01-01-2000");
+        bestButterflyResult = new TrainingResult(Discipline.BUTTERFLY, "59:59:00", "01-01-2000");
+        bestCrawlResult = new TrainingResult(Discipline.CRAWL, "59:59:00", "01-01-2000");
+        bestBackstrokeResult = new TrainingResult(Discipline.BACKSTROKE, "59:59:00", "01-01-2000");
+        bestBreaststrokeResult = new TrainingResult(Discipline.BREASTSTROKE, "59:59:00", "01-01-2000");
         competetiveResults = new ArrayList<>();
     }
 
@@ -87,5 +87,8 @@ public class CompetetiveSwimmer extends Member {
         str.append("}");
         return str.toString();
     }
-
+@Override
+    public CompetetiveSwimmer clone() throws CloneNotSupportedException {
+        return (CompetetiveSwimmer) super.clone();
+    }
 }

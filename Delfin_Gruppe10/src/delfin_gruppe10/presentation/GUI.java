@@ -1632,7 +1632,7 @@ public class GUI extends javax.swing.JFrame {
         this.pTrainer.dispose();
         
         String mn =(String) TTchoose.getSelectedItem();
-        Member c =  k.getMember(mn);
+        CompetetiveSwimmer c = (CompetetiveSwimmer) k.getMember(mn);
         k.addTrainingResult(c, (Discipline) TrainD.getSelectedItem(),  Ttime1.getText(), Tdate.getText());
     }//GEN-LAST:event_ATResultActionPerformed
 
@@ -1759,7 +1759,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void Confirm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm2ActionPerformed
         String mn = (String) CTchoose.getSelectedItem();
-        Member c = k.getMember(mn);
+        CompetetiveSwimmer c = (CompetetiveSwimmer) k.getMember(mn);
         k.addCompetetiveResult(c, (Discipline) CompD.getSelectedItem(), Ctime.getText(), Cdate.getText(), Ccomp.getText(), Integer.parseInt(Cplacement.getText()));
     }//GEN-LAST:event_Confirm2ActionPerformed
 

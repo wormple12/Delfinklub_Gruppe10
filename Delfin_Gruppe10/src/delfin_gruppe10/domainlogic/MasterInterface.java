@@ -27,9 +27,9 @@ public interface MasterInterface {
     
     public void addToCompetetiveTeam(Member member, boolean add);
     
-    public void addTrainingResult(Member member, Discipline discipline, String time, String date);
+    public void addTrainingResult(CompetetiveSwimmer  member, Discipline discipline, String time, String date);
     
-    public void addCompetetiveResult(Member member, Discipline discipline, String time, String date, String competition, int ranking);
+    public void addCompetetiveResult(CompetetiveSwimmer member, Discipline discipline, String time, String date, String competition, int ranking);
     
     public ArrayList<CompetetiveSwimmer> getTop5(Discipline d);
     
