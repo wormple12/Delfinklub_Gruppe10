@@ -5,10 +5,6 @@
  */
 package delfin_gruppe10.domainlogic;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  *
  * @author HP
@@ -20,11 +16,13 @@ public class TrainingResult {
     private final String date;
 
     public TrainingResult(Discipline discipline, String time, String date) { // time should be formatted like this: String str = String.format("%d:%02d", minutes, seconds);
-        if (date == null || time == null || discipline == null
-                || !date.matches("\\d{2}-\\d{2}-\\d{4}") || !time.matches("\\d{2}:\\d{2}:\\d{2}")) // should have other possible formats?
-        {
-            throw new IllegalArgumentException();
-        }
+        if (date == null || time == null || discipline == null){
+            throw new IllegalArgumentException("Fejl: Et felt er tomt.");
+        } else if (!date.matches("\\d{2}-\\d{2}-\\d{4}")){ // should have other possible formats?
+            throw new IllegalArgumentException("Fejl: Dato skal formateres DD-MM-ÅÅÅÅ.");
+        } else if (!time.matches("\\d{2}:\\d{2}:\\d{2}")){ // should have other possible formats?
+            throw new IllegalArgumentException("Fejl: Tid skal formateres MM:SS:mm.");
+        } 
         this.discipline = discipline;
         this.time = time;
         this.date = date;

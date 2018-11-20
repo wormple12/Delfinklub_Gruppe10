@@ -5,9 +5,6 @@
  */
 package delfin_gruppe10.domainlogic;
 
-import delfin_gruppe10.domainlogic.Discipline;
-import delfin_gruppe10.domainlogic.TrainingResult;
-
 /**
  *
  * @author HP
@@ -19,6 +16,11 @@ public class CompetetiveResult extends TrainingResult {
     
     public CompetetiveResult(Discipline discipline, String time, String date, String competition, int ranking) {
         super(discipline, time, date);
+        if (competition == null || competition.isEmpty()){
+            throw new IllegalArgumentException("Fejl: Angiv venligst stævne.");
+        } else if (ranking < 1){
+            throw new IllegalArgumentException("Fejl: Angiv venligst en placering over 0.");
+        }
         this.competition = competition;
         this.ranking = ranking;
     }

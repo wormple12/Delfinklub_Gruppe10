@@ -12,11 +12,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
 /**
  *
  * @author PC 2 2016 SDC-privat
  */
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MasterSystemTest {
     
     private static ArrayList<Member> members = new ArrayList();
@@ -41,6 +45,10 @@ public class MasterSystemTest {
                 "06-06-2001",
                 "Elm Street 6", "6666", "Realm of Nightmares",
                 "66666666", "S6C6A6R6yyy@yes.net", true));
+        MasterSystem instance = new MasterSystem(true);
+        instance.addMember(members.get(0).getName(), members.get(0).getBirthdate(), members.get(0).getAddress(), members.get(0).getPostnr(), members.get(0).getCity(), members.get(0).getPhone(), members.get(0).getMail(), members.get(0).isActive());
+        instance.addMember(members.get(1).getName(), members.get(1).getBirthdate(), members.get(1).getAddress(), members.get(1).getPostnr(), members.get(1).getCity(), members.get(1).getPhone(), members.get(1).getMail(), members.get(1).isActive());
+        instance.addMember(members.get(2).getName(), members.get(2).getBirthdate(), members.get(2).getAddress(), members.get(2).getPostnr(), members.get(2).getCity(), members.get(2).getPhone(), members.get(2).getMail(), members.get(2).isActive());
     }
     
     @AfterClass
@@ -59,7 +67,7 @@ public class MasterSystemTest {
      * Test of getAllMembers method, of class MasterSystem.
      */
     @Test
-    public void testGetAllMembers() {
+    public void test01GetAllMembers() {
         System.out.println("getAllMembers");
         MasterSystem instance = new MasterSystem(true);
         ArrayList<Member> expResult = members;
@@ -71,7 +79,7 @@ public class MasterSystemTest {
      * Test of getMember method, of class MasterSystem.
      */
     @Test
-    public void testGetMember() {
+    public void test02GetMember() {
         System.out.println("getMember");
         String name = "Jack McDonalds";
         MasterSystem instance = new MasterSystem(true);
@@ -84,7 +92,7 @@ public class MasterSystemTest {
      * Test of addMember method, of class MasterSystem.
      */
     @Test
-    public void testAddMember() {
+    public void test03AddMember() {
         System.out.println("addMember");
         String name = "Ariel The Mermaid";
         String birthdate = "04-11-1822";
@@ -107,7 +115,7 @@ public class MasterSystemTest {
      * Test of editMember method, of class MasterSystem.
      */
     @Test
-    public void testEditMember() {
+    public void test04EditMember() {
         System.out.println("editMember");
         MasterSystem instance = new MasterSystem(true);
         String originalName = "Simon Norup";
@@ -132,7 +140,7 @@ public class MasterSystemTest {
      * Test of deleteMember method, of class MasterSystem.
      */
     @Test
-    public void testDeleteMember() {
+    public void test05DeleteMember() {
         System.out.println("deleteMember");
         MasterSystem instance = new MasterSystem(true);
         String name = "Your New Neighbor";
@@ -153,7 +161,7 @@ public class MasterSystemTest {
      * Test of registerPayment method, of class MasterSystem.
      */
     @Test
-    public void testRegisterPayment() {
+    public void test06RegisterPayment() {
         System.out.println("registerPayment");
         MasterSystem instance = new MasterSystem(true);
         String name = "Simon Asholt Norup";
@@ -161,7 +169,7 @@ public class MasterSystemTest {
         
         instance.registerPayment(name, amount);
         
-        double exp = 400.;
+        double exp = 1000.;
         Member member = instance.getMember(name);
         assertEquals(exp, member.getArrears(), 0.);
     }
@@ -170,11 +178,11 @@ public class MasterSystemTest {
      * Test of getMembersInArrears method, of class MasterSystem.
      */
     @Test
-    public void testGetMembersInArrears() {
+    public void test07GetMembersInArrears() {
         System.out.println("getMembersInArrears");
         MasterSystem instance = new MasterSystem(true);
         String name = "Simon Asholt Norup";
-        instance.registerPayment(name, 400.);
+        instance.registerPayment(name, 1000.);
         members.remove(0);
         ArrayList<Member> expResult = members;
         ArrayList<Member> result = instance.getMembersInArrears();
@@ -191,7 +199,7 @@ public class MasterSystemTest {
      * Test of getCompetetiveSwimmers method, of class MasterSystem.
      */
     @Test
-    public void testGetCompetetiveSwimmers() {
+    public void test08GetCompetetiveSwimmers() {
         System.out.println("getCompetetiveSwimmers");
         MasterSystem instance = new MasterSystem(true);
         ArrayList<CompetetiveSwimmer> expResult = null;
@@ -205,7 +213,7 @@ public class MasterSystemTest {
      * Test of addToCompetetiveTeam method, of class MasterSystem.
      */
     @Test
-    public void testAddToCompetetiveTeam() {
+    public void test09AddToCompetetiveTeam() {
         System.out.println("addToCompetetiveTeam");
         Member member = null;
         boolean add = false;
@@ -219,7 +227,7 @@ public class MasterSystemTest {
      * Test of addTrainingResult method, of class MasterSystem.
      */
     @Test
-    public void testAddTrainingResult() {
+    public void test10AddTrainingResult() {
         System.out.println("addTrainingResult");
         Member member = null;
         Discipline discipline = null;
@@ -235,7 +243,7 @@ public class MasterSystemTest {
      * Test of addCompetetiveResult method, of class MasterSystem.
      */
     @Test
-    public void testAddCompetetiveResult() {
+    public void test11AddCompetetiveResult() {
         System.out.println("addCompetetiveResult");
         Member member = null;
         Discipline discipline = null;
@@ -253,7 +261,7 @@ public class MasterSystemTest {
      * Test of getTop5 method, of class MasterSystem.
      */
     @Test
-    public void testGetTop5() {
+    public void test12GetTop5() {
         System.out.println("getTop5");
         Discipline d = null;
         MasterSystem instance = new MasterSystem(true);

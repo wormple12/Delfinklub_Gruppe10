@@ -2,17 +2,8 @@
 package delfin_gruppe10;
 
 import delfin_gruppe10.data.FileHandler;
-import delfin_gruppe10.data.FileHandlerV2;
-import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
-import delfin_gruppe10.domainlogic.Discipline;
-import delfin_gruppe10.domainlogic.MasterSystem;
-import delfin_gruppe10.domainlogic.Member;
-import delfin_gruppe10.domainlogic.TrainingResult;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
+import delfin_gruppe10.domainlogic.*;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  *
@@ -24,7 +15,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FileHandlerV2 fH = new FileHandlerV2("member.txt", "competitive.txt");
+        FileHandler fH = new FileHandler("member.txt", "competitive.txt");
         MasterSystem mS = new MasterSystem();
         
         CompetetiveSwimmer comp1 = new CompetetiveSwimmer("Jack McDonalds",
@@ -35,29 +26,50 @@ public class Main {
                 "01-01-1955",
                 "Very Derp Street 333", "1111", "Long Way From Here",
                 "11112222", "derp@isDerp.derp", true);
+        
+        CompetetiveSwimmer comp2 = new CompetetiveSwimmer("John Johnson",
+                "01-01-1955",
+                "Very Derp Street 333", "1111", "Long Way From Here",
+                "11112222", "derp@isDerp.derp");
+        Member member2 = new Member("John Johnson",
+                "01-01-1955",
+                "Very Derp Street 333", "1111", "Long Way From Here",
+                "11112222", "derp@isDerp.derp", true);
 
         Member member4 = new Member("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com", true);
         CompetetiveSwimmer comp4 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
         
         TrainingResult result = new TrainingResult(Discipline.BUTTERFLY, "01:22:22", "01-01-2011");
         comp4.setBestTrainingResult(result);
-        //System.out.println(mS.getMembersInArrears());
-        //mS.registerPayment("Jack McDonalds", 1200);
         
-        fH.writeMemberToFile(member);
-        fH.writeMemberToFile(member4);
-        fH.writeCompetetiveToFile(comp1);
-        fH.writeCompetetiveToFile(comp4);
+        CompetetiveResult result2 = new CompetetiveResult(Discipline.CRAWL, "12:07:58", "26-12-2017", "The Easter Parade", 10);
+        CompetetiveResult result3 = new CompetetiveResult(Discipline.BREASTSTROKE, "57:29:99", "31-05-2018", "The Easter Parade", 19);
+        comp2.addCompetetiveResult(result2);
+        comp2.addCompetetiveResult(result3);
         
-        System.out.println(fH.readMembersFromFile());
-        System.out.println(fH.readCompetetivesFromFile());
+//        System.out.println(member);
+//        System.out.println(member2);
+//        System.out.println(member4);
+//        System.out.println(comp1);
+//        System.out.println(comp2);
+//        System.out.println(comp4);
+//        System.out.println("");
         
-        //System.out.println(fH.readMembersFromFile().get(2).getName());
-        //System.out.println(fH.readMembersFromFile().get(2).getYearlyContingent());
-        //System.out.println(fH.readMembersFromFile().get(2).getArrears());
-        //System.out.println(fH.readMembersInArrearsFromFile());
+//        fH.writeMemberToFile(member);
+//        fH.writeMemberToFile(member2);
+//        fH.writeMemberToFile(member4);
+//        fH.writeCompetetiveToFile(comp1);
+//        fH.writeCompetetiveToFile(comp2);
+//        fH.writeCompetetiveToFile(comp4);
         
-        //member2 = fH.readMembersFromFile().get(1);
-        //System.out.println(member2.getName());
+        ArrayList<Member> members = fH.readMembersFromFile();
+        ArrayList<CompetetiveSwimmer> swimmers = fH.readCompetetivesFromFile();
+        for (Member myMember : members){
+            System.out.println(myMember);
+        }
+        for (CompetetiveSwimmer swimmer : swimmers){
+            System.out.println(swimmer);
+        }
+        
     }
 }

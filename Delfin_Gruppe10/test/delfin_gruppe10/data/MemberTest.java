@@ -47,7 +47,7 @@ public class MemberTest {
                 "Lyngevej 39", "3660", "Stenløse",
                 "60893899", "wormple12@hotmail.com", false);
         assertNotNull(m);
-        assertEquals(LocalDate.of(1995, 12, 20), m.getBirthdate());
+        assertEquals("20-12-1995", m.getBirthdate());
     }
     
     @Test
