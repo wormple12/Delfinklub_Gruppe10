@@ -132,31 +132,23 @@ public class MasterSystem implements MasterInterface {
     }
 
     @Override
-    public void addTrainingResult(CompetetiveSwimmer member, Discipline discipline, String time, String date) {
-    try{
-    TrainingResult og = member.getBestTrainingResult(discipline);
-    TrainingResult nw = new TrainingResult(discipline, time, date);
-    CompetetiveSwimmer copy = member.clone();
-    if(isFaster(og.getTime(), nw.getTime())){
-        copy.setBestTrainingResult(nw);
-        dataAccessor.editCompetetiveInFile(member, copy);
-    }
-    } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+    public void addTrainingResult(CompetetiveSwimmer original, Discipline discipline, String time, String date) {
+        TrainingResult originalR = original.getBestTrainingResult(discipline);
+        TrainingResult newR = new TrainingResult(discipline, time, date);
+        CompetetiveSwimmer copy = original.copy();
+        if (isFaster(originalR.getTime(), newR.getTime())) {
+            copy.setBestTrainingResult(newR);
+            dataAccessor.editCompetetiveInFile(original, copy);
         }
     }
 
     @Override
-    public void addCompetetiveResult(CompetetiveSwimmer member, Discipline discipline, String time, String date, String competition, int ranking) {
-       try{
-        CompetetiveSwimmer updated = member.clone();
+    public void addCompetetiveResult(CompetetiveSwimmer original, Discipline discipline, String time, String date, String competition, int ranking) {
+        CompetetiveSwimmer updated = original.copy();
         CompetetiveResult r = new CompetetiveResult(discipline,time,date,competition,ranking); 
         updated.addCompetetiveResult(r);
-        dataAccessor.editCompetetiveInFile(member, updated);
-        addTrainingResult(member, discipline, time, date);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        dataAccessor.editCompetetiveInFile(original, updated);
+        addTrainingResult(updated, discipline, time, date);
     }
 
     @Override
@@ -187,30 +179,30 @@ public class MasterSystem implements MasterInterface {
         return top5;
     }
     
-    private boolean isFaster(String og, String nw){
-     boolean faster = false;
-     int minutes,seconds,nanoseconds;
-     minutes = Integer.parseInt(og.substring(0, 2));
-     seconds = Integer.parseInt(og.substring(3,5));
-     nanoseconds = Integer.parseInt(og.substring(6, 8));
-     int nminutes, nseconds, nnanoseconds;
-     nminutes = Integer.parseInt(nw.substring(0, 2));
-     nseconds = Integer.parseInt(nw.substring(3,5));
-     nnanoseconds = Integer.parseInt(nw.substring(6, 8));
-     
-     if(minutes > nminutes){
-       faster = true;  
-     }else if(minutes == nminutes && seconds>nseconds){
-         faster = true;
-     }else if(minutes == nminutes && seconds==nseconds && nanoseconds > nnanoseconds){
-         faster = true;
-     }
-     return faster;
-    } 
+    private boolean isFaster(String original, String updated) {
+        boolean faster = false;
+        int minutes, seconds, nanoseconds;
+        minutes = Integer.parseInt(original.substring(0, 2));
+        seconds = Integer.parseInt(original.substring(3, 5));
+        nanoseconds = Integer.parseInt(original.substring(6, 8));
+        int nminutes, nseconds, nnanoseconds;
+        nminutes = Integer.parseInt(updated.substring(0, 2));
+        nseconds = Integer.parseInt(updated.substring(3, 5));
+        nnanoseconds = Integer.parseInt(updated.substring(6, 8));
+
+        if (minutes > nminutes) {
+            faster = true;
+        } else if (minutes == nminutes && seconds > nseconds) {
+            faster = true;
+        } else if (minutes == nminutes && seconds == nseconds && nanoseconds > nnanoseconds) {
+            faster = true;
+        }
+        return faster;
+    }
 
     @Override
     public CompetetiveSwimmer getCompSwim(String name) {
-         ArrayList<CompetetiveSwimmer> members = dataAccessor.readCompetetivesFromFile();
+        ArrayList<CompetetiveSwimmer> members = dataAccessor.readCompetetivesFromFile();
         for (CompetetiveSwimmer member : members) {
             if (member.getName().equalsIgnoreCase(name)) {
                 return member;

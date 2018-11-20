@@ -89,9 +89,25 @@ public class CompetetiveSwimmer extends Member {
         return str.toString();
     }
     
-    @Override
-    public CompetetiveSwimmer clone() throws CloneNotSupportedException {
-        return (CompetetiveSwimmer) super.clone();
+    public CompetetiveSwimmer copy() {
+        CompetetiveSwimmer swimmer = new CompetetiveSwimmer(getName(), getBirthdate(), getAddress(), getPostnr(), getCity(), getPhone(), getMail());
+        TrainingResult originalTR = getBestTrainingResult(Discipline.BUTTERFLY);
+        TrainingResult newTR = new TrainingResult(Discipline.BUTTERFLY, originalTR.getTime(), originalTR.getDate());
+        swimmer.setBestTrainingResult(newTR);
+        originalTR = getBestTrainingResult(Discipline.CRAWL);
+        newTR = new TrainingResult(Discipline.CRAWL, originalTR.getTime(), originalTR.getDate());
+        swimmer.setBestTrainingResult(newTR);
+        originalTR = getBestTrainingResult(Discipline.BACKSTROKE);
+        newTR = new TrainingResult(Discipline.BACKSTROKE, originalTR.getTime(), originalTR.getDate());
+        swimmer.setBestTrainingResult(newTR);
+        originalTR = getBestTrainingResult(Discipline.BREASTSTROKE);
+        newTR = new TrainingResult(Discipline.BREASTSTROKE, originalTR.getTime(), originalTR.getDate());
+        swimmer.setBestTrainingResult(newTR);
+        for (CompetetiveResult originalCR : competetiveResults){
+            CompetetiveResult newCR = new CompetetiveResult(originalCR.getDiscipline(), originalCR.getTime(), originalCR.getDate(), originalCR.getCompetition(), originalCR.getRanking());
+            swimmer.addCompetetiveResult(newCR);
+        }
+        return swimmer;
     }
 
     @Override
