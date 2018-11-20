@@ -9,6 +9,6 @@ package delfin_gruppe10.domainlogic;
  *
  * @author Lukas Bjørnvad
  */
-public enum TabelEnum {
+public enum TableEnum {
     NORM,ARR,COMP
 }

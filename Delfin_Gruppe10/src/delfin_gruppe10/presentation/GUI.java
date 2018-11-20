@@ -21,7 +21,7 @@ public class GUI extends javax.swing.JFrame {
 
     MasterSystem k = new MasterSystem(true);
     private Member editedMember = null;
-    TabelEnum tab;
+    TableEnum tab;
 
     /**
      * Creates new form GUI
@@ -170,7 +170,7 @@ public class GUI extends javax.swing.JFrame {
         CActive2 = new javax.swing.JRadioButton();
         Register1 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        EMemberMsgBox = new javax.swing.JTextArea();
         RemoveB = new javax.swing.JButton();
         buttonGroup5 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
@@ -1358,13 +1358,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jTextArea3.setEditable(false);
-        jTextArea3.setBackground(new java.awt.Color(255, 255, 204));
-        jTextArea3.setColumns(15);
-        jTextArea3.setRows(4);
-        jTextArea3.setAutoscrolls(false);
-        jTextArea3.setPreferredSize(new java.awt.Dimension(152, 76));
-        jScrollPane5.setViewportView(jTextArea3);
+        EMemberMsgBox.setEditable(false);
+        EMemberMsgBox.setBackground(new java.awt.Color(255, 255, 204));
+        EMemberMsgBox.setColumns(15);
+        EMemberMsgBox.setRows(4);
+        EMemberMsgBox.setAutoscrolls(false);
+        EMemberMsgBox.setPreferredSize(new java.awt.Dimension(152, 76));
+        jScrollPane5.setViewportView(EMemberMsgBox);
 
         RemoveB.setText("Slet");
         RemoveB.addActionListener(new java.awt.event.ActionListener() {
@@ -1895,11 +1895,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Tbirthdate2ActionPerformed
 
     private void Register1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Register1ActionPerformed
-        boolean active = false;
-        if (CActive2.isSelected()){
-            active = true;
+        try {
+            boolean active = false;
+            if (CActive2.isSelected()) {
+                active = true;
+            }
+            k.editMember(editedMember.getName(), Tname2.getText(), Tbirthdate2.getText(), Taddress2.getText(), Tac2.getText(), Tcity2.getText(), Tphone2.getText(), Tmail2.getText(), active);
+            EMemberMsgBox.setText("Member: " + editedMember.getName() + "\nsuccesfully edited.");
+        } catch (Exception e) {
+            EMemberMsgBox.setText(e.getMessage());
         }
-        k.editMember(editedMember.getName(), Tname2.getText(), Tbirthdate2.getText(), Taddress2.getText(), Tac2.getText(), Tcity2.getText(), Tphone2.getText(), Tmail2.getText(), active);
     }//GEN-LAST:event_Register1ActionPerformed
 
     private void ChooseMemberComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChooseMemberComboBoxActionPerformed
@@ -1938,12 +1943,17 @@ public class GUI extends javax.swing.JFrame {
         this.Choose.setSize(Choose.getPreferredSize());
         this.EMemberF.dispose();
         
-        k.deleteMember(editedMember.getName());
-        editedMember = null;
-          ArrayList<Member> members = k.getAllMembers();
-        ChooseMemberComboBox.removeAllItems();
-        for (Member member : members) {
-            ChooseMemberComboBox.addItem(member.getName());
+        try {
+            k.deleteMember(editedMember.getName());
+            editedMember = null;
+            ArrayList<Member> members = k.getAllMembers();
+            ChooseMemberComboBox.removeAllItems();
+            for (Member member : members) {
+                ChooseMemberComboBox.addItem(member.getName());
+            }
+            EMemberMsgBox.setText("Member: " + editedMember.getName() + "\nsuccesfully deleted.");
+        } catch (Exception e) {
+            EMemberMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_RemoveBActionPerformed
 
@@ -2008,7 +2018,7 @@ public class GUI extends javax.swing.JFrame {
     Sets up the tables used to show the members.
     It needs a jTable for modeling, and Enum for identifying what parts needs to be loaded 
     */
-    public void tableSet(javax.swing.JTable jTable, TabelEnum t){
+    public void tableSet(javax.swing.JTable jTable, TableEnum t){
          ArrayList<Member> members = k.getAllMembers();
         
         DateTimeFormatter formatter;
@@ -2093,6 +2103,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Cplacement;
     private javax.swing.JTextField Ctime;
     private javax.swing.JFrame EMemberF;
+    private javax.swing.JTextArea EMemberMsgBox;
     private javax.swing.JButton Edit;
     private javax.swing.JTextField LeftToPayField;
     private javax.swing.JFrame MemberL;
@@ -2189,7 +2200,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JFrame pFormand;
     private javax.swing.JFrame pKasserer;
     private javax.swing.JFrame pTrainer;
