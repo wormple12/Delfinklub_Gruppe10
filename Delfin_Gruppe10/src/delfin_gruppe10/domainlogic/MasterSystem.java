@@ -121,6 +121,10 @@ public class MasterSystem implements MasterInterface {
     public void addTrainingResult(CompetetiveSwimmer member, Discipline discipline, String time, String date) {
     TrainingResult og = member.getBestTrainingResult(discipline);
     TrainingResult nw = new TrainingResult(discipline, time, date);
+    
+    if(isFaster(og.getTime(), nw.getTime())){
+        member.setBestTrainingResult(nw);
+    }
     }
 
     @Override
