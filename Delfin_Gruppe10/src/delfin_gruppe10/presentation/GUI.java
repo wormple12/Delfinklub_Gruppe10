@@ -87,7 +87,7 @@ public class GUI extends javax.swing.JFrame {
         Register = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        AMemberMsgBox = new javax.swing.JTextArea();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         Choose = new javax.swing.JFrame();
@@ -537,10 +537,11 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 204));
-        jTextArea1.setColumns(15);
-        jTextArea1.setRows(4);
-        jScrollPane2.setViewportView(jTextArea1);
+        AMemberMsgBox.setEditable(false);
+        AMemberMsgBox.setBackground(new java.awt.Color(255, 255, 204));
+        AMemberMsgBox.setColumns(15);
+        AMemberMsgBox.setRows(4);
+        jScrollPane2.setViewportView(AMemberMsgBox);
 
         javax.swing.GroupLayout AMemberFLayout = new javax.swing.GroupLayout(AMemberF.getContentPane());
         AMemberF.getContentPane().setLayout(AMemberFLayout);
@@ -1897,12 +1898,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ChooseMemberComboBoxActionPerformed
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        this.jLabel1.setText("Registreret");
+        try {
         boolean active = false;
         if (CActive.isSelected()){
             active = true;
         }
         k.addMember(Tname.getText(), Tbirthdate.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText(), active);
+        AMemberMsgBox.setText("Member: "+Tname.getText()+"\nsuccesfully registered.");
+        } catch (IllegalArgumentException e){
+            AMemberMsgBox.setText(e.getMessage());
+        }
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void TaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaddressActionPerformed
@@ -2065,6 +2070,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton ACResult;
     private javax.swing.JComboBox<String> ACompL;
     private javax.swing.JFrame AMemberF;
+    private javax.swing.JTextArea AMemberMsgBox;
     private javax.swing.JButton AMemeber;
     private javax.swing.JButton APayment;
     private javax.swing.JButton ATResult;
@@ -2194,7 +2200,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JFrame pFormand;
     private javax.swing.JFrame pKasserer;
