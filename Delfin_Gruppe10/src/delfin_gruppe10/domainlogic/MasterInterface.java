@@ -25,16 +25,18 @@ public interface MasterInterface {
     
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers();
     
-    public void addToCompetetiveTeam(Member member, boolean add);
+    public void addToCompetetiveTeam(Member member);
     
-    public void addTrainingResult(Member member, Discipline discipline, String time, String date);
+    public void addTrainingResult(CompetetiveSwimmer  member, Discipline discipline, String time, String date);
     
-    public void addCompetetiveResult(Member member, Discipline discipline, String time, String date, String competition, int ranking);
+    public void addCompetetiveResult(CompetetiveSwimmer member, Discipline discipline, String time, String date, String competition, int ranking);
     
     public ArrayList<CompetetiveSwimmer> getTop5(Discipline d);
     
     public void registerPayment(String name, double amount);
     
     public ArrayList<Member> getMembersInArrears();
+    
+    public CompetetiveSwimmer getCompSwim(String name);
             
 }

@@ -5,6 +5,8 @@
  */
 package delfin_gruppe10.domainlogic;
 
+import java.util.Objects;
+
 /**
  *
  * @author HP
@@ -47,6 +49,30 @@ public class TrainingResult {
 //        formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 //        String formattedTime = formatter.format(time);
         return "(time=" + time + ", date=" + date + ')';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TrainingResult other = (TrainingResult) obj;
+        if (!Objects.equals(this.time, other.time)) {
+            return false;
+        }
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        if (this.discipline != other.discipline) {
+            return false;
+        }
+        return true;
     }
 
 }

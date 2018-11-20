@@ -6,7 +6,13 @@
 package delfin_gruppe10.domainlogic;
 
 import delfin_gruppe10.data.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -30,7 +36,16 @@ public class MasterSystem implements MasterInterface {
 
     public MasterSystem(boolean test) {
         if (test) {
-            dataAccessor = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
+            try {
+                Path testPath1 = Paths.get(TEST_MEMBER_PATH);
+                Path testPath2 = Paths.get(TEST_COMPETETIVE_PATH);
+                Files.deleteIfExists(testPath1);
+                Files.deleteIfExists(testPath2);
+            } catch (IOException e) {
+                // do nuthin' about it
+            } finally {
+                dataAccessor = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
+            }
         } else {
             dataAccessor = new FileHandler(MEMBER_PATH, COMPETETIVE_PATH);
         }
@@ -107,27 +122,101 @@ public class MasterSystem implements MasterInterface {
     // ===========================
     @Override
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataAccessor.readCompetetivesFromFile();
     }
 
     @Override
-    public void addToCompetetiveTeam(Member member, boolean add) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addToCompetetiveTeam(Member member) {
+        CompetetiveSwimmer swimmer = new CompetetiveSwimmer(member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail());
+        dataAccessor.writeCompetetiveToFile(swimmer);
     }
 
     @Override
-    public void addTrainingResult(Member member, Discipline discipline, String time, String date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addTrainingResult(CompetetiveSwimmer member, Discipline discipline, String time, String date) {
+    try{
+    TrainingResult og = member.getBestTrainingResult(discipline);
+    TrainingResult nw = new TrainingResult(discipline, time, date);
+    CompetetiveSwimmer copy = member.clone();
+    if(isFaster(og.getTime(), nw.getTime())){
+        copy.setBestTrainingResult(nw);
+        dataAccessor.editCompetetiveInFile(member, copy);
+    }
+    } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void addCompetetiveResult(Member member, Discipline discipline, String time, String date, String competition, int ranking) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addCompetetiveResult(CompetetiveSwimmer member, Discipline discipline, String time, String date, String competition, int ranking) {
+       try{
+        CompetetiveSwimmer updated = member.clone();
+        CompetetiveResult r = new CompetetiveResult(discipline,time,date,competition,ranking); 
+        updated.addCompetetiveResult(r);
+        dataAccessor.editCompetetiveInFile(member, updated);
+        addTrainingResult(member, discipline, time, date);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public ArrayList<CompetetiveSwimmer> getTop5(Discipline d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // should only be active ones?
+        ArrayList<CompetetiveSwimmer> swimmers = getCompetetiveSwimmers();
+        ArrayList<CompetetiveSwimmer> top5 = new ArrayList<>();
+        for (CompetetiveSwimmer swimmer : swimmers){
+            TrainingResult result = swimmer.getBestTrainingResult(d);
+            if (result != null){ // never null! there's a default value -so change this
+                top5.add(swimmer);
+            }
+        }
+        
+        top5.sort(new Comparator<CompetetiveSwimmer>() {
+            @Override
+            public int compare(CompetetiveSwimmer c1, CompetetiveSwimmer c2) {
+                String result1 = c1.getBestTrainingResult(d).getTime();
+                String result2 = c2.getBestTrainingResult(d).getTime();
+                if (!isFaster(result1, result2) == !isFaster(result2, result1)) {
+                    return 0;
+                }
+                return isFaster(result2, result1) ? -1 : 1;
+            }
+        });
+        
+        top5.subList(5, top5.size()).clear(); // trims list to a size of 5
+        return top5;
+    }
+    
+    private boolean isFaster(String og, String nw){
+     boolean faster = false;
+     int minutes,seconds,nanoseconds;
+     minutes = Integer.parseInt(og.substring(0, 2));
+     seconds = Integer.parseInt(og.substring(3,5));
+     nanoseconds = Integer.parseInt(og.substring(6, 8));
+     int nminutes, nseconds, nnanoseconds;
+     nminutes = Integer.parseInt(nw.substring(0, 2));
+     nseconds = Integer.parseInt(nw.substring(3,5));
+     nnanoseconds = Integer.parseInt(nw.substring(6, 8));
+     
+     if(minutes > nminutes){
+       faster = true;  
+     }else if(minutes == nminutes && seconds>nseconds){
+         faster = true;
+     }else if(minutes == nminutes && seconds==nseconds && nanoseconds > nnanoseconds){
+         faster = true;
+     }
+     return faster;
+    } 
+
+    @Override
+    public CompetetiveSwimmer getCompSwim(String name) {
+         ArrayList<CompetetiveSwimmer> members = dataAccessor.readCompetetivesFromFile();
+        for (CompetetiveSwimmer member : members) {
+            if (member.getName().equalsIgnoreCase(name)) {
+                return member;
+            }
+        }
+        throw new IllegalArgumentException("No swimmer exists with that name.");
     }
 
 }

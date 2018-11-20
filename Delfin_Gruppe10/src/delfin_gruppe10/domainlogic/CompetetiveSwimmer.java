@@ -6,6 +6,7 @@
 package delfin_gruppe10.domainlogic;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -21,10 +22,10 @@ public class CompetetiveSwimmer extends Member {
 
     public CompetetiveSwimmer(String name, String birthdate, String address, String postnr, String city, String phone, String mail) {
         super(name, birthdate, address, postnr, city, phone, mail, true);
-        bestButterflyResult = new TrainingResult(Discipline.BUTTERFLY, "00:00:00", "01-01-2000");
-        bestCrawlResult = new TrainingResult(Discipline.CRAWL, "00:00:00", "01-01-2000");
-        bestBackstrokeResult = new TrainingResult(Discipline.BACKSTROKE, "00:00:00", "01-01-2000");
-        bestBreaststrokeResult = new TrainingResult(Discipline.BREASTSTROKE, "00:00:00", "01-01-2000");
+        bestButterflyResult = new TrainingResult(Discipline.BUTTERFLY, "59:59:00", "01-01-2000");
+        bestCrawlResult = new TrainingResult(Discipline.CRAWL, "59:59:00", "01-01-2000");
+        bestBackstrokeResult = new TrainingResult(Discipline.BACKSTROKE, "59:59:00", "01-01-2000");
+        bestBreaststrokeResult = new TrainingResult(Discipline.BREASTSTROKE, "59:59:00", "01-01-2000");
         competetiveResults = new ArrayList<>();
     }
 
@@ -87,5 +88,41 @@ public class CompetetiveSwimmer extends Member {
         str.append("}");
         return str.toString();
     }
+    
+    @Override
+    public CompetetiveSwimmer clone() throws CloneNotSupportedException {
+        return (CompetetiveSwimmer) super.clone();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CompetetiveSwimmer other = (CompetetiveSwimmer) obj;
+        if (!Objects.equals(this.bestButterflyResult, other.bestButterflyResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.bestCrawlResult, other.bestCrawlResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.bestBackstrokeResult, other.bestBackstrokeResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.bestBreaststrokeResult, other.bestBreaststrokeResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.competetiveResults, other.competetiveResults)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

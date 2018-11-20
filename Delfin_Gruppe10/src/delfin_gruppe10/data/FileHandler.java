@@ -212,7 +212,7 @@ public class FileHandler implements FileHandlerInterface {
             List<String> strings = readFile(competetiveFILE);
             strings.remove(original.toString());
             strings.add(updated.toString());
-            Files.write(FILE, strings);
+            Files.write(competetiveFILE, strings);
         } catch (IOException ex) {
             ex.printStackTrace();
 
