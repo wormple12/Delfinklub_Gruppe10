@@ -6,6 +6,7 @@
 package delfin_gruppe10.domainlogic;
 
 import delfin_gruppe10.data.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -117,13 +118,21 @@ public class MasterSystem implements MasterInterface {
     }
 
     @Override
-    public void addTrainingResult(Member member, Discipline discipline, String time, String date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addTrainingResult(CompetetiveSwimmer member, Discipline discipline, String time, String date) {
+    TrainingResult og = member.getBestTrainingResult(discipline);
+    TrainingResult nw = new TrainingResult(discipline, time, date);
     }
 
     @Override
-    public void addCompetetiveResult(Member member, Discipline discipline, String time, String date, String competition, int ranking) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addCompetetiveResult(CompetetiveSwimmer member, Discipline discipline, String time, String date, String competition, int ranking) {
+       try{
+        CompetetiveSwimmer updated = member.clone();
+        CompetetiveResult r = new CompetetiveResult(discipline,time,date,competition,ranking); 
+        updated.addCompetetiveResult(r);
+        dataAccessor.editCompetetiveInFile(member, updated);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -137,5 +146,26 @@ public class MasterSystem implements MasterInterface {
         }
         return top5;
     }
+    
+    private boolean isFaster(String og, String nw){
+     boolean faster = false;
+     int minutes,seconds,nanoseconds;
+     minutes = Integer.parseInt(og.substring(0, 2));
+     seconds = Integer.parseInt(og.substring(3,5));
+     nanoseconds = Integer.parseInt(og.substring(6, 8));
+     int nminutes, nseconds, nnanoseconds;
+     nminutes = Integer.parseInt(nw.substring(0, 2));
+     nseconds = Integer.parseInt(nw.substring(3,5));
+     nnanoseconds = Integer.parseInt(nw.substring(6, 8));
+     
+     if(minutes > nminutes){
+       faster = true;  
+     }else if(minutes == nminutes && seconds>nseconds){
+         faster = true;
+     }else if(minutes == nminutes && seconds==nseconds && nanoseconds > nnanoseconds){
+         faster = true;
+     }
+     return faster;
+    } 
 
 }
