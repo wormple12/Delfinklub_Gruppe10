@@ -1727,9 +1727,7 @@ public class GUI extends javax.swing.JFrame {
         this.jLabel3.setText("Tilføjet");
         String na = (String) ACompL.getSelectedItem();
         Member m = k.getMember(na);
-        Boolean isSenior = false;
-        if(m.getAge()>=18) isSenior = true;
-        k.addToCompetetiveTeam(m, isSenior);
+        k.addToCompetetiveTeam(m);
         
     }//GEN-LAST:event_Confirm1ActionPerformed
 

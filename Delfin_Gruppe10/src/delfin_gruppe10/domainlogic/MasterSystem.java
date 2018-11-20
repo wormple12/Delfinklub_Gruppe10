@@ -107,12 +107,13 @@ public class MasterSystem implements MasterInterface {
     // ===========================
     @Override
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataAccessor.readCompetetivesFromFile();
     }
 
     @Override
-    public void addToCompetetiveTeam(Member member, boolean add) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addToCompetetiveTeam(Member member) {
+        CompetetiveSwimmer swimmer = new CompetetiveSwimmer(member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail());
+        dataAccessor.writeCompetetiveToFile(swimmer);
     }
 
     @Override
@@ -127,7 +128,14 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public ArrayList<CompetetiveSwimmer> getTop5(Discipline d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // should only be active ones?
+        ArrayList<CompetetiveSwimmer> swimmers = getCompetetiveSwimmers();
+        ArrayList<CompetetiveSwimmer> top5 = new ArrayList<>();
+        for (CompetetiveSwimmer swimmer : swimmers){
+            TrainingResult current = swimmer.getBestTrainingResult(d);
+            
+        }
+        return top5;
     }
 
 }
