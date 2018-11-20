@@ -44,32 +44,20 @@ public class Main {
         
         CompetetiveResult result2 = new CompetetiveResult(Discipline.CRAWL, "12:07:58", "26-12-2017", "The Easter Parade", 10);
         CompetetiveResult result3 = new CompetetiveResult(Discipline.BREASTSTROKE, "57:29:99", "31-05-2018", "The Easter Parade", 19);
-        comp2.addCompetetiveResult(result2);
-        comp2.addCompetetiveResult(result3);
         
-//        System.out.println(member);
-//        System.out.println(member2);
-//        System.out.println(member4);
-//        System.out.println(comp1);
-//        System.out.println(comp2);
-//        System.out.println(comp4);
-//        System.out.println("");
+        //System.out.println(fH.readMembersFromFile());
+        //fH.editMemberInFile(member2, member);
+        //System.out.println(fH.readMembersFromFile().get(0));
         
-//        fH.writeMemberToFile(member);
-//        fH.writeMemberToFile(member2);
-//        fH.writeMemberToFile(member4);
-//        fH.writeCompetetiveToFile(comp1);
-//        fH.writeCompetetiveToFile(comp2);
-//        fH.writeCompetetiveToFile(comp4);
+        System.out.println(fH.readMembersInArrearsFromFile().get(0));
         
-        ArrayList<Member> members = fH.readMembersFromFile();
-        ArrayList<CompetetiveSwimmer> swimmers = fH.readCompetetivesFromFile();
-        for (Member myMember : members){
-            System.out.println(myMember);
-        }
-        for (CompetetiveSwimmer swimmer : swimmers){
-            System.out.println(swimmer);
-        }
-        
+//        ArrayList<Member> members = fH.readMembersFromFile();
+//        ArrayList<CompetetiveSwimmer> swimmers = fH.readCompetetivesFromFile();
+//        for (Member myMember : members){
+//            System.out.println(myMember);
+//        }
+//        for (CompetetiveSwimmer swimmer : swimmers){
+//            System.out.println(swimmer);
+//        }
     }
 }

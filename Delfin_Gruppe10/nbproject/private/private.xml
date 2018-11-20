@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/delfin_gruppe10/data/Member.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/domainlogic/CompetetiveResult.java</file>
+            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/domainlogic/TrainingResult.java</file>
+            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/test/delfin_gruppe10/domainlogic/CompetitiveSwimmerTest.java</file>
+            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/data/FileHandler.java</file>
+            <file>file:/C:/Users/Ludvig/Documents/Datamatiker/delfin/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/Main.java</file>
+=======
             <file>file:/C:/Users/PC%202%202016%20SDC-privat/OneDrive/NetBeansProjects/aaaGit/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/domainlogic/MasterInterface.java</file>
             <file>file:/C:/Users/PC%202%202016%20SDC-privat/OneDrive/NetBeansProjects/aaaGit/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/domainlogic/MasterSystem.java</file>
             <file>file:/C:/Users/PC%202%202016%20SDC-privat/OneDrive/NetBeansProjects/aaaGit/Delfinklub_Gruppe10/Delfin_Gruppe10/test/delfin_gruppe10/domainlogic/MasterSystemTest.java</file>
             <file>file:/C:/Users/PC%202%202016%20SDC-privat/OneDrive/NetBeansProjects/aaaGit/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/Main.java</file>
             <file>file:/C:/Users/PC%202%202016%20SDC-privat/OneDrive/NetBeansProjects/aaaGit/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/data/FileHandler.java</file>
             <file>file:/C:/Users/PC%202%202016%20SDC-privat/OneDrive/NetBeansProjects/aaaGit/Delfinklub_Gruppe10/Delfin_Gruppe10/src/delfin_gruppe10/presentation/GUI.java</file>
+>>>>>>> b7d5019932aa4d0b5c297f660f05852e28d0e183
         </group>
     </open-files>
 </project-private>

@@ -93,7 +93,6 @@ public class FileHandler implements FileHandlerInterface {
             Files.write(FILE, strings);
         } catch (IOException ex) {
             ex.printStackTrace();
-
         }
     }
 
@@ -118,7 +117,7 @@ public class FileHandler implements FileHandlerInterface {
                 membersNotPaid.add(allMembers.get(i));
             }
         }
-        return membersNotPaid;
+            return membersNotPaid;
     }
     
     // ===================================================
