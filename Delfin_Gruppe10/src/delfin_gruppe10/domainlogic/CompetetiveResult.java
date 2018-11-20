@@ -5,6 +5,8 @@
  */
 package delfin_gruppe10.domainlogic;
 
+import java.util.Objects;
+
 /**
  *
  * @author HP
@@ -41,5 +43,28 @@ public class CompetetiveResult extends TrainingResult {
 //        String formattedTime = formatter.format(time);
         return "(discipline=" + getDiscipline() + ", time=" + getTime() + ", date=" + getDate() + ", competition=" + competition + ", ranking=" + ranking + ')';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CompetetiveResult other = (CompetetiveResult) obj;
+        if (this.ranking != other.ranking) {
+            return false;
+        }
+        if (!Objects.equals(this.competition, other.competition)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }

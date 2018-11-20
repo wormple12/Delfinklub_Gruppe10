@@ -24,6 +24,8 @@ import org.junit.runners.MethodSorters;
 public class MasterSystemTest {
     
     private static ArrayList<Member> members = new ArrayList();
+    private static ArrayList<CompetetiveSwimmer> swimmers = new ArrayList();
+    private static MasterSystem instance = new MasterSystem(true);
     
     public MasterSystemTest() {
     }
@@ -45,7 +47,6 @@ public class MasterSystemTest {
                 "06-06-2001",
                 "Elm Street 6", "6666", "Realm of Nightmares",
                 "66666666", "S6C6A6R6yyy@yes.net", true));
-        MasterSystem instance = new MasterSystem(true);
         instance.addMember(members.get(0).getName(), members.get(0).getBirthdate(), members.get(0).getAddress(), members.get(0).getPostnr(), members.get(0).getCity(), members.get(0).getPhone(), members.get(0).getMail(), members.get(0).isActive());
         instance.addMember(members.get(1).getName(), members.get(1).getBirthdate(), members.get(1).getAddress(), members.get(1).getPostnr(), members.get(1).getCity(), members.get(1).getPhone(), members.get(1).getMail(), members.get(1).isActive());
         instance.addMember(members.get(2).getName(), members.get(2).getBirthdate(), members.get(2).getAddress(), members.get(2).getPostnr(), members.get(2).getCity(), members.get(2).getPhone(), members.get(2).getMail(), members.get(2).isActive());
@@ -69,7 +70,6 @@ public class MasterSystemTest {
     @Test
     public void test01GetAllMembers() {
         System.out.println("getAllMembers");
-        MasterSystem instance = new MasterSystem(true);
         ArrayList<Member> expResult = members;
         ArrayList<Member> result = instance.getAllMembers();
         assertEquals(expResult, result);
@@ -82,7 +82,6 @@ public class MasterSystemTest {
     public void test02GetMember() {
         System.out.println("getMember");
         String name = "Jack McDonalds";
-        MasterSystem instance = new MasterSystem(true);
         Member expResult = members.get(1);
         Member result = instance.getMember(name);
         assertEquals(expResult, result);
@@ -102,7 +101,6 @@ public class MasterSystemTest {
         String phone = "12345678";
         String mail = "ariel@seamail.sea";
         boolean active = false;
-        MasterSystem instance = new MasterSystem(true);
         
         instance.addMember(name, birthdate, address, postnr, city, phone, mail, active);
         members.add(new Member(name, birthdate, address, postnr, city, phone, mail, active));
@@ -117,7 +115,6 @@ public class MasterSystemTest {
     @Test
     public void test04EditMember() {
         System.out.println("editMember");
-        MasterSystem instance = new MasterSystem(true);
         String originalName = "Simon Norup";
         Member originalMember = instance.getMember(originalName);
         String name = "Simon Asholt Norup";
@@ -142,7 +139,6 @@ public class MasterSystemTest {
     @Test
     public void test05DeleteMember() {
         System.out.println("deleteMember");
-        MasterSystem instance = new MasterSystem(true);
         String name = "Your New Neighbor";
         instance.deleteMember(name);
         members.remove(2);
@@ -163,7 +159,6 @@ public class MasterSystemTest {
     @Test
     public void test06RegisterPayment() {
         System.out.println("registerPayment");
-        MasterSystem instance = new MasterSystem(true);
         String name = "Simon Asholt Norup";
         double amount = 600.;
         
@@ -180,81 +175,78 @@ public class MasterSystemTest {
     @Test
     public void test07GetMembersInArrears() {
         System.out.println("getMembersInArrears");
-        MasterSystem instance = new MasterSystem(true);
         String name = "Simon Asholt Norup";
         instance.registerPayment(name, 1000.);
-        members.remove(0);
-        ArrayList<Member> expResult = members;
+        ArrayList<Member> expResult = (ArrayList<Member>) members.clone();
+        expResult.remove(0);
         ArrayList<Member> result = instance.getMembersInArrears();
         assertEquals(expResult, result);
     }
     
-    // ==========================0
+    // ==========================
     
     
-    
-    
-
-    /**
-     * Test of getCompetetiveSwimmers method, of class MasterSystem.
-     */
-    @Test
-    public void test08GetCompetetiveSwimmers() {
-        System.out.println("getCompetetiveSwimmers");
-        MasterSystem instance = new MasterSystem(true);
-        ArrayList<CompetetiveSwimmer> expResult = null;
-        ArrayList<CompetetiveSwimmer> result = instance.getCompetetiveSwimmers();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
+        /**
      * Test of addToCompetetiveTeam method, of class MasterSystem.
      */
     @Test
-    public void test09AddToCompetetiveTeam() {
+    public void test08AddToCompetetiveTeam() {
         System.out.println("addToCompetetiveTeam");
-        CompetetiveSwimmer member = null;
-        
-        MasterSystem instance = new MasterSystem(true);
-        instance.addToCompetetiveTeam(member);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.addToCompetetiveTeam(members.get(0));
+        instance.addToCompetetiveTeam(members.get(1));
+        instance.addToCompetetiveTeam(members.get(2));
+        swimmers.add(new CompetetiveSwimmer(members.get(0).getName(), members.get(0).getBirthdate(), members.get(0).getAddress(), members.get(0).getPostnr(), members.get(0).getCity(), members.get(0).getPhone(), members.get(0).getMail()));
+        swimmers.add(new CompetetiveSwimmer(members.get(1).getName(), members.get(1).getBirthdate(), members.get(1).getAddress(), members.get(1).getPostnr(), members.get(1).getCity(), members.get(1).getPhone(), members.get(1).getMail()));
+        swimmers.add(new CompetetiveSwimmer(members.get(2).getName(), members.get(2).getBirthdate(), members.get(2).getAddress(), members.get(2).getPostnr(), members.get(2).getCity(), members.get(2).getPhone(), members.get(2).getMail()));
     }
-
-    /**
+    
+        /**
      * Test of addTrainingResult method, of class MasterSystem.
      */
     @Test
-    public void test10AddTrainingResult() {
+    public void test09AddTrainingResult() {
         System.out.println("addTrainingResult");
-        CompetetiveSwimmer member = null;
-        Discipline discipline = null;
-        String time = "";
-        String date = "";
-        MasterSystem instance = new MasterSystem(true);
-        instance.addTrainingResult(member, discipline, time, date);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.addTrainingResult(swimmers.get(0), Discipline.BREASTSTROKE, "12:55:78", "18-12-2017");
+        instance.addTrainingResult(swimmers.get(0), Discipline.BREASTSTROKE, "12:22:11", "28-01-2018");
+        instance.addTrainingResult(swimmers.get(0), Discipline.BREASTSTROKE, "13:56:79", "02-02-2018");
+        instance.addTrainingResult(swimmers.get(0), Discipline.CRAWL, "02:33:13", "17-05-2016");
+        instance.addTrainingResult(swimmers.get(1), Discipline.BREASTSTROKE, "15:04:10", "18-12-2017");
+        instance.addTrainingResult(swimmers.get(1), Discipline.CRAWL, "00:22:99", "02-02-2018");
+        instance.addTrainingResult(swimmers.get(2), Discipline.CRAWL, "02:12:01", "07-06-2018");
+        
+        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "12:55:78", "18-12-2017"));
+        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "12:22:11", "28-01-2018"));
+        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "13:56:79", "02-02-2018"));
+        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.CRAWL, "02:33:13", "17-05-2016"));
+        swimmers.get(1).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "15:04:10", "18-12-2017"));
+        swimmers.get(1).setBestTrainingResult(new TrainingResult(Discipline.CRAWL, "00:22:99", "02-02-2018"));
+        swimmers.get(2).setBestTrainingResult(new TrainingResult(Discipline.CRAWL, "02:12:01", "07-06-2018"));
     }
 
     /**
      * Test of addCompetetiveResult method, of class MasterSystem.
      */
     @Test
-    public void test11AddCompetetiveResult() {
+    public void test10AddCompetetiveResult() {
         System.out.println("addCompetetiveResult");
-        CompetetiveSwimmer member = null;
-        Discipline discipline = null;
-        String time = "";
-        String date = "";
-        String competition = "";
-        int ranking = 0;
-        MasterSystem instance = new MasterSystem(true);
-        instance.addCompetetiveResult(member, discipline, time, date, competition, ranking);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.addCompetetiveResult(swimmers.get(2), Discipline.BREASTSTROKE, "08:44:77", "31-12-1999", "The Old Games", 2);
+        instance.addCompetetiveResult(swimmers.get(1), Discipline.BREASTSTROKE, "08:44:76", "31-12-1999", "The Old Games", 1);
+        instance.addCompetetiveResult(swimmers.get(2), Discipline.BUTTERFLY, "03:29:29", "31-12-1999", "The Old Games", 6);
+        swimmers.get(2).addCompetetiveResult(new CompetetiveResult(Discipline.BREASTSTROKE, "08:44:77", "31-12-1999", "The Old Games", 2));
+        swimmers.get(1).addCompetetiveResult(new CompetetiveResult(Discipline.BREASTSTROKE, "08:44:76", "31-12-1999", "The Old Games", 1));
+        swimmers.get(2).addCompetetiveResult(new CompetetiveResult(Discipline.BUTTERFLY, "03:29:29", "31-12-1999", "The Old Games", 6));
+    }
+
+    /**
+     * Test of getCompetetiveSwimmers method, of class MasterSystem.
+     */
+    @Test
+    public void test11GetCompetetiveSwimmers() {
+        System.out.println("getCompetetiveSwimmers");
+        
+        ArrayList<CompetetiveSwimmer> expResult = swimmers;
+        ArrayList<CompetetiveSwimmer> result = instance.getCompetetiveSwimmers();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -264,7 +256,6 @@ public class MasterSystemTest {
     public void test12GetTop5() {
         System.out.println("getTop5");
         Discipline d = null;
-        MasterSystem instance = new MasterSystem(true);
         ArrayList<CompetetiveSwimmer> expResult = null;
         ArrayList<CompetetiveSwimmer> result = instance.getTop5(d);
         assertEquals(expResult, result);

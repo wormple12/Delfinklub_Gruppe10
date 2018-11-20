@@ -6,8 +6,13 @@
 package delfin_gruppe10.domainlogic;
 
 import delfin_gruppe10.data.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -31,7 +36,16 @@ public class MasterSystem implements MasterInterface {
 
     public MasterSystem(boolean test) {
         if (test) {
-            dataAccessor = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
+            try {
+                Path testPath1 = Paths.get(TEST_MEMBER_PATH);
+                Path testPath2 = Paths.get(TEST_COMPETETIVE_PATH);
+                Files.deleteIfExists(testPath1);
+                Files.deleteIfExists(testPath2);
+            } catch (IOException e) {
+                // do nuthin' about it
+            } finally {
+                dataAccessor = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
+            }
         } else {
             dataAccessor = new FileHandler(MEMBER_PATH, COMPETETIVE_PATH);
         }
@@ -141,9 +155,25 @@ public class MasterSystem implements MasterInterface {
         ArrayList<CompetetiveSwimmer> swimmers = getCompetetiveSwimmers();
         ArrayList<CompetetiveSwimmer> top5 = new ArrayList<>();
         for (CompetetiveSwimmer swimmer : swimmers){
-            TrainingResult current = swimmer.getBestTrainingResult(d);
-            
+            TrainingResult result = swimmer.getBestTrainingResult(d);
+            if (result != null){ // never null! there's a default value -so change this
+                top5.add(swimmer);
+            }
         }
+        
+        top5.sort(new Comparator<CompetetiveSwimmer>() {
+            @Override
+            public int compare(CompetetiveSwimmer c1, CompetetiveSwimmer c2) {
+                String result1 = c1.getBestTrainingResult(d).getTime();
+                String result2 = c2.getBestTrainingResult(d).getTime();
+                if (!isFaster(result1, result2) == !isFaster(result2, result1)) {
+                    return 0;
+                }
+                return isFaster(result2, result1) ? -1 : 1;
+            }
+        });
+        
+        top5.subList(5, top5.size()).clear(); // trims list to a size of 5
         return top5;
     }
     

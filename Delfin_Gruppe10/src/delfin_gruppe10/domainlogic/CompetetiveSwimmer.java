@@ -6,6 +6,7 @@
 package delfin_gruppe10.domainlogic;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -87,8 +88,41 @@ public class CompetetiveSwimmer extends Member {
         str.append("}");
         return str.toString();
     }
-@Override
+    
+    @Override
     public CompetetiveSwimmer clone() throws CloneNotSupportedException {
         return (CompetetiveSwimmer) super.clone();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CompetetiveSwimmer other = (CompetetiveSwimmer) obj;
+        if (!Objects.equals(this.bestButterflyResult, other.bestButterflyResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.bestCrawlResult, other.bestCrawlResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.bestBackstrokeResult, other.bestBackstrokeResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.bestBreaststrokeResult, other.bestBreaststrokeResult)) {
+            return false;
+        }
+        if (!Objects.equals(this.competetiveResults, other.competetiveResults)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
