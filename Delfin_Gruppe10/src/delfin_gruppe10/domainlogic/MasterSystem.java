@@ -175,7 +175,10 @@ public class MasterSystem implements MasterInterface {
             }
         });
         
-        top5.subList(5, top5.size()).clear(); // trims list to a size of 5
+        if (top5.size() > 5){
+            top5.subList(5, top5.size()).clear(); // trims list to a size of 5
+        }
+        
         return top5;
     }
     

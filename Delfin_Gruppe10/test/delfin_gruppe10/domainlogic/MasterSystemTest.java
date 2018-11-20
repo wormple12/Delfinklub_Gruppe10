@@ -260,6 +260,8 @@ public class MasterSystemTest {
         Discipline d = Discipline.BUTTERFLY;
         ArrayList<CompetetiveSwimmer> expResult = new ArrayList<>();
         expResult.add(swimmers.get(2));
+        expResult.add(swimmers.get(0));
+        expResult.add(swimmers.get(1));
         ArrayList<CompetetiveSwimmer> result = instance.getTop5(d);
         assertEquals(expResult, result);
         
@@ -271,7 +273,7 @@ public class MasterSystemTest {
         result = instance.getTop5(d);
         assertEquals(expResult, result);
         
-        d = Discipline.BACKSTROKE;
+        d = Discipline.BREASTSTROKE;
         expResult = new ArrayList<>();
         expResult.add(swimmers.get(1));
         expResult.add(swimmers.get(2));
