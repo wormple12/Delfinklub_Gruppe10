@@ -172,4 +172,15 @@ public class MasterSystem implements MasterInterface {
      return faster;
     } 
 
+    @Override
+    public CompetetiveSwimmer getCompSwim(String name) {
+         ArrayList<CompetetiveSwimmer> members = dataAccessor.readCompetetivesFromFile();
+        for (CompetetiveSwimmer member : members) {
+            if (member.getName().equalsIgnoreCase(name)) {
+                return member;
+            }
+        }
+        throw new IllegalArgumentException("No swimmer exists with that name.");
+    }
+
 }

@@ -36,5 +36,7 @@ public interface MasterInterface {
     public void registerPayment(String name, double amount);
     
     public ArrayList<Member> getMembersInArrears();
+    
+    public CompetetiveSwimmer getCompSwim(String name);
             
 }

@@ -1,0 +1,1 @@
+CompetetiveSwimmer{name=lars larsen, bestButterflyResult:(time=59:59:00, date=01-01-2000), bestCrawlResult:(time=59:59:00, date=01-01-2000), bestBackstrokeResult:(time=59:59:00, date=01-01-2000), bestBreaststrokeResult:(time=59:59:00, date=01-01-2000), competetiveResults:null}
