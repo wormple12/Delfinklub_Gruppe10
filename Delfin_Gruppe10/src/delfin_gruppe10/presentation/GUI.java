@@ -129,7 +129,7 @@ public class GUI extends javax.swing.JFrame {
         Text20 = new javax.swing.JTextField();
         Text21 = new javax.swing.JTextField();
         Cplacement = new javax.swing.JTextField();
-        Confirm2 = new javax.swing.JButton();
+        AddCompR = new javax.swing.JButton();
         CompD = new javax.swing.JComboBox<>();
         Ccomp = new javax.swing.JTextField();
         Text32 = new javax.swing.JTextField();
@@ -142,7 +142,7 @@ public class GUI extends javax.swing.JFrame {
         Text23 = new javax.swing.JTextField();
         Tdate = new javax.swing.JTextField();
         Text24 = new javax.swing.JTextField();
-        Confirm3 = new javax.swing.JButton();
+        addTTime = new javax.swing.JButton();
         TrainD = new javax.swing.JComboBox<>();
         Top5L = new javax.swing.JFrame();
         Top5D = new javax.swing.JComboBox<>();
@@ -1036,11 +1036,11 @@ public class GUI extends javax.swing.JFrame {
 
         Cplacement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        Confirm2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        Confirm2.setText("Tilføj");
-        Confirm2.addActionListener(new java.awt.event.ActionListener() {
+        AddCompR.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        AddCompR.setText("Tilføj");
+        AddCompR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Confirm2ActionPerformed(evt);
+                AddCompRActionPerformed(evt);
             }
         });
 
@@ -1071,7 +1071,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(Text32, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Cdate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Confirm2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddCompR, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AddCTimeLayout.createSequentialGroup()
                         .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1117,7 +1117,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(Text32, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(Confirm2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AddCompR, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1157,10 +1157,10 @@ public class GUI extends javax.swing.JFrame {
         Text24.setEditable(false);
         Text24.setText("Disciplin:");
 
-        Confirm3.setText("Tilføj");
-        Confirm3.addActionListener(new java.awt.event.ActionListener() {
+        addTTime.setText("Tilføj");
+        addTTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Confirm3ActionPerformed(evt);
+                addTTimeActionPerformed(evt);
             }
         });
 
@@ -1175,7 +1175,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(Return12, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Confirm3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addTTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(AddTTimeLayout.createSequentialGroup()
                         .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(TTchoose, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1212,7 +1212,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(Text23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Tdate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(Confirm3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(addTTime, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         Top5L.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1621,9 +1621,10 @@ public class GUI extends javax.swing.JFrame {
         this.pTrainer.dispose();
         
         ACompL.removeAllItems();
-        ArrayList<CompetetiveSwimmer> members = k.getCompetetiveSwimmers();
-        for(CompetetiveSwimmer swimmer : members ){
-        ACompL.addItem(swimmer.getName());
+        ArrayList<Member> members = k.getAllMembers();
+        for(Member member : members ){
+            if(k.getCompetetiveSwimmers().contains(member)) break;
+        ACompL.addItem(member.getName());
         }
     }//GEN-LAST:event_RegisterCPActionPerformed
 
@@ -1632,9 +1633,11 @@ public class GUI extends javax.swing.JFrame {
         this.AddTTime.setSize(AddTTime.getPreferredSize());
         this.pTrainer.dispose();
         
-        String mn =(String) TTchoose.getSelectedItem();
-        CompetetiveSwimmer c = (CompetetiveSwimmer) k.getMember(mn);
-        k.addTrainingResult(c, (Discipline) TrainD.getSelectedItem(),  Ttime1.getText(), Tdate.getText());
+         TTchoose.removeAllItems();
+        ArrayList<CompetetiveSwimmer> c = k.getCompetetiveSwimmers();
+        for(CompetetiveSwimmer k : c){
+            TTchoose.addItem(k.getName());
+        }
     }//GEN-LAST:event_ATResultActionPerformed
 
     private void VMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembersActionPerformed
@@ -1756,11 +1759,14 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CtimeActionPerformed
 
-    private void Confirm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm2ActionPerformed
+    private void AddCompRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCompRActionPerformed
         String mn = (String) CTchoose.getSelectedItem();
-        CompetetiveSwimmer c = (CompetetiveSwimmer) k.getMember(mn);
-        k.addCompetetiveResult(c, (Discipline) CompD.getSelectedItem(), Ctime.getText(), Cdate.getText(), Ccomp.getText(), Integer.parseInt(Cplacement.getText()));
-    }//GEN-LAST:event_Confirm2ActionPerformed
+        CompetetiveSwimmer c = k.getCompSwim(mn);
+       
+        String o = (String) CompD.getSelectedItem();
+        Discipline p = Discipline.valueOf(o);
+        k.addCompetetiveResult(c, p, Ctime.getText(), Cdate.getText(), Ccomp.getText(), Integer.parseInt(Cplacement.getText()));
+    }//GEN-LAST:event_AddCompRActionPerformed
 
     private void Return12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return12ActionPerformed
         this.pTrainer.setVisible(true);
@@ -1776,9 +1782,10 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Ttime1ActionPerformed
 
-    private void Confirm3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Confirm3ActionPerformed
+    private void addTTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTTimeActionPerformed
+        CompetetiveSwimmer l = k.getCompSwim((String) TTchoose.getSelectedItem());
+        k.addTrainingResult(l, Discipline.valueOf((String) TrainD.getSelectedItem()), Ttime1.getText(), Tdate.getText());
+    }//GEN-LAST:event_addTTimeActionPerformed
 
     private void Return13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return13ActionPerformed
         this.pTrainer.setVisible(true);
@@ -1811,11 +1818,7 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(new Object[]{});
             int j = 0;
             CompTable.setValueAt(member.getName(), i, j++);
-            String birthdate = member.getBirthdate().toString();
-            LocalDate date = LocalDate.parse(birthdate);
-            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-            birthdate = formatter.format(date);
-            CompTable.setValueAt(birthdate, i, j++);
+            CompTable.setValueAt(member.getBirthdate(), i, j++);
             CompTable.setValueAt(member.getAddress(), i, j++);
             CompTable.setValueAt(member.getPostnr(), i, j++);
             CompTable.setValueAt(member.getCity(), i, j++);
@@ -1830,13 +1833,19 @@ public class GUI extends javax.swing.JFrame {
         this.Top5L.setSize(Top5L.getPreferredSize());
         this.pTrainer.dispose();
         
-        getTop5table(k.getTop5((Discipline) Top5D.getSelectedItem()));
+        getTop5table(k.getTop5(Discipline.valueOf((String) Top5D.getSelectedItem())));
     }//GEN-LAST:event_STop5ActionPerformed
 
     private void ACResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACResultActionPerformed
         this.AddCTime.setVisible(true);
         this.AddCTime.setSize(AddCTime.getPreferredSize());
         this.pTrainer.dispose();
+        
+        CTchoose.removeAllItems();
+        ArrayList<CompetetiveSwimmer> c = k.getCompetetiveSwimmers();
+        for(CompetetiveSwimmer k : c){
+            CTchoose.addItem(k.getName());
+        }
     }//GEN-LAST:event_ACResultActionPerformed
 
     private void Return2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return2ActionPerformed
@@ -1939,27 +1948,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_RemoveBActionPerformed
 
     private void CTchooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTchooseActionPerformed
-        Object obj = evt.getSource();
-        if(obj== CTchoose){
-            if(CTchoose.getSelectedItem() !=null){
-        Member member = k.getMember((String) CTchoose.getSelectedItem());
-        Ctime.setText("PlaceHolder");
-        Ccomp.setText("PlaceHolder");
-        Cplacement.setText("PlaceHolder");
-            }
-        }
+      
     }//GEN-LAST:event_CTchooseActionPerformed
 
     private void TTchooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TTchooseActionPerformed
-         Object obj = evt.getSource();
-        if(obj== TTchoose){
-            if(TTchoose.getSelectedItem() !=null){
-        Member member = k.getMember((String) TTchoose.getSelectedItem());
-        Ttime1.setText("PlaceHolder");
-        Tdate.setText("PlaceHolder");
-        
-            }
-        }
+       
     }//GEN-LAST:event_TTchooseActionPerformed
 
     private void CcompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CcompActionPerformed
@@ -1970,7 +1963,7 @@ public class GUI extends javax.swing.JFrame {
           Object obj = evt.getSource();
         if(obj== Top5D){
             if(Top5D.getSelectedItem() !=null){
-                getTop5table(k.getTop5((Discipline) Top5D.getSelectedItem()));
+                getTop5table(k.getTop5(Discipline.valueOf((String) Top5D.getSelectedItem())));
         
             }
         }
@@ -2028,11 +2021,7 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(new Object[]{});
             int j = 0;
             jTable.setValueAt(member.getName(), i, j++);
-            String birthdate = member.getBirthdate().toString();
-            LocalDate date = LocalDate.parse(birthdate);
-            formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-            birthdate = formatter.format(date);
-            jTable.setValueAt(birthdate, i, j++);
+            jTable.setValueAt(member.getBirthdate(), i, j++);
             jTable.setValueAt(member.getAddress(), i, j++);
             jTable.setValueAt(member.getPostnr(), i, j++);
             jTable.setValueAt(member.getCity(), i, j++);
@@ -2062,7 +2051,7 @@ public class GUI extends javax.swing.JFrame {
                 out= "Senior";
             }
             T5table.setValueAt(out, i, j++);
-            T5table.setValueAt(top.get(i).getBestTrainingResult((Discipline) Top5D.getSelectedItem()), i, j++);
+            T5table.setValueAt(top.get(i).getBestTrainingResult(Discipline.valueOf((String) Top5D.getSelectedItem())), i, j++);
         }
     }
 
@@ -2075,6 +2064,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton APayment;
     private javax.swing.JButton ATResult;
     private javax.swing.JFrame AddCTime;
+    private javax.swing.JButton AddCompR;
     private javax.swing.JFrame AddPayment;
     private javax.swing.JFrame AddTTime;
     private javax.swing.JFrame ArrearL;
@@ -2100,8 +2090,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JFrame CompTeamL;
     private javax.swing.JButton Confirm;
     private javax.swing.JButton Confirm1;
-    private javax.swing.JButton Confirm2;
-    private javax.swing.JButton Confirm3;
     private javax.swing.JTextField Cplacement;
     private javax.swing.JTextField Ctime;
     private javax.swing.JFrame EMemberF;
@@ -2184,6 +2172,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton VMembers;
     private javax.swing.JButton VMembers2;
     private javax.swing.JButton VMembers3;
+    private javax.swing.JButton addTTime;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup5;
