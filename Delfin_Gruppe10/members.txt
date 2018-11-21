@@ -1,2 +1,2 @@
-Member{name=Farvel Knud, birthdate=22-05-1955, address=TÃ¥revej 666, postnr=6666, city=Sex, phone=87654321, mail=nej@ja.ok, active=true, arrears=1200.0}
-Member{name=Paulette Fru BlÃ¥, birthdate=01-01-1995, address=BlÃ¥gade 33, postnr=5555, city=Ja, phone=12345678, mail=ja@nej.dk, active=true, arrears=1100.0}
+Member{name=Farvel Knud, birthdate=22-05-1955, address=Tårevej 666, postnr=6666, city=Sex, phone=87654321, mail=nej@ja.ok, active=true, arrears=1200.0}
+Member{name=Paulette Fru Blå, birthdate=01-01-1995, address=Blågade 33, postnr=5555, city=Ja, phone=12345678, mail=ja@nej.dk, active=true, arrears=1100.0}

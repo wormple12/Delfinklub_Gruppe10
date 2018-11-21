@@ -25,6 +25,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -1933,7 +1934,7 @@ public class GUI extends javax.swing.JFrame {
         } catch (IllegalArgumentException e) {
             EMemberMsgBox.setText(e.getMessage());
         } catch (Exception e) {
-            AMemberMsgBox.setText("Error: Unknown error. Contact the programmer.");
+            EMemberMsgBox.setText("Error: Unknown error. Contact the programmer.");
         }
     }//GEN-LAST:event_Register1ActionPerformed
 
