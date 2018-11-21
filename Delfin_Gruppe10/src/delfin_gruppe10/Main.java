@@ -37,19 +37,24 @@ public class Main {
                 "11112222", "derp@isDerp.derp", true);
 
         Member member4 = new Member("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com", true);
-        CompetetiveSwimmer comp4 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
+        CompetetiveSwimmer comp3 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
         
         TrainingResult result = new TrainingResult(Discipline.BUTTERFLY, "01:22:22", "01-01-2011");
-        comp4.setBestTrainingResult(result);
+        comp3.setBestTrainingResult(result);
         
         CompetetiveResult result2 = new CompetetiveResult(Discipline.CRAWL, "12:07:58", "26-12-2017", "The Easter Parade", 10);
         CompetetiveResult result3 = new CompetetiveResult(Discipline.BREASTSTROKE, "57:29:99", "31-05-2018", "The Easter Parade", 19);
+        
+        fH.writeCompetetiveToFile(comp1);
+        fH.writeCompetetiveToFile(comp2);
+        fH.writeCompetetiveToFile(comp3);
+        System.out.println(fH.readCompetetivesFromFile());
         
         //System.out.println(fH.readMembersFromFile());
         //fH.editMemberInFile(member2, member);
         //System.out.println(fH.readMembersFromFile().get(0));
         
-        System.out.println(fH.readMembersInArrearsFromFile().get(0));
+        //System.out.println(fH.readMembersInArrearsFromFile().get(0));
         
 //        ArrayList<Member> members = fH.readMembersFromFile();
 //        ArrayList<CompetetiveSwimmer> swimmers = fH.readCompetetivesFromFile();
