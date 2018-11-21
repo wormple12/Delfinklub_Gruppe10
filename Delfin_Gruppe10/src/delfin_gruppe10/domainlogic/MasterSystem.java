@@ -83,9 +83,11 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public void editMember(String originalName, String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
-        Member originalMember = getMember(originalName);
-        double arrears = originalMember.getArrears();
+        Member originalMember = getMember(originalName); // initiate original member and replacement
         Member updatedMember = new Member(name, birthdate, address, postnr, city, phone, mail, active);
+        
+        // change arrears if necessary
+        double arrears = originalMember.getArrears();
         double originalC = originalMember.getYearlyContingent();
         double updatedC = updatedMember.getYearlyContingent();
         if (originalC < updatedC){
@@ -93,7 +95,19 @@ public class MasterSystem implements MasterInterface {
             arrears += diff;
         }
         updatedMember.setArrears(arrears);
-        dataAccessor.editMemberInFile(originalMember, updatedMember);
+        
+        dataAccessor.editMemberInFile(originalMember, updatedMember); // replace
+        
+        if (!originalName.equals(name)){ // if name has been changed, also change it in competetive file
+            try {
+            CompetetiveSwimmer swimmer = getCompSwim(originalName);
+            CompetetiveSwimmer updatedSwimmer = swimmer.copy();
+            updatedSwimmer.setName(name);
+            dataAccessor.editCompetetiveInFile(swimmer, updatedSwimmer);
+            } catch (IllegalArgumentException e){
+                // member is not competetive, so continue without changing competetive file
+            }
+        }
     }
 
     @Override
@@ -120,6 +134,7 @@ public class MasterSystem implements MasterInterface {
     }
 
     // ===========================
+    
     @Override
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers() {
         return dataAccessor.readCompetetivesFromFile();

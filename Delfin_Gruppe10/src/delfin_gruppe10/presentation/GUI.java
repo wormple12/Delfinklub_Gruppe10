@@ -1,9 +1,7 @@
 package delfin_gruppe10.presentation;
 
-import delfin_gruppe10.data.*;
 import delfin_gruppe10.domainlogic.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -19,16 +17,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
-    MasterSystem k = new MasterSystem(true);
+    MasterSystem k = new MasterSystem();
     private Member editedMember = null;
-    TableEnum tab;
 
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
-
     }
 
     /**
@@ -1564,128 +1560,128 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inTrainerActionPerformed
-
-        this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(pTrainer.getPreferredSize());
-        this.dispose();
-
+        initWindow(pTrainer, this);
     }//GEN-LAST:event_inTrainerActionPerformed
 
     private void AMemeberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMemeberActionPerformed
-
-        this.AMemberF.setVisible(true);
-        this.AMemberF.setSize(AMemberF.getPreferredSize());
-        this.pFormand.dispose();
-
+        initWindow(AMemberF, pFormand);
     }//GEN-LAST:event_AMemeberActionPerformed
 
     private void inKassererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inKassererActionPerformed
-
-        this.pKasserer.setVisible(true);
-        this.pKasserer.setSize(pKasserer.getPreferredSize());
-        this.dispose();
+        initWindow(pKasserer, this);
     }//GEN-LAST:event_inKassererActionPerformed
 
     private void inFormandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inFormandActionPerformed
-
-        this.pFormand.setVisible(true);
-        this.pFormand.setSize(pFormand.getPreferredSize());
-        this.dispose();
+        initWindow(pFormand, this);
     }//GEN-LAST:event_inFormandActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        this.Choose.setVisible(true);
-        this.Choose.setSize(Choose.getPreferredSize());
-        this.pFormand.dispose();
-        
-        ArrayList<Member> members = k.getAllMembers();
+        initWindow(Choose, pFormand);
         ChooseMemberComboBox.removeAllItems();
-        for (Member member : members) {
-            ChooseMemberComboBox.addItem(member.getName());
+        
+        try {
+            ArrayList<Member> members = k.getAllMembers();
+            for (Member member : members) {
+                ChooseMemberComboBox.addItem(member.getName());
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
         }
     }//GEN-LAST:event_EditActionPerformed
 
     private void APaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APaymentActionPerformed
-        this.AddPayment.setVisible(true);
-        this.AddPayment.setSize(AddPayment.getPreferredSize());
-        this.pKasserer.dispose();
-        
-        ArrayList<Member> members = k.getMembersInArrears();
+        initWindow(AddPayment, pKasserer);
         NameLPay.removeAllItems();
-        for (Member member : members) {
-            NameLPay.addItem(member.getName());
-        }
         
-        Member member = k.getMember((String) NameLPay.getSelectedItem());
-        LeftToPayField.setText(Double.toString(member.getArrears()));
+        try {
+            ArrayList<Member> members = k.getMembersInArrears();
+            for (Member member : members) {
+                NameLPay.addItem(member.getName());
+            }
+
+            Member member = k.getMember((String) NameLPay.getSelectedItem());
+            LeftToPayField.setText(Double.toString(member.getArrears()));
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_APaymentActionPerformed
 
     private void ArrearsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArrearsActionPerformed
-        this.ArrearL.setVisible(true);
-        this.ArrearL.setSize(ArrearL.getPreferredSize());
-        this.pKasserer.dispose();
+        initWindow(ArrearL, pKasserer);
         
-        tableSet(ArrearTable, tab.ARR);
+        try {
+            tableSet(ArrearTable, TableEnum.ARR);
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_ArrearsActionPerformed
 
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
-        this.RegisterCM.setVisible(true);
-        this.RegisterCM.setSize(RegisterCM.getPreferredSize());
-        this.pTrainer.dispose();
-        
+        initWindow(RegisterCM, pTrainer);
         ACompL.removeAllItems();
-        ArrayList<Member> members = k.getAllMembers();
-        for(Member member : members ){
-            if(k.getCompetetiveSwimmers().contains(member)) break;
-        ACompL.addItem(member.getName());
+        
+        try {
+            ArrayList<Member> members = k.getAllMembers();
+            ArrayList<CompetetiveSwimmer> swimmers = k.getCompetetiveSwimmers();
+            
+            ArrayList<String> swimmerNames = new ArrayList<>();
+            for (CompetetiveSwimmer swimmer : swimmers){
+                swimmerNames.add(swimmer.getName());
+            }
+            
+            for (Member member : members) {
+                if (!swimmerNames.contains(member.getName())){
+                    ACompL.addItem(member.getName());
+                }
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
         }
     }//GEN-LAST:event_RegisterCPActionPerformed
 
     private void ATResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATResultActionPerformed
-        this.AddTTime.setVisible(true);
-        this.AddTTime.setSize(AddTTime.getPreferredSize());
-        this.pTrainer.dispose();
+        initWindow(AddTTime, pTrainer);
+        TTchoose.removeAllItems();
         
-         TTchoose.removeAllItems();
-        ArrayList<CompetetiveSwimmer> c = k.getCompetetiveSwimmers();
-        for(CompetetiveSwimmer k : c){
-            TTchoose.addItem(k.getName());
+        try {
+            ArrayList<CompetetiveSwimmer> swimmers = k.getCompetetiveSwimmers();
+            for (CompetetiveSwimmer swimmer : swimmers) {
+                TTchoose.addItem(swimmer.getName());
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
         }
     }//GEN-LAST:event_ATResultActionPerformed
 
     private void VMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembersActionPerformed
-        this.MemberL.setVisible(true);
-        this.MemberL.setSize(MemberL.getPreferredSize());
-        this.pFormand.dispose();
+        initWindow(MemberL, pFormand);
         
-        tableSet(MemberTable, tab.NORM);
+        try {
+            tableSet(MemberTable, TableEnum.NORM);
+        } catch (Exception e){
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_VMembersActionPerformed
 
     private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
-
-        this.setVisible(true);
-        this.setSize(this.getPreferredSize());
-        this.pFormand.dispose();
+        initWindow(this, pFormand);
     }//GEN-LAST:event_ReturnActionPerformed
 
     private void Return6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return6ActionPerformed
-        this.pFormand.setVisible(true);
-        this.pFormand.setSize(pFormand.getPreferredSize());
-        this.Choose.dispose();
+        initWindow(pFormand, Choose);
     }//GEN-LAST:event_Return6ActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        this.EMemberF.setVisible(true);
-        this.EMemberF.setSize(EMemberF.getPreferredSize());
-        this.Choose.dispose();
+        initWindow(EMemberF, Choose);
         
-        editedMember = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
+        try {
+            String choice = (String) ChooseMemberComboBox.getSelectedItem();
+            editedMember = k.getMember(choice);
+        } catch (Exception e){
+            // PLEASE PARSE MESSAGE HERE
+        }
         Tname2.setText(editedMember.getName());
-        String birthdate = editedMember.getBirthdate().toString();
-        LocalDate date = LocalDate.parse(birthdate);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-        birthdate = formatter.format(date);
-        Tbirthdate2.setText(birthdate);
+        Tbirthdate2.setText(editedMember.getBirthdate());
         Taddress2.setText(editedMember.getAddress()); Tac2.setText(editedMember.getPostnr()); Tcity2.setText(editedMember.getCity());
         Tphone2.setText(editedMember.getPhone()); Tmail2.setText(editedMember.getMail());
         if (editedMember.isActive()){
@@ -1696,62 +1692,59 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ConfirmActionPerformed
 
     private void Return3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return3ActionPerformed
-        this.setVisible(true);
-        this.setSize(this.getPreferredSize());
-        this.MemberL.dispose();
+        initWindow(this, MemberL);
     }//GEN-LAST:event_Return3ActionPerformed
 
     private void Return1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return1ActionPerformed
-        this.setVisible(true);
-        this.setSize(this.getPreferredSize());
-        this.pKasserer.dispose();
+        initWindow(this, pKasserer);
     }//GEN-LAST:event_Return1ActionPerformed
 
     private void VMembers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembers2ActionPerformed
-        this.MemberL.setVisible(true);
-        this.MemberL.setSize(MemberL.getPreferredSize());
-        this.pKasserer.dispose();
+        initWindow(MemberL, pKasserer);
         
-       tableSet(MemberTable, tab.NORM);
+        try {
+            tableSet(MemberTable, TableEnum.NORM);
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_VMembers2ActionPerformed
 
     private void PayAllBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayAllBActionPerformed
-        Member l = k.getMember((String) this.NameLPay.getSelectedItem());
-        k.registerPayment(l.getName(), l.getArrears());
-        l = k.getMember((String) this.NameLPay.getSelectedItem());
-        LeftToPayField.setText(String.valueOf(l.getArrears()));
+        try {
+            Member member = k.getMember((String) this.NameLPay.getSelectedItem());
+            k.registerPayment(member.getName(), member.getArrears());
+            member = k.getMember((String) this.NameLPay.getSelectedItem());
+            LeftToPayField.setText(String.valueOf(member.getArrears()));
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_PayAllBActionPerformed
 
     private void Return7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return7ActionPerformed
-        this.pKasserer.setVisible(true);
-        this.pKasserer.setSize(pKasserer.getPreferredSize());
-        this.AddPayment.dispose();
+        initWindow(pKasserer, AddPayment);
     }//GEN-LAST:event_Return7ActionPerformed
 
     private void Return8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return8ActionPerformed
-        this.pKasserer.setVisible(true);
-        this.pKasserer.setSize(pKasserer.getPreferredSize());
-        this.ArrearL.dispose();
+        initWindow(pKasserer, ArrearL);
     }//GEN-LAST:event_Return8ActionPerformed
 
     private void Return9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return9ActionPerformed
-        this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(pTrainer.getPreferredSize());
-        this.RegisterCM.dispose();
+        initWindow(pTrainer, RegisterCM);
     }//GEN-LAST:event_Return9ActionPerformed
 
     private void Confirm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm1ActionPerformed
         this.jLabel3.setText("Tilføjet");
-        String na = (String) ACompL.getSelectedItem();
-        Member m = k.getMember(na);
-        k.addToCompetetiveTeam(m);
-        
+        try {
+            String choice = (String) ACompL.getSelectedItem();
+            Member m = k.getMember(choice);
+            k.addToCompetetiveTeam(m);
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_Confirm1ActionPerformed
 
     private void Return10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return10ActionPerformed
-        this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(pTrainer.getPreferredSize());
-        this.CompTeamL.dispose();
+        initWindow(pTrainer, CompTeamL);
     }//GEN-LAST:event_Return10ActionPerformed
 
     private void RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActionPerformed
@@ -1759,9 +1752,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_RemoveActionPerformed
 
     private void Return11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return11ActionPerformed
-        this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(pTrainer.getPreferredSize());
-        this.AddCTime.dispose();
+        initWindow(pTrainer, AddCTime);
     }//GEN-LAST:event_Return11ActionPerformed
 
     private void Text18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text18ActionPerformed
@@ -1773,18 +1764,22 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CtimeActionPerformed
 
     private void AddCompRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCompRActionPerformed
-        String mn = (String) CTchoose.getSelectedItem();
-        CompetetiveSwimmer c = k.getCompSwim(mn);
-       
-        String o = (String) CompD.getSelectedItem();
-        Discipline p = Discipline.valueOf(o);
-        k.addCompetetiveResult(c, p, Ctime.getText(), Cdate.getText(), Ccomp.getText(), Integer.parseInt(Cplacement.getText()));
+        try {
+            String choice = (String) CTchoose.getSelectedItem();
+            CompetetiveSwimmer c = k.getCompSwim(choice);
+            choice = (String) CompD.getSelectedItem();
+            Discipline p = Discipline.valueOf(choice);
+
+            k.addCompetetiveResult(c, p, Ctime.getText(), Cdate.getText(), Ccomp.getText(), Integer.parseInt(Cplacement.getText()));
+        } catch (NumberFormatException e) {
+            // PLEASE PARSE MESSAGE HERE
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_AddCompRActionPerformed
 
     private void Return12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return12ActionPerformed
-        this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(pTrainer.getPreferredSize());
-        this.AddTTime.dispose();
+        initWindow(pTrainer, AddTTime);
     }//GEN-LAST:event_Return12ActionPerformed
 
     private void Text22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text22ActionPerformed
@@ -1796,92 +1791,109 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Ttime1ActionPerformed
 
     private void addTTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTTimeActionPerformed
-        CompetetiveSwimmer l = k.getCompSwim((String) TTchoose.getSelectedItem());
-        k.addTrainingResult(l, Discipline.valueOf((String) TrainD.getSelectedItem()), Ttime1.getText(), Tdate.getText());
+        try {
+            CompetetiveSwimmer swimmer = k.getCompSwim((String) TTchoose.getSelectedItem());
+            Discipline discipline = Discipline.valueOf((String) TrainD.getSelectedItem());
+            k.addTrainingResult(swimmer, discipline, Ttime1.getText(), Tdate.getText());
+        } catch (Exception e){
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_addTTimeActionPerformed
 
     private void Return13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return13ActionPerformed
-        this.pTrainer.setVisible(true);
-        this.pTrainer.setSize(pTrainer.getPreferredSize());
-        this.Top5L.dispose();
+        initWindow(pTrainer, Top5L);
     }//GEN-LAST:event_Return13ActionPerformed
 
     private void VMembers3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VMembers3ActionPerformed
-        this.MemberL.setVisible(true);
-        this.MemberL.setSize(MemberL.getPreferredSize());
-        this.pTrainer.dispose();
+        initWindow(MemberL, pTrainer);
         
-        tableSet(MemberTable, tab.NORM);
-       
+        try {
+            tableSet(MemberTable, TableEnum.NORM);
+        } catch (Exception e){
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_VMembers3ActionPerformed
 
     private void CTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTeamActionPerformed
-        this.CompTeamL.setVisible(true);
-        this.CompTeamL.setSize(CompTeamL.getPreferredSize());
-        this.pTrainer.dispose();
-        
-        ArrayList<CompetetiveSwimmer> members = k.getCompetetiveSwimmers();
-         
-        DateTimeFormatter formatter;
+        initWindow(CompTeamL, pTrainer);
         DefaultTableModel model = (DefaultTableModel) CompTable.getModel();
-        model.setRowCount(0);    
-        
-        for (int i = 0; i < members.size(); i++) {
-            Member member = members.get(i);
-            model.addRow(new Object[]{});
-            int j = 0;
-            CompTable.setValueAt(member.getName(), i, j++);
-            CompTable.setValueAt(member.getBirthdate(), i, j++);
-            CompTable.setValueAt(member.getAddress(), i, j++);
-            CompTable.setValueAt(member.getPostnr(), i, j++);
-            CompTable.setValueAt(member.getCity(), i, j++);
-            CompTable.setValueAt(member.getPhone(), i, j++);
-            CompTable.setValueAt(member.getMail(), i, j++);
-         
-       }
+        model.setRowCount(0);
+
+        try {
+            ArrayList<CompetetiveSwimmer> members = k.getCompetetiveSwimmers();
+
+            for (int i = 0; i < members.size(); i++) {
+                Member member = members.get(i);
+                model.addRow(new Object[]{});
+                int j = 0;
+                CompTable.setValueAt(member.getName(), i, j++);
+                CompTable.setValueAt(member.getBirthdate(), i, j++);
+                CompTable.setValueAt(member.getAddress(), i, j++);
+                CompTable.setValueAt(member.getPostnr(), i, j++);
+                CompTable.setValueAt(member.getCity(), i, j++);
+                CompTable.setValueAt(member.getPhone(), i, j++);
+                CompTable.setValueAt(member.getMail(), i, j++);
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_CTeamActionPerformed
 
     private void STop5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STop5ActionPerformed
-        this.Top5L.setVisible(true);
-        this.Top5L.setSize(Top5L.getPreferredSize());
-        this.pTrainer.dispose();
+        initWindow(Top5L, pTrainer);
         
-        getTop5table(k.getTop5(Discipline.valueOf((String) Top5D.getSelectedItem())));
+        try {
+            String choice = (String) Top5D.getSelectedItem();
+            Discipline discipline = Discipline.valueOf(choice);
+            getTop5table(k.getTop5(discipline));
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_STop5ActionPerformed
 
     private void ACResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACResultActionPerformed
-        this.AddCTime.setVisible(true);
-        this.AddCTime.setSize(AddCTime.getPreferredSize());
-        this.pTrainer.dispose();
-        
+        initWindow(AddCTime, pTrainer);
         CTchoose.removeAllItems();
-        ArrayList<CompetetiveSwimmer> c = k.getCompetetiveSwimmers();
-        for(CompetetiveSwimmer k : c){
-            CTchoose.addItem(k.getName());
+        
+        try {
+            ArrayList<CompetetiveSwimmer> c = k.getCompetetiveSwimmers();
+            for (CompetetiveSwimmer k : c) {
+                CTchoose.addItem(k.getName());
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
         }
     }//GEN-LAST:event_ACResultActionPerformed
 
     private void Return2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return2ActionPerformed
-        this.setVisible(true);
-        this.setSize(this.getPreferredSize());
-        this.pTrainer.dispose();
+        initWindow(this, pTrainer);
     }//GEN-LAST:event_Return2ActionPerformed
 
     private void NameLPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameLPayActionPerformed
         Object obj = evt.getSource();
-        if(obj== NameLPay){
-            if(NameLPay.getSelectedItem() !=null){
-        Member member = k.getMember((String) NameLPay.getSelectedItem());
-        LeftToPayField.setText(Double.toString(member.getArrears()));
+        if (obj == NameLPay) {
+            if (NameLPay.getSelectedItem() != null) {
+                try {
+                    Member member = k.getMember((String) NameLPay.getSelectedItem());
+                    LeftToPayField.setText(Double.toString(member.getArrears()));
+                } catch (Exception e) {
+                    // PLEASE PARSE MESSAGE HERE
+                }
             }
         }
     }//GEN-LAST:event_NameLPayActionPerformed
 
     private void PayBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayBActionPerformed
-        Member l = k.getMember((String) this.NameLPay.getSelectedItem());
-        k.registerPayment(l.getName(), Double.parseDouble(PayText.getText()));
-        l = k.getMember((String) this.NameLPay.getSelectedItem());
-        LeftToPayField.setText(String.valueOf(l.getArrears()));
+        try {
+            Member l = k.getMember((String) this.NameLPay.getSelectedItem());
+            k.registerPayment(l.getName(), Double.parseDouble(PayText.getText()));
+            l = k.getMember((String) this.NameLPay.getSelectedItem());
+            LeftToPayField.setText(String.valueOf(l.getArrears()));
+        } catch (NumberFormatException e) {
+            // PLEASE PARSE MESSAGE HERE
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }
     }//GEN-LAST:event_PayBActionPerformed
 
     private void PayTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayTextActionPerformed
@@ -1889,13 +1901,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_PayTextActionPerformed
 
     private void Return14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return14ActionPerformed
-       this.Choose.setVisible(true);
-       this.Choose.setSize(Choose.getPreferredSize());
-       this.EMemberF.dispose();
-         ArrayList<Member> members = k.getAllMembers();
-        ChooseMemberComboBox.removeAllItems();
-        for (Member member : members) {
-            ChooseMemberComboBox.addItem(member.getName());
+        initWindow(Choose, EMemberF);
+
+        try {
+            ArrayList<Member> members = k.getAllMembers();
+            ChooseMemberComboBox.removeAllItems();
+            for (Member member : members) {
+                ChooseMemberComboBox.addItem(member.getName());
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
         }
     }//GEN-LAST:event_Return14ActionPerformed
 
@@ -1915,8 +1930,10 @@ public class GUI extends javax.swing.JFrame {
             }
             k.editMember(editedMember.getName(), Tname2.getText(), Tbirthdate2.getText(), Taddress2.getText(), Tac2.getText(), Tcity2.getText(), Tphone2.getText(), Tmail2.getText(), active);
             EMemberMsgBox.setText("Member: " + editedMember.getName() + "\nsuccesfully edited.");
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             EMemberMsgBox.setText(e.getMessage());
+        } catch (Exception e) {
+            AMemberMsgBox.setText("Error: Unknown error. Contact the programmer.");
         }
     }//GEN-LAST:event_Register1ActionPerformed
 
@@ -1926,22 +1943,24 @@ public class GUI extends javax.swing.JFrame {
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         try {
-        boolean active = false;
-        if (CActive.isSelected()){
-            active = true;
-        }
-        k.addMember(Tname.getText(), Tbirthdate.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText(), active);
-        AMemberMsgBox.setText("Member: "+Tname.getText()+"\nsuccesfully registered.");
-        
-        Tname.setText(null);
-        Tbirthdate.setText(null);
-        Taddress.setText(null);
-        Tac.setText(null);
-        Tcity.setText(null);
-        Tphone.setText(null);
-        Tmail.setText(null);
-        } catch (IllegalArgumentException e){
+            boolean active = false;
+            if (CActive.isSelected()) {
+                active = true;
+            }
+            k.addMember(Tname.getText(), Tbirthdate.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText(), active);
+            AMemberMsgBox.setText("Member: " + Tname.getText() + "\nsuccesfully registered.");
+
+            Tname.setText(null);
+            Tbirthdate.setText(null);
+            Taddress.setText(null);
+            Tac.setText(null);
+            Tcity.setText(null);
+            Tphone.setText(null);
+            Tmail.setText(null);
+        } catch (IllegalArgumentException e) {
             AMemberMsgBox.setText(e.getMessage());
+        } catch (Exception e) {
+            AMemberMsgBox.setText("Error: Unknown error. Contact the programmer.");
         }
     }//GEN-LAST:event_RegisterActionPerformed
 
@@ -1954,16 +1973,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Text2ActionPerformed
 
     private void Return4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return4ActionPerformed
-        this.pFormand.setVisible(true);
-        this.pFormand.setSize(pFormand.getPreferredSize());
-        this.AMemberF.dispose();
-        AMemberMsgBox.setText(null);
+        initWindow(pFormand, AMemberF);
+        AMemberMsgBox.setText("");
     }//GEN-LAST:event_Return4ActionPerformed
 
     private void RemoveBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBActionPerformed
-        this.Choose.setVisible(true);
-        this.Choose.setSize(Choose.getPreferredSize());
-        this.EMemberF.dispose();
+        initWindow(Choose, EMemberF);
         
         try {
             k.deleteMember(editedMember.getName());
@@ -1992,11 +2007,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CcompActionPerformed
 
     private void Top5DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Top5DActionPerformed
-          Object obj = evt.getSource();
-        if(obj== Top5D){
-            if(Top5D.getSelectedItem() !=null){
+        Object obj = evt.getSource();
+        if (obj == Top5D) {
+            if (Top5D.getSelectedItem() != null) {
                 getTop5table(k.getTop5(Discipline.valueOf((String) Top5D.getSelectedItem())));
-        
+
             }
         }
     }//GEN-LAST:event_Top5DActionPerformed
@@ -2046,44 +2061,55 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void initWindow(javax.swing.JFrame newFrame, javax.swing.JFrame oldFrame) {
+        newFrame.setSize(newFrame.getPreferredSize());
+        newFrame.setLocationRelativeTo(null);
+        newFrame.setVisible(true);
+        oldFrame.dispose();
+    }
+    
     /*
     Sets up the tables used to show the members.
     It needs a jTable for modeling, and Enum for identifying what parts needs to be loaded 
     */
-    public void tableSet(javax.swing.JTable jTable, TableEnum t){
+    private void tableSet(javax.swing.JTable jTable, TableEnum t){
          ArrayList<Member> members = k.getAllMembers();
         
         DateTimeFormatter formatter;
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         model.setRowCount(0);    
         
-       for (int i = 0; i < members.size(); i++) {
+        for (int i = 0; i < members.size(); i++) {
             Member member = members.get(i);
-           
-            model.addRow(new Object[]{});
-            int j = 0;
-            jTable.setValueAt(member.getName(), i, j++);
-            jTable.setValueAt(member.getBirthdate(), i, j++);
-            jTable.setValueAt(member.getAddress(), i, j++);
-            jTable.setValueAt(member.getPostnr(), i, j++);
-            jTable.setValueAt(member.getCity(), i, j++);
-            jTable.setValueAt(member.getPhone(), i, j++);
-            jTable.setValueAt(member.getMail(), i, j++);
-            if(t == tab.ARR){
-            jTable.setValueAt(member.getArrears(), i, j++);
-            jTable.setValueAt(member.getYearlyContingent(), i, j++);
+            if (t == TableEnum.NORM || member.getArrears() > 0) {
+
+                model.addRow(new Object[]{});
+                int j = 0;
+                jTable.setValueAt(member.getName(), i, j++);
+                jTable.setValueAt(member.getBirthdate(), i, j++);
+                jTable.setValueAt(member.getAddress(), i, j++);
+                jTable.setValueAt(member.getPostnr(), i, j++);
+                jTable.setValueAt(member.getCity(), i, j++);
+                jTable.setValueAt(member.getPhone(), i, j++);
+                jTable.setValueAt(member.getMail(), i, j++);
+                if (t == TableEnum.ARR) {
+                    jTable.setValueAt(member.getYearlyContingent(), i, j++);
+                    jTable.setValueAt(member.getArrears(), i, j++);
+                }
+                if (t == TableEnum.NORM) {
+                    if (member.isActive()) {
+                        jTable.setValueAt("Aktiv", i, j++);
+                    } else {
+                        jTable.setValueAt("Passiv", i, j++);
+                    }
+                }
             }
-            if(t == tab.NORM){
-            if (member.isActive()){
-                jTable.setValueAt("Aktiv", i, j++);
-            } else {
-                jTable.setValueAt("Passiv", i, j++);
-            }}
-       }
+        }
     }
     
-    public void getTop5table(ArrayList<CompetetiveSwimmer> top){
-        for(int i=0; i<5; i++){
+    private void getTop5table(ArrayList<CompetetiveSwimmer> top){
+        for(int i=0; i<top.size(); i++){
             int j=0;
             T5table.setValueAt(top.get(i).getName(), i, j++);
             String out = "";
