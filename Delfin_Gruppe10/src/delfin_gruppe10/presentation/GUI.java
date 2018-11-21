@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
-    MasterSystem k = new MasterSystem(true);
+    MasterSystem k = new MasterSystem(false);
     private Member editedMember = null;
     TableEnum tab;
 
@@ -1623,8 +1623,8 @@ public class GUI extends javax.swing.JFrame {
         ACompL.removeAllItems();
         ArrayList<Member> members = k.getAllMembers();
         for(Member member : members ){
-            if(k.getCompetetiveSwimmers().contains(member)) break;
-        ACompL.addItem(member.getName());
+              ACompL.addItem(member.getName());   
+           
         }
     }//GEN-LAST:event_RegisterCPActionPerformed
 
@@ -1668,10 +1668,7 @@ public class GUI extends javax.swing.JFrame {
         
         editedMember = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
         Tname2.setText(editedMember.getName());
-        String birthdate = editedMember.getBirthdate().toString();
-        LocalDate date = LocalDate.parse(birthdate);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-        birthdate = formatter.format(date);
+        String birthdate = editedMember.getBirthdate();
         Tbirthdate2.setText(birthdate);
         Taddress2.setText(editedMember.getAddress()); Tac2.setText(editedMember.getPostnr()); Tcity2.setText(editedMember.getCity());
         Tphone2.setText(editedMember.getPhone()); Tmail2.setText(editedMember.getMail());

@@ -1,3 +1,0 @@
-Member{name=Jack McDonalds, birthdate=01-01-1955, address=Very Derp Street 333, postnr=1111, city=Long Way From Here, phone=11112222, mail=derp@isDerp.derp, active=true, arrears=1200.0}
-Member{name=Ariel The Mermaid, birthdate=04-11-1822, address=The Sea 1, postnr=1234, city=Very Sea, phone=12345678, mail=ariel@seamail.sea, active=false, arrears=500.0}
-Member{name=Simon Asholt Norup, birthdate=20-12-1995, address=Lyngevej 39, postnr=3660, city=Stenløse, phone=60893899, mail=wormple12@hotmail.com, active=true, arrears=0.0}
