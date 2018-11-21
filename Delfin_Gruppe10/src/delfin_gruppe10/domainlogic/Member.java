@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class Member implements Serializable, Cloneable {
 
-    private final String name;
+    private String name;
     private final String birthdate;
     private final String address;
     private final String postnr;
@@ -113,6 +113,10 @@ public class Member implements Serializable, Cloneable {
 
     public boolean isActive() {
         return active;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
