@@ -1632,12 +1632,14 @@ public class GUI extends javax.swing.JFrame {
         this.RegisterCM.setVisible(true);
         this.RegisterCM.setSize(RegisterCM.getPreferredSize());
         this.pTrainer.dispose();
-        
+
         ACompL.removeAllItems();
         ArrayList<Member> members = k.getAllMembers();
-        for(Member member : members ){
-            if(k.getCompetetiveSwimmers().contains(member)) break;
-        ACompL.addItem(member.getName());
+        for (Member member : members) {
+            if (k.getCompetetiveSwimmers().contains(member)) {
+                break;
+            }
+            ACompL.addItem(member.getName());
         }
     }//GEN-LAST:event_RegisterCPActionPerformed
 
@@ -1681,11 +1683,7 @@ public class GUI extends javax.swing.JFrame {
         
         editedMember = k.getMember((String) ChooseMemberComboBox.getSelectedItem());
         Tname2.setText(editedMember.getName());
-        String birthdate = editedMember.getBirthdate().toString();
-        LocalDate date = LocalDate.parse(birthdate);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-        birthdate = formatter.format(date);
-        Tbirthdate2.setText(birthdate);
+        Tbirthdate2.setText(editedMember.getBirthdate());
         Taddress2.setText(editedMember.getAddress()); Tac2.setText(editedMember.getPostnr()); Tcity2.setText(editedMember.getCity());
         Tphone2.setText(editedMember.getPhone()); Tmail2.setText(editedMember.getMail());
         if (editedMember.isActive()){
@@ -2057,33 +2055,36 @@ public class GUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         model.setRowCount(0);    
         
-       for (int i = 0; i < members.size(); i++) {
+        for (int i = 0; i < members.size(); i++) {
             Member member = members.get(i);
-           
-            model.addRow(new Object[]{});
-            int j = 0;
-            jTable.setValueAt(member.getName(), i, j++);
-            jTable.setValueAt(member.getBirthdate(), i, j++);
-            jTable.setValueAt(member.getAddress(), i, j++);
-            jTable.setValueAt(member.getPostnr(), i, j++);
-            jTable.setValueAt(member.getCity(), i, j++);
-            jTable.setValueAt(member.getPhone(), i, j++);
-            jTable.setValueAt(member.getMail(), i, j++);
-            if(t == tab.ARR){
-            jTable.setValueAt(member.getArrears(), i, j++);
-            jTable.setValueAt(member.getYearlyContingent(), i, j++);
+            if (t == tab.NORM || member.getArrears() > 0) {
+
+                model.addRow(new Object[]{});
+                int j = 0;
+                jTable.setValueAt(member.getName(), i, j++);
+                jTable.setValueAt(member.getBirthdate(), i, j++);
+                jTable.setValueAt(member.getAddress(), i, j++);
+                jTable.setValueAt(member.getPostnr(), i, j++);
+                jTable.setValueAt(member.getCity(), i, j++);
+                jTable.setValueAt(member.getPhone(), i, j++);
+                jTable.setValueAt(member.getMail(), i, j++);
+                if (t == tab.ARR) {
+                    jTable.setValueAt(member.getYearlyContingent(), i, j++);
+                    jTable.setValueAt(member.getArrears(), i, j++);
+                }
+                if (t == tab.NORM) {
+                    if (member.isActive()) {
+                        jTable.setValueAt("Aktiv", i, j++);
+                    } else {
+                        jTable.setValueAt("Passiv", i, j++);
+                    }
+                }
             }
-            if(t == tab.NORM){
-            if (member.isActive()){
-                jTable.setValueAt("Aktiv", i, j++);
-            } else {
-                jTable.setValueAt("Passiv", i, j++);
-            }}
-       }
+        }
     }
     
     public void getTop5table(ArrayList<CompetetiveSwimmer> top){
-        for(int i=0; i<5; i++){
+        for(int i=0; i<top.size(); i++){
             int j=0;
             T5table.setValueAt(top.get(i).getName(), i, j++);
             String out = "";
