@@ -1,2 +1,0 @@
-Member{name=Jack McDonalds, birthdate=1955-01-01, address=Very Derp Street 333, postnr=1111, city=Long Way From Here, phone=11112222, mail=derp@isDerp.derp, active=true, arrears=1200.0}
-Member{name=Simon Norup, birthdate=1995-12-20, address=Lyngevej 39, postnr=3660, city=Stenløse, phone=60893899, mail=wormple12@hotmail.com, active=false, arrears=500.0}
