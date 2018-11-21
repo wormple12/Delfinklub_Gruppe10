@@ -20,6 +20,7 @@ public class TrainingResultTest {
     
     public TrainingResultTest() {
     }
+    
     CompetetiveSwimmer compSwi = new CompetetiveSwimmer("Jack McDonalds",
                 "01-01-1955",
                 "Very Derp Street 333", "1111", "Long Way From Here",
@@ -59,12 +60,12 @@ public class TrainingResultTest {
     @Test
     public void testGetTime() {
         
-//       TrainingResult actual = compSwi.getBestTrainingResult(Discipline.BACKSTROKE);
-//       TrainingResult expected = traiResBac2;
-       assertEquals(compSwi.getBestTrainingResult(Discipline.BACKSTROKE), traiResBac2);
+       TrainingResult actual = compSwi.getBestTrainingResult(Discipline.BACKSTROKE);
+       TrainingResult expected = traiResBac2;
+       assertEquals(expected, actual);
        
-        //Date date = new Date();
-        //long milliSec = date.getTime();
+       Date date = new Date();
+       long milliSec = date.getTime();
         
     }
 
@@ -106,10 +107,6 @@ public class TrainingResultTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
-
-    private void assertEquals(delfin_gruppe10.domainlogic.TrainingResultTest time, delfin_gruppe10.domainlogic.TrainingResultTest expected) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -8,6 +8,7 @@ package delfin_gruppe10.data;
 import delfin_gruppe10.domainlogic.*;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -23,11 +24,15 @@ public class FileHandler implements FileHandlerInterface {
     private static Path competetiveFILE;
 
     public FileHandler(String memberPath, String competetivePath) {
-        FILE = Paths.get(memberPath);
-        competetiveFILE = Paths.get(competetivePath);
+        try {
+            FILE = Paths.get(memberPath);
+            competetiveFILE = Paths.get(competetivePath);
+        } catch (InvalidPathException e) {
+            throw new RuntimeException();
+        }
     }
 
-    private List<String> readFile(Path FILE) {
+    private List<String> readFile(Path FILE) throws IOException {
         // read file and place lines in list
         try {
             return Files.readAllLines(FILE);
@@ -36,10 +41,9 @@ public class FileHandler implements FileHandlerInterface {
                 Files.createFile(FILE);
                 return readFile(FILE);
             } catch (IOException e) {
-                ex.printStackTrace();
+                throw new IOException();
             }
         }
-        return null;
     }
 
     @Override
@@ -48,16 +52,16 @@ public class FileHandler implements FileHandlerInterface {
             List<String> strings = readFile(FILE);
             strings.add(member.toString());
             Files.write(FILE, strings);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (Exception ex) {
+            throw new RuntimeException();
         }
     }
 
     @Override
     public ArrayList<Member> readMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
-        List<String> strings = readFile(FILE);
         try {
+            List<String> strings = readFile(FILE);
             for (String string : strings) {
                 String[] vars = new String[9];
                 int endIndex = 0;
@@ -78,9 +82,8 @@ public class FileHandler implements FileHandlerInterface {
                 members.add(new Member(name, birthdate, address, postNr, city, phone, mail, Boolean.parseBoolean(active), Double.parseDouble(arrears)));
             }
             return members;
-        } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("members.txt is not formatted properly.");
-            return null;
+        } catch (Exception e) {
+            throw new RuntimeException("members.txt is not formatted properly.");
         }
     }
 
@@ -91,7 +94,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.remove(original.toString());
             strings.add(updated.toString());
             Files.write(FILE, strings);
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
@@ -103,7 +106,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.remove(member.toString());
             Files.write(FILE, strings);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException();
         }   
     }
 
@@ -129,7 +132,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.add(swimmer.toString());
             Files.write(competetiveFILE, strings);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException();
 
         }
     }
@@ -137,8 +140,8 @@ public class FileHandler implements FileHandlerInterface {
     @Override
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile() {
         ArrayList<CompetetiveSwimmer> competitiveMembers = new ArrayList<>();
-        List<String> strings = readFile(competetiveFILE);
         try {
+            List<String> strings = readFile(competetiveFILE);
             int count = 0;
             for (String string : strings) {
                 int startIndex = string.indexOf("=");
@@ -200,9 +203,8 @@ public class FileHandler implements FileHandlerInterface {
             
             return competitiveMembers;
             
-        } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("Competetives.txt is not formatted properly.");
-            return null;
+        } catch (Exception e) {
+            throw new RuntimeException("Competetives.txt is not formatted properly.");
         }
     }
 
@@ -213,9 +215,8 @@ public class FileHandler implements FileHandlerInterface {
             strings.remove(original.toString());
             strings.add(updated.toString());
             Files.write(competetiveFILE, strings);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-
+        } catch (Exception ex) {
+            throw new RuntimeException();
         }
     }
 
