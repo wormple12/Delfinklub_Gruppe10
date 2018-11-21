@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
-    MasterSystem k = new MasterSystem(true);
+    MasterSystem k = new MasterSystem();
     private Member editedMember = null;
     TableEnum tab;
 
