@@ -207,19 +207,17 @@ public class MasterSystemTest {
     public void test09AddTrainingResult() {
         System.out.println("addTrainingResult");
         instance.addTrainingResult(swimmers.get(0), Discipline.BREASTSTROKE, "12:55:78", "18-12-2017");
+        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "12:55:78", "18-12-2017"));
         instance.addTrainingResult(swimmers.get(0), Discipline.BREASTSTROKE, "12:22:11", "28-01-2018");
+        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "12:22:11", "28-01-2018"));
         instance.addTrainingResult(swimmers.get(0), Discipline.BREASTSTROKE, "13:56:79", "02-02-2018");
         instance.addTrainingResult(swimmers.get(0), Discipline.CRAWL, "02:33:13", "17-05-2016");
-        instance.addTrainingResult(swimmers.get(1), Discipline.BREASTSTROKE, "15:04:10", "18-12-2017");
-        instance.addTrainingResult(swimmers.get(1), Discipline.CRAWL, "00:22:99", "02-02-2018");
-        instance.addTrainingResult(swimmers.get(2), Discipline.CRAWL, "02:12:01", "07-06-2018");
-        
-        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "12:55:78", "18-12-2017"));
-        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "12:22:11", "28-01-2018"));
-        swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "13:56:79", "02-02-2018"));
         swimmers.get(0).setBestTrainingResult(new TrainingResult(Discipline.CRAWL, "02:33:13", "17-05-2016"));
+        instance.addTrainingResult(swimmers.get(1), Discipline.BREASTSTROKE, "15:04:10", "18-12-2017");
         swimmers.get(1).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "15:04:10", "18-12-2017"));
+        instance.addTrainingResult(swimmers.get(1), Discipline.CRAWL, "00:22:99", "02-02-2018");
         swimmers.get(1).setBestTrainingResult(new TrainingResult(Discipline.CRAWL, "00:22:99", "02-02-2018"));
+        instance.addTrainingResult(swimmers.get(2), Discipline.CRAWL, "02:12:01", "07-06-2018");
         swimmers.get(2).setBestTrainingResult(new TrainingResult(Discipline.CRAWL, "02:12:01", "07-06-2018"));
     }
 
@@ -230,11 +228,14 @@ public class MasterSystemTest {
     public void test10AddCompetetiveResult() {
         System.out.println("addCompetetiveResult");
         instance.addCompetetiveResult(swimmers.get(2), Discipline.BREASTSTROKE, "08:44:77", "31-12-1999", "The Old Games", 2);
-        instance.addCompetetiveResult(swimmers.get(1), Discipline.BREASTSTROKE, "08:44:76", "31-12-1999", "The Old Games", 1);
-        instance.addCompetetiveResult(swimmers.get(2), Discipline.BUTTERFLY, "03:29:29", "31-12-1999", "The Old Games", 6);
         swimmers.get(2).addCompetetiveResult(new CompetetiveResult(Discipline.BREASTSTROKE, "08:44:77", "31-12-1999", "The Old Games", 2));
+        swimmers.get(2).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "08:44:77", "31-12-1999"));
+        instance.addCompetetiveResult(swimmers.get(1), Discipline.BREASTSTROKE, "08:44:76", "31-12-1999", "The Old Games", 1);
         swimmers.get(1).addCompetetiveResult(new CompetetiveResult(Discipline.BREASTSTROKE, "08:44:76", "31-12-1999", "The Old Games", 1));
+        swimmers.get(1).setBestTrainingResult(new TrainingResult(Discipline.BREASTSTROKE, "08:44:76", "31-12-1999"));
+        instance.addCompetetiveResult(swimmers.get(2), Discipline.BUTTERFLY, "03:29:29", "31-12-1999", "The Old Games", 6);
         swimmers.get(2).addCompetetiveResult(new CompetetiveResult(Discipline.BUTTERFLY, "03:29:29", "31-12-1999", "The Old Games", 6));
+        swimmers.get(2).setBestTrainingResult(new TrainingResult(Discipline.BUTTERFLY, "03:29:29", "31-12-1999"));
     }
 
     /**
@@ -255,12 +256,30 @@ public class MasterSystemTest {
     @Test
     public void test12GetTop5() {
         System.out.println("getTop5");
-        Discipline d = null;
-        ArrayList<CompetetiveSwimmer> expResult = null;
+        
+        Discipline d = Discipline.BUTTERFLY;
+        ArrayList<CompetetiveSwimmer> expResult = new ArrayList<>();
+        expResult.add(swimmers.get(2));
+        expResult.add(swimmers.get(0));
+        expResult.add(swimmers.get(1));
         ArrayList<CompetetiveSwimmer> result = instance.getTop5(d);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        d = Discipline.CRAWL;
+        expResult = new ArrayList<>();
+        expResult.add(swimmers.get(1));
+        expResult.add(swimmers.get(2));
+        expResult.add(swimmers.get(0));
+        result = instance.getTop5(d);
+        assertEquals(expResult, result);
+        
+        d = Discipline.BREASTSTROKE;
+        expResult = new ArrayList<>();
+        expResult.add(swimmers.get(1));
+        expResult.add(swimmers.get(2));
+        expResult.add(swimmers.get(0));
+        result = instance.getTop5(d);
+        assertEquals(expResult, result);
     }
     
 }
