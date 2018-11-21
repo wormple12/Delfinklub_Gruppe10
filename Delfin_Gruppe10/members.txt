@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 Member{name=Jack McDonalds, birthdate=01-01-1955, address=Very Derp Street 333, postnr=1111, city=Long Way From Here, phone=11112222, mail=derp@isDerp.derp, active=true, arrears=1200.0}
 Member{name=a a, birthdate=20-12-1995, address=Lyngevej 39, postnr=3660, city=Stenløse, phone=60893899, mail=wormple12@hotmail.com, active=true, arrears=1100.0}
+=======
+Member{name=Paulette Fru Blå, birthdate=01-01-1995, address=Blågade 33, postnr=5555, city=Ja, phone=12345678, mail=ja@nej.dk, active=false, arrears=500.0}
+Member{name=Farvel Knud, birthdate=22-05-1955, address=Tårevej 666, postnr=6666, city=Sex, phone=87654321, mail=nej@ja.ok, active=true, arrears=1200.0}
+>>>>>>> 9282a0f135b3865973c4f267887785eae9111b6c

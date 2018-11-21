@@ -81,6 +81,7 @@ public class FileHandlerTest {
         assertEquals(fH.readMembersFromFile().get(2), member3);
         
         PrintWriter pw = new PrintWriter("memberTest.txt");
+        pw.print("");
         pw.close();
     }
     
@@ -92,6 +93,7 @@ public class FileHandlerTest {
         assertEquals(fH.readMembersFromFile().get(0), member2);
         
         PrintWriter pw = new PrintWriter("memberTest.txt");
+        pw.print("");
         pw.close();
     }
     
@@ -107,6 +109,7 @@ public class FileHandlerTest {
         assertEquals(fH.readMembersFromFile().get(1), member3);
         
         PrintWriter pw = new PrintWriter("memberTest.txt");
+        pw.print("");
         pw.close();
     }
     
@@ -121,20 +124,22 @@ public class FileHandlerTest {
         assertEquals(fH.readMembersInArrearsFromFile(), fH.readMembersFromFile());
         
         PrintWriter pw = new PrintWriter("memberTest.txt");
+        pw.print("");
         pw.close();
     }
     
-    @Test
-    public void readCompetetiveToFileTest() throws FileNotFoundException{
-        fH.writeCompetetiveToFile(comp1);
-        fH.writeCompetetiveToFile(comp2);
-        fH.writeCompetetiveToFile(comp3);
-        
-        assertEquals(fH.readCompetetivesFromFile().get(0), comp1); 
-        assertEquals(fH.readCompetetivesFromFile().get(1), comp2);
-        assertEquals(fH.readCompetetivesFromFile().get(2), comp3);
-        
-        PrintWriter pw = new PrintWriter("competetiveTest.txt");
-        pw.close();
-    }
+//    @Test
+//    public void readCompetetiveToFileTest() throws FileNotFoundException{
+//        fH.writeCompetetiveToFile(comp1);
+//        fH.writeCompetetiveToFile(comp2);
+//        fH.writeCompetetiveToFile(comp3);
+//        
+//        assertEquals(fH.readCompetetivesFromFile().get(0), comp1); 
+//        assertEquals(fH.readCompetetivesFromFile().get(1), comp2);
+//        assertEquals(fH.readCompetetivesFromFile().get(2), comp3);
+//        
+//        PrintWriter pw = new PrintWriter("competetiveTest.txt");
+//        pw.print("");
+//        pw.close();
+//    }
 }

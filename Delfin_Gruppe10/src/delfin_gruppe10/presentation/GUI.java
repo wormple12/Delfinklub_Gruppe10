@@ -19,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
-    MasterSystem k = new MasterSystem(false);
+
+    MasterSystem k = new MasterSystem();
+
     private Member editedMember = null;
     TableEnum tab;
 
@@ -88,6 +90,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         AMemberMsgBox = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         Choose = new javax.swing.JFrame();
@@ -543,13 +546,23 @@ public class GUI extends javax.swing.JFrame {
         AMemberMsgBox.setRows(4);
         jScrollPane2.setViewportView(AMemberMsgBox);
 
+        jButton1.setText("Clear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AMemberFLayout = new javax.swing.GroupLayout(AMemberF.getContentPane());
         AMemberF.getContentPane().setLayout(AMemberFLayout);
         AMemberFLayout.setHorizontalGroup(
             AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AMemberFLayout.createSequentialGroup()
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Return4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(AMemberFLayout.createSequentialGroup()
+                        .addComponent(Return4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
                     .addGroup(AMemberFLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,7 +658,9 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Return4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Return4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -1916,6 +1931,14 @@ public class GUI extends javax.swing.JFrame {
         }
         k.addMember(Tname.getText(), Tbirthdate.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText(), active);
         AMemberMsgBox.setText("Member: "+Tname.getText()+"\nsuccesfully registered.");
+        
+        Tname.setText(null);
+        Tbirthdate.setText(null);
+        Taddress.setText(null);
+        Tac.setText(null);
+        Tcity.setText(null);
+        Tphone.setText(null);
+        Tmail.setText(null);
         } catch (IllegalArgumentException e){
             AMemberMsgBox.setText(e.getMessage());
         }
@@ -1933,6 +1956,7 @@ public class GUI extends javax.swing.JFrame {
         this.pFormand.setVisible(true);
         this.pFormand.setSize(pFormand.getPreferredSize());
         this.AMemberF.dispose();
+        AMemberMsgBox.setText(null);
     }//GEN-LAST:event_Return4ActionPerformed
 
     private void RemoveBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBActionPerformed
@@ -1975,6 +1999,16 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_Top5DActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Tname.setText(null);
+        Tbirthdate.setText(null);
+        Taddress.setText(null);
+        Tac.setText(null);
+        Tcity.setText(null);
+        Tphone.setText(null);
+        Tmail.setText(null);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2187,6 +2221,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton inFormand;
     private javax.swing.JButton inKasserer;
     private javax.swing.JButton inTrainer;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
