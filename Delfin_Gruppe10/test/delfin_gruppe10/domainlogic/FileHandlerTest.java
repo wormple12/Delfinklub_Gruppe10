@@ -36,6 +36,7 @@ public class FileHandlerTest {
     CompetetiveSwimmer comp1 = new CompetetiveSwimmer("Jack McDonalds", "01-01-1955", "Very Derp Street 333", "1111", "Long Way From Here", "11112222", "derp@isDerp.derp");
     CompetetiveSwimmer comp2 = new CompetetiveSwimmer("John Johnson", "01-01-1955", "Very Derp Street 333", "1111", "Long Way From Here", "11112222", "derp@isDerp.derp");
     CompetetiveSwimmer comp3 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
+    CompetetiveSwimmer comp4 = new CompetetiveSwimmer("b b", "21-13-1994", "Lybevej 37", "3060", "Stenfuld", "09873899", "skeksil@hotmail.com");
     
     TrainingResult traiResBut1 = new TrainingResult(Discipline.BUTTERFLY, "01:01:01", "04-05-1997");
     TrainingResult traiResBut2 = new TrainingResult(Discipline.BUTTERFLY, "02:02:02", "04-05-1997");
@@ -115,7 +116,7 @@ public class FileHandlerTest {
     
     //er den her rigtigt lavet?
     @Test
-    public void readMembersInArrearsFromFile() throws FileNotFoundException{
+    public void readMembersInArrearsFromFileTest() throws FileNotFoundException{
         fH.writeMemberToFile(member1);
         fH.writeMemberToFile(member2);
         fH.writeMemberToFile(member3);
@@ -128,18 +129,24 @@ public class FileHandlerTest {
         pw.close();
     }
     
-//    @Test
-//    public void readCompetetiveToFileTest() throws FileNotFoundException{
-//        fH.writeCompetetiveToFile(comp1);
-//        fH.writeCompetetiveToFile(comp2);
-//        fH.writeCompetetiveToFile(comp3);
-//        
-//        assertEquals(fH.readCompetetivesFromFile().get(0), comp1); 
-//        assertEquals(fH.readCompetetivesFromFile().get(1), comp2);
-//        assertEquals(fH.readCompetetivesFromFile().get(2), comp3);
-//        
-//        PrintWriter pw = new PrintWriter("competetiveTest.txt");
-//        pw.print("");
-//        pw.close();
-//    }
+    @Test
+    public void readCompetetiveToFileTest() throws FileNotFoundException{
+        fH.writeCompetetiveToFile(comp1);
+        fH.writeCompetetiveToFile(comp2);
+        fH.writeCompetetiveToFile(comp3);
+        
+        assertEquals(fH.readCompetetivesFromFile().get(0), comp1); 
+        assertEquals(fH.readCompetetivesFromFile().get(1), comp2);
+        assertEquals(fH.readCompetetivesFromFile().get(2), comp3);
+        
+        PrintWriter pw = new PrintWriter("competetiveTest.txt");
+        pw.print("");
+        pw.close();
+    }
+    
+    @Test
+    public void editCompetetiveInFileTest()throws FileNotFoundException{
+        fH.editCompetetiveInFile(comp1, comp4);
+        assertEquals(fH.readCompetetivesFromFile().get(0), comp4);
+    }
 }
