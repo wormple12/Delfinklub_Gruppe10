@@ -21,7 +21,7 @@ public class Main {
         CompetetiveSwimmer comp1 = new CompetetiveSwimmer("Jack McDonalds",
                 "01-01-1955",
                 "Very Derp Street 333", "1111", "Long Way From Here",
-                "11112222", "derp@isDerp.derp");
+                "11112222", "derp@isDerp.derp", true);
         Member member = new Member("Jack McDonalds",
                 "01-01-1955",
                 "Very Derp Street 333", "1111", "Long Way From Here",
@@ -30,14 +30,14 @@ public class Main {
         CompetetiveSwimmer comp2 = new CompetetiveSwimmer("John Johnson",
                 "01-01-1955",
                 "Very Derp Street 333", "1111", "Long Way From Here",
-                "11112222", "derp@isDerp.derp");
+                "11112222", "derp@isDerp.derp", true);
         Member member2 = new Member("John Johnson",
                 "01-01-1955",
                 "Very Derp Street 333", "1111", "Long Way From Here",
                 "11112222", "derp@isDerp.derp", true);
 
         Member member4 = new Member("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com", true);
-        CompetetiveSwimmer comp3 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
+        CompetetiveSwimmer comp3 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com", true);
         
         TrainingResult result = new TrainingResult(Discipline.BUTTERFLY, "01:22:22", "01-01-2011");
         comp3.setBestTrainingResult(result);

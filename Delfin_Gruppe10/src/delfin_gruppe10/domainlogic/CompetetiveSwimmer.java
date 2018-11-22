@@ -20,8 +20,8 @@ public class CompetetiveSwimmer extends Member {
     private TrainingResult bestBreaststrokeResult;
     private ArrayList<CompetetiveResult> competetiveResults;
 
-    public CompetetiveSwimmer(String name, String birthdate, String address, String postnr, String city, String phone, String mail) {
-        super(name, birthdate, address, postnr, city, phone, mail, true);
+    public CompetetiveSwimmer(String name, String birthdate, String address, String postnr, String city, String phone, String mail, boolean active) {
+        super(name, birthdate, address, postnr, city, phone, mail, active);
         bestButterflyResult = new TrainingResult(Discipline.BUTTERFLY, "59:59:00", "01-01-2000");
         bestCrawlResult = new TrainingResult(Discipline.CRAWL, "59:59:00", "01-01-2000");
         bestBackstrokeResult = new TrainingResult(Discipline.BACKSTROKE, "59:59:00", "01-01-2000");
@@ -90,7 +90,7 @@ public class CompetetiveSwimmer extends Member {
     }
     
     public CompetetiveSwimmer copy() {
-        CompetetiveSwimmer swimmer = new CompetetiveSwimmer(getName(), getBirthdate(), getAddress(), getPostnr(), getCity(), getPhone(), getMail());
+        CompetetiveSwimmer swimmer = new CompetetiveSwimmer(getName(), getBirthdate(), getAddress(), getPostnr(), getCity(), getPhone(), getMail(), isActive());
         TrainingResult originalTR = getBestTrainingResult(Discipline.BUTTERFLY);
         TrainingResult newTR = new TrainingResult(Discipline.BUTTERFLY, originalTR.getTime(), originalTR.getDate());
         swimmer.setBestTrainingResult(newTR);

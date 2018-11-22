@@ -195,9 +195,9 @@ public class MasterSystemTest {
         instance.addToCompetetiveTeam(members.get(0));
         instance.addToCompetetiveTeam(members.get(1));
         instance.addToCompetetiveTeam(members.get(2));
-        swimmers.add(new CompetetiveSwimmer(members.get(0).getName(), members.get(0).getBirthdate(), members.get(0).getAddress(), members.get(0).getPostnr(), members.get(0).getCity(), members.get(0).getPhone(), members.get(0).getMail()));
-        swimmers.add(new CompetetiveSwimmer(members.get(1).getName(), members.get(1).getBirthdate(), members.get(1).getAddress(), members.get(1).getPostnr(), members.get(1).getCity(), members.get(1).getPhone(), members.get(1).getMail()));
-        swimmers.add(new CompetetiveSwimmer(members.get(2).getName(), members.get(2).getBirthdate(), members.get(2).getAddress(), members.get(2).getPostnr(), members.get(2).getCity(), members.get(2).getPhone(), members.get(2).getMail()));
+        swimmers.add(new CompetetiveSwimmer(members.get(0).getName(), members.get(0).getBirthdate(), members.get(0).getAddress(), members.get(0).getPostnr(), members.get(0).getCity(), members.get(0).getPhone(), members.get(0).getMail(), true));
+        swimmers.add(new CompetetiveSwimmer(members.get(1).getName(), members.get(1).getBirthdate(), members.get(1).getAddress(), members.get(1).getPostnr(), members.get(1).getCity(), members.get(1).getPhone(), members.get(1).getMail(), true));
+        swimmers.add(new CompetetiveSwimmer(members.get(2).getName(), members.get(2).getBirthdate(), members.get(2).getAddress(), members.get(2).getPostnr(), members.get(2).getCity(), members.get(2).getPhone(), members.get(2).getMail(), true));
     }
     
         /**

@@ -937,7 +937,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        Remove.setText("Fjern (virker ikke)");
+        Remove.setText("Fjern");
         Remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RemoveActionPerformed(evt);
@@ -949,13 +949,13 @@ public class GUI extends javax.swing.JFrame {
         RegisterCMLayout.setHorizontalGroup(
             RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegisterCMLayout.createSequentialGroup()
-                .addGroup(RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Remove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Return9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Return9)
+                    .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(RegisterCMLayout.createSequentialGroup()
-                        .addGap(0, 59, Short.MAX_VALUE)
+                        .addGap(0, 80, Short.MAX_VALUE)
                         .addComponent(Confirm1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ACompL, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(RegisterCMLayout.createSequentialGroup()
@@ -1350,6 +1350,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         EMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        EMemberF.setPreferredSize(new java.awt.Dimension(642, 520));
 
         Text25.setEditable(false);
         Text25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1698,17 +1699,17 @@ public class GUI extends javax.swing.JFrame {
 
         try {
             ArrayList<Member> members = k.getAllMembers();
-            ArrayList<CompetetiveSwimmer> swimmers = k.getCompetetiveSwimmers();
+//            ArrayList<CompetetiveSwimmer> swimmers = k.getCompetetiveSwimmers();
             
-            ArrayList<String> swimmerNames = new ArrayList<>();
-            for (CompetetiveSwimmer swimmer : swimmers){
-                swimmerNames.add(swimmer.getName());
-            }
+//            ArrayList<String> swimmerNames = new ArrayList<>();
+//            for (CompetetiveSwimmer swimmer : swimmers){
+//                swimmerNames.add(swimmer.getName());
+//            }
             
             for (Member member : members) {
-                if (!swimmerNames.contains(member.getName())){
+//                if (!swimmerNames.contains(member.getName())){
                     ACompL.addItem(member.getName());
-                }
+//                }
             }
         } catch (Exception e) {
             RegisterCMMsgBox.setText(e.getMessage());
@@ -1828,7 +1829,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Return10ActionPerformed
 
     private void RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActionPerformed
-        this.jLabel3.setText("Fjernet");
+        try {
+            String choice = (String) ACompL.getSelectedItem();
+            CompetetiveSwimmer swimmer = k.getCompSwim(choice);
+            k.removeFromCompetetiveTeam(swimmer);
+            RegisterCMMsgBox.setText(swimmer.getName() + " er nu passiv.");
+        } catch (Exception e){
+            RegisterCMMsgBox.setText(e.getMessage());
+        }
     }//GEN-LAST:event_RemoveActionPerformed
 
     private void Return11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return11ActionPerformed
@@ -2051,15 +2059,15 @@ public class GUI extends javax.swing.JFrame {
         
         try {
             k.deleteMember(editedMember.getName());
-            editedMember = null;
             ArrayList<Member> members = k.getAllMembers();
             ChooseMemberComboBox.removeAllItems();
             for (Member member : members) {
                 ChooseMemberComboBox.addItem(member.getName());
             }
-            EMemberMsgBox.setText("Medlem: " + editedMember.getName() + "\ner blevet slettet.");
+            ChooseMsgBox.setText("Medlem: " + editedMember.getName() + "\ner blevet slettet.");
+            editedMember = null;
         } catch (Exception e) {
-            EMemberMsgBox.setText(e.getMessage());
+            ChooseMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_RemoveBActionPerformed
 
