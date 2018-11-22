@@ -130,7 +130,7 @@ public class MasterSystem implements MasterInterface {
             updated.payArrears(amount);
             dataAccessor.editMemberInFile(original, updated);
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
