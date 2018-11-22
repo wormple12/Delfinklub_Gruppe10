@@ -12,14 +12,11 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author Lukas Bjørnvad
+ * This class handles everything regarding GUI
+ * 
+ * @author Lukas Bjørnvad, Ludvig Bramsen, Simon Asholt Norup
+ * @version 1.00, 22 Nov 2018
  */
 public class GUI extends javax.swing.JFrame {
 
