@@ -502,6 +502,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        Tname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TnameActionPerformed(evt);
+            }
+        });
+
         Text2.setEditable(false);
         Text2.setText("Fødselsdato");
         Text2.addActionListener(new java.awt.event.ActionListener() {
@@ -741,7 +747,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setText("At Betale");
 
         PayText.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        PayText.setText("Beløb");
         PayText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PayTextActionPerformed(evt);
@@ -1357,7 +1362,9 @@ public class GUI extends javax.swing.JFrame {
         );
 
         EMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         EMemberF.setPreferredSize(new java.awt.Dimension(642, 540));
+
 
         Text25.setEditable(false);
         Text25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1810,6 +1817,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_PayAllBActionPerformed
 
     private void Return7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return7ActionPerformed
+        AddPaymentMsgBox.setText(null);
+        PayText.setText(null);
         initWindow(pKasserer, AddPayment);
     }//GEN-LAST:event_Return7ActionPerformed
 
@@ -1969,6 +1978,7 @@ public class GUI extends javax.swing.JFrame {
             k.registerPayment(l.getName(), Double.parseDouble(PayText.getText()));
             l = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(l.getArrears()));
+            PayText.setText(null);
             AddPaymentMsgBox.setText("Betalingen er registreret.");
             
             if(l.getArrears() == 0){
@@ -2062,6 +2072,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Text2ActionPerformed
 
     private void Return4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return4ActionPerformed
+        Tname.setText(null);
+        Tbirthdate.setText(null);
+        Taddress.setText(null);
+        Tac.setText(null);
+        Tcity.setText(null);
+        Tphone.setText(null);
+        Tmail.setText(null);
         initWindow(pFormand, AMemberF);
         AMemberMsgBox.setText("");
     }//GEN-LAST:event_Return4ActionPerformed
@@ -2136,6 +2153,10 @@ public class GUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void TnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TnameActionPerformed
 
 
     /**
