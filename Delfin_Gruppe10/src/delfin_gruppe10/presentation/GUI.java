@@ -194,10 +194,12 @@ public class GUI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         pFormand.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pFormand.setTitle("Delfinen Svømmeklub (Administrativt system)");
         pFormand.setName("viewMem"); // NOI18N
 
         VMembers.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         VMembers.setText("Vis Medlemmer");
+        VMembers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         VMembers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VMembersActionPerformed(evt);
@@ -206,6 +208,7 @@ public class GUI extends javax.swing.JFrame {
 
         AMemeber.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         AMemeber.setText("Tilføj Medlem");
+        AMemeber.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         AMemeber.setMaximumSize(new java.awt.Dimension(125, 25));
         AMemeber.setMinimumSize(new java.awt.Dimension(125, 25));
         AMemeber.addActionListener(new java.awt.event.ActionListener() {
@@ -216,6 +219,7 @@ public class GUI extends javax.swing.JFrame {
 
         Edit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Edit.setText("Rediger Medlem");
+        Edit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditActionPerformed(evt);
@@ -259,11 +263,13 @@ public class GUI extends javax.swing.JFrame {
         );
 
         pKasserer.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pKasserer.setTitle("Delfinen Svømmeklub (Administrativt system)");
         pKasserer.setBackground(new java.awt.Color(245, 26, 52));
         pKasserer.setForeground(java.awt.Color.darkGray);
 
         VMembers2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         VMembers2.setText("Vis Medlemmer");
+        VMembers2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         VMembers2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VMembers2ActionPerformed(evt);
@@ -272,6 +278,7 @@ public class GUI extends javax.swing.JFrame {
 
         APayment.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         APayment.setText("Tilføj Betaling");
+        APayment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         APayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 APaymentActionPerformed(evt);
@@ -280,6 +287,7 @@ public class GUI extends javax.swing.JFrame {
 
         Arrears.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Arrears.setText("Vis Restance");
+        Arrears.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         Arrears.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ArrearsActionPerformed(evt);
@@ -323,10 +331,12 @@ public class GUI extends javax.swing.JFrame {
         );
 
         pTrainer.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pTrainer.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         VMembers3.setBackground(new java.awt.Color(250, 250, 250));
         VMembers3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         VMembers3.setText("Vis Medlemmer");
+        VMembers3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         VMembers3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VMembers3ActionPerformed(evt);
@@ -336,6 +346,7 @@ public class GUI extends javax.swing.JFrame {
         CTeam.setBackground(new java.awt.Color(250, 250, 250));
         CTeam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         CTeam.setText("Vis K-Hold");
+        CTeam.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         CTeam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CTeamActionPerformed(evt);
@@ -345,6 +356,7 @@ public class GUI extends javax.swing.JFrame {
         STop5.setBackground(new java.awt.Color(250, 250, 250));
         STop5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         STop5.setText("Top 5");
+        STop5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         STop5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 STop5ActionPerformed(evt);
@@ -361,6 +373,7 @@ public class GUI extends javax.swing.JFrame {
         RegisterCP.setBackground(new java.awt.Color(250, 250, 250));
         RegisterCP.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         RegisterCP.setText("Registrer K");
+        RegisterCP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         RegisterCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterCPActionPerformed(evt);
@@ -370,6 +383,7 @@ public class GUI extends javax.swing.JFrame {
         ATResult.setBackground(new java.awt.Color(250, 250, 250));
         ATResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ATResult.setText("Tilføj T-Resultat");
+        ATResult.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         ATResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ATResultActionPerformed(evt);
@@ -379,6 +393,7 @@ public class GUI extends javax.swing.JFrame {
         ACResult.setBackground(new java.awt.Color(250, 250, 250));
         ACResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ACResult.setText("Tilføj K-Resultat");
+        ACResult.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         ACResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ACResultActionPerformed(evt);
@@ -427,6 +442,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         MemberL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        MemberL.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         Choice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Fødselsår", "Medlemskab" }));
         Choice.addActionListener(new java.awt.event.ActionListener() {
@@ -499,6 +515,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         AMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        AMemberF.setTitle("Delfinen Svømmeklub (Administrativt system)");
         AMemberF.setResizable(false);
 
         Text1.setEditable(false);
@@ -685,6 +702,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         Choose.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Choose.setTitle("Vælg venligst et medlem");
 
         ChooseMemberComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lord William the II", "Name2" }));
         ChooseMemberComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -745,6 +763,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         AddPayment.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        AddPayment.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         LeftToPayField.setEditable(false);
         LeftToPayField.setBackground(new java.awt.Color(255, 255, 204));
@@ -856,6 +875,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         ArrearL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        ArrearL.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         Choice1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Fødselsår", "Medlemskab" }));
         Choice1.addActionListener(new java.awt.event.ActionListener() {
@@ -929,6 +949,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         RegisterCM.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        RegisterCM.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         ACompL.setEditable(true);
         ACompL.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
@@ -994,6 +1015,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         CompTeamL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        CompTeamL.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         SandJ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senior", "Junior" }));
         SandJ.addActionListener(new java.awt.event.ActionListener() {
@@ -1059,6 +1081,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         AddCTime.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        AddCTime.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         CTchoose.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CTchoose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Item 2", "Item 3", "Item 4" }));
@@ -1197,6 +1220,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         AddTTime.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        AddTTime.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         TTchoose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Item 2", "Item 3", "Item 4" }));
         TTchoose.addActionListener(new java.awt.event.ActionListener() {
@@ -1294,6 +1318,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         Top5L.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Top5L.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         Top5D.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUTTERFLY", "CRAWL", "BACKSTROKE", "BREASTSTROKE" }));
         Top5D.addActionListener(new java.awt.event.ActionListener() {
@@ -1376,6 +1401,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         EMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        EMemberF.setTitle("Delfinen Svømmeklub (Administrativt system)");
 
         Text25.setEditable(false);
         Text25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1563,10 +1589,12 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Delfinen Svømmeklub (Administrativt system)");
         setBackground(new java.awt.Color(0, 240, 240));
 
         inTrainer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         inTrainer.setText("Træner");
+        inTrainer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         inTrainer.setMaximumSize(new java.awt.Dimension(100, 50));
         inTrainer.setMinimumSize(new java.awt.Dimension(100, 50));
         inTrainer.setPreferredSize(new java.awt.Dimension(100, 50));
@@ -1578,6 +1606,7 @@ public class GUI extends javax.swing.JFrame {
 
         inKasserer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         inKasserer.setText("Kasserer");
+        inKasserer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         inKasserer.setMaximumSize(new java.awt.Dimension(100, 50));
         inKasserer.setMinimumSize(new java.awt.Dimension(100, 50));
         inKasserer.setPreferredSize(new java.awt.Dimension(100, 50));
@@ -1589,6 +1618,7 @@ public class GUI extends javax.swing.JFrame {
 
         inFormand.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         inFormand.setText("Formand");
+        inFormand.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 204, 255), null, null));
         inFormand.setMaximumSize(new java.awt.Dimension(100, 50));
         inFormand.setMinimumSize(new java.awt.Dimension(100, 50));
         inFormand.setPreferredSize(new java.awt.Dimension(100, 50));
