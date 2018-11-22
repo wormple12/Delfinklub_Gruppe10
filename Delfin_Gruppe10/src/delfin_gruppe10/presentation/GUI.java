@@ -441,7 +441,7 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Fødsels-dato", "Adresse", "Postnr", "By", "Telefon", "Mail", "Medlemskab"
+                "Name", "Fødselsdato", "Adresse", "Postnr", "By", "Telefon", "Mail", "Medlemskab"
             }
         ) {
             Class[] types = new Class [] {
@@ -453,9 +453,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(MemberTable);
-        if (MemberTable.getColumnModel().getColumnCount() > 0) {
-            MemberTable.getColumnModel().getColumn(7).setHeaderValue("Medlemskab");
-        }
 
         javax.swing.GroupLayout MemberLLayout = new javax.swing.GroupLayout(MemberL.getContentPane());
         MemberL.getContentPane().setLayout(MemberLLayout);
@@ -467,7 +464,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(MemberLLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(MemberLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
                     .addGroup(MemberLLayout.createSequentialGroup()
                         .addComponent(MemberLMsgBox)
                         .addGap(260, 260, 260)
@@ -888,7 +885,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ArrearLLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ArrearLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
                     .addGroup(ArrearLLayout.createSequentialGroup()
                         .addComponent(Return8, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(97, 97, 97)
@@ -1006,7 +1003,7 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Fødsels-dato", "Adresse", "Postnr", "By", "Telefon", "Mail"
+                "Name", "Fødselsdato", "Adresse", "Postnr", "By", "Telefon", "Mail"
             }
         ) {
             Class[] types = new Class [] {
@@ -1029,9 +1026,9 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(133, 133, 133)
                 .addComponent(Text16, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SandJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
-            .addComponent(jScrollPane3)
+                .addComponent(SandJ, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
         );
         CompTeamLLayout.setVerticalGroup(
             CompTeamLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1316,12 +1313,22 @@ public class GUI extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane6.setViewportView(T5table);
+        if (T5table.getColumnModel().getColumnCount() > 0) {
+            T5table.getColumnModel().getColumn(1).setPreferredWidth(15);
+        }
 
         javax.swing.GroupLayout Top5LLayout = new javax.swing.GroupLayout(Top5L.getContentPane());
         Top5L.getContentPane().setLayout(Top5LLayout);
@@ -1332,7 +1339,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(221, 221, 221)
                 .addComponent(Text17, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Top5D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Top5D, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(Top5LLayout.createSequentialGroup()
                 .addComponent(Return13, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1355,6 +1362,9 @@ public class GUI extends javax.swing.JFrame {
         );
 
         EMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        EMemberF.setPreferredSize(new java.awt.Dimension(642, 540));
+
 
         Text25.setEditable(false);
         Text25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1538,7 +1548,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(Tmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Return14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package delfin_gruppe10.domainlogic;
 
 import delfin_gruppe10.data.*;
@@ -10,13 +6,22 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
+ * MasterSystem
+ * The class acts as a controller class that communicates between a dataAccessor and the UI.
+ * It contains the logic, necessary for taking data from the dataAccessor and transforming it
+ * into what the UI needs.
+ * Also, this class implements an interface that makes sure the contract is unbroken,
+ * that is to say, that it follows the specifications given in the use-case diagram.
+ * 
+ * The two constant String variables in the beginning can be changed if necessary
+ * to use different paths for the data files
  *
- * @author HP
+ * @author Simon Asholt Norup, Lukas Bjørnvad
+ * @version 1.00, 22 Nov 2018
  */
 public class MasterSystem implements MasterInterface {
 

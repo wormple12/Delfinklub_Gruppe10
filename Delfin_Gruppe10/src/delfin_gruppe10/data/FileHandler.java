@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package delfin_gruppe10.data;
 
 import delfin_gruppe10.domainlogic.*;
@@ -15,8 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author PC 2 2016 SDC-privat
+ * FileHandler
+ * This class handles communication with the .txt files. 
+ * It is capable of writing to, reading and editing objects stored in .txt files.
+ * It can handle both member and competetive swimmer objects. 
+ * @author Simon Asholt Norup
+ * @version 1.00, 22 Nov 2018
  */
 public class FileHandler implements FileHandlerInterface {
 
@@ -32,6 +32,15 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+   * Reads .txt files
+   * Is used directly or indirectly by every other method in this class
+   * 
+   * @param FILE must be a path 
+   * @return an arraylist of strings of everything in the file it was made to read
+   * @throws IOException if it failed to read the desired file.
+  */ 
+    
     private List<String> readFile(Path FILE) throws IOException {
         // read file and place lines in list
         try {
@@ -120,13 +129,13 @@ public class FileHandler implements FileHandlerInterface {
     public ArrayList<Member> readMembersInArrearsFromFile() {
         ArrayList<Member> allMembers = readMembersFromFile();
         ArrayList<Member> membersNotPaid = new ArrayList();
-        
-        for(int i = 0; i<allMembers.size(); i++){
-            if(allMembers.get(i).getArrears() > 0){
+
+        for (int i = 0; i < allMembers.size(); i++) {
+            if (allMembers.get(i).getArrears() > 0) {
                 membersNotPaid.add(allMembers.get(i));
             }
         }
-            return membersNotPaid;
+        return membersNotPaid;
     }
     
     // ===================================================
