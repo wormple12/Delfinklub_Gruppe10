@@ -96,8 +96,6 @@ public class MasterSystem implements MasterInterface {
         }
         updatedMember.setArrears(arrears);
         
-        dataAccessor.editMemberInFile(originalMember, updatedMember); // replace
-        
         if (!originalName.equals(name)){ // if name has been changed, also change it in competetive file
             try {
             CompetetiveSwimmer swimmer = getCompSwim(originalName);
@@ -108,6 +106,8 @@ public class MasterSystem implements MasterInterface {
                 // member is not competetive, so continue without changing competetive file
             }
         }
+        
+        dataAccessor.editMemberInFile(originalMember, updatedMember); // replace
     }
 
     @Override
