@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=false, arrears=1000.0}
-Member{name=Egon Olsen, birthdate=01-01-2015, address=Vej 2, postnr=1234, city=Byen, phone=12341234, mail=egon@olsen.dk, active=false, arrears=1000.0}
-=======
-Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=true, arrears=1100.0}
->>>>>>> fbc819aa90635ba799197f04ab24999595507440
+Member{name=Egon Olsen, birthdate=01-01-2015, address=Vej 2, postnr=1234, city=Byen, phone=12341234, mail=egon@olsen.dk, active=false, arrears=800.0}
+Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=false, arrears=734.0}
+Member{name=Chamberlain Skesil, birthdate=01-01-2000, address=ChamberlainsChamber 1, postnr=3333, city=Castle Of The Crystal, phone=12345678, mail=bestSkeksis@hotmail.com, active=true, arrears=1600.0}
+Member{name=j j, birthdate=01-01-2001, address=i 8, postnr=8888, city=jj, phone=98765432, mail=j@d.com, active=true, arrears=1000.0}

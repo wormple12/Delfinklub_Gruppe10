@@ -651,6 +651,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Tname">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TnameActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Text2">
           <Properties>
@@ -1955,9 +1958,6 @@
     <Container class="javax.swing.JFrame" name="EMemberF">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="3"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[642, 520]"/>
-        </Property>
       </Properties>
 
       <Layout>
