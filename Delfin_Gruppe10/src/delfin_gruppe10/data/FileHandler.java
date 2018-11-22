@@ -53,7 +53,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.add(member.toString());
             Files.write(FILE, strings);
         } catch (Exception ex) {
-            throw new RuntimeException();
+            throw new RuntimeException("Fejl. Kontakt programmøren.");
         }
     }
 
@@ -95,7 +95,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.add(updated.toString());
             Files.write(FILE, strings);
         } catch (Exception ex) {
-            throw new RuntimeException();
+            throw new RuntimeException("members.txt is not formatted properly.");
         }
     }
 
@@ -112,7 +112,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.remove(((Member)member).toString());
             Files.write(FILE, strings);
         } catch (IOException ex) {
-            throw new RuntimeException();
+            throw new RuntimeException("members.txt is not formatted properly.");
         }
     }
 
@@ -138,7 +138,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.add(swimmer.toString());
             Files.write(competetiveFILE, strings);
         } catch (IOException ex) {
-            throw new RuntimeException();
+            throw new RuntimeException("Fejl. Kontakt programmøren.");
 
         }
     }
@@ -210,7 +210,7 @@ public class FileHandler implements FileHandlerInterface {
             return competitiveMembers;
             
         } catch (Exception e) {
-            throw new RuntimeException("Competetives.txt is not formatted properly.");
+            throw new RuntimeException("competetives.txt is not formatted properly.");
         }
     }
 
@@ -222,7 +222,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.add(updated.toString());
             Files.write(competetiveFILE, strings);
         } catch (Exception ex) {
-            throw new RuntimeException();
+            throw new RuntimeException("competetives.txt is not formatted properly.");
         }
     }
 
