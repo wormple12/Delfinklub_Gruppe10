@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package delfin_gruppe10.data;
 
 import delfin_gruppe10.domainlogic.*;
@@ -120,13 +116,13 @@ public class FileHandler implements FileHandlerInterface {
     public ArrayList<Member> readMembersInArrearsFromFile() {
         ArrayList<Member> allMembers = readMembersFromFile();
         ArrayList<Member> membersNotPaid = new ArrayList();
-        
-        for(int i = 0; i<allMembers.size(); i++){
-            if(allMembers.get(i).getArrears() > 0){
+
+        for (int i = 0; i < allMembers.size(); i++) {
+            if (allMembers.get(i).getArrears() > 0) {
                 membersNotPaid.add(allMembers.get(i));
             }
         }
-            return membersNotPaid;
+        return membersNotPaid;
     }
     
     // ===================================================
