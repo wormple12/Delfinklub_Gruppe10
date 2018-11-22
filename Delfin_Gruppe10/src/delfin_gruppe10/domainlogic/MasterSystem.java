@@ -64,7 +64,7 @@ public class MasterSystem implements MasterInterface {
                 return member;
             }
         }
-        throw new IllegalArgumentException("No members exists with that name.");
+        throw new IllegalArgumentException("Ingen medlemmer eksisterer med det navn.");
     }
 
     @Override
@@ -72,9 +72,9 @@ public class MasterSystem implements MasterInterface {
         ArrayList<Member> members = dataAccessor.readMembersFromFile();
         for (Member member : members) {
             if (member.getName().equals(name)) {
-                throw new IllegalArgumentException("Name already exists in database.");
+                throw new IllegalArgumentException("Navn eksisterer allerede i databasen.");
             } else if (member.getMail().equals(mail)) {
-                throw new IllegalArgumentException("Email already exists in database.");
+                throw new IllegalArgumentException("Email eksisterer allerede i databasen.");
             }
         }
         Member member = new Member(name, birthdate, address, postnr, city, phone, mail, active);
@@ -142,6 +142,9 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public void addToCompetetiveTeam(Member member) {
+        if (!member.isActive()) {
+            editMember(member.getName(), member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail(), true);
+        }
         CompetetiveSwimmer swimmer = new CompetetiveSwimmer(member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail());
         dataAccessor.writeCompetetiveToFile(swimmer);
     }
@@ -173,7 +176,7 @@ public class MasterSystem implements MasterInterface {
         ArrayList<CompetetiveSwimmer> top5 = new ArrayList<>();
         for (CompetetiveSwimmer swimmer : swimmers){
             TrainingResult result = swimmer.getBestTrainingResult(d);
-            if (result != null){ // never null! there's a default value -so change this
+            if (!result.getTime().equals("59:59:00")){ // never null! there's a default value -so change this
                 top5.add(swimmer);
             }
         }
@@ -226,7 +229,7 @@ public class MasterSystem implements MasterInterface {
                 return member;
             }
         }
-        throw new IllegalArgumentException("No swimmer exists with that name.");
+        throw new IllegalArgumentException("Ingen konkurrencesvømmere findes med det navn.");
     }
 
 }

@@ -16,6 +16,7 @@ public class TrainingResultTest {
 
     public TrainingResultTest() {
     }
+    
     CompetetiveSwimmer compSwi = new CompetetiveSwimmer("Jack McDonalds",
             "01-01-1955",
             "Very Derp Street 333", "1111", "Long Way From Here",
@@ -55,6 +56,7 @@ public class TrainingResultTest {
     @Test
     public void testGetTime() {
 
+
         assertEquals(compSwi.getBestTrainingResult(Discipline.BACKSTROKE), traiResBac2);
 
     }
@@ -75,20 +77,6 @@ public class TrainingResultTest {
     public void testGetDiscipline() {
 
         assertEquals(compSwi.getBestTrainingResult(Discipline.BACKSTROKE), traiResBac2);
-    }
-
-    /**
-     * Test of toString method, of class TrainingResult.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        TrainingResult instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }

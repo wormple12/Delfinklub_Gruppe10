@@ -33,19 +33,19 @@ public class Member implements Serializable, Cloneable {
         String cause = "Fejl: "; boolean error = false;
         if (name == null || birthdate == null || address == null || postnr == null || city == null || phone == null || mail == null){
             cause += "Et felt er tomt.\n"; error = true;
-        } else if (!name.matches("\\D* \\D*")){
+        } if (!name.matches("\\D* \\D*")){
             cause += "Skriv venligst det fulde navn.\n"; error = true;
-        } else if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")){ // birthdate should have other possible formats
+        } if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")){ // birthdate should have other possible formats
             cause += "Fødselsdato skal formateres DD-MM-ÅÅÅÅ.\n"; error = true; 
-        } else if (!address.matches("\\D* \\d*")){  // should also have other possible formats for people living in apartments for instance
+        } if (!address.matches("\\D* \\d*")){  // should also have other possible formats for people living in apartments for instance
             cause += "Skriv venligst vej og nummer.\n"; error = true;
-        } else if (!postnr.matches("\\d{4}")){
+        } if (!postnr.matches("\\d{4}")){
             cause += "Skriv venligst et dansk postnummer.\n"; error = true;
-        } else if (!city.matches("\\D*")){
+        } if (!city.matches("\\D*")){
             cause += "Skriv venligst en gyldig by.\n"; error = true;
-        } else if (!phone.matches("\\d{8}")){
+        } if (!phone.matches("\\d{8}")){
             cause += "Skriv venligst et telefonnummer på 8 cifre.\n"; error = true;
-        } else if (!mail.matches("\\S*@\\S*\\.\\S*")){
+        } if (!mail.matches("\\S*@\\S*\\.\\S*")){
             cause += "Skriv venligst en gyldig email."; error = true;
         }
         if (error){
