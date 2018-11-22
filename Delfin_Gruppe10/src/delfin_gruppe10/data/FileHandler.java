@@ -11,8 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author PC 2 2016 SDC-privat
+ * FileHandler
+ * This class handles communication with the .txt files. 
+ * It is capable of writing to, reading and editing objects stored in .txt files.
+ * It can handle both member and competetive swimmer objects. 
+ * @author Simon Asholt Norup
+ * @version 1.00, 22 Nov 2018
  */
 public class FileHandler implements FileHandlerInterface {
 
@@ -28,6 +32,14 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+  /**
+   * Reads .txt files
+   * Is used directly or indirectly by every other method in this class
+   * 
+   * @param FILE must be a path 
+   * @return an arraylist of strings of everything in the file it was made to read
+   * @throws IOException if it fails to read the desired file.
+  */   
     private List<String> readFile(Path FILE) throws IOException {
         // read file and place lines in list
         try {
@@ -42,6 +54,12 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+     * Writes member objects to .txt file
+     * 
+     * @param member 
+     * @throws Exception if it encounters any kind of exception
+     */   
     @Override
     public void writeMemberToFile(Member member) {
         try {
@@ -53,6 +71,12 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+     * Reads member objects from a .txt file
+     * 
+     * @return an arraylist of members
+     * @throws Exception if the .txt file it writes to isn't formatted properly 
+     */   
     @Override
     public ArrayList<Member> readMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
@@ -83,6 +107,13 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+     * Takes two member objects and replaces the first one with the second
+     * 
+     * @param original the member object that is going to be replaced
+     * @param updated the member object that is going to replace the original
+     * @throws Exception if the .txt file it writes to isn't formatted properly
+     */    
     @Override
     public void editMemberInFile(Member original, Member updated) {
         try {
@@ -95,6 +126,12 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+     * The method deletes a specified member object
+     * 
+     * @param member 
+     * @throws IOException if the .txt file it writes to isn't formatted properly
+     */   
     @Override
     public void deleteMemberInFile(Member member) {
         try {
@@ -112,6 +149,11 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+     * This method reads members in arrears
+     * 
+     * @return arraylist
+     */   
     @Override
     public ArrayList<Member> readMembersInArrearsFromFile() {
         ArrayList<Member> allMembers = readMembersFromFile();
@@ -127,6 +169,13 @@ public class FileHandler implements FileHandlerInterface {
     
     // ===================================================
 
+    
+    /**
+     * Writes competetive swimmer objects to .txt file
+     * 
+     * @param swimmer 
+     * @throws IOException if it fails to read the desired file. 
+     */    
     @Override
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer) {
         try {
@@ -139,6 +188,13 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+     * Reads CompetetiveSwimmer objects from .txt file
+     * 
+     * @return arraylist of CompetetiveSwimmer
+     * @throws StringIndexOutOfBoundsException if the index is out of bound
+     * @throws Exception if the .txt file is not formatted properly
+     */    
     @Override
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile() {
         ArrayList<CompetetiveSwimmer> competitiveMembers = new ArrayList<>();
@@ -210,6 +266,13 @@ public class FileHandler implements FileHandlerInterface {
         }
     }
 
+    /**
+     * Replaces CompetetiveSwimmer object with another one
+     * 
+     * @param original CompetetiveSwimmer object, the one to be replaced
+     * @param updated CompetetiveSwimmer object, the one that shall take its place
+     * @throws Exception if the file is not formatted properly 
+     */   
     @Override
     public void editCompetetiveInFile(CompetetiveSwimmer original, CompetetiveSwimmer updated) {
         try {

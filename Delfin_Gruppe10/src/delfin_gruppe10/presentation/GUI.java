@@ -4,7 +4,11 @@ import delfin_gruppe10.domainlogic.*;
 //import java.io.IOException;
 //import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Vector;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -424,7 +428,12 @@ public class GUI extends javax.swing.JFrame {
 
         MemberL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Choice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Item 2", "Item 3", "Item 4" }));
+        Choice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Fødselsår", "Medlemskab" }));
+        Choice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChoiceActionPerformed(evt);
+            }
+        });
 
         Text.setEditable(false);
         Text.setText("Sorter");
@@ -848,7 +857,12 @@ public class GUI extends javax.swing.JFrame {
 
         ArrearL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Choice1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Item 2", "Item 3", "Item 4" }));
+        Choice1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Fødselsår", "Medlemskab" }));
+        Choice1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Choice1ActionPerformed(evt);
+            }
+        });
 
         Text15.setEditable(false);
         Text15.setText("Sorter:");
@@ -1362,9 +1376,6 @@ public class GUI extends javax.swing.JFrame {
         );
 
         EMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        EMemberF.setPreferredSize(new java.awt.Dimension(642, 540));
-
 
         Text25.setEditable(false);
         Text25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -2158,6 +2169,34 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TnameActionPerformed
 
+    private void ChoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoiceActionPerformed
+       Object obj = evt.getSource();
+        if (obj == Choice) {
+            if (Choice.getSelectedItem() != null) {
+               try {
+            tableSet(MemberTable, TableEnum.NORM);
+        } catch (Exception e){
+            MemberLMsgBox.setText(e.getMessage());
+        }
+
+            }
+        }
+    }//GEN-LAST:event_ChoiceActionPerformed
+
+    private void Choice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choice1ActionPerformed
+           Object obj = evt.getSource();
+        if (obj == Choice1) {
+            if (Choice1.getSelectedItem() != null) {
+               try {
+            tableSet(MemberTable, TableEnum.ARR);
+        } catch (Exception e){
+            ArrearLMsgBox.setText(e.getMessage());
+        }
+
+            }
+        }
+    }//GEN-LAST:event_Choice1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -2242,10 +2281,45 @@ public class GUI extends javax.swing.JFrame {
     */
     private void tableSet(javax.swing.JTable jTable, TableEnum t){
         ArrayList<Member> members = k.getAllMembers();
-
+        JComboBox x = Choice;
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         model.setRowCount(0);
-
+        if(t== TableEnum.ARR) x =Choice1;
+        if(x.getSelectedIndex()==0){
+          Collections.sort(members, new Comparator<Member>() {
+            public int compare(Member person, Member person1) {
+                int name = person.getName().compareTo(person1.getName());
+                if(name == 0){
+                    return name;
+                }
+                return person.getName().charAt(0) > person1.getName().charAt(0) ? 1 : person.getName().charAt(0) < person1.getName().charAt(0) ? -1 : 0;
+            }
+        });
+        }else if(x.getSelectedIndex() == 1){
+         
+          Collections.sort(members, new Comparator<Member>() {
+            public int compare(Member person, Member person1) {
+                int name = person.getName().compareTo(person1.getName());
+                if(name == 0){
+                    return name;
+                }
+                return person.getAge() > person1.getAge() ? 1 : person.getAge() < person1.getAge() ? -1 : 0;
+            }
+        });
+          
+        } else if(x.getSelectedIndex() == 2){
+         
+          Collections.sort(members, new Comparator<Member>() {
+            public int compare(Member person, Member person1) {
+                int name = person.getName().compareTo(person1.getName());
+                if(name == 0){
+                    return name;
+                }
+                return person.isActive() != person1.isActive() ? 1 : person.isActive() == person1.isActive() ? -1 : 0;
+            }
+        });
+          
+        }
         for (int i = 0; i < members.size(); i++) {
             Member member = members.get(i);
             if (t == TableEnum.NORM || member.getArrears() > 0) {
@@ -2261,6 +2335,7 @@ public class GUI extends javax.swing.JFrame {
                 if (t == TableEnum.ARR) {
                     data.add(member.getYearlyContingent());
                     data.add(member.getArrears());
+                    
                 }
                 if (t == TableEnum.NORM) {
                     if (member.isActive()) {
