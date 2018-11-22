@@ -1,7 +1,0 @@
-Member{name=AK Ak, birthdate=25-03-2000, address=adds 12, postnr=1245, city=Byen, phone=12345678, mail=lk@gmail.com, active=true, arrears=1600.0}
-Member{name=Bk Bk, birthdate=02-02-2002, address=asdas 20, postnr=2002, city=Byen, phone=12345678, mail=bk@gmail.com, active=true, arrears=1000.0}
-Member{name=Dk Dk, birthdate=11-11-2000, address=asd 12, postnr=5412, city=Byen, phone=12345678, mail=Dk@gmail.com, active=true, arrears=1600.0}
-Member{name=Kkk KKk, birthdate=13-11-1996, address=gdf 21, postnr=5498, city=Byen, phone=12345678, mail=kkk@gmail.com, active=false, arrears=500.0}
-Member{name=Aa Aa, birthdate=28-06-1990, address=lkajf 12, postnr=6345, city=Byen, phone=23456789, mail=AAAAAAA@gmail.com, active=false, arrears=500.0}
-Member{name=Ck Ck, birthdate=11-03-2010, address=asd 5, postnr=3265, city=Byen, phone=87654321, mail=Ck@gmail.com, active=true, arrears=0.0}
-Member{name=Pk Pk, birthdate=02-04-2009, address=asdas 25, postnr=2356, city=Byen, phone=98765432, mail=Pk@gmail.com, active=true, arrears=1000.0}

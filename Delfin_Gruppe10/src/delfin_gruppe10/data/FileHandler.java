@@ -57,8 +57,8 @@ public class FileHandler implements FileHandlerInterface {
     /**
      * Writes member objects to .txt file
      * 
-     * @param member 
-     * @throws Exception if it encounters any kind of exception
+     * @param member to convert to text
+     * @throws RuntimeException if it encounters any kind of exception
      */   
     @Override
     public void writeMemberToFile(Member member) {
@@ -75,7 +75,7 @@ public class FileHandler implements FileHandlerInterface {
      * Reads member objects from a .txt file
      * 
      * @return an arraylist of members
-     * @throws Exception if the .txt file it writes to isn't formatted properly 
+     * @throws RuntimeException if the .txt file it writes to isn't formatted properly 
      */   
     @Override
     public ArrayList<Member> readMembersFromFile() {
@@ -112,7 +112,7 @@ public class FileHandler implements FileHandlerInterface {
      * 
      * @param original the member object that is going to be replaced
      * @param updated the member object that is going to replace the original
-     * @throws Exception if the .txt file it writes to isn't formatted properly
+     * @throws RuntimeException if the .txt file it writes to isn't formatted properly
      */    
     @Override
     public void editMemberInFile(Member original, Member updated) {
@@ -129,8 +129,8 @@ public class FileHandler implements FileHandlerInterface {
     /**
      * The method deletes a specified member object
      * 
-     * @param member 
-     * @throws IOException if the .txt file it writes to isn't formatted properly
+     * @param member to delete from file
+     * @throws RuntimeException if the .txt file it writes to isn't formatted properly
      */   
     @Override
     public void deleteMemberInFile(Member member) {
@@ -173,8 +173,8 @@ public class FileHandler implements FileHandlerInterface {
     /**
      * Writes competetive swimmer objects to .txt file
      * 
-     * @param swimmer 
-     * @throws IOException if it fails to read the desired file. 
+     * @param swimmer to convert to text
+     * @throws RuntimeException if it fails to read the desired file. 
      */    
     @Override
     public void writeCompetetiveToFile(CompetetiveSwimmer swimmer) {
@@ -193,7 +193,7 @@ public class FileHandler implements FileHandlerInterface {
      * 
      * @return arraylist of CompetetiveSwimmer
      * @throws StringIndexOutOfBoundsException if the index is out of bound
-     * @throws Exception if the .txt file is not formatted properly
+     * @throws RuntimeException if the .txt file is not formatted properly
      */    
     @Override
     public ArrayList<CompetetiveSwimmer> readCompetetivesFromFile() {
@@ -271,7 +271,7 @@ public class FileHandler implements FileHandlerInterface {
      * 
      * @param original CompetetiveSwimmer object, the one to be replaced
      * @param updated CompetetiveSwimmer object, the one that shall take its place
-     * @throws Exception if the file is not formatted properly 
+     * @throws RuntimeException if the file is not formatted properly 
      */   
     @Override
     public void editCompetetiveInFile(CompetetiveSwimmer original, CompetetiveSwimmer updated) {
