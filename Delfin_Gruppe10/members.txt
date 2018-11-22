@@ -1,0 +1,2 @@
+Member{name=Lo Kal, birthdate=05-06-2001, address=asdkl 15, postnr=5000, city=By, phone=12345678, mail=lk@gmail.com, active=true, arrears=1000.0}
+Member{name=jlj klj, birthdate=06-12-1995, address=knasd 12, postnr=1200, city=Byen, phone=87654321, mail=asd@gmail.com, active=true, arrears=1600.0}

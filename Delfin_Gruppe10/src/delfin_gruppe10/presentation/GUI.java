@@ -17,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
+
     MasterSystem k = new MasterSystem();
+
     private Member editedMember = null;
 
     /**
@@ -118,7 +120,7 @@ public class GUI extends javax.swing.JFrame {
         Remove = new javax.swing.JButton();
         RegisterCMMsgBox = new javax.swing.JLabel();
         CompTeamL = new javax.swing.JFrame();
-        Choice2 = new javax.swing.JComboBox<>();
+        SandJ = new javax.swing.JComboBox<>();
         Text16 = new javax.swing.JTextField();
         Return10 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -978,10 +980,15 @@ public class GUI extends javax.swing.JFrame {
 
         CompTeamL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Choice2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Item 2", "Item 3", "Item 4" }));
+        SandJ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senior", "Junior" }));
+        SandJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SandJActionPerformed(evt);
+            }
+        });
 
         Text16.setEditable(false);
-        Text16.setText("Sorter");
+        Text16.setText("Hold");
 
         Return10.setText("Tilbage");
         Return10.addActionListener(new java.awt.event.ActionListener() {
@@ -1018,7 +1025,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(133, 133, 133)
                 .addComponent(Text16, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Choice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SandJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(325, Short.MAX_VALUE))
             .addComponent(jScrollPane3)
         );
@@ -1029,7 +1036,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(CompTeamLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CompTeamLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Text16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Choice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SandJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Return10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1673,7 +1680,7 @@ public class GUI extends javax.swing.JFrame {
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
         initWindow(RegisterCM, pTrainer);
         ACompL.removeAllItems();
-        
+
         try {
             ArrayList<Member> members = k.getAllMembers();
             ArrayList<CompetetiveSwimmer> swimmers = k.getCompetetiveSwimmers();
@@ -1876,27 +1883,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void CTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTeamActionPerformed
         initWindow(CompTeamL, pTrainer);
-        DefaultTableModel model = (DefaultTableModel) CompTable.getModel();
-        model.setRowCount(0);
-
-        try {
-            ArrayList<CompetetiveSwimmer> members = k.getCompetetiveSwimmers();
-
-            for (int i = 0; i < members.size(); i++) {
-                Member member = members.get(i);
-                model.addRow(new Object[]{});
-                int j = 0;
-                CompTable.setValueAt(member.getName(), i, j++);
-                CompTable.setValueAt(member.getBirthdate(), i, j++);
-                CompTable.setValueAt(member.getAddress(), i, j++);
-                CompTable.setValueAt(member.getPostnr(), i, j++);
-                CompTable.setValueAt(member.getCity(), i, j++);
-                CompTable.setValueAt(member.getPhone(), i, j++);
-                CompTable.setValueAt(member.getMail(), i, j++);
-            }
-        } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
-        }
+        compTable();
     }//GEN-LAST:event_CTeamActionPerformed
 
     private void STop5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STop5ActionPerformed
@@ -2097,6 +2084,17 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ACompLActionPerformed
 
+    private void SandJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SandJActionPerformed
+        Object obj = evt.getSource();
+        if (obj == SandJ) {
+            if (SandJ.getSelectedItem() != null) {
+               compTable();
+
+            }
+        }
+    }//GEN-LAST:event_SandJActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
@@ -2139,7 +2137,41 @@ public class GUI extends javax.swing.JFrame {
         newFrame.setVisible(true);
         oldFrame.dispose();
     }
-    
+   private void compTable(){
+        DefaultTableModel model = (DefaultTableModel) CompTable.getModel();
+        model.setRowCount(0);
+
+        try {
+            ArrayList<CompetetiveSwimmer> members = k.getCompetetiveSwimmers();
+            ArrayList<CompetetiveSwimmer> junior= new ArrayList<>(), senior= new ArrayList<>();
+            for(int i=0; i<members.size(); i++){
+              if(SandJ.getSelectedIndex() == 0 &&  members.get(i).getAge()>=18   ){
+                senior.add(members.get(i));
+                }else if(SandJ.getSelectedIndex() == 1 &&   members.get(i).getAge()<18  ){
+                junior.add(members.get(i));
+                }  
+            }
+            for (int i = 0; i < members.size(); i++) {
+                if(SandJ.getSelectedIndex() == 0){
+                   members=senior; 
+                }else{
+                   members = junior; 
+                }
+                Member member = members.get(i);
+                model.addRow(new Object[]{});
+                int j = 0;
+                CompTable.setValueAt(member.getName(), i, j++);
+                CompTable.setValueAt(member.getBirthdate(), i, j++);
+                CompTable.setValueAt(member.getAddress(), i, j++);
+                CompTable.setValueAt(member.getPostnr(), i, j++);
+                CompTable.setValueAt(member.getCity(), i, j++);
+                CompTable.setValueAt(member.getPhone(), i, j++);
+                CompTable.setValueAt(member.getMail(), i, j++);
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }   
+   }
     /*
     Sets up the tables used to show the members.
     It needs a jTable for modeling, and Enum for identifying what parts needs to be loaded 
@@ -2224,7 +2256,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Cdate;
     private javax.swing.JComboBox<String> Choice;
     private javax.swing.JComboBox<String> Choice1;
-    private javax.swing.JComboBox<String> Choice2;
     private javax.swing.JFrame Choose;
     private javax.swing.JComboBox<String> ChooseMemberComboBox;
     private javax.swing.JLabel ChooseMsgBox;
@@ -2268,6 +2299,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton Return8;
     private javax.swing.JButton Return9;
     private javax.swing.JButton STop5;
+    private javax.swing.JComboBox<String> SandJ;
     private javax.swing.JTable T5table;
     private javax.swing.JComboBox<String> TTchoose;
     private javax.swing.JTextField Tac;
