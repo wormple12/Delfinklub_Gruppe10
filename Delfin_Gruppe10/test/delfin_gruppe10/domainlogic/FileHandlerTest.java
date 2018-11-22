@@ -7,10 +7,14 @@ package delfin_gruppe10.domainlogic;
 
 import delfin_gruppe10.data.FileHandler;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,10 +28,10 @@ import static org.junit.Assert.*;
  */
 public class FileHandlerTest {
     
-    public Path FILE;
-    public Path competetiveFILE;
+    String TEST_MEMBER_PATH = "memberTest.txt";
+    String TEST_COMPETETIVE_PATH = "competetiveTest.txt";
     
-    FileHandler fH = new FileHandler("memberTest.txt", "competetiveTest.txt");
+    FileHandler fH = new FileHandler(TEST_MEMBER_PATH, TEST_COMPETETIVE_PATH);
     
     Member member1 = new Member("Jack McDonalds", "01-01-1955", "Very Derp Street 333", "1111", "Long Way From Here", "11112222", "derp@isDerp.derp", true);
     Member member2 = new Member("John Johnson", "01-01-1972", "Very Derp Street 456", "1195", "Long Hay From There", "10312972", "herp@isBerp.derp", false);
@@ -36,7 +40,7 @@ public class FileHandlerTest {
     CompetetiveSwimmer comp1 = new CompetetiveSwimmer("Jack McDonalds", "01-01-1955", "Very Derp Street 333", "1111", "Long Way From Here", "11112222", "derp@isDerp.derp");
     CompetetiveSwimmer comp2 = new CompetetiveSwimmer("John Johnson", "01-01-1955", "Very Derp Street 333", "1111", "Long Way From Here", "11112222", "derp@isDerp.derp");
     CompetetiveSwimmer comp3 = new CompetetiveSwimmer("a a", "20-12-1995", "Lyngevej 39", "3660", "Stenløse", "60893899", "wormple12@hotmail.com");
-    CompetetiveSwimmer comp4 = new CompetetiveSwimmer("b b", "21-13-1994", "Lybevej 37", "3060", "Stenfuld", "09873899", "skeksil@hotmail.com");
+    CompetetiveSwimmer comp4 = new CompetetiveSwimmer("b b", "21-11-1994", "Lybevej 37", "3060", "Stenfuld", "09873899", "skeksil@hotmail.com");
     
     TrainingResult traiResBut1 = new TrainingResult(Discipline.BUTTERFLY, "01:01:01", "04-05-1997");
     TrainingResult traiResBut2 = new TrainingResult(Discipline.BUTTERFLY, "02:02:02", "04-05-1997");
@@ -47,6 +51,18 @@ public class FileHandlerTest {
     CompetetiveResult compRes3 = new CompetetiveResult(Discipline.BUTTERFLY, "01:02:03", "07-08-2011", "Holte", 3);
 
     ArrayList<CompetetiveResult> cRList = new ArrayList();
+    
+    private void fileRefresh(){
+        Path testPath1 = Paths.get(TEST_MEMBER_PATH);
+        Path testPath2 = Paths.get(TEST_COMPETETIVE_PATH);
+        
+        try {
+            Files.deleteIfExists(testPath1);
+            Files.deleteIfExists(testPath2);
+        } catch (IOException ex) {
+            Logger.getLogger(FileHandlerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public FileHandlerTest() {
     }
@@ -81,9 +97,11 @@ public class FileHandlerTest {
         assertEquals(fH.readMembersFromFile().get(1), member2);
         assertEquals(fH.readMembersFromFile().get(2), member3);
         
-        PrintWriter pw = new PrintWriter("memberTest.txt");
-        pw.print("");
-        pw.close();
+        fileRefresh();
+        
+//        PrintWriter pw = new PrintWriter("memberTest.txt");
+//        pw.print("");
+//        pw.close();
     }
     
     @Test 
@@ -93,9 +111,11 @@ public class FileHandlerTest {
         fH.editMemberInFile(member1, member2);
         assertEquals(fH.readMembersFromFile().get(0), member2);
         
-        PrintWriter pw = new PrintWriter("memberTest.txt");
-        pw.print("");
-        pw.close();
+        fileRefresh();
+        
+//        PrintWriter pw = new PrintWriter("memberTest.txt");
+//        pw.print("");
+//        pw.close();
     }
     
     @Test
@@ -109,9 +129,11 @@ public class FileHandlerTest {
         assertNotEquals(fH.readMembersFromFile().get(0), member1);
         assertEquals(fH.readMembersFromFile().get(1), member3);
         
-        PrintWriter pw = new PrintWriter("memberTest.txt");
-        pw.print("");
-        pw.close();
+        fileRefresh();
+        
+//        PrintWriter pw = new PrintWriter("memberTest.txt");
+//        pw.print("");
+//        pw.close();
     }
     
     //er den her rigtigt lavet?
@@ -124,9 +146,11 @@ public class FileHandlerTest {
         
         assertEquals(fH.readMembersInArrearsFromFile(), fH.readMembersFromFile());
         
-        PrintWriter pw = new PrintWriter("memberTest.txt");
-        pw.print("");
-        pw.close();
+        fileRefresh();
+        
+//        PrintWriter pw = new PrintWriter("memberTest.txt");
+//        pw.print("");
+//        pw.close();
     }
     
     @Test
@@ -139,14 +163,23 @@ public class FileHandlerTest {
         assertEquals(fH.readCompetetivesFromFile().get(1), comp2);
         assertEquals(fH.readCompetetivesFromFile().get(2), comp3);
         
-        PrintWriter pw = new PrintWriter("competetiveTest.txt");
-        pw.print("");
-        pw.close();
+        fileRefresh();
+              
+//        PrintWriter pw = new PrintWriter("competetiveTest.txt");
+//        pw.print("");
+//        pw.close();
     }
     
     @Test
     public void editCompetetiveInFileTest()throws FileNotFoundException{
+        fH.writeCompetetiveToFile(comp1);
         fH.editCompetetiveInFile(comp1, comp4);
         assertEquals(fH.readCompetetivesFromFile().get(0), comp4);
+        
+        fileRefresh();
+        
+//        PrintWriter pw = new PrintWriter("competetiveTest.txt");
+//        pw.print("");
+//        pw.close();
     }
 }
