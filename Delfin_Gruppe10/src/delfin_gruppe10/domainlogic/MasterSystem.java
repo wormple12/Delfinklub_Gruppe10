@@ -142,6 +142,9 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public void addToCompetetiveTeam(Member member) {
+        if (!member.isActive()) {
+            editMember(member.getName(), member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail(), true);
+        }
         CompetetiveSwimmer swimmer = new CompetetiveSwimmer(member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail());
         dataAccessor.writeCompetetiveToFile(swimmer);
     }

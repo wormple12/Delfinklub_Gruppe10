@@ -63,6 +63,7 @@ public class GUI extends javax.swing.JFrame {
         Return3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         MemberTable = new javax.swing.JTable();
+        MemberLMsgBox = new javax.swing.JLabel();
         AMemberF = new javax.swing.JFrame();
         Text1 = new javax.swing.JTextField();
         Return4 = new javax.swing.JButton();
@@ -94,6 +95,7 @@ public class GUI extends javax.swing.JFrame {
         ChooseMemberComboBox = new javax.swing.JComboBox<>();
         Return6 = new javax.swing.JButton();
         Confirm = new javax.swing.JButton();
+        ChooseMsgBox = new javax.swing.JLabel();
         AddPayment = new javax.swing.JFrame();
         LeftToPayField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -103,12 +105,14 @@ public class GUI extends javax.swing.JFrame {
         Return7 = new javax.swing.JButton();
         NameLPay = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
+        AddPaymentMsgBox = new javax.swing.JLabel();
         ArrearL = new javax.swing.JFrame();
         Choice1 = new javax.swing.JComboBox<>();
         Text15 = new javax.swing.JTextField();
         Return8 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         ArrearTable = new javax.swing.JTable();
+        ArrearLMsgBox = new javax.swing.JLabel();
         RegisterCM = new javax.swing.JFrame();
         ACompL = new javax.swing.JComboBox<>();
         Return9 = new javax.swing.JButton();
@@ -455,14 +459,16 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(MemberLLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                .addGroup(MemberLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                    .addGroup(MemberLLayout.createSequentialGroup()
+                        .addComponent(MemberLMsgBox)
+                        .addGap(260, 260, 260)
+                        .addComponent(Text, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Choice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(MemberLLayout.createSequentialGroup()
-                .addGap(304, 304, 304)
-                .addComponent(Text, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Choice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MemberLLayout.setVerticalGroup(
             MemberLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,8 +476,10 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(Return3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(MemberLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Choice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MemberLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Choice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MemberLMsgBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -702,7 +710,10 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(ChooseMemberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(104, 104, 104))))
+                        .addGap(104, 104, 104))
+                    .addGroup(ChooseLayout.createSequentialGroup()
+                        .addComponent(ChooseMsgBox)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         ChooseLayout.setVerticalGroup(
             ChooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -713,7 +724,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(ChooseMemberComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ChooseMsgBox)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         AddPayment.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -797,7 +810,10 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(Return7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AddPaymentLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(AddPaymentLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AddPaymentMsgBox)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AddPaymentLayout.setVerticalGroup(
@@ -808,7 +824,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(105, 105, 105)
                         .addComponent(NameLPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Return7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -818,9 +834,11 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(LeftToPayField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(AddPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PayAllB, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(PayAllB, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                     .addComponent(PayB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(99, 99, 99))
+                .addGap(18, 18, 18)
+                .addComponent(AddPaymentMsgBox)
+                .addGap(67, 67, 67))
         );
 
         ArrearL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -869,6 +887,8 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(Text15, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Choice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(ArrearLMsgBox)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -880,7 +900,9 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(ArrearLLayout.createSequentialGroup()
                         .addGap(0, 19, Short.MAX_VALUE)
                         .addGroup(ArrearLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Choice1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ArrearLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Choice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ArrearLMsgBox))
                             .addComponent(Text15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(Return8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1593,7 +1615,8 @@ public class GUI extends javax.swing.JFrame {
                 ChooseMemberComboBox.addItem(member.getName());
             }
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            ChooseMsgBox.setText(e.getMessage());
+            Confirm.setEnabled(false);
         }
     }//GEN-LAST:event_EditActionPerformed
 
@@ -1610,7 +1633,9 @@ public class GUI extends javax.swing.JFrame {
             Member member = k.getMember((String) NameLPay.getSelectedItem());
             LeftToPayField.setText(Double.toString(member.getArrears()));
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            PayB.setEnabled(false);
+            PayAllB.setEnabled(false);
+            AddPaymentMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_APaymentActionPerformed
 
@@ -1620,7 +1645,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             tableSet(ArrearTable, TableEnum.ARR);
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            ArrearLMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_ArrearsActionPerformed
 
@@ -1668,7 +1693,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             tableSet(MemberTable, TableEnum.NORM);
         } catch (Exception e){
-            // PLEASE PARSE MESSAGE HERE
+            MemberLMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_VMembersActionPerformed
 
@@ -1716,7 +1741,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             tableSet(MemberTable, TableEnum.NORM);
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            MemberLMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_VMembers2ActionPerformed
 
@@ -1727,7 +1752,7 @@ public class GUI extends javax.swing.JFrame {
             member = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(member.getArrears()));
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            AddPaymentMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_PayAllBActionPerformed
 
@@ -1821,7 +1846,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             tableSet(MemberTable, TableEnum.NORM);
         } catch (Exception e){
-            // PLEASE PARSE MESSAGE HERE
+            MemberLMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_VMembers3ActionPerformed
 
@@ -1868,7 +1893,9 @@ public class GUI extends javax.swing.JFrame {
                     Member member = k.getMember((String) NameLPay.getSelectedItem());
                     LeftToPayField.setText(Double.toString(member.getArrears()));
                 } catch (Exception e) {
-                    // PLEASE PARSE MESSAGE HERE
+                    PayB.setEnabled(false);
+                    PayAllB.setEnabled(false);
+                    AddPaymentMsgBox.setText(e.getMessage());
                 }
             }
         }
@@ -1881,9 +1908,9 @@ public class GUI extends javax.swing.JFrame {
             l = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(l.getArrears()));
         } catch (NumberFormatException e) {
-            // PLEASE PARSE MESSAGE HERE
+            AddPaymentMsgBox.setText("Skriv venligst et positivt tal mindre end eller lig med medlemmets restance.");
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            AddPaymentMsgBox.setText("Fejl. Kontakt venligst programmøren.");
         }
     }//GEN-LAST:event_PayBActionPerformed
 
@@ -2168,8 +2195,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JFrame AddCTime;
     private javax.swing.JButton AddCompR;
     private javax.swing.JFrame AddPayment;
+    private javax.swing.JLabel AddPaymentMsgBox;
     private javax.swing.JFrame AddTTime;
     private javax.swing.JFrame ArrearL;
+    private javax.swing.JLabel ArrearLMsgBox;
     private javax.swing.JTable ArrearTable;
     private javax.swing.JButton Arrears;
     private javax.swing.JRadioButton CActive;
@@ -2186,6 +2215,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Choice1;
     private javax.swing.JFrame Choose;
     private javax.swing.JComboBox<String> ChooseMemberComboBox;
+    private javax.swing.JLabel ChooseMsgBox;
     private javax.swing.JComboBox<String> CompD;
     private javax.swing.JTable CompTable;
     private javax.swing.JFrame CompTeamL;
@@ -2198,6 +2228,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton Edit;
     private javax.swing.JTextField LeftToPayField;
     private javax.swing.JFrame MemberL;
+    private javax.swing.JLabel MemberLMsgBox;
     private javax.swing.JTable MemberTable;
     private javax.swing.JComboBox<String> NameLPay;
     private javax.swing.JButton PayAllB;
