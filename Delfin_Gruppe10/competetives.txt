@@ -1,1 +1,5 @@
 CompetetiveSwimmer{name=Simon Norup, bestButterflyResult:(time=59:59:00, date=01-01-2000), bestCrawlResult:(time=59:59:00, date=01-01-2000), bestBackstrokeResult:(time=59:59:00, date=01-01-2000), bestBreaststrokeResult:(time=59:59:00, date=01-01-2000), competetiveResults:null}
+<<<<<<< HEAD
+CompetetiveSwimmer{name=Egon Olsen, bestButterflyResult:(time=59:59:00, date=01-01-2000), bestCrawlResult:(time=59:59:00, date=01-01-2000), bestBackstrokeResult:(time=59:59:00, date=01-01-2000), bestBreaststrokeResult:(time=59:59:00, date=01-01-2000), competetiveResults:null}
+=======
+>>>>>>> fbc819aa90635ba799197f04ab24999595507440

@@ -1795,6 +1795,7 @@ public class GUI extends javax.swing.JFrame {
             k.registerPayment(member.getName(), member.getArrears());
             member = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(member.getArrears()));
+            NameLPay.removeItem(member.getName());
             AddPaymentMsgBox.setText("Betaling er registreret.");
         } catch (Exception e) {
             AddPaymentMsgBox.setText(e.getMessage());
@@ -1962,6 +1963,10 @@ public class GUI extends javax.swing.JFrame {
             l = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(l.getArrears()));
             AddPaymentMsgBox.setText("Betalingen er registreret.");
+            
+            if(l.getArrears() == 0){
+                NameLPay.removeItem(l.getName());
+            }
         } catch (NumberFormatException e) {
             AddPaymentMsgBox.setText("Skriv venligst et positivt tal mindre end eller lig med medlemmets restance.");
         } catch (Exception e) {
