@@ -8,7 +8,6 @@ package delfin_gruppe10.domainlogic;
 import delfin_gruppe10.data.FileHandler;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -90,9 +89,6 @@ public class FileHandlerTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
     public void readMembersFromFile() throws FileNotFoundException{        
         assertEquals(fH.readMembersFromFile().get(0), member1); 
@@ -122,7 +118,6 @@ public class FileHandlerTest {
         fileRefresh();
     }
     
-    //er den her rigtigt lavet?
     @Test
     public void readMembersInArrearsFromFileTest() throws FileNotFoundException{        
         assertEquals(fH.readMembersInArrearsFromFile(), fH.readMembersFromFile());
