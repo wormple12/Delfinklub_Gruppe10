@@ -66,12 +66,22 @@ public class Member implements Serializable, Cloneable {
         }
     }
 
+    /**
+     * This method returns the age of a member object based on the birthdate 
+     * 
+     * @return an int which is the age in years
+     */    
     public int getAge() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate date = LocalDate.parse(birthdate, formatter);
         return Period.between(date, LocalDate.now()).getYears();
     }
 
+    /**
+     * The method returns the yearly contigent for a member object based on the member's age in years
+     * 
+     * @return a double which is the contigent
+     */   
     public double getYearlyContingent() {
         int age = getAge();
         if (isActive()) {
@@ -91,6 +101,12 @@ public class Member implements Serializable, Cloneable {
         return arrears;
     }
     
+    /**
+     * This method takes a double and substracts a member object's arrear 
+     * 
+     * @param amount is the amount of money that is payed
+     * @throws IllegalArgumentException if amount is negative or higher than the money required 
+     */   
     public void payArrears(double amount){
         if (amount < 0 || amount > arrears){
             throw new IllegalArgumentException();
@@ -98,6 +114,12 @@ public class Member implements Serializable, Cloneable {
         arrears -= amount;
     }
     
+    /**
+     * This method manually defines arrears for a member object
+     * 
+     * @param amount is the amount of money that is to be payed
+     * @throws IllegalArgumentException if amount is negative
+     */  
     public void setArrears(double amount){
         if (amount < 0){
             throw new IllegalArgumentException();
