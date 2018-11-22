@@ -196,6 +196,7 @@ public class GUI extends javax.swing.JFrame {
         pFormand.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pFormand.setTitle("Delfinen Svømmeklub (Administrativt system)");
         pFormand.setName("viewMem"); // NOI18N
+        pFormand.setResizable(false);
 
         VMembers.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         VMembers.setText("Vis Medlemmer");
@@ -266,6 +267,7 @@ public class GUI extends javax.swing.JFrame {
         pKasserer.setTitle("Delfinen Svømmeklub (Administrativt system)");
         pKasserer.setBackground(new java.awt.Color(245, 26, 52));
         pKasserer.setForeground(java.awt.Color.darkGray);
+        pKasserer.setResizable(false);
 
         VMembers2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         VMembers2.setText("Vis Medlemmer");
@@ -332,6 +334,7 @@ public class GUI extends javax.swing.JFrame {
 
         pTrainer.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pTrainer.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        pTrainer.setResizable(false);
 
         VMembers3.setBackground(new java.awt.Color(250, 250, 250));
         VMembers3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -443,6 +446,7 @@ public class GUI extends javax.swing.JFrame {
 
         MemberL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         MemberL.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        MemberL.setResizable(false);
 
         Choice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Fødselsår", "Medlemskab" }));
         Choice.addActionListener(new java.awt.event.ActionListener() {
@@ -516,6 +520,7 @@ public class GUI extends javax.swing.JFrame {
 
         AMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         AMemberF.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        AMemberF.setPreferredSize(new java.awt.Dimension(735, 500));
         AMemberF.setResizable(false);
 
         Text1.setEditable(false);
@@ -602,10 +607,6 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(AMemberFLayout.createSequentialGroup()
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AMemberFLayout.createSequentialGroup()
-                        .addComponent(Return4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(AMemberFLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AMemberFLayout.createSequentialGroup()
@@ -632,7 +633,12 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(AMemberFLayout.createSequentialGroup()
                                 .addComponent(Text7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(AMemberFLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Return4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
                 .addGap(111, 111, 111)
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -655,12 +661,6 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(CPassive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CActive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AMemberFLayout.createSequentialGroup()
-                        .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CExercise, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CComp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AMemberFLayout.createSequentialGroup()
                         .addGap(0, 22, Short.MAX_VALUE)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -691,8 +691,15 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Text7)
-                            .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(AMemberFLayout.createSequentialGroup()
+                        .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CExercise, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CComp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)))
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -764,6 +771,7 @@ public class GUI extends javax.swing.JFrame {
 
         AddPayment.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         AddPayment.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        AddPayment.setResizable(false);
 
         LeftToPayField.setEditable(false);
         LeftToPayField.setBackground(new java.awt.Color(255, 255, 204));
@@ -876,6 +884,7 @@ public class GUI extends javax.swing.JFrame {
 
         ArrearL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         ArrearL.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        ArrearL.setResizable(false);
 
         Choice1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Fødselsår", "Medlemskab" }));
         Choice1.addActionListener(new java.awt.event.ActionListener() {
@@ -1016,6 +1025,7 @@ public class GUI extends javax.swing.JFrame {
 
         CompTeamL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         CompTeamL.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        CompTeamL.setResizable(false);
 
         SandJ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senior", "Junior" }));
         SandJ.addActionListener(new java.awt.event.ActionListener() {
@@ -1319,6 +1329,7 @@ public class GUI extends javax.swing.JFrame {
 
         Top5L.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         Top5L.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        Top5L.setResizable(false);
 
         Top5D.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUTTERFLY", "CRAWL", "BACKSTROKE", "BREASTSTROKE" }));
         Top5D.addActionListener(new java.awt.event.ActionListener() {
@@ -1402,6 +1413,7 @@ public class GUI extends javax.swing.JFrame {
 
         EMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         EMemberF.setTitle("Delfinen Svømmeklub (Administrativt system)");
+        EMemberF.setResizable(false);
 
         Text25.setEditable(false);
         Text25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1591,6 +1603,7 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Delfinen Svømmeklub (Administrativt system)");
         setBackground(new java.awt.Color(0, 240, 240));
+        setResizable(false);
 
         inTrainer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         inTrainer.setText("Træner");

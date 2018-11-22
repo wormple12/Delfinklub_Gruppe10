@@ -99,7 +99,7 @@ public class CompetetiveSwimmer extends Member {
         originalTR = getBestTrainingResult(Discipline.BREASTSTROKE);
         newTR = new TrainingResult(Discipline.BREASTSTROKE, originalTR.getTime(), originalTR.getDate());
         swimmer.setBestTrainingResult(newTR);
-        for (CompetetiveResult originalCR : competetiveResults){
+        for (CompetetiveResult originalCR : competetiveResults) {
             CompetetiveResult newCR = new CompetetiveResult(originalCR.getDiscipline(), originalCR.getTime(), originalCR.getDate(), originalCR.getCompetition(), originalCR.getRanking());
             swimmer.addCompetetiveResult(newCR);
         }
