@@ -17,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
+
     MasterSystem k = new MasterSystem();
+
     private Member editedMember = null;
 
     /**
@@ -116,8 +118,9 @@ public class GUI extends javax.swing.JFrame {
         Return9 = new javax.swing.JButton();
         Confirm1 = new javax.swing.JButton();
         Remove = new javax.swing.JButton();
+        RegisterCMMsgBox = new javax.swing.JLabel();
         CompTeamL = new javax.swing.JFrame();
-        Choice2 = new javax.swing.JComboBox<>();
+        SandJ = new javax.swing.JComboBox<>();
         Text16 = new javax.swing.JTextField();
         Return10 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -136,6 +139,7 @@ public class GUI extends javax.swing.JFrame {
         Ccomp = new javax.swing.JTextField();
         Text32 = new javax.swing.JTextField();
         Cdate = new javax.swing.JTextField();
+        AddCTimeMsgBox = new javax.swing.JLabel();
         AddTTime = new javax.swing.JFrame();
         TTchoose = new javax.swing.JComboBox<>();
         Return12 = new javax.swing.JButton();
@@ -146,12 +150,14 @@ public class GUI extends javax.swing.JFrame {
         Text24 = new javax.swing.JTextField();
         addTTime = new javax.swing.JButton();
         TrainD = new javax.swing.JComboBox<>();
+        AddTTimeMsgBox = new javax.swing.JLabel();
         Top5L = new javax.swing.JFrame();
         Top5D = new javax.swing.JComboBox<>();
         Text17 = new javax.swing.JTextField();
         Return13 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         T5table = new javax.swing.JTable();
+        Top5LMsgBox = new javax.swing.JLabel();
         EMemberF = new javax.swing.JFrame();
         Text25 = new javax.swing.JTextField();
         Return14 = new javax.swing.JButton();
@@ -179,6 +185,7 @@ public class GUI extends javax.swing.JFrame {
         inTrainer = new javax.swing.JButton();
         inKasserer = new javax.swing.JButton();
         inFormand = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         pFormand.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pFormand.setName("viewMem"); // NOI18N
@@ -912,6 +919,11 @@ public class GUI extends javax.swing.JFrame {
         ACompL.setEditable(true);
         ACompL.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         ACompL.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lord William the IV", "Name2" }));
+        ACompL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ACompLActionPerformed(evt);
+            }
+        });
 
         Return9.setText("Tilbage");
         Return9.addActionListener(new java.awt.event.ActionListener() {
@@ -927,7 +939,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        Remove.setText("Fjern");
+        Remove.setText("Fjern (virker ikke)");
         Remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RemoveActionPerformed(evt);
@@ -941,13 +953,17 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(RegisterCMLayout.createSequentialGroup()
                 .addGroup(RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Remove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Return9, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                    .addComponent(Return9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(RegisterCMLayout.createSequentialGroup()
-                        .addGap(0, 78, Short.MAX_VALUE)
+                        .addGap(0, 59, Short.MAX_VALUE)
                         .addComponent(Confirm1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ACompL, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(RegisterCMLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(RegisterCMMsgBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         RegisterCMLayout.setVerticalGroup(
             RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -955,7 +971,9 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Return9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ACompL, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(RegisterCMMsgBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(RegisterCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Confirm1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -963,10 +981,15 @@ public class GUI extends javax.swing.JFrame {
 
         CompTeamL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Choice2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Item 2", "Item 3", "Item 4" }));
+        SandJ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senior", "Junior" }));
+        SandJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SandJActionPerformed(evt);
+            }
+        });
 
         Text16.setEditable(false);
-        Text16.setText("Sorter");
+        Text16.setText("Hold");
 
         Return10.setText("Tilbage");
         Return10.addActionListener(new java.awt.event.ActionListener() {
@@ -1003,7 +1026,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(133, 133, 133)
                 .addComponent(Text16, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Choice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SandJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(325, Short.MAX_VALUE))
             .addComponent(jScrollPane3)
         );
@@ -1014,7 +1037,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(CompTeamLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CompTeamLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Text16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Choice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SandJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Return10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1119,13 +1142,17 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(CompD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Ccomp, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(104, 104, 104))
+            .addGroup(AddCTimeLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(AddCTimeMsgBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AddCTimeLayout.setVerticalGroup(
             AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCTimeLayout.createSequentialGroup()
                 .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddCTimeLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addContainerGap(55, Short.MAX_VALUE)
                         .addComponent(CTchoose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Return11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1138,9 +1165,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(Text18, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Ccomp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Ccomp, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(Text19))
+                .addGap(9, 9, 9)
                 .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text21, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cplacement, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1148,9 +1175,11 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(AddCTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text32, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(AddCTimeMsgBox)
+                .addGap(18, 18, 18)
                 .addComponent(AddCompR, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(23, 23, 23))
         );
 
         AddTTime.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1215,31 +1244,34 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(Text24, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Text22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Ttime1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(Tdate, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(TrainD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AddTTimeMsgBox)
+                            .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Ttime1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(Tdate, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(TrainD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(45, 45, 45))
         );
         AddTTimeLayout.setVerticalGroup(
             AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddTTimeLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Return12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AddTTimeLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(TTchoose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AddTTimeLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Return12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48)
+                        .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AddTTimeMsgBox)
+                            .addComponent(TTchoose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TrainD)
                     .addComponent(Text24, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text22, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Ttime1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(AddTTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Tdate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1301,12 +1333,16 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(Top5LLayout.createSequentialGroup()
                 .addComponent(Return13, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Top5LMsgBox)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         Top5LLayout.setVerticalGroup(
             Top5LLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Top5LLayout.createSequentialGroup()
-                .addComponent(Return13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Top5LLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Return13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Top5LMsgBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(Top5LLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Top5D, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1549,7 +1585,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(inFormand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(inKasserer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1563,6 +1599,13 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
+        jButton2.setText("Luk programmet");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1570,13 +1613,19 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -1645,7 +1694,7 @@ public class GUI extends javax.swing.JFrame {
     private void RegisterCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCPActionPerformed
         initWindow(RegisterCM, pTrainer);
         ACompL.removeAllItems();
-        
+
         try {
             ArrayList<Member> members = k.getAllMembers();
             ArrayList<CompetetiveSwimmer> swimmers = k.getCompetetiveSwimmers();
@@ -1661,7 +1710,7 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            RegisterCMMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_RegisterCPActionPerformed
 
@@ -1675,7 +1724,7 @@ public class GUI extends javax.swing.JFrame {
                 TTchoose.addItem(swimmer.getName());
             }
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            AddTTimeMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_ATResultActionPerformed
 
@@ -1703,17 +1752,20 @@ public class GUI extends javax.swing.JFrame {
         try {
             String choice = (String) ChooseMemberComboBox.getSelectedItem();
             editedMember = k.getMember(choice);
-        } catch (Exception e){
-            // PLEASE PARSE MESSAGE HERE
-        }
-        Tname2.setText(editedMember.getName());
-        Tbirthdate2.setText(editedMember.getBirthdate());
-        Taddress2.setText(editedMember.getAddress()); Tac2.setText(editedMember.getPostnr()); Tcity2.setText(editedMember.getCity());
-        Tphone2.setText(editedMember.getPhone()); Tmail2.setText(editedMember.getMail());
-        if (editedMember.isActive()){
-            CActive2.setSelected(true);
-        } else {
-            CPassive2.setSelected(true);
+            Tname2.setText(editedMember.getName());
+            Tbirthdate2.setText(editedMember.getBirthdate());
+            Taddress2.setText(editedMember.getAddress());
+            Tac2.setText(editedMember.getPostnr());
+            Tcity2.setText(editedMember.getCity());
+            Tphone2.setText(editedMember.getPhone());
+            Tmail2.setText(editedMember.getMail());
+            if (editedMember.isActive()) {
+                CActive2.setSelected(true);
+            } else {
+                CPassive2.setSelected(true);
+            }
+        } catch (Exception e) {
+            ChooseMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_ConfirmActionPerformed
 
@@ -1741,6 +1793,7 @@ public class GUI extends javax.swing.JFrame {
             k.registerPayment(member.getName(), member.getArrears());
             member = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(member.getArrears()));
+            AddPaymentMsgBox.setText("Betaling er registreret.");
         } catch (Exception e) {
             AddPaymentMsgBox.setText(e.getMessage());
         }
@@ -1759,13 +1812,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Return9ActionPerformed
 
     private void Confirm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm1ActionPerformed
-        this.jLabel3.setText("Tilføjet");
         try {
             String choice = (String) ACompL.getSelectedItem();
             Member m = k.getMember(choice);
             k.addToCompetetiveTeam(m);
+            RegisterCMMsgBox.setText(m.getName() + " er nu aktiv på et konkurrencehold.");
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            RegisterCMMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_Confirm1ActionPerformed
 
@@ -1797,10 +1850,11 @@ public class GUI extends javax.swing.JFrame {
             Discipline p = Discipline.valueOf(choice);
 
             k.addCompetetiveResult(c, p, Ctime.getText(), Cdate.getText(), Ccomp.getText(), Integer.parseInt(Cplacement.getText()));
+            AddCTimeMsgBox.setText("Stævneresultate er tilføjet til " + c.getName() + ".");
         } catch (NumberFormatException e) {
-            // PLEASE PARSE MESSAGE HERE
+            AddCTimeMsgBox.setText("Fejl. Skriv et positivt tal som position.");
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            AddCTimeMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_AddCompRActionPerformed
 
@@ -1821,8 +1875,9 @@ public class GUI extends javax.swing.JFrame {
             CompetetiveSwimmer swimmer = k.getCompSwim((String) TTchoose.getSelectedItem());
             Discipline discipline = Discipline.valueOf((String) TrainD.getSelectedItem());
             k.addTrainingResult(swimmer, discipline, Ttime1.getText(), Tdate.getText());
+            AddTTimeMsgBox.setText("Træningsresultatet er tilføjet til "+swimmer.getName()+".");
         } catch (Exception e){
-            // PLEASE PARSE MESSAGE HERE
+            AddTTimeMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_addTTimeActionPerformed
 
@@ -1842,27 +1897,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void CTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTeamActionPerformed
         initWindow(CompTeamL, pTrainer);
-        DefaultTableModel model = (DefaultTableModel) CompTable.getModel();
-        model.setRowCount(0);
-
-        try {
-            ArrayList<CompetetiveSwimmer> members = k.getCompetetiveSwimmers();
-
-            for (int i = 0; i < members.size(); i++) {
-                Member member = members.get(i);
-                model.addRow(new Object[]{});
-                int j = 0;
-                CompTable.setValueAt(member.getName(), i, j++);
-                CompTable.setValueAt(member.getBirthdate(), i, j++);
-                CompTable.setValueAt(member.getAddress(), i, j++);
-                CompTable.setValueAt(member.getPostnr(), i, j++);
-                CompTable.setValueAt(member.getCity(), i, j++);
-                CompTable.setValueAt(member.getPhone(), i, j++);
-                CompTable.setValueAt(member.getMail(), i, j++);
-            }
-        } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
-        }
+        compTable();
     }//GEN-LAST:event_CTeamActionPerformed
 
     private void STop5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STop5ActionPerformed
@@ -1873,7 +1908,7 @@ public class GUI extends javax.swing.JFrame {
             Discipline discipline = Discipline.valueOf(choice);
             getTop5table(k.getTop5(discipline));
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            Top5LMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_STop5ActionPerformed
 
@@ -1887,7 +1922,7 @@ public class GUI extends javax.swing.JFrame {
                 CTchoose.addItem(k.getName());
             }
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            AddCTimeMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_ACResultActionPerformed
 
@@ -1917,6 +1952,7 @@ public class GUI extends javax.swing.JFrame {
             k.registerPayment(l.getName(), Double.parseDouble(PayText.getText()));
             l = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(l.getArrears()));
+            AddPaymentMsgBox.setText("Betalingen er registreret.");
         } catch (NumberFormatException e) {
             AddPaymentMsgBox.setText("Skriv venligst et positivt tal mindre end eller lig med medlemmets restance.");
         } catch (Exception e) {
@@ -1938,7 +1974,7 @@ public class GUI extends javax.swing.JFrame {
                 ChooseMemberComboBox.addItem(member.getName());
             }
         } catch (Exception e) {
-            // PLEASE PARSE MESSAGE HERE
+            ChooseMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_Return14ActionPerformed
 
@@ -1957,11 +1993,11 @@ public class GUI extends javax.swing.JFrame {
                 active = true;
             }
             k.editMember(editedMember.getName(), Tname2.getText(), Tbirthdate2.getText(), Taddress2.getText(), Tac2.getText(), Tcity2.getText(), Tphone2.getText(), Tmail2.getText(), active);
-            EMemberMsgBox.setText("Member: " + editedMember.getName() + "\nsuccesfully edited.");
+            EMemberMsgBox.setText("Medlem: " + editedMember.getName() + "\ner blevet redigeret.");
         } catch (IllegalArgumentException e) {
             EMemberMsgBox.setText(e.getMessage());
         } catch (Exception e) {
-            EMemberMsgBox.setText("Error: Unknown error. Contact the programmer.");
+            EMemberMsgBox.setText("Fejl. Kontakt programmøren.");
         }
     }//GEN-LAST:event_Register1ActionPerformed
 
@@ -1976,7 +2012,7 @@ public class GUI extends javax.swing.JFrame {
                 active = true;
             }
             k.addMember(Tname.getText(), Tbirthdate.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText(), active);
-            AMemberMsgBox.setText("Member: " + Tname.getText() + "\nsuccesfully registered.");
+            AMemberMsgBox.setText("Nyt medlem: " + Tname.getText() + "\ner blevet registreret.");
 
             Tname.setText(null);
             Tbirthdate.setText(null);
@@ -2016,7 +2052,7 @@ public class GUI extends javax.swing.JFrame {
             for (Member member : members) {
                 ChooseMemberComboBox.addItem(member.getName());
             }
-            EMemberMsgBox.setText("Member: " + editedMember.getName() + "\nsuccesfully deleted.");
+            EMemberMsgBox.setText("Medlem: " + editedMember.getName() + "\ner blevet slettet.");
         } catch (Exception e) {
             EMemberMsgBox.setText(e.getMessage());
         }
@@ -2035,12 +2071,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CcompActionPerformed
 
     private void Top5DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Top5DActionPerformed
-        Object obj = evt.getSource();
-        if (obj == Top5D) {
-            if (Top5D.getSelectedItem() != null) {
-                getTop5table(k.getTop5(Discipline.valueOf((String) Top5D.getSelectedItem())));
+        try {
+            Object obj = evt.getSource();
+            if (obj == Top5D) {
+                if (Top5D.getSelectedItem() != null) {
+                    getTop5table(k.getTop5(Discipline.valueOf((String) Top5D.getSelectedItem())));
 
+                }
             }
+        } catch (Exception e) {
+            Top5LMsgBox.setText(e.getMessage());
         }
     }//GEN-LAST:event_Top5DActionPerformed
 
@@ -2053,6 +2093,25 @@ public class GUI extends javax.swing.JFrame {
         Tphone.setText(null);
         Tmail.setText(null);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ACompLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACompLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ACompLActionPerformed
+
+    private void SandJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SandJActionPerformed
+        Object obj = evt.getSource();
+        if (obj == SandJ) {
+            if (SandJ.getSelectedItem() != null) {
+               compTable();
+
+            }
+        }
+    }//GEN-LAST:event_SandJActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -2096,7 +2155,41 @@ public class GUI extends javax.swing.JFrame {
         newFrame.setVisible(true);
         oldFrame.dispose();
     }
-    
+   private void compTable(){
+        DefaultTableModel model = (DefaultTableModel) CompTable.getModel();
+        model.setRowCount(0);
+
+        try {
+            ArrayList<CompetetiveSwimmer> members = k.getCompetetiveSwimmers();
+            ArrayList<CompetetiveSwimmer> junior= new ArrayList<>(), senior= new ArrayList<>();
+            for(int i=0; i<members.size(); i++){
+              if(SandJ.getSelectedIndex() == 0 &&  members.get(i).getAge()>=18   ){
+                senior.add(members.get(i));
+                }else if(SandJ.getSelectedIndex() == 1 &&   members.get(i).getAge()<18  ){
+                junior.add(members.get(i));
+                }  
+            }
+            for (int i = 0; i < members.size(); i++) {
+                if(SandJ.getSelectedIndex() == 0){
+                   members=senior; 
+                }else{
+                   members = junior; 
+                }
+                Member member = members.get(i);
+                model.addRow(new Object[]{});
+                int j = 0;
+                CompTable.setValueAt(member.getName(), i, j++);
+                CompTable.setValueAt(member.getBirthdate(), i, j++);
+                CompTable.setValueAt(member.getAddress(), i, j++);
+                CompTable.setValueAt(member.getPostnr(), i, j++);
+                CompTable.setValueAt(member.getCity(), i, j++);
+                CompTable.setValueAt(member.getPhone(), i, j++);
+                CompTable.setValueAt(member.getMail(), i, j++);
+            }
+        } catch (Exception e) {
+            // PLEASE PARSE MESSAGE HERE
+        }   
+   }
     /*
     Sets up the tables used to show the members.
     It needs a jTable for modeling, and Enum for identifying what parts needs to be loaded 
@@ -2159,10 +2252,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton APayment;
     private javax.swing.JButton ATResult;
     private javax.swing.JFrame AddCTime;
+    private javax.swing.JLabel AddCTimeMsgBox;
     private javax.swing.JButton AddCompR;
     private javax.swing.JFrame AddPayment;
     private javax.swing.JLabel AddPaymentMsgBox;
     private javax.swing.JFrame AddTTime;
+    private javax.swing.JLabel AddTTimeMsgBox;
     private javax.swing.JFrame ArrearL;
     private javax.swing.JLabel ArrearLMsgBox;
     private javax.swing.JTable ArrearTable;
@@ -2179,7 +2274,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Cdate;
     private javax.swing.JComboBox<String> Choice;
     private javax.swing.JComboBox<String> Choice1;
-    private javax.swing.JComboBox<String> Choice2;
     private javax.swing.JFrame Choose;
     private javax.swing.JComboBox<String> ChooseMemberComboBox;
     private javax.swing.JLabel ChooseMsgBox;
@@ -2204,6 +2298,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton Register;
     private javax.swing.JButton Register1;
     private javax.swing.JFrame RegisterCM;
+    private javax.swing.JLabel RegisterCMMsgBox;
     private javax.swing.JButton RegisterCP;
     private javax.swing.JButton Remove;
     private javax.swing.JButton RemoveB;
@@ -2222,6 +2317,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton Return8;
     private javax.swing.JButton Return9;
     private javax.swing.JButton STop5;
+    private javax.swing.JComboBox<String> SandJ;
     private javax.swing.JTable T5table;
     private javax.swing.JComboBox<String> TTchoose;
     private javax.swing.JTextField Tac;
@@ -2265,6 +2361,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Tname2;
     private javax.swing.JComboBox<String> Top5D;
     private javax.swing.JFrame Top5L;
+    private javax.swing.JLabel Top5LMsgBox;
     private javax.swing.JTextField Tphone;
     private javax.swing.JTextField Tphone2;
     private javax.swing.JComboBox<String> TrainD;
@@ -2280,6 +2377,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton inKasserer;
     private javax.swing.JButton inTrainer;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;

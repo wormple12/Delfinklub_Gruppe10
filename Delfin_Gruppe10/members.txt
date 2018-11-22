@@ -1,9 +1,2 @@
-Member{name=e e, birthdate=11-11-2011, address=jj 4, postnr=8765, city=er, phone=12345678, mail=wer@hot.c, active=true, arrears=0.0}
-Member{name=Larsen Barsen, birthdate=12-11-2010, address=uh 5, postnr=5555, city=oge, phone=12345677, mail=he@h., active=true, arrears=0.0}
-Member{name=Ikke konkurrence, birthdate=02-02-2002, address=ee 8, postnr=2222, city=ok, phone=09876543, mail=12@hot.com, active=true, arrears=0.0}
-Member{name=ee ee, birthdate=12-02-1999, address=ee 9, postnr=8394, city=ji, phone=65432187, mail=uh@i.com, active=true, arrears=0.0}
-Member{name=eee d, birthdate=09-03-1990, address=qwe 1, postnr=1234, city=ji, phone=91827364, mail=li@hot.com, active=false, arrears=0.0}
-Member{name=t t, birthdate=01-02-2003, address=hhn 7, postnr=8888, city=fj , phone=19283746, mail=oi@ho.com, active=true, arrears=0.0}
-Member{name=a a , birthdate=12-12-2012, address=jqwfew 4, postnr=1234, city=her, phone=98765432, mail=we@hotmail.com, active=true, arrears=0.0}
-Member{name=Peter Fra, birthdate=01-01-2000, address=varehus 3, postnr=4444, city=Leasy, phone=88888888, mail=peterFra@leasy.dk, active=true, arrears=1100.0}
-Member{name=r r, birthdate=01-01-2001, address=jg 4, postnr=9876, city=oiu, phone=12345678, mail=lu@outlook.com, active=true, arrears=500.0}
+Member{name=Egon Olsen, birthdate=01-01-2015, address=Vej 2, postnr=1234, city=Byen, phone=12341234, mail=egon@olsen.dk, active=true, arrears=1000.0}
+Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=false, arrears=0.0}
