@@ -112,6 +112,12 @@ public class MasterSystem implements MasterInterface {
 
     @Override
     public void deleteMember(String name) {
+        try {
+            CompetetiveSwimmer swimmer = getCompSwim(name);
+            dataAccessor.deleteMemberInFile(swimmer);
+        } catch (IllegalArgumentException e){
+            // there's no swimmer by that name, so continue without deleting from competetives.txt
+        }
         Member member = getMember(name);
         dataAccessor.deleteMemberInFile(member);
     }
@@ -137,7 +143,17 @@ public class MasterSystem implements MasterInterface {
     
     @Override
     public ArrayList<CompetetiveSwimmer> getCompetetiveSwimmers() {
-        return dataAccessor.readCompetetivesFromFile();
+        ArrayList<CompetetiveSwimmer> swimmers = dataAccessor.readCompetetivesFromFile();
+        int count = 0;
+        while (count < swimmers.size()) {
+            CompetetiveSwimmer swimmer = swimmers.get(count);
+            if (!swimmer.isActive()) {
+                swimmers.remove(count);
+            } else {
+                count++;
+            }
+        }
+        return swimmers;
     }
 
     @Override
@@ -145,8 +161,21 @@ public class MasterSystem implements MasterInterface {
         if (!member.isActive()) {
             editMember(member.getName(), member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail(), true);
         }
-        CompetetiveSwimmer swimmer = new CompetetiveSwimmer(member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail());
-        dataAccessor.writeCompetetiveToFile(swimmer);
+        try {
+            CompetetiveSwimmer swimmer = getCompSwim(member.getName()); 
+        } catch (IllegalArgumentException e){
+            CompetetiveSwimmer swimmer = new CompetetiveSwimmer(member.getName(), member.getBirthdate(), member.getAddress(), member.getPostnr(), member.getCity(), member.getPhone(), member.getMail(), true);
+            dataAccessor.writeCompetetiveToFile(swimmer);
+        }
+    }
+    
+    @Override
+    public void removeFromCompetetiveTeam(CompetetiveSwimmer swimmer){
+        if (swimmer.isActive()) {
+            editMember(swimmer.getName(), swimmer.getName(), swimmer.getBirthdate(), swimmer.getAddress(), swimmer.getPostnr(), swimmer.getCity(), swimmer.getPhone(), swimmer.getMail(), false);
+        } else {
+            throw new IllegalArgumentException("Den valgte svømmer er ikke på holdet.");
+        }
     }
 
     @Override

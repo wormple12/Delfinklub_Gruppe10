@@ -27,6 +27,8 @@ public interface MasterInterface {
     
     public void addToCompetetiveTeam(Member member);
     
+    public void removeFromCompetetiveTeam(CompetetiveSwimmer swimmer);
+    
     public void addTrainingResult(CompetetiveSwimmer  member, Discipline discipline, String time, String date);
     
     public void addCompetetiveResult(CompetetiveSwimmer member, Discipline discipline, String time, String date, String competition, int ranking);

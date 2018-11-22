@@ -20,7 +20,7 @@ public class TrainingResultTest {
     CompetetiveSwimmer compSwi = new CompetetiveSwimmer("Jack McDonalds",
             "01-01-1955",
             "Very Derp Street 333", "1111", "Long Way From Here",
-            "11112222", "derp@isDerp.derp");
+            "11112222", "derp@isDerp.derp", true);
 
     TrainingResult traiResTime = new TrainingResult(Discipline.BUTTERFLY,
             "00:08:55",

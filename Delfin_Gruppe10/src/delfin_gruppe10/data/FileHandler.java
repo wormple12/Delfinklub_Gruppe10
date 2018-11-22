@@ -102,12 +102,18 @@ public class FileHandler implements FileHandlerInterface {
     @Override
     public void deleteMemberInFile(Member member) {
         try {
+            if (member instanceof CompetetiveSwimmer) {
+                List<String> strings = readFile(competetiveFILE);
+                CompetetiveSwimmer swimmer = (CompetetiveSwimmer)member;
+                strings.remove(swimmer.toString());
+                Files.write(competetiveFILE, strings);
+            }
             List<String> strings = readFile(FILE);
-            strings.remove(member.toString());
+            strings.remove(((Member)member).toString());
             Files.write(FILE, strings);
         } catch (IOException ex) {
             throw new RuntimeException();
-        }   
+        }
     }
 
     @Override
@@ -151,13 +157,13 @@ public class FileHandler implements FileHandlerInterface {
                 ArrayList<Member> members = readMembersFromFile();
                 Member m = null;
                 for (Member member : members){
-                    if (member.getName().equals(name)){
+                    if (member.getName().equals(name) ){
                         m = member;
                         break;
                     }
                 }
 
-                competitiveMembers.add(new CompetetiveSwimmer(m.getName(), m.getBirthdate(), m.getAddress(), m.getPostnr(), m.getCity(), m.getPhone(), m.getMail()));
+                competitiveMembers.add(new CompetetiveSwimmer(m.getName(), m.getBirthdate(), m.getAddress(), m.getPostnr(), m.getCity(), m.getPhone(), m.getMail(), m.isActive()));
                 
                 for (int i = 0; i < 4; i++) {
                     startIndex = string.indexOf("=", endIndex);
