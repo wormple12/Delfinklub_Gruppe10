@@ -1,2 +1,4 @@
-Member{name=Lo Kal, birthdate=05-06-2001, address=asdkl 15, postnr=5000, city=By, phone=12345678, mail=lk@gmail.com, active=true, arrears=1000.0}
-Member{name=jlj klj, birthdate=06-12-1995, address=knasd 12, postnr=1200, city=Byen, phone=87654321, mail=asd@gmail.com, active=true, arrears=1600.0}
+Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=false, arrears=0.0}
+Member{name=Goddag Mand, birthdate=03-04-2004, address=Dav Street 16, postnr=1234, city=Byen, phone=55667788, mail=dav@du.net, active=true, arrears=1000.0}
+Member{name=Hej Do, birthdate=11-11-2011, address=Vej 11, postnr=1111, city=Byen, phone=12446688, mail=hej@do.dk, active=true, arrears=899.0}
+Member{name=Egon Olsen, birthdate=01-01-2015, address=Vej 2, postnr=1234, city=Byen, phone=12341234, mail=egon@olsen.dk, active=true, arrears=0.0}

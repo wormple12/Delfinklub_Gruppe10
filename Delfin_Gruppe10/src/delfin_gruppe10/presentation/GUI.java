@@ -4,6 +4,7 @@ import delfin_gruppe10.domainlogic.*;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -85,7 +86,6 @@ public class GUI extends javax.swing.JFrame {
         CExercise = new javax.swing.JRadioButton();
         CComp = new javax.swing.JRadioButton();
         Register = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         AMemberMsgBox = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
@@ -256,7 +256,7 @@ public class GUI extends javax.swing.JFrame {
         pKasserer.setForeground(java.awt.Color.darkGray);
 
         VMembers2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        VMembers2.setText("Vis Medlemer");
+        VMembers2.setText("Vis Medlemmer");
         VMembers2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VMembers2ActionPerformed(evt);
@@ -490,6 +490,8 @@ public class GUI extends javax.swing.JFrame {
         );
 
         AMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        AMemberF.setPreferredSize(new java.awt.Dimension(745, 460));
+        AMemberF.setResizable(false);
 
         Text1.setEditable(false);
         Text1.setText("Navn:");
@@ -602,10 +604,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(111, 111, 111)
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AMemberFLayout.createSequentialGroup()
-                        .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AMemberFLayout.createSequentialGroup()
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CPassive, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -614,7 +613,8 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(CActive, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CComp, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
         AMemberFLayout.setVerticalGroup(
             AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -631,7 +631,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AMemberFLayout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addGap(0, 22, Short.MAX_VALUE)
                         .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Text1)
                             .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -663,9 +663,6 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(AMemberFLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
                     .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Return4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1351,6 +1348,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         EMemberF.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        EMemberF.setPreferredSize(new java.awt.Dimension(642, 520));
 
         Text25.setEditable(false);
         Text25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1486,8 +1484,8 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(CPassive2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CActive2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 96, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 57, Short.MAX_VALUE))
         );
         EMemberFLayout.setVerticalGroup(
             EMemberFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1534,7 +1532,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(Tmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Return14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1997,9 +1995,13 @@ public class GUI extends javax.swing.JFrame {
             if (CActive.isSelected()) {
                 active = true;
             }
+            
             k.addMember(Tname.getText(), Tbirthdate.getText(), Taddress.getText(), Tac.getText(), Tcity.getText(), Tphone.getText(), Tmail.getText(), active);
+            if (CComp.isSelected()){
+                k.addToCompetetiveTeam(k.getMember(Tname.getText()));
+            }
+            
             AMemberMsgBox.setText("Nyt medlem: " + Tname.getText() + "\ner blevet registreret.");
-
             Tname.setText(null);
             Tbirthdate.setText(null);
             Taddress.setText(null);
@@ -2060,9 +2062,9 @@ public class GUI extends javax.swing.JFrame {
         try {
             Object obj = evt.getSource();
             if (obj == Top5D) {
-                if (Top5D.getSelectedItem() != null) {
-                    getTop5table(k.getTop5(Discipline.valueOf((String) Top5D.getSelectedItem())));
-
+                String choice = (String) Top5D.getSelectedItem();
+                if (choice != null) {
+                    getTop5table(k.getTop5(Discipline.valueOf(choice)));
                 }
             }
         } catch (Exception e) {
@@ -2186,42 +2188,46 @@ public class GUI extends javax.swing.JFrame {
             Member member = members.get(i);
             if (t == TableEnum.NORM || member.getArrears() > 0) {
 
-                model.addRow(new Object[]{});
-                int j = 0;
-                jTable.setValueAt(member.getName(), i, j++);
-                jTable.setValueAt(member.getBirthdate(), i, j++);
-                jTable.setValueAt(member.getAddress(), i, j++);
-                jTable.setValueAt(member.getPostnr(), i, j++);
-                jTable.setValueAt(member.getCity(), i, j++);
-                jTable.setValueAt(member.getPhone(), i, j++);
-                jTable.setValueAt(member.getMail(), i, j++);
+                Vector<Object> data = new Vector<Object>();
+                data.add(member.getName());
+                data.add(member.getBirthdate());
+                data.add(member.getAddress());
+                data.add(member.getPostnr());
+                data.add(member.getCity());
+                data.add(member.getPhone());
+                data.add(member.getMail());
                 if (t == TableEnum.ARR) {
-                    jTable.setValueAt(member.getYearlyContingent(), i, j++);
-                    jTable.setValueAt(member.getArrears(), i, j++);
+                    data.add(member.getYearlyContingent());
+                    data.add(member.getArrears());
                 }
                 if (t == TableEnum.NORM) {
                     if (member.isActive()) {
-                        jTable.setValueAt("Aktiv", i, j++);
+                        data.add("Aktiv");
                     } else {
-                        jTable.setValueAt("Passiv", i, j++);
+                        data.add("Passiv");
                     }
                 }
+                model.addRow(data);
             }
         }
     }
     
     private void getTop5table(ArrayList<CompetetiveSwimmer> top){
+        DefaultTableModel model = (DefaultTableModel) T5table.getModel();
+        model.setRowCount(0);
         for(int i=0; i<top.size(); i++){
+            model.addRow(new Object[]{});
             int j=0;
             T5table.setValueAt(top.get(i).getName(), i, j++);
-            String out = "";
+            String out;
             if(top.get(i).getAge()<18){
                 out = "Junior";
             }else{
                 out= "Senior";
             }
             T5table.setValueAt(out, i, j++);
-            T5table.setValueAt(top.get(i).getBestTrainingResult(Discipline.valueOf((String) Top5D.getSelectedItem())), i, j++);
+            Discipline discipline = Discipline.valueOf((String) Top5D.getSelectedItem());
+            T5table.setValueAt(top.get(i).getBestTrainingResult(discipline), i, j++);
         }
     }
 
@@ -2359,7 +2365,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton inKasserer;
     private javax.swing.JButton inTrainer;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
