@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
-public class Member implements Serializable, Cloneable {
+public class Member implements Serializable, Cloneable /*,Comparable<Member>*/ {
 
     private String name;
     private final String birthdate;
@@ -218,5 +218,8 @@ public class Member implements Serializable, Cloneable {
         }
         return true;
     }
+
+  
+    }
     
-}
+

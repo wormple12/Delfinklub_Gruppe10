@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-Member{name=Egon Olsen, birthdate=01-01-2015, address=Vej 2, postnr=1234, city=Byen, phone=12341234, mail=egon@olsen.dk, active=true, arrears=1000.0}
-Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=false, arrears=0.0}
-Member{name=Hej Hej, birthdate=20-12-1995, address=Ja Hej 2, postnr=1234, city=Byen, phone=22334455, mail=hej@hej.meth, active=true, arrears=1600.0}
-=======
-Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=false, arrears=1000.0}
-Member{name=Egon Olsen, birthdate=01-01-2015, address=Vej 2, postnr=1234, city=Byen, phone=12341234, mail=egon@olsen.dk, active=true, arrears=1000.0}
-<<<<<<< HEAD
-Member{name=Chamberlain Skeksis, birthdate=01-01-2000, address=Chamberlains Chamber 1, postnr=4444, city=CastleOfTheCrystal, phone=00000000, mail=bestskeksis@hotmail.com, active=true, arrears=450.0}
-=======
->>>>>>> 57b88e012d6e56c5e5b3a9adab4f0577eefd6df8
->>>>>>> a123fa10b36c8b827cf936d0283a69cb9235b6b4
+Member{name=AK Ak, birthdate=25-03-2000, address=adds 12, postnr=1245, city=Byen, phone=12345678, mail=lk@gmail.com, active=true, arrears=1600.0}
+Member{name=Bk Bk, birthdate=02-02-2002, address=asdas 20, postnr=2002, city=Byen, phone=12345678, mail=bk@gmail.com, active=true, arrears=1000.0}
+Member{name=Dk Dk, birthdate=11-11-2000, address=asd 12, postnr=5412, city=Byen, phone=12345678, mail=Dk@gmail.com, active=true, arrears=1600.0}
+Member{name=Ck Ck, birthdate=11-03-2010, address=asd 5, postnr=3265, city=Byen, phone=87654321, mail=Ck@gmail.com, active=true, arrears=1000.0}
+Member{name=Kkk KKk, birthdate=13-11-1996, address=gdf 21, postnr=5498, city=Byen, phone=12345678, mail=kkk@gmail.com, active=false, arrears=500.0}
+Member{name=Pk Pk, birthdate=02-04-2009, address=asdas 25, postnr=2356, city=Byen, phone=98765432, mail=Pk@gmail.com, active=false, arrears=500.0}
+Member{name=Aa Aa, birthdate=28-06-1990, address=lkajf 12, postnr=6345, city=Byen, phone=23456789, mail=AAAAAAA@gmail.com, active=false, arrears=500.0}
