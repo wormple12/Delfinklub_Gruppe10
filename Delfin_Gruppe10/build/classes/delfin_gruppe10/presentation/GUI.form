@@ -1232,16 +1232,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="Remove" max="32767" attributes="0"/>
-                      <Component id="Return9" pref="98" max="32767" attributes="0"/>
+                      <Component id="Return9" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
                           <Component id="Confirm1" min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
                       <Component id="ACompL" max="32767" attributes="0"/>
                   </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="RegisterCMMsgBox" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1252,7 +1257,9 @@
                       <Component id="Return9" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="ACompL" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="60" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="RegisterCMMsgBox" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Confirm1" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="Remove" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
@@ -1275,6 +1282,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ACompLActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -1297,11 +1307,13 @@
         </Component>
         <Component class="javax.swing.JButton" name="Remove">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fjern"/>
+            <Property name="text" type="java.lang.String" value="Fjern (virker ikke)"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="RegisterCMMsgBox">
         </Component>
       </SubComponents>
     </Container>
@@ -1480,46 +1492,53 @@
                   </Group>
                   <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="AddCTimeMsgBox" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace pref="55" max="32767" attributes="0"/>
                           <Component id="CTchoose" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <Component id="Return11" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="CompD" max="32767" attributes="0"/>
                       <Component id="Text20" pref="36" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="Ctime" max="32767" attributes="0"/>
                       <Component id="Text18" pref="36" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Text19" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="Ccomp" max="32767" attributes="0"/>
+                      <Component id="Ccomp" pref="45" max="32767" attributes="0"/>
+                      <Component id="Text19" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Text21" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="Cplacement" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Text32" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="Cdate" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="59" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="AddCTimeMsgBox" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="AddCompR" min="-2" pref="51" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1662,6 +1681,8 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="AddCTimeMsgBox">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="AddTTime">
@@ -1678,7 +1699,7 @@
                   <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="addTTime" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="TTchoose" alignment="1" max="32767" attributes="0"/>
                               <Component id="Text23" alignment="1" max="32767" attributes="0"/>
@@ -1686,10 +1707,13 @@
                               <Component id="Text22" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Ttime1" pref="150" max="32767" attributes="0"/>
-                              <Component id="Tdate" pref="150" max="32767" attributes="0"/>
-                              <Component id="TrainD" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="AddTTimeMsgBox" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Ttime1" pref="150" max="32767" attributes="0"/>
+                                  <Component id="Tdate" pref="150" max="32767" attributes="0"/>
+                                  <Component id="TrainD" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -1700,14 +1724,15 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="TTchoose" min="-2" pref="36" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="Return12" min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Return12" min="-2" pref="60" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="AddTTimeMsgBox" min="-2" max="-2" attributes="0"/>
+                              <Component id="TTchoose" min="-2" pref="36" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -1715,12 +1740,12 @@
                       <Component id="TrainD" max="32767" attributes="0"/>
                       <Component id="Text24" pref="36" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Text22" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="Ttime1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Text23" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="Tdate" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
@@ -1809,6 +1834,8 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JLabel" name="AddTTimeMsgBox">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="Top5L">
@@ -1829,6 +1856,8 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <Component id="Return13" min="-2" pref="98" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="Top5LMsgBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1836,7 +1865,10 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="Return13" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="Return13" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="Top5LMsgBox" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Top5D" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1923,6 +1955,8 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="Top5LMsgBox">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="EMemberF">
