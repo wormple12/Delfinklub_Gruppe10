@@ -97,7 +97,7 @@ public class CompetetiveSwimmer extends Member {
     }
     
     /**
-     * Copies a CompetetiveSwimmer object
+     * Makes a deep copy of a CompetetiveSwimmer object that copies all values of fields and all its results 
      * 
      * @return a CompetetiveSwimmer object
      */
