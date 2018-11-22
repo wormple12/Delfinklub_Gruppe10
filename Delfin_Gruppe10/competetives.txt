@@ -1,2 +1,7 @@
 CompetetiveSwimmer{name=Simon Norup, bestButterflyResult:(time=59:59:00, date=01-01-2000), bestCrawlResult:(time=59:59:00, date=01-01-2000), bestBackstrokeResult:(time=59:59:00, date=01-01-2000), bestBreaststrokeResult:(time=59:59:00, date=01-01-2000), competetiveResults:null}
 CompetetiveSwimmer{name=Egon Olsen, bestButterflyResult:(time=59:59:00, date=01-01-2000), bestCrawlResult:(time=59:59:00, date=01-01-2000), bestBackstrokeResult:(time=59:59:00, date=01-01-2000), bestBreaststrokeResult:(time=59:59:00, date=01-01-2000), competetiveResults:null}
+<<<<<<< HEAD
+CompetetiveSwimmer{name=Hej Do, bestButterflyResult:(time=59:59:00, date=01-01-2000), bestCrawlResult:(time=59:59:00, date=01-01-2000), bestBackstrokeResult:(time=59:59:00, date=01-01-2000), bestBreaststrokeResult:(time=59:59:00, date=01-01-2000), competetiveResults:null}
+CompetetiveSwimmer{name=Goddag Mand, bestButterflyResult:(time=59:59:00, date=01-01-2000), bestCrawlResult:(time=59:59:00, date=01-01-2000), bestBackstrokeResult:(time=59:59:00, date=01-01-2000), bestBreaststrokeResult:(time=59:59:00, date=01-01-2000), competetiveResults:null}
+=======
+>>>>>>> bec7f562047e050496a7b4efc52c551cf9b5defb
