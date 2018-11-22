@@ -2188,7 +2188,7 @@ public class GUI extends javax.swing.JFrame {
         if (obj == Choice1) {
             if (Choice1.getSelectedItem() != null) {
                try {
-            tableSet(MemberTable, TableEnum.ARR);
+            tableSet(ArrearTable, TableEnum.ARR);
         } catch (Exception e){
             ArrearLMsgBox.setText(e.getMessage());
         }
