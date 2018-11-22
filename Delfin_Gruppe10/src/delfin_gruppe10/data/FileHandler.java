@@ -95,7 +95,7 @@ public class FileHandler implements FileHandlerInterface {
             strings.add(updated.toString());
             Files.write(FILE, strings);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            throw new RuntimeException();
         }
     }
 

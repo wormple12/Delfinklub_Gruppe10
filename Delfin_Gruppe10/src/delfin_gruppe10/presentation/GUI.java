@@ -25,6 +25,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -1933,7 +1934,7 @@ public class GUI extends javax.swing.JFrame {
         } catch (IllegalArgumentException e) {
             EMemberMsgBox.setText(e.getMessage());
         } catch (Exception e) {
-            AMemberMsgBox.setText("Error: Unknown error. Contact the programmer.");
+            EMemberMsgBox.setText("Error: Unknown error. Contact the programmer.");
         }
     }//GEN-LAST:event_Register1ActionPerformed
 
@@ -2074,12 +2075,11 @@ public class GUI extends javax.swing.JFrame {
     It needs a jTable for modeling, and Enum for identifying what parts needs to be loaded 
     */
     private void tableSet(javax.swing.JTable jTable, TableEnum t){
-         ArrayList<Member> members = k.getAllMembers();
-        
-        DateTimeFormatter formatter;
+        ArrayList<Member> members = k.getAllMembers();
+
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        model.setRowCount(0);    
-        
+        model.setRowCount(0);
+
         for (int i = 0; i < members.size(); i++) {
             Member member = members.get(i);
             if (t == TableEnum.NORM || member.getArrears() > 0) {
