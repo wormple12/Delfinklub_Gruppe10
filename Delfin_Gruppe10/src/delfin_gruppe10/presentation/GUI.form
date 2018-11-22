@@ -1957,12 +1957,9 @@
     <Container class="javax.swing.JFrame" name="EMemberF">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="3"/>
-<<<<<<< HEAD
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[642, 540]"/>
         </Property>
-=======
->>>>>>> 57b88e012d6e56c5e5b3a9adab4f0577eefd6df8
       </Properties>
 
       <Layout>
