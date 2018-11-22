@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package delfin_gruppe10.data;
 
 import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
@@ -10,8 +5,10 @@ import delfin_gruppe10.domainlogic.Member;
 import java.util.ArrayList;
 
 /**
- *
- * @author PC 2 2016 SDC-privat
+ * Interface for the FileHandler class
+ * 
+ * @author Simon Asholt Norup
+ * @version 1.00, 22 Nov 2018
  */
 public interface FileHandlerInterface {
 

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package delfin_gruppe10.data;
 
 import delfin_gruppe10.data.FileHandler;
@@ -27,8 +23,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Ludvig
+ * 
+ * 
+ * @author Ludvig Bramsen
+ * @version 1.00, 22 Nov 2018
  */
 public class FileHandlerTest {
     

@@ -9,8 +9,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Damjan
+ * 
+ * 
+ * @author Damjan Djurisic
+ * @version 1.00, 22 Nov 2018
  */
 public class TrainingResultTest {
 

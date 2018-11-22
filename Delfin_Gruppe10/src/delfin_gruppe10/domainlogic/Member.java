@@ -8,6 +8,12 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
+/**
+ * 
+ * 
+ * @author Simon Asholt Norup, Lukas Bjørnvad
+ * @version 1.00, 22 Nov 2018
+ */
 public class Member implements Serializable, Cloneable /*,Comparable<Member>*/ {
 
     private String name;

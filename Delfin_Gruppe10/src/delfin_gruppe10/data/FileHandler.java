@@ -11,11 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * FileHandler
  * This class handles communication with the .txt files. 
  * It is capable of writing to, reading and editing objects stored in .txt files.
  * It can handle both member and competetive swimmer objects. 
- * @author Simon Asholt Norup
+ * @author Simon Asholt Norup, Ludvig Bramsen, Damjan Djurisic
  * @version 1.00, 22 Nov 2018
  */
 public class FileHandler implements FileHandlerInterface {

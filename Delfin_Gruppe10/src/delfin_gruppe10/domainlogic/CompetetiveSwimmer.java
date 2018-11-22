@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- *
- * @author HP
+ * 
+ * 
+ * @author Simon Asholt Norup, Lukas Bjørnvad
+ * @version 1.00, 22 Nov 2018
  */
 public class CompetetiveSwimmer extends Member {
 

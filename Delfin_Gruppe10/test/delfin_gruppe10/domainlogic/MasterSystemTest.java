@@ -12,8 +12,10 @@ import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
 /**
- *
- * @author PC 2 2016 SDC-privat
+ * 
+ * 
+ * @author Simon Asholt Norup
+ * @version 1.00, 22 Nov 2018
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
