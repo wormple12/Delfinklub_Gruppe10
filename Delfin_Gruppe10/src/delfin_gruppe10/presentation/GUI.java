@@ -857,7 +857,12 @@ public class GUI extends javax.swing.JFrame {
 
         ArrearL.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Choice1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Item 2", "Item 3", "Item 4" }));
+        Choice1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Navn", "Fødselsår", "Medlemskab" }));
+        Choice1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Choice1ActionPerformed(evt);
+            }
+        });
 
         Text15.setEditable(false);
         Text15.setText("Sorter:");
@@ -2178,6 +2183,20 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ChoiceActionPerformed
 
+    private void Choice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choice1ActionPerformed
+           Object obj = evt.getSource();
+        if (obj == Choice1) {
+            if (Choice1.getSelectedItem() != null) {
+               try {
+            tableSet(MemberTable, TableEnum.ARR);
+        } catch (Exception e){
+            ArrearLMsgBox.setText(e.getMessage());
+        }
+
+            }
+        }
+    }//GEN-LAST:event_Choice1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -2265,6 +2284,7 @@ public class GUI extends javax.swing.JFrame {
         JComboBox x = Choice;
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         model.setRowCount(0);
+        if(t== TableEnum.ARR) x =Choice1;
         if(x.getSelectedIndex()==0){
           Collections.sort(members, new Comparator<Member>() {
             public int compare(Member person, Member person1) {
