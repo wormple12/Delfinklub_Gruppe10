@@ -25,6 +25,12 @@ public class CompetetiveSwimmer extends Member {
         competetiveResults = new ArrayList<>();
     }
 
+    /**
+     * Gives the best TrainingResult object in a specific discipline for a CompetetiveSwimmer object
+     * 
+     * @param d is an enum and the specified discipline 
+     * @return the best TrainingResult object
+     */
     public TrainingResult getBestTrainingResult(Discipline d) {
         switch (d) {
             case BUTTERFLY:
@@ -44,6 +50,11 @@ public class CompetetiveSwimmer extends Member {
         return competetiveResults;
     }
     
+    /**
+     * Manually sets the best training result for a CompetetiveSwimmer object
+     * 
+     * @param result is a TrainingResult object
+     */
     public void setBestTrainingResult(TrainingResult result) {
         Discipline d = result.getDiscipline();
         switch (d) {
@@ -85,6 +96,11 @@ public class CompetetiveSwimmer extends Member {
         return str.toString();
     }
     
+    /**
+     * Copies a CompetetiveSwimmer object
+     * 
+     * @return a CompetetiveSwimmer object
+     */
     public CompetetiveSwimmer copy() {
         CompetetiveSwimmer swimmer = new CompetetiveSwimmer(getName(), getBirthdate(), getAddress(), getPostnr(), getCity(), getPhone(), getMail(), isActive());
         TrainingResult originalTR = getBestTrainingResult(Discipline.BUTTERFLY);

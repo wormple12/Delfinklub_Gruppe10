@@ -3,9 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package delfin_gruppe10.domainlogic;
+package delfin_gruppe10.data;
 
 import delfin_gruppe10.data.FileHandler;
+import delfin_gruppe10.domainlogic.CompetetiveResult;
+import delfin_gruppe10.domainlogic.CompetetiveSwimmer;
+import delfin_gruppe10.domainlogic.Discipline;
+import delfin_gruppe10.domainlogic.Member;
+import delfin_gruppe10.domainlogic.TrainingResult;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
