@@ -1,2 +1,3 @@
 Member{name=Egon Olsen, birthdate=01-01-2015, address=Vej 2, postnr=1234, city=Byen, phone=12341234, mail=egon@olsen.dk, active=true, arrears=1000.0}
 Member{name=Simon Norup, birthdate=01-01-1995, address=Vej 1, postnr=1234, city=Byen, phone=12345678, mail=simon@mail.dk, active=false, arrears=0.0}
+Member{name=r r, birthdate=12-12-2012, address=jdjd 7, postnr=7777, city=hj, phone=98765432, mail=jdjd@hotmail.com, active=true, arrears=1000.0}

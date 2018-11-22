@@ -1,9 +1,10 @@
 package delfin_gruppe10.presentation;
 
 import delfin_gruppe10.domainlogic.*;
-import java.io.IOException;
-import java.time.format.DateTimeFormatter;
+//import java.io.IOException;
+//import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -17,10 +18,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
-
     MasterSystem k = new MasterSystem();
 
     private Member editedMember = null;
+    
+    private JFrame currentP = null;
 
     /**
      * Creates new form GUI
@@ -1585,7 +1587,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(inFormand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(inKasserer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1614,7 +1616,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -1632,6 +1634,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inTrainerActionPerformed
+        currentP = pTrainer;
         initWindow(pTrainer, this);
     }//GEN-LAST:event_inTrainerActionPerformed
 
@@ -1640,10 +1643,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AMemeberActionPerformed
 
     private void inKassererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inKassererActionPerformed
+        currentP = pKasserer;
         initWindow(pKasserer, this);
     }//GEN-LAST:event_inKassererActionPerformed
 
     private void inFormandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inFormandActionPerformed
+        currentP = pFormand;
         initWindow(pFormand, this);
     }//GEN-LAST:event_inFormandActionPerformed
 
@@ -1770,7 +1775,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ConfirmActionPerformed
 
     private void Return3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return3ActionPerformed
-        initWindow(this, MemberL);
+        initWindow(currentP, MemberL);
     }//GEN-LAST:event_Return3ActionPerformed
 
     private void Return1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return1ActionPerformed
