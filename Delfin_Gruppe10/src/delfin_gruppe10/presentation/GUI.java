@@ -750,7 +750,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setText("At Betale");
 
         PayText.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        PayText.setText("Beløb");
         PayText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PayTextActionPerformed(evt);
@@ -1809,6 +1808,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void Return7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Return7ActionPerformed
         AddPaymentMsgBox.setText(null);
+        PayText.setText(null);
         initWindow(pKasserer, AddPayment);
     }//GEN-LAST:event_Return7ActionPerformed
 
@@ -1968,6 +1968,7 @@ public class GUI extends javax.swing.JFrame {
             k.registerPayment(l.getName(), Double.parseDouble(PayText.getText()));
             l = k.getMember((String) this.NameLPay.getSelectedItem());
             LeftToPayField.setText(String.valueOf(l.getArrears()));
+            PayText.setText(null);
             AddPaymentMsgBox.setText("Betalingen er registreret.");
             
             if(l.getArrears() == 0){
